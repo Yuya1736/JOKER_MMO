@@ -1,0 +1,17 @@
+Assets/EnvRes
+HybridCLRData/
+Library/
+Logs/
+obj/
+ServerData/
+Temp/
+*.sln
+*.csproj
+*.sln
+*.userprefs
+*.unityproj
+*.DS_Store
+*.mp4
+*.pdb
+*.tif
+*.pdb
