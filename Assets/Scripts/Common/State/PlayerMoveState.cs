@@ -26,9 +26,16 @@ public class PlayerMoveState : PlayerStateBase
         //deltaVector.y -= player.verticalVelocity * Time.deltaTime;
 
         oldChunkCoord = AOIUtility.GetChunkCoordByWorldPosition(player.transform.position);
-        player.CharacterController.Move(deltaVector * Time.deltaTime);
+        player.CharacterController.Move(deltaVector);
         newChunkCoord = AOIUtility.GetChunkCoordByWorldPosition(player.transform.position);
         if (oldChunkCoord != newChunkCoord) player.UpdateClientVisualChunk(oldChunkCoord, newChunkCoord);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        player.PlayerView.AddAction(OnRootMotion);
     }
 }
 #endif

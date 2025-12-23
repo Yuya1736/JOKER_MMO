@@ -1,0 +1,119 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Unity\\Projects\\Joker_MMO\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4E01F7C0-CBF4-DBA6-D5E5-39CFFFF248C9}|Common.csproj|D:\\Unity\\Projects\\Joker_MMO\\assets\\scripts\\common\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E01F7C0-CBF4-DBA6-D5E5-39CFFFF248C9}|Common.csproj|solutionrelative:assets\\scripts\\common\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E99584-051B-4DD5-B019-289187B96C18}|Server.csproj|d:\\unity\\projects\\joker_mmo\\assets\\scripts\\server\\clientsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E99584-051B-4DD5-B019-289187B96C18}|Server.csproj|solutionrelative:assets\\scripts\\server\\clientsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FB27010-6A86-24F7-E961-BB60E58E3BBE}|AOT.csproj|D:\\Unity\\Projects\\Joker_MMO\\assets\\scripts\\aot\\hotupdate\\hotupdatesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FB27010-6A86-24F7-E961-BB60E58E3BBE}|AOT.csproj|solutionrelative:assets\\scripts\\aot\\hotupdate\\hotupdatesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E8F4FD3-9F91-4729-2C20-18279D92E775}|Assembly-CSharp-Editor.csproj|D:\\Unity\\Projects\\Joker_MMO\\assets\\editor\\scripts\\buildmenuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E8F4FD3-9F91-4729-2C20-18279D92E775}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\editor\\scripts\\buildmenuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E01F7C0-CBF4-DBA6-D5E5-39CFFFF248C9}|Common.csproj|D:\\Unity\\Projects\\Joker_MMO\\assets\\scripts\\common\\player\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E01F7C0-CBF4-DBA6-D5E5-39CFFFF248C9}|Common.csproj|solutionrelative:assets\\scripts\\common\\player\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "D:\\Unity\\Projects\\Joker_MMO\\Assets\\Scripts\\Common\\Player\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Common\\Player\\PlayerController.cs",
+              "ToolTip": "D:\\Unity\\Projects\\Joker_MMO\\Assets\\Scripts\\Common\\Player\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Common\\Player\\PlayerController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T12:00:11.194Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClientsManager.cs",
+              "DocumentMoniker": "D:\\Unity\\Projects\\Joker_MMO\\Assets\\Scripts\\Server\\ClientsManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Server\\ClientsManager.cs",
+              "ToolTip": "D:\\Unity\\Projects\\Joker_MMO\\Assets\\Scripts\\Server\\ClientsManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Server\\ClientsManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T13:09:49.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HotUpdateSystem.cs",
+              "DocumentMoniker": "D:\\Unity\\Projects\\Joker_MMO\\Assets\\Scripts\\AOT\\HotUpdate\\HotUpdateSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AOT\\HotUpdate\\HotUpdateSystem.cs",
+              "ToolTip": "D:\\Unity\\Projects\\Joker_MMO\\Assets\\Scripts\\AOT\\HotUpdate\\HotUpdateSystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AOT\\HotUpdate\\HotUpdateSystem.cs",
+              "ViewState": "AgIAALQAAAAAAAAAAAAmwMIAAAA1AAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKmSURBVDhP7dFPSJNxHAbw5/vunQ3xbU4naqaSMxObhTkqA\u002B3PQUrwEISU9AfyX6dyEd0ko1NQblYQKdLB1ENKsDoEUSEWNrc0LaxMDwnmdJbOmZtu7/vtkBvvpZMdfW7fHx94HvgBG1lvCAC\u002BL3w39Hzr0T358gifvZPISMqAtdCK0sQCf3KyeSmCO0Y6DFpBG6owVywxXxPah01GY6zRV5ZTthIxAgAEggGboJA7xBo3iWG3qJA7Rhbdv2RNXQQCQDAUtPlX/XUA0D5sMobl0HPP0lSJ2ogAcGfIliAK4pbdibtcC8GFe4VJFpvT40wY8AxIavxwtCWBAQkAWj/aNQpiksHQqQ0BQE5LliNzc6ZUnFLSKjMcRFTX73lTuxTyd53Lr\u002Br8HfBX2j80wbfiO0VEPwD0MjgOQC0Yz0x609g2aftY94nuThEAvMuz8Aa8vS9Ovu5cK7ptbsuNJYUnREXUg4TCv/WkZ2YQoRBMOhC0IM4GSNIIUKIzDfY4h6FZaow\u002B/CNqZ2yKTY23S1PxzVK52gjq43\u002BEsNYMosH5S/7oSnNbbgMB49aCq\u002BOLq74G29At\u002BFYX94LZR8BXJugAKgZ4xKTPnsnSm1yPj/fcEAEgTUpHupR\u002BsKivqFI2wEHzVNc7\u002Ber04qqvKyyE3zMrgwAA5h1rnzIIcBzA\u002B8GYAPMYyzQRXXjl5WVHWJHLF1cWXE5P/90jGaV2ZiVBVuTr9489iK4\u002B0L7PwcBg/xlnY3H7nlQFWjeYLrw9\u002B\u002B5pxAgAUJVXM58amzLtmnFt9Qbmbo7OfVo5lHZ4\u002BmJBvT8CAaA6r2a\u002BemetHwBq8uvl83k1s1Xm2qDaCAAgh2QrWLCILFtkkIUgWkRNyAINWtRY3sRWXuYWANCN6X4qWj5KPupTm42sP38A\u002BPobLn6iw4AAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-12-22T12:36:35.59Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BuildMenuItem.cs",
+              "DocumentMoniker": "D:\\Unity\\Projects\\Joker_MMO\\Assets\\Editor\\Scripts\\BuildMenuItem.cs",
+              "RelativeDocumentMoniker": "Assets\\Editor\\Scripts\\BuildMenuItem.cs",
+              "ToolTip": "D:\\Unity\\Projects\\Joker_MMO\\Assets\\Editor\\Scripts\\BuildMenuItem.cs",
+              "RelativeToolTip": "Assets\\Editor\\Scripts\\BuildMenuItem.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAUwGIAAAAEAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKmSURBVDhP7dFPSJNxHAbw5/vunQ3xbU4naqaSMxObhTkqA\u002B3PQUrwEISU9AfyX6dyEd0ko1NQblYQKdLB1ENKsDoEUSEWNrc0LaxMDwnmdJbOmZtu7/vtkBvvpZMdfW7fHx94HvgBG1lvCAC\u002BL3w39Hzr0T358gifvZPISMqAtdCK0sQCf3KyeSmCO0Y6DFpBG6owVywxXxPah01GY6zRV5ZTthIxAgAEggGboJA7xBo3iWG3qJA7Rhbdv2RNXQQCQDAUtPlX/XUA0D5sMobl0HPP0lSJ2ogAcGfIliAK4pbdibtcC8GFe4VJFpvT40wY8AxIavxwtCWBAQkAWj/aNQpiksHQqQ0BQE5LliNzc6ZUnFLSKjMcRFTX73lTuxTyd53Lr\u002Br8HfBX2j80wbfiO0VEPwD0MjgOQC0Yz0x609g2aftY94nuThEAvMuz8Aa8vS9Ovu5cK7ptbsuNJYUnREXUg4TCv/WkZ2YQoRBMOhC0IM4GSNIIUKIzDfY4h6FZaow\u002B/CNqZ2yKTY23S1PxzVK52gjq43\u002BEsNYMosH5S/7oSnNbbgMB49aCq\u002BOLq74G29At\u002BFYX94LZR8BXJugAKgZ4xKTPnsnSm1yPj/fcEAEgTUpHupR\u002BsKivqFI2wEHzVNc7\u002Ber04qqvKyyE3zMrgwAA5h1rnzIIcBzA\u002B8GYAPMYyzQRXXjl5WVHWJHLF1cWXE5P/90jGaV2ZiVBVuTr9489iK4\u002B0L7PwcBg/xlnY3H7nlQFWjeYLrw9\u002B\u002B5pxAgAUJVXM58amzLtmnFt9Qbmbo7OfVo5lHZ4\u002BmJBvT8CAaA6r2a\u002BemetHwBq8uvl83k1s1Xm2qDaCAAgh2QrWLCILFtkkIUgWkRNyAINWtRY3sRWXuYWANCN6X4qWj5KPupTm42sP38A\u002BPobLn6iw4AAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-12-22T12:11:01.266Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerManager.cs",
+              "DocumentMoniker": "D:\\Unity\\Projects\\Joker_MMO\\Assets\\Scripts\\Common\\Player\\PlayerManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Common\\Player\\PlayerManager.cs",
+              "ToolTip": "D:\\Unity\\Projects\\Joker_MMO\\Assets\\Scripts\\Common\\Player\\PlayerManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Common\\Player\\PlayerManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T12:01:18.087Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

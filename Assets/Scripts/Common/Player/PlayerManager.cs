@@ -12,12 +12,12 @@ public class PlayerManager : SingletonMono<PlayerManager>
         base.Awake();
 
         EventSystem.AddTypeEventListener<LocalPlayerEvent>(OnInitLocalPlayer);
-        print("EventSystem.AddTypeEventListener<LocalPlayerEvent>(OnInitLocalPlayer)");
+        //print("EventSystem.AddTypeEventListener<LocalPlayerEvent>(OnInitLocalPlayer)");
     }
 
     private void OnInitLocalPlayer(LocalPlayerEvent localPlayerEvent)
     {
-        print("OnInitLocalPlayer");
+        //print("OnInitLocalPlayer");
         localPlayer = localPlayerEvent.localPlayer;
         
         cinemachineFreeLook.transform.position = localPlayer.transform.position;

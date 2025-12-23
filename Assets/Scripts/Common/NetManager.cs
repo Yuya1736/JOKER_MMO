@@ -21,7 +21,6 @@ public class NetManager : NetworkManager
     private void InitClient()
     {
         StartClient();
-        print("CLient start");
     }
 
     private void InitServer()

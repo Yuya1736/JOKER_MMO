@@ -15,11 +15,16 @@ public partial class PlayerController : NetworkBehaviour
     {
         base.OnNetworkSpawn();
 
-        
+    //    Debug.Log(
+    //$"[Player Spawn] " +
+    //$"IsServer={IsServer}, IsClient={IsClient}, IsOwner={IsOwner}, " +
+    //$"OwnerId={OwnerClientId}, LocalId={NetworkManager.LocalClientId}"
+//);
 
 #if !UNITY_SERVER
         if (IsClient && IsOwner)
         {
+
             Client_OnNetworkSpawn();
         }
 #endif
@@ -37,7 +42,7 @@ public partial class PlayerController : NetworkBehaviour
         base.OnNetworkDespawn();
 
 #if !UNITY_SERVER
-        if (IsClient && IsOwner)
+        if (IsClient)
         {
             Client_OnNetworkDespawn();
         }
@@ -68,7 +73,7 @@ public partial class PlayerController : NetworkBehaviour
     private void Client_OnNetworkSpawn()
     {
         EventSystem.TypeEventTrigger<LocalPlayerEvent>(new LocalPlayerEvent() { localPlayer = this });
-        print("PlayerSpawn");
+        //print("PlayerSpawn");
         this.AddUpdate(ClientMoveInput);
         AOIUtility.InitClient(this, AOIUtility.GetChunkCoordByWorldPosition(this.transform.position));
     }
@@ -138,6 +143,7 @@ public partial class PlayerController : NetworkBehaviour, IStateMachineOwner
     private void Server_OnNetworkDespawn()
     {
         stateMachine.Destroy();
+        this.RemoveUpdate(SetPlayerGravity);
     }
 
     private void MovementOnServer(Vector2 dir)
