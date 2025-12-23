@@ -34,7 +34,7 @@ public class BuildMenuItem
         for(int i = 0;i < EditorSceneManager.sceneCountInBuildSettings;++ i)
         {
             string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
-            if(scenePath != null && !scenePath.Contains("Client"))
+            if(scenePath != null && !scenePath.Contains("Client") && !scenePath.Contains("Test"))
             {
                 Debug.Log("正在加载场景：" + scenePath);
                 list.Add(scenePath);
@@ -72,7 +72,7 @@ public class BuildMenuItem
         for (int i = 0; i < EditorSceneManager.sceneCountInBuildSettings; ++i)
         {
             string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
-            if (scenePath != null && !scenePath.Contains("Server"))
+            if (scenePath != null && !scenePath.Contains("Server") && !scenePath.Contains("Test"))
             {
                 Debug.Log("正在加载场景：" + scenePath);
                 list.Add(scenePath);

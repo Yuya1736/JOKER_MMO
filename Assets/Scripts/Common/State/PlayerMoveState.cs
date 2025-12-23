@@ -14,10 +14,20 @@ public class PlayerMoveState : PlayerStateBase
         player.PlayerView.AddAction(OnRootMotion);
     }
 
+    private float nowEulerY;
+    private float currentVelocity;
     public override void Update()
     {
         base.Update();
         if (player.inputData.dir == Vector2.zero) player.ChangeState(PlayerState.Idle);
+        else
+        {
+            nowEulerY = player.PlayerView.transform.eulerAngles.y;
+            float tanRad = Mathf.Atan2(player.inputData.dir.x, player.inputData.dir.y);
+            float tanDeg = Mathf.Rad2Deg * tanRad;
+            nowEulerY = Mathf.SmoothDampAngle(nowEulerY, tanDeg, ref currentVelocity, 0.1f);
+            player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, nowEulerY, player.transform.eulerAngles.z);
+        }
     }
 
     private void OnRootMotion(Vector3 deltaVector, Quaternion deltaQuaternion)
@@ -35,7 +45,7 @@ public class PlayerMoveState : PlayerStateBase
     {
         base.Exit();
 
-        player.PlayerView.AddAction(OnRootMotion);
+        player.PlayerView.RemoveAction(OnRootMotion);
     }
 }
 #endif

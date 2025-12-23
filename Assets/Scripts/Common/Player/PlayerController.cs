@@ -69,11 +69,11 @@ public partial class PlayerController : NetworkBehaviour
 #if !UNITY_SERVER
 public partial class PlayerController : NetworkBehaviour
 {
-    
+    private Camera mainCamera;
     private void Client_OnNetworkSpawn()
     {
+        mainCamera = Camera.main;
         EventSystem.TypeEventTrigger<LocalPlayerEvent>(new LocalPlayerEvent() { localPlayer = this });
-        //print("PlayerSpawn");
         this.AddUpdate(ClientMoveInput);
         AOIUtility.InitClient(this, AOIUtility.GetChunkCoordByWorldPosition(this.transform.position));
     }
@@ -89,9 +89,14 @@ public partial class PlayerController : NetworkBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector2 dir = new Vector2(x, y).normalized;
-        if (lastDir == dir) return;
+        if (Vector2.Distance(lastDir, dir) <= 0.01f) return;
         lastDir = dir;
-        Send_InputInfo_ServerRpc(dir);
+        // 加上摄像机视角旋转角度
+        Vector3 dir3 = new Vector3(dir.x, 0, dir.y);
+        float yEuler = mainCamera.transform.eulerAngles.y;
+        Vector3 newDir3 = Quaternion.Euler(new Vector3(0, yEuler, 0)) * dir3;
+        
+        Send_InputInfo_ServerRpc(new Vector2(newDir3.x, newDir3.z));
     }
 }
 #endif
@@ -100,7 +105,7 @@ public partial class PlayerController : NetworkBehaviour
 #if UNITY_SERVER || UNITY_EDITOR
 public partial class PlayerController : NetworkBehaviour, IStateMachineOwner
 {
-    [SerializeField] public float speed = 1;
+    [SerializeField] public float speed = 3;
     public float Speed => speed;
     public class InputInfo { public Vector2 dir; }
     public InputInfo inputData { get; private set; }
@@ -161,7 +166,6 @@ public partial class PlayerController : NetworkBehaviour, IStateMachineOwner
                 break;
             case PlayerState.Idle:
                 stateMachine.ChangeState<PlayerIdleState>();
-                Debug.Log("stateMachine.ChangeState<PlayerIdleState>()");
                 break;
             case PlayerState.Move:
                 stateMachine.ChangeState<PlayerMoveState>();

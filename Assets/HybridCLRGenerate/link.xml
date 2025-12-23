@@ -7,13 +7,10 @@
   <assembly fullname="JKFrame">
     <type fullname="JKFrame.ConfigBase" preserve="all" />
     <type fullname="JKFrame.EventSystem" preserve="all" />
-    <type fullname="JKFrame.IStateMachineOwner" preserve="all" />
     <type fullname="JKFrame.JKFrameExtension" preserve="all" />
     <type fullname="JKFrame.PoolSystem" preserve="all" />
     <type fullname="JKFrame.ResSystem" preserve="all" />
     <type fullname="JKFrame.SingletonMono`1" preserve="all" />
-    <type fullname="JKFrame.StateBase" preserve="all" />
-    <type fullname="JKFrame.StateMachine" preserve="all" />
   </assembly>
   <assembly fullname="Unity.Netcode.Runtime">
     <type fullname="Unity.Netcode.FastBufferReader" preserve="all" />
@@ -57,9 +54,6 @@
     <type fullname="UnityEngine.Debug" preserve="all" />
     <type fullname="UnityEngine.GameObject" preserve="all" />
     <type fullname="UnityEngine.GeometryUtility" preserve="all" />
-    <type fullname="UnityEngine.Gizmos" preserve="all" />
-    <type fullname="UnityEngine.HeaderAttribute" preserve="all" />
-    <type fullname="UnityEngine.LayerMask" preserve="all" />
     <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
     <type fullname="UnityEngine.Plane" preserve="all" />
@@ -73,11 +67,8 @@
     <type fullname="UnityEngine.Vector2Int" preserve="all" />
     <type fullname="UnityEngine.Vector3" preserve="all" />
   </assembly>
-  <assembly fullname="UnityEngine.PhysicsModule">
-    <type fullname="UnityEngine.CharacterController" preserve="all" />
-    <type fullname="UnityEngine.CollisionFlags" preserve="all" />
-    <type fullname="UnityEngine.Physics" preserve="all" />
-    <type fullname="UnityEngine.QueryTriggerInteraction" preserve="all" />
+  <assembly fullname="UnityEngine.InputLegacyModule">
+    <type fullname="UnityEngine.Input" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.TerrainModule">
     <type fullname="UnityEngine.Terrain" preserve="all" />

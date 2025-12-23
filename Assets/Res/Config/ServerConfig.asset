@@ -21,4 +21,4 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  defaultPlayerBirthPos: {x: 145, y: 54.05, z: 160}
+  defaultPlayerBirthPos: {x: 145, y: 54.5, z: 160}
