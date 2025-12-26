@@ -17,44 +17,14 @@ public class ServerMapManager : SingletonMono<ServerMapManager>
             for (int x = noTestRange / 2; x < width - noTestRange / 2; ++x)
                 for (int y = noTestRange / 2; y < height - noTestRange / 2; ++y)
                 {
-                    Vector2Int terrainCoord = new Vector2Int(x, y) - mapConfig.terrainCoordOffset;
-                    string resKey = $"{x}_{y}";
-                    ResSystem.InstantiateGameObjectAsync<Terrain>(resKey, (terrain) =>
-                    {
-                        terrain.enabled = false;
-
-                        terrain.basemapDistance = 100;
-                        terrain.heightmapPixelError = 50;
-                        terrain.heightmapMaximumLOD = 1;
-                        terrain.detailObjectDensity = 0.9f;
-                        terrain.treeDistance = 10;
-                        terrain.treeCrossFadeLength = 10;
-                        terrain.treeMaximumFullLODCount = 10;
-
-                        terrain.gameObject.transform.position = new Vector3(terrainCoord.x * mapConfig.terrainSize, 0, terrainCoord.y * mapConfig.terrainSize);
-                    }, transform, null, false);
+                    ServerResSystem.InsatantialteTerrain(x, y, transform);
                 }
             return;
         }
         for (int x = 0; x < width; ++x)
             for (int y = 0; y < height; ++y)
             {
-                Vector2Int terrainCoord = new Vector2Int(x, y) - mapConfig.terrainCoordOffset;
-                string resKey = $"{x}_{y}";
-                ResSystem.InstantiateGameObjectAsync<Terrain>(resKey, (terrain) =>
-                {
-                    terrain.enabled = false;
-
-                    terrain.basemapDistance = 100;
-                    terrain.heightmapPixelError = 50;
-                    terrain.heightmapMaximumLOD = 1;
-                    terrain.detailObjectDensity = 0.9f;
-                    terrain.treeDistance = 10;
-                    terrain.treeCrossFadeLength = 10;
-                    terrain.treeMaximumFullLODCount = 10;
-
-                    terrain.gameObject.transform.position = new Vector3(terrainCoord.x * mapConfig.terrainSize, 0, terrainCoord.y * mapConfig.terrainSize);
-                }, transform, null, false);
+                ServerResSystem.InsatantialteTerrain(x, y, transform);
             }
     }
 }

@@ -23,7 +23,6 @@
     <type fullname="Cinemachine.LensSettings" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="GameSceneManager" preserve="all" />
     <type fullname="MapConfig" preserve="all" />
     <type fullname="NetManager" preserve="all" />
     <type fullname="PlayerController" preserve="all" />
@@ -34,14 +33,6 @@
     <type fullname="ClientGlobal" preserve="all" />
     <type fullname="ClientMapManager" preserve="all" />
     <type fullname="ClientRTTInfo" preserve="all" />
-  </assembly>
-  <assembly fullname="Server, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="AOIManager" preserve="all" />
-    <type fullname="ClientsManager" preserve="all" />
-    <type fullname="ServerConfig" preserve="all" />
-    <type fullname="ServerGlobal" preserve="all" />
-    <type fullname="ServerMapManager" preserve="all" />
-    <type fullname="ServerOnGameSceneManager" preserve="all" />
   </assembly>
   <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />

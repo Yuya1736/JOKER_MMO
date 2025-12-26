@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <linker>
+  <assembly fullname="AOT">
+    <type fullname="GameSceneLaunchEvent" preserve="all" />
+  </assembly>
   <assembly fullname="Cinemachine">
     <type fullname="Cinemachine.CinemachineFreeLook" preserve="all" />
     <type fullname="Cinemachine.CinemachineVirtualCameraBase" preserve="all" />
@@ -13,16 +16,22 @@
     <type fullname="JKFrame.SingletonMono`1" preserve="all" />
   </assembly>
   <assembly fullname="Unity.Netcode.Runtime">
+    <type fullname="Unity.Netcode.BufferSerializer`1" preserve="all" />
+    <type fullname="Unity.Netcode.CustomMessagingManager" preserve="all" />
+    <type fullname="Unity.Netcode.CustomMessagingManager/UnnamedMessageDelegate" preserve="all" />
     <type fullname="Unity.Netcode.FastBufferReader" preserve="all" />
     <type fullname="Unity.Netcode.FastBufferWriter" preserve="all" />
     <type fullname="Unity.Netcode.FastBufferWriter/ForEnums" preserve="all" />
+    <type fullname="Unity.Netcode.FastBufferWriter/ForNetworkSerializable" preserve="all" />
+    <type fullname="Unity.Netcode.FastBufferWriter/ForPrimitives" preserve="all" />
+    <type fullname="Unity.Netcode.INetworkSerializable" preserve="all" />
+    <type fullname="Unity.Netcode.IReaderWriter" preserve="all" />
     <type fullname="Unity.Netcode.NetworkBehaviour" preserve="all" />
     <type fullname="Unity.Netcode.NetworkBehaviour/RpcReceiveHandler" preserve="all" />
     <type fullname="Unity.Netcode.NetworkBehaviour/__RpcExecStage" preserve="all" />
-    <type fullname="Unity.Netcode.NetworkConfig" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkDelivery" preserve="all" />
     <type fullname="Unity.Netcode.NetworkManager" preserve="all" />
     <type fullname="Unity.Netcode.NetworkObject" preserve="all" />
-    <type fullname="Unity.Netcode.NetworkSpawnManager" preserve="all" />
     <type fullname="Unity.Netcode.NetworkTransport" preserve="all" />
     <type fullname="Unity.Netcode.NetworkVariableBase" preserve="all" />
     <type fullname="Unity.Netcode.NetworkVariableReadPermission" preserve="all" />
@@ -45,8 +54,8 @@
     <type fullname="UnityEngine.Animator" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.CoreModule">
+    <type fullname="Unity.Collections.Allocator" preserve="all" />
     <type fullname="UnityEngine.Application" preserve="all" />
-    <type fullname="UnityEngine.Behaviour" preserve="all" />
     <type fullname="UnityEngine.Bounds" preserve="all" />
     <type fullname="UnityEngine.Camera" preserve="all" />
     <type fullname="UnityEngine.Component" preserve="all" />
@@ -83,10 +92,7 @@
     <type fullname="System.CodeDom.Compiler.GeneratedCodeAttribute" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2/Enumerator" preserve="all" />
-    <type fullname="System.Collections.Generic.Dictionary`2/ValueCollection" preserve="all" />
-    <type fullname="System.Collections.Generic.Dictionary`2/ValueCollection/Enumerator" preserve="all" />
-    <type fullname="System.Collections.Generic.HashSet`1" preserve="all" />
-    <type fullname="System.Collections.Generic.HashSet`1/Enumerator" preserve="all" />
+    <type fullname="System.Collections.Generic.IReadOnlyList`1" preserve="all" />
     <type fullname="System.Collections.Generic.KeyValuePair`2" preserve="all" />
     <type fullname="System.Collections.Generic.List`1" preserve="all" />
     <type fullname="System.Collections.Generic.List`1/Enumerator" preserve="all" />

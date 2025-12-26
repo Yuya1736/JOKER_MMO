@@ -28,7 +28,12 @@ public class BuildMenuItem
     public static void Server()
     {
         Debug.Log("开始构建服务端");
+        // 开启程序集过滤
+        ServerBuildFliterAssembly.serverMode = true;
+        // 关闭HybridCLR
         HybridCLR.Editor.SettingsUtil.Enable = false;
+        // 关闭Addressables
+        AddressableAssetSettingsDefaultObject.Settings.BuildAddressablesWithPlayerBuild = AddressableAssetSettings.PlayerBuildOption.DoNotBuildWithPlayer;
 
         List<string> list = new List<string>(EditorSceneManager.sceneCountInBuildSettings);
         for(int i = 0;i < EditorSceneManager.sceneCountInBuildSettings;++ i)
@@ -52,6 +57,7 @@ public class BuildMenuItem
         BuildPipeline.BuildPlayer(buildPlayerOptions);
 
         HybridCLR.Editor.SettingsUtil.Enable = true;
+        AddressableAssetSettingsDefaultObject.Settings.BuildAddressablesWithPlayerBuild = AddressableAssetSettings.PlayerBuildOption.PreferencesValue;
         Debug.Log("完成构建服务端");
     }
 
@@ -59,7 +65,7 @@ public class BuildMenuItem
     public static void Client()
     {
         Debug.Log("开始构建客户端");
-
+        ServerBuildFliterAssembly.serverMode = false;
         // if (serverEditorTest) JKFrameSetting.RemoveScriptCompilationSymbol(serverEditorTestSymbolName);
         // 清除Addressables缓存
         if (Directory.Exists(Application.persistentDataPath + "/com.unity.addressables")) Directory.Delete(Application.persistentDataPath + "/com.unity.addressables", true);
@@ -99,7 +105,7 @@ public class BuildMenuItem
     public static void UpdateClient()
     {
         Debug.Log("开始构建客户端更新包");
-
+        ServerBuildFliterAssembly.serverMode = false;
         CompileDllCommand.CompileDllActiveBuildTarget();
         GenerateDllBytesFiles();
         // Addressable更新包
@@ -119,9 +125,9 @@ public class BuildMenuItem
         Debug.Log("开始创建DllBytes");
 
         string hotUpdateSourceDllDir = System.Environment.CurrentDirectory + '/' + SettingsUtil.GetHotUpdateDllsOutputDirByTarget(EditorUserBuildSettings.activeBuildTarget);
+        string hotUpdateDllDir = Application.dataPath + "/Scripts/DllBytes/HotUpdate";
         string aotSourceDllDir = System.Environment.CurrentDirectory + '/' + SettingsUtil.GetAssembliesPostIl2CppStripDir(EditorUserBuildSettings.activeBuildTarget);
         string aotDllDir = Application.dataPath + "/Scripts/DllBytes/AOT";
-        string hotUpdateDllDir = Application.dataPath + "/Scripts/DllBytes/HotUpdate";
 
         foreach (string dllName in SettingsUtil.AOTAssemblyNames)
         {

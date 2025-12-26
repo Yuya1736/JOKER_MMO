@@ -126,6 +126,10 @@ namespace HybridCLR.Editor.BuildProcessors
 
         public void OnPreprocessBuild(BuildReport report)
         {
+            // SelfChange-------防止构建服务端时删除AssembliesPostIl2CppStrip的dll
+            if (SettingsUtil.Enable == false) return;
+            // SelfChange-------end
+
             BuildTarget target = report.summary.platform;
             var dstPath = SettingsUtil.GetAssembliesPostIl2CppStripDir(target);
             BashUtil.RecreateDir(dstPath);

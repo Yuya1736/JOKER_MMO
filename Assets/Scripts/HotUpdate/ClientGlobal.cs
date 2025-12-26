@@ -1,5 +1,4 @@
 using JKFrame;
-using Unity.Netcode;
 using UnityEngine;
 
 public class ClientGlobal : MonoBehaviour
@@ -8,20 +7,22 @@ public class ClientGlobal : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
 
-        Init();
-
-        NetworkVariableSerializationBinder.Init();
-
-        ResSystem.InstantiateGameObject<NetManager>("NetworkManager").Init(true);
-        var prefab = NetManager.Instance.gameObject;
-        Debug.Log(
-            $"Prefab instanceID: {prefab.GetInstanceID()}, " +
-            $"Hash: {NetworkManager.Singleton.NetworkConfig.GetHashCode()}"
-        );
+        Init(); 
     }
 
     private void Init()
     {
         Application.targetFrameRate = 60;
+
+        NetworkVariableSerializationBinder.Init();
+
+        ResSystem.InstantiateGameObject<NetManager>("NetworkManager").Init(true);
+
+        EventSystem.AddTypeEventListener<GameSceneLaunchEvent>(onGameSceneLaunchEvent);
+    }
+
+    private void onGameSceneLaunchEvent(GameSceneLaunchEvent @event)
+    {
+        ResSystem.InstantiateGameObject("ClientOnGameScene");
     }
 }

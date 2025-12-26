@@ -443,6 +443,11 @@ namespace JKFrame
         {
             EventTrigger(typeof(T).Name, arg);
         }
+
+        public static void EventTrigger<T>(object onGameSceneLaunch)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

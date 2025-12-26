@@ -1,29 +1,31 @@
 using JKFrame;
-using Unity.Netcode;
+using System;
 using UnityEngine;
 
 public class ServerGlobal : SingletonMono<ServerGlobal>
 {
-    [SerializeField] ServerConfig serverConfig;
+    [SerializeField] private ServerConfig serverConfig;
+    [SerializeField] private MapConfig mapConfig;
     public ServerConfig ServerConfig => serverConfig;
+    public MapConfig MapConfig => mapConfig;
     protected override void Awake()
     {
         base.Awake();
-        Init();
         DontDestroyOnLoad(gameObject);
+        Init();
     }
 
     public void Init()
     {
         Application.targetFrameRate = 30;
-
+          
         NetworkVariableSerializationBinder.Init();
 
-        ResSystem.InstantiateGameObject<NetManager>("NetworkManager").Init(false);
-        var prefab = NetManager.Instance.gameObject;
-        Debug.Log(
-            $"Prefab instanceID: {prefab.GetInstanceID()}, " +
-            $"Hash: {NetworkManager.Singleton.NetworkConfig.GetHashCode()}"
-        );
+        EventSystem.AddTypeEventListener<GameSceneLaunchEvent>(onGameSceneLaunchEvent);
+    }
+
+    private void onGameSceneLaunchEvent(GameSceneLaunchEvent @event)
+    {
+        ServerResSystem.InsatantialteServerOnGameScene();
     }
 }
