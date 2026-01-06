@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using JKFrame;
-using UnityEngine.UI;
 using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 [UIWindowData(nameof(UI_LoadingWindow), false, nameof(UI_LoadingWindow), 4)]
 public class UI_LoadingWindow : UI_WindowBase
@@ -12,18 +10,27 @@ public class UI_LoadingWindow : UI_WindowBase
     [SerializeField] private Slider progressSlider;
     [SerializeField] private Text progressText;
 
-    public void Init(string updateContent)
+    public void SetDescription(string description)
     {
-        updateContentText.text = $"更新内容：{updateContent}";
+        updateContentText.text = $"更新内容：{description}";
     }
 
     public void UpdateProgress(float now, float max)
     {
-        float nowMB = now / 1024f / 1024f;
-        float maxMB = max / 1024f / 1024f;
+        progressSlider.maxValue = max;
+        progressSlider.value = now;
 
-        progressSlider.maxValue = nowMB;
-        progressSlider.value = maxMB;
+        float percent = now / max * 100;
+        progressText.text = $"{percent:F1}%";
+    }
+
+    public void UpdateProgressByBytes(float nowBytes, float maxBytes)
+    {
+        float nowMB = nowBytes / 1024f / 1024f;
+        float maxMB = maxBytes / 1024f / 1024f;
+
+        progressSlider.maxValue = maxMB;
+        progressSlider.value = nowMB;
 
         progressText.text = $"{Math.Round(nowMB, 2)}MB / {Math.Round(maxMB, 2)}MB";
     }

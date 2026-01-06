@@ -14374,7 +14374,7 @@ CATCH_0013:
 		L_2 = Object_GetType_mE10A8FC1E57F3DF29972CCBC026C2DC3942263B3(__this, NULL);
 		NullCheck(L_2);
 		String_t* L_3;
-		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_2);
+		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_2);
 		ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263* L_4 = V_0;
 		TypeInitializationException_t4AC643E420681E6E92054934A1CB34CCA7C739A1* L_5 = (TypeInitializationException_t4AC643E420681E6E92054934A1CB34CCA7C739A1*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TypeInitializationException_t4AC643E420681E6E92054934A1CB34CCA7C739A1_il2cpp_TypeInfo_var)));
 		TypeInitializationException__ctor_m42FFC9946A4915B8D4576F1B5C774992F9F0A4C8(L_5, L_3, L_4, NULL);
@@ -15720,7 +15720,7 @@ CATCH_0013:
 		L_2 = Object_GetType_mE10A8FC1E57F3DF29972CCBC026C2DC3942263B3(__this, NULL);
 		NullCheck(L_2);
 		String_t* L_3;
-		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_2);
+		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_2);
 		ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263* L_4 = V_0;
 		TypeInitializationException_t4AC643E420681E6E92054934A1CB34CCA7C739A1* L_5 = (TypeInitializationException_t4AC643E420681E6E92054934A1CB34CCA7C739A1*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TypeInitializationException_t4AC643E420681E6E92054934A1CB34CCA7C739A1_il2cpp_TypeInfo_var)));
 		TypeInitializationException__ctor_m42FFC9946A4915B8D4576F1B5C774992F9F0A4C8(L_5, L_3, L_4, NULL);

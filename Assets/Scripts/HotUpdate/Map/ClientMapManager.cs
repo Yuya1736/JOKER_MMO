@@ -13,7 +13,7 @@ public class ClientMapManager : SingletonMono<ClientMapManager>
 
     public class TerrainController
     {
-        private Terrain terrain;
+        public Terrain terrain;
         private float destroyTimer;
         private TerrainState state;
 
@@ -90,22 +90,34 @@ public class ClientMapManager : SingletonMono<ClientMapManager>
     }
 
     public MapConfig mapConfig;
+    public Camera mainCamera;
     private QuadTree quadTree;
     public float terrainDestroyTime;
     private Plane[] cameraPlanes = new Plane[6];
     private Dictionary<Vector2Int, TerrainController> terrainControllerDic = new Dictionary<Vector2Int, TerrainController>(600);
     private List<Vector2Int> destroyTerrainCoordList = new List<Vector2Int>(200);
 
-    protected override void Awake()
+    public bool IsCompeleted()
     {
-        base.Awake();
+        if (terrainControllerDic.Count == 0) return false;
+        foreach (TerrainController item in terrainControllerDic.Values)
+        {
+            if(item.terrain == null) return false;
+        }
+        return true;
+    }
+
+    public void Init()
+    {
         quadTree = new QuadTree(mapConfig);
+        mainCamera = Camera.main;
     }
 
     private void Update()
     {
+        if(quadTree == null) return;
         // 获取摄像机视野切片
-        cameraPlanes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        cameraPlanes = GeometryUtility.CalculateFrustumPlanes(mainCamera);
         // 初始化显示初始区块
         quadTree?.CheckVisual();
         // 从字典删除掉销毁的区块

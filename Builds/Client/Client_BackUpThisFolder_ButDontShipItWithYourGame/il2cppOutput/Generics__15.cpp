@@ -7633,7 +7633,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ComplexTypeSerializer_1_ReadValue_m3CAB8
 		Type_t* L_6 = ((ComplexTypeSerializer_1_tD20C3B900C65B80127CE81A9E947549657B35223_StaticFields*)il2cpp_codegen_static_fields_for(il2cpp_rgctx_data(method->klass->rgctx_data, 1)))->___TypeOf_T;
 		NullCheck(L_6);
 		bool L_7;
-		L_7 = VirtualFuncInvoker0< bool >::Invoke(18, L_6);
+		L_7 = VirtualFuncInvoker0< bool >::Invoke(22, L_6);
 		if (L_7)
 		{
 			goto IL_0059;
@@ -7901,7 +7901,7 @@ IL_046d:
 					Type_t* L_83 = V_7;
 					NullCheck(L_83);
 					bool L_84;
-					L_84 = VirtualFuncInvoker0< bool >::Invoke(39, L_83);
+					L_84 = VirtualFuncInvoker0< bool >::Invoke(47, L_83);
 					if (!L_84)
 					{
 						goto IL_01e5_2;
@@ -7911,7 +7911,7 @@ IL_046d:
 					Type_t* L_85 = V_7;
 					NullCheck(L_85);
 					Type_t* L_86;
-					L_86 = VirtualFuncInvoker0< Type_t* >::Invoke(47, L_85);
+					L_86 = VirtualFuncInvoker0< Type_t* >::Invoke(56, L_85);
 					RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_87 = { reinterpret_cast<intptr_t> (Nullable_1_tCC12E6AC31BF7E862A033EBEFF48D5000D6291E6_0_0_0_var) };
 					il2cpp_codegen_runtime_class_init_inline(Type_t_il2cpp_TypeInfo_var);
 					Type_t* L_88;
@@ -8878,7 +8878,7 @@ IL_0773_2:
 					Type_t* L_350 = V_24;
 					NullCheck(L_349);
 					bool L_351;
-					L_351 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(21, L_349, L_350);
+					L_351 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(27, L_349, L_350);
 					bool L_352 = L_351;
 					V_29 = L_352;
 					if (L_352)
@@ -9752,7 +9752,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ComplexTypeSerializer_1_WriteValue_m35BC
 		Type_t* L_7 = ((ComplexTypeSerializer_1_tD20C3B900C65B80127CE81A9E947549657B35223_StaticFields*)il2cpp_codegen_static_fields_for(il2cpp_rgctx_data(method->klass->rgctx_data, 1)))->___TypeOf_T;
 		NullCheck(L_7);
 		bool L_8;
-		L_8 = VirtualFuncInvoker0< bool >::Invoke(18, L_7);
+		L_8 = VirtualFuncInvoker0< bool >::Invoke(22, L_7);
 		if (L_8)
 		{
 			goto IL_0051;
@@ -10301,7 +10301,7 @@ IL_008b:
 		L_25 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_24, NULL);
 		NullCheck(L_25);
 		bool L_26;
-		L_26 = VirtualFuncInvoker0< bool >::Invoke(39, L_25);
+		L_26 = VirtualFuncInvoker0< bool >::Invoke(47, L_25);
 		if (!L_26)
 		{
 			goto IL_00c1;
@@ -10314,7 +10314,7 @@ IL_008b:
 		L_28 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_27, NULL);
 		NullCheck(L_28);
 		Type_t* L_29;
-		L_29 = VirtualFuncInvoker0< Type_t* >::Invoke(47, L_28);
+		L_29 = VirtualFuncInvoker0< Type_t* >::Invoke(56, L_28);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_30 = { reinterpret_cast<intptr_t> (Nullable_1_tCC12E6AC31BF7E862A033EBEFF48D5000D6291E6_0_0_0_var) };
 		Type_t* L_31;
 		L_31 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_30, NULL);

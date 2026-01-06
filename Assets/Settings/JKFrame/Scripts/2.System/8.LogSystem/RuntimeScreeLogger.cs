@@ -32,6 +32,7 @@ public class RuntimeScreeLogger : MonoBehaviour
     public float height = 400;
     private void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
         Init();
     }
     public void Init()

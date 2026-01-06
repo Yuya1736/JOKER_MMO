@@ -15,6 +15,12 @@
 extern void AOTGenericReferences_RefMethods_m17CF257D96D8BC2F232C4C1502905B792D17170C (void);
 extern void AOTGenericReferences__ctor_m41CBD692FC9B521512E552575AFE7A385DEC71A6 (void);
 extern void AOTGenericReferences__cctor_mA46BDC06A6577D725A2E5284A2A34C974CE65F68 (void);
+extern void TestServerObject_OnNetworkSpawn_m39AB636D7D6E595ED5B18D6AE9BA12BAC8FD6662 (void);
+extern void TestServerObject_FixedUpdate_m3857EF66E4E8E74088C45BE8584C3282055E629C (void);
+extern void TestServerObject__ctor_mD7FC32ABCDE5CE8BEB212471D80D73E4E59CFE2F (void);
+extern void TestServerObject___initializeVariables_m1783C354507E9788EEF56A04E78F0DF2443EFEB3 (void);
+extern void TestServerObject___initializeRpcs_m9A39248B0EDD64CE23EDA3B2120F97B16587AA5A (void);
+extern void TestServerObject___getTypeName_m8CD485B0CFFCBC3204267D68F1035E15407E57F7 (void);
 extern void Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6 (void);
 extern void Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B (void);
 extern void RenderFrontHairShadowMaskFeature_AddRenderPasses_m98EEC26E3FDB3AB2EDB0B3ADA04C2AE1B71C0DAF (void);
@@ -46,11 +52,18 @@ extern void UIParticleSystem_StartParticleEmission_m7947C7CEA5ECC199EFB0C4EE2866
 extern void UIParticleSystem_StopParticleEmission_m0464663F4AB59E0D181A06A74A1E86999CECB565 (void);
 extern void UIParticleSystem_PauseParticleEmission_m1A68825DB27D4F908B0077ED1172AD8DA6206A24 (void);
 extern void UIParticleSystem__ctor_m0576695CF8FAFFDC4311EE48C7524C3D01DA09AF (void);
-static Il2CppMethodPointer s_methodPointers[34] = 
+extern void NetworkVariableSerializationHelper_InitializeSerialization_mA4F17C9D8F4934C552263003358AF8CC0E55E6E3 (void);
+static Il2CppMethodPointer s_methodPointers[41] = 
 {
 	AOTGenericReferences_RefMethods_m17CF257D96D8BC2F232C4C1502905B792D17170C,
 	AOTGenericReferences__ctor_m41CBD692FC9B521512E552575AFE7A385DEC71A6,
 	AOTGenericReferences__cctor_mA46BDC06A6577D725A2E5284A2A34C974CE65F68,
+	TestServerObject_OnNetworkSpawn_m39AB636D7D6E595ED5B18D6AE9BA12BAC8FD6662,
+	TestServerObject_FixedUpdate_m3857EF66E4E8E74088C45BE8584C3282055E629C,
+	TestServerObject__ctor_mD7FC32ABCDE5CE8BEB212471D80D73E4E59CFE2F,
+	TestServerObject___initializeVariables_m1783C354507E9788EEF56A04E78F0DF2443EFEB3,
+	TestServerObject___initializeRpcs_m9A39248B0EDD64CE23EDA3B2120F97B16587AA5A,
+	TestServerObject___getTypeName_m8CD485B0CFFCBC3204267D68F1035E15407E57F7,
 	Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6,
 	Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B,
 	RenderFrontHairShadowMaskFeature_AddRenderPasses_m98EEC26E3FDB3AB2EDB0B3ADA04C2AE1B71C0DAF,
@@ -82,49 +95,57 @@ static Il2CppMethodPointer s_methodPointers[34] =
 	UIParticleSystem_StopParticleEmission_m0464663F4AB59E0D181A06A74A1E86999CECB565,
 	UIParticleSystem_PauseParticleEmission_m1A68825DB27D4F908B0077ED1172AD8DA6206A24,
 	UIParticleSystem__ctor_m0576695CF8FAFFDC4311EE48C7524C3D01DA09AF,
+	NetworkVariableSerializationHelper_InitializeSerialization_mA4F17C9D8F4934C552263003358AF8CC0E55E6E3,
 };
-static const int32_t s_InvokerIndices[34] = 
+static const int32_t s_InvokerIndices[41] = 
 {
-	10454,
-	10454,
-	17984,
-	10454,
-	10454,
-	4817,
-	10454,
-	10454,
-	4852,
-	4913,
-	8318,
-	10454,
-	17984,
-	4817,
-	10454,
-	10454,
-	10454,
-	4913,
-	10454,
-	10454,
-	10454,
-	18008,
-	10454,
-	10300,
-	10171,
-	10454,
-	8318,
-	10454,
-	10454,
-	10454,
-	10454,
-	10454,
-	10454,
-	10454,
+	10462,
+	10462,
+	17993,
+	10462,
+	10462,
+	10462,
+	10462,
+	10462,
+	10308,
+	10462,
+	10462,
+	4824,
+	10462,
+	10462,
+	4859,
+	4920,
+	8326,
+	10462,
+	17993,
+	4824,
+	10462,
+	10462,
+	10462,
+	4920,
+	10462,
+	10462,
+	10462,
+	18017,
+	10462,
+	10308,
+	10179,
+	10462,
+	8326,
+	10462,
+	10462,
+	10462,
+	10462,
+	10462,
+	10462,
+	10462,
+	17993,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	34,
+	41,
 	s_methodPointers,
 	0,
 	NULL,

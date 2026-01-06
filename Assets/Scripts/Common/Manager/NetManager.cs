@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class NetManager : NetworkManager
     public UnityTransport unityTransport;
     public NetMessageManager netMessageManager;
 
+    public Dictionary<GameObject, NetworkPrefabrInstanceHandler> prefabHandlerDic;
+
     public void Init(bool isClient)
     {
         instance = this;
@@ -20,6 +23,14 @@ public class NetManager : NetworkManager
         else InitServer();
 
         netMessageManager.Init();
+
+        prefabHandlerDic = new Dictionary<GameObject, NetworkPrefabrInstanceHandler>(NetworkConfig.Prefabs.Prefabs.Count);
+        foreach (NetworkPrefab networkPrefab in NetworkConfig.Prefabs.Prefabs)
+        {
+            NetworkPrefabrInstanceHandler handler = new NetworkPrefabrInstanceHandler(networkPrefab.Prefab);
+            PrefabHandler.AddHandler(networkPrefab.Prefab, handler);
+            prefabHandlerDic.Add(networkPrefab.Prefab, handler);
+        }
     }
 
     private void InitClient()
@@ -31,16 +42,15 @@ public class NetManager : NetworkManager
     {
         StartServer();
     }
-
-    public NetworkObject SpawnObject(ulong clientId, GameObject prefab, Vector3 pos)
+    public NetworkObject SpawnObject(ulong clientId, GameObject prefab, Vector3 pos, Quaternion rotation)
     {
-        GameObject g = Instantiate(prefab);
-        // 直接获取组件 ？判断是否存在可能更好
-        NetworkObject networkObject = g.GetComponent<NetworkObject>();
-        g.transform.position = pos;
+        NetworkObject networkObject = prefabHandlerDic[prefab].Instantiate(clientId, pos, rotation);
         networkObject.SpawnWithOwnership(clientId);
         return networkObject;
     }
 
-    
+    public void DeSpawnObject(NetworkObject networkObject)
+    {
+        networkObject.Despawn();
+    }
 }

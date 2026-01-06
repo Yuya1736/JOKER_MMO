@@ -14,8 +14,8 @@ public class PlayerStateBase : StateBase
 
     public override void Update()
     {
+        if (stateMachine.currStateObj == null || stateMachine.CurrStateType == null) return;
         base.Update();
-
         player.CharacterController.Move(Vector3.down * player.verticalVelocity * Time.deltaTime);
     }
 }

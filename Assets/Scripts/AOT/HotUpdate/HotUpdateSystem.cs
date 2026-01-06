@@ -35,15 +35,6 @@ public class HotUpdateSystem : MonoBehaviour
     bool succeed;
     private IEnumerator DoUpdateAddressables()
     {
-        //Addressables.InternalIdTransformFunc = (location) =>
-        //{
-        //    // 拦截 Remote 的请求，打印出来
-        //    if (location.InternalId.StartsWith("http"))
-        //    {
-        //        Debug.Log($">>>>>> Addressables 正在请求远程文件: {location.InternalId}");
-        //    }
-        //    return location.InternalId;
-        //};
         // 断点传续
         HotUpdateSystemState hotUpdateSystemState = SaveSystem.LoadSetting<HotUpdateSystemState>();
         if (hotUpdateSystemState == null || hotUpdateSystemState.succeed == false)
@@ -52,7 +43,6 @@ public class HotUpdateSystem : MonoBehaviour
             if (Directory.Exists(path)) Directory.Delete(path, true);
         }
         succeed = true;
-        //Addressables.ClearResourceLocators();
         // 初始化Addressables
         yield return Addressables.InitializeAsync();
         // 检查catalog更新
@@ -71,7 +61,7 @@ public class HotUpdateSystem : MonoBehaviour
             List<string> catalogResult = checkForCatalogUpdatesHandle.Result;
             Addressables.Release(checkForCatalogUpdatesHandle);
 
-            string versionInfo = GetVersionInfo();
+            string versionInfo = GetVersionInfo(LanguageType.SimplifiedChinese);
             Debug.Log("版本信息：" + versionInfo);
 
             // 有新的catalog需要更新
@@ -96,6 +86,7 @@ public class HotUpdateSystem : MonoBehaviour
                     {
                         keys.AddRange(locator.Keys);
                     }
+                    SetLoadingWindowInfo();
                     yield return DownloadAssets(keys);
                 }
             }
@@ -158,7 +149,7 @@ public class HotUpdateSystem : MonoBehaviour
                     // 更新UI面板的进度
                     UpdateLoadingWindow(downloadSize * downloadPercent, downloadSize);
                     Debug.Log("当前文件下载进度: " + downloadPercent * 100 + "%");
-                    yield return null;
+                    yield return new WaitForSecondsRealtime(0.5f);
                 }
 
                 if (downloadDependenciesHandle.Status == AsyncOperationStatus.Succeeded)
@@ -171,12 +162,21 @@ public class HotUpdateSystem : MonoBehaviour
         }
     }
 
-    private string GetVersionInfo()
+    private void SetLoadingWindowInfo()
+    {
+        GameBasicSetting basicSetting = SaveSystem.LoadSetting<GameBasicSetting>();
+        LanguageType languageType;
+        // 如果没有设置信息，那么就看系统语言是否是简体中文，否则都为英文
+        if (basicSetting == null) languageType = Application.systemLanguage == SystemLanguage.ChineseSimplified ? LanguageType.SimplifiedChinese : LanguageType.English;
+        else languageType = basicSetting.LanguageType; 
+        loadingWindow.SetDescription(GetVersionInfo(languageType));
+    }
+    private string GetVersionInfo(LanguageType languageType)
     {
         Addressables.DownloadDependenciesAsync(versionInfoAddressableKey, true).WaitForCompletion();
-        TextAsset textAsset = Addressables.LoadAssetAsync<TextAsset>(versionInfoAddressableKey).WaitForCompletion();
-        string content = textAsset.text;
-        Addressables.Release(textAsset);
+        GameBasicSetting basicSetting = Addressables.LoadAssetAsync<GameBasicSetting>(versionInfoAddressableKey).WaitForCompletion();
+        string content = basicSetting.GetVersionData(languageType).description;
+        Addressables.Release(basicSetting);
         return content;
     }
 
@@ -208,7 +208,7 @@ public class HotUpdateSystem : MonoBehaviour
     private void OpenLoadingWindow()
     {
         loadingWindow = UISystem.Show<UI_LoadingWindow>();
-        loadingWindow.Init(GetVersionInfo());
+        loadingWindow.SetDescription("Loading");
     }
 
     private void CloseLoadingWindow()
@@ -220,6 +220,6 @@ public class HotUpdateSystem : MonoBehaviour
     private void UpdateLoadingWindow(float now, float max)
     {
         if (loadingWindow == null) return;
-        loadingWindow.UpdateProgress(now, max);
+        loadingWindow.UpdateProgressByBytes(now, max);
     }
 }

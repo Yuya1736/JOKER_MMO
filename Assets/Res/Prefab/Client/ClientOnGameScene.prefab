@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5037556742700421557}
+  - component: {fileID: 5283164197415215220}
   m_Layer: 0
   m_Name: ClientOnGameScene
   m_TagString: Untagged
@@ -115,6 +116,18 @@ Transform:
   - {fileID: 6719299504342124591}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5283164197415215220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304834894716249497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c12aa4e77eaa5e42aaff1867b5147ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1314814777900052320
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainsFolder: {fileID: 2004725215473474530}
   mapConfig: {fileID: 11400000, guid: 682bb68519a5727408eb264a4034d0cf, type: 2}
+  mainCamera: {fileID: 0}
   terrainDestroyTime: 60
   drawGizmos: 1
 --- !u!1 &3196333004157950599

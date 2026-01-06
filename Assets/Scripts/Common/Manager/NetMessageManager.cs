@@ -1,73 +1,66 @@
+using JKFrame;
 using System;
 using System.Collections.Generic;
 using Unity.Netcode;
-using UnityEngine;
-// 枚举类型作为消息头，用于判断消息体类型
-public enum MessageType
-{
-    Test,
-}
-// 消息体需要继承INetworkSerializable实现自定义序列化方法
-public class TestData : INetworkSerializable
-{
-    public string name;
-    public int lv;
 
-    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
-    {
-        // 没有泛型代表string（或byte）
-        serializer.SerializeValue(ref name);
-        serializer.SerializeValue<int>(ref lv);
-    }
-}
-
-public class NetMessageManager : MonoBehaviour
+public class NetMessageManager : SingletonMono<NetMessageManager>
 {
     private CustomMessagingManager CustomMessagingManager => NetManager.Instance.CustomMessagingManager;
     // 按消息头类型来进行回调事件，
-    private Dictionary<MessageType, Action<ulong, INetworkSerializable>> onReceiveMessageCallbackDic = new Dictionary<MessageType, Action<ulong, INetworkSerializable>>();
+    private Dictionary<NetMessageType, Action<ulong, INetworkSerializable>> onReceiveMessageCallbackDic = new Dictionary<NetMessageType, Action<ulong, INetworkSerializable>>();
 
     // 在NetManager中初始化（在InitClient/InitServer后），否则CustomMessagingManager为null
     public void Init()
     {
         // 绑定接收消息函数
         CustomMessagingManager.OnUnnamedMessage += ReceiveMessage;
-        NetManager.Instance.OnClientConnectedCallback += Instance_OnClientConnectedCallback;
-        //RegisterOnReceiveMessageCallback(MessageType.Test, func);
-    }
-
-    //private void func(ulong clientId, INetworkSerializable serializable)
-    //{
-    //    TestData testData = (TestData)serializable;
-    //    Debug.Log($"callback: {clientId} + {testData.name}");
-    //}
-    // 测试客户端启动向服务端发消息
-    private void Instance_OnClientConnectedCallback(ulong obj)
-    {
-        SendMessageToServer<TestData>(MessageType.Test, new TestData
-        {
-            name = "客户端连接成功",
-            lv = 114514
-        });
     }
     // 接收消息
     private void ReceiveMessage(ulong clientId, FastBufferReader reader)
     {
-        reader.ReadValueSafe<MessageType>(out MessageType messageType);
+        reader.ReadValueSafe(out NetMessageType messageType);
 
         switch (messageType)
         {
-            case MessageType.Test:
-                reader.ReadValueSafe<TestData>(out TestData testData);
-                Debug.Log($"Receive testData:{testData.name} + {testData.lv}");
-                TriggerOnReceiveMessageCallback(MessageType.Test, clientId, testData);
+            case NetMessageType.C2S_Register:
+                C2S_Register C2S_RegisterInfo = new C2S_Register();
+                reader.ReadNetworkSerializableInPlace(ref C2S_RegisterInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_Register, clientId, C2S_RegisterInfo);
                 break;
-            default:
+            case NetMessageType.C2S_Login:
+                C2S_Login C2S_LoginInfo = new C2S_Login();
+                reader.ReadNetworkSerializableInPlace(ref C2S_LoginInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_Login, clientId, C2S_LoginInfo);
+                break;
+            case NetMessageType.S2C_Register:
+                S2C_Register S2C_RegisterInfo = new S2C_Register();
+                reader.ReadNetworkSerializableInPlace(ref S2C_RegisterInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_Register, clientId, S2C_RegisterInfo);
+                break;
+            case NetMessageType.S2C_Login:
+                S2C_Login S2C_LoginInfo = new S2C_Login();
+                reader.ReadNetworkSerializableInPlace(ref S2C_LoginInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_Login, clientId, S2C_LoginInfo);
+                break;
+            case NetMessageType.C2S_EnterGame:
+                C2S_EnterGame C2S_EnterGameInfo = new C2S_EnterGame();
+                reader.ReadNetworkSerializableInPlace(ref C2S_EnterGameInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_EnterGame, clientId, C2S_EnterGameInfo);
+                break;
+            case NetMessageType.S2C_Disconnect:
+                S2C_Disconnect S2C_DisconnectInfo = new S2C_Disconnect();
+                reader.ReadNetworkSerializableInPlace(ref S2C_DisconnectInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_Disconnect, clientId, S2C_DisconnectInfo);
+                break;
+            case NetMessageType.C2S_Disconnect:
+                C2S_Disconnect C2S_DisconnectInfo = new C2S_Disconnect();
+                reader.ReadNetworkSerializableInPlace(ref C2S_DisconnectInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_Disconnect, clientId, C2S_DisconnectInfo);
                 break;
         }
     }
 
-    private void SendMessageToServer<T>(MessageType messageType, T data) where T : INetworkSerializable
+    public void SendMessageToServer<T>(NetMessageType messageType, T data) where T : INetworkSerializable
     {
         using (FastBufferWriter writer = WriteData<T>(messageType, data))
         {
@@ -75,15 +68,15 @@ public class NetMessageManager : MonoBehaviour
         }
     }
 
-    private void SendMessageToClient<T>(ulong clientId, MessageType messageType, T data) where T : INetworkSerializable
+    public void SendMessageToClient<T>(ulong clientId, NetMessageType messageType, T data) where T : INetworkSerializable
     {
         using (FastBufferWriter writer = WriteData<T>(messageType, data))
-        {
+        { 
             CustomMessagingManager.SendUnnamedMessage(clientId, writer);
         }
     }
 
-    private void SendMessageToClients<T>(IReadOnlyList<ulong> clientIds, MessageType messageType, T data) where T : INetworkSerializable
+    public void SendMessageToClients<T>(IReadOnlyList<ulong> clientIds, NetMessageType messageType, T data) where T : INetworkSerializable
     {
         using (FastBufferWriter writer = WriteData<T>(messageType, data))
         {
@@ -91,7 +84,7 @@ public class NetMessageManager : MonoBehaviour
         }
     }
 
-    private void SendMessageToAllClients<T>(MessageType messageType, T data) where T : INetworkSerializable
+    public void SendMessageToAllClients<T>(NetMessageType messageType, T data) where T : INetworkSerializable
     {
         using (FastBufferWriter writer = WriteData<T>(messageType, data))
         {
@@ -99,7 +92,7 @@ public class NetMessageManager : MonoBehaviour
         }
     }
 
-    private void RegisterOnReceiveMessageCallback(MessageType messageType, Action<ulong, INetworkSerializable> callback)
+    public void RegisterOnReceiveMessageCallback(NetMessageType messageType, Action<ulong, INetworkSerializable> callback)
     {
         if(onReceiveMessageCallbackDic.ContainsKey(messageType))
         {
@@ -111,7 +104,7 @@ public class NetMessageManager : MonoBehaviour
         }
     }
 
-    private void UnRegisterOnReceiveMessageCallback(MessageType messageType, Action<ulong, INetworkSerializable> callback)
+    public void UnRegisterOnReceiveMessageCallback(NetMessageType messageType, Action<ulong, INetworkSerializable> callback)
     {
         if (onReceiveMessageCallbackDic.ContainsKey(messageType))
         {
@@ -119,7 +112,7 @@ public class NetMessageManager : MonoBehaviour
         }
     }
 
-    private void TriggerOnReceiveMessageCallback(MessageType messageType, ulong clientId, INetworkSerializable networkSerializable)
+    public void TriggerOnReceiveMessageCallback(NetMessageType messageType, ulong clientId, INetworkSerializable networkSerializable)
     {
         if(onReceiveMessageCallbackDic.TryGetValue(messageType, out Action<ulong, INetworkSerializable> callback))
         {
@@ -127,11 +120,12 @@ public class NetMessageManager : MonoBehaviour
         }
     }
     // 通过FastBufferWriter来写入消息，CustomMessagingManager.SendUnnamedMessage方法需要传递FastBufferWriter来实现网络通信
-    private FastBufferWriter WriteData<T>(MessageType messageType, T data) where T : INetworkSerializable
+    private FastBufferWriter WriteData<T>(NetMessageType messageType, T data) where T : INetworkSerializable
     {
         FastBufferWriter writer = new FastBufferWriter(1024, Unity.Collections.Allocator.Temp);
-        writer.WriteValueSafe<MessageType>(messageType);
-        writer.WriteValueSafe<T>(data);
+        writer.WriteValueSafe(messageType);
+        writer.WriteValueSafe(data);
         return writer;
     }
+
 }

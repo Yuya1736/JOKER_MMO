@@ -3316,6 +3316,8 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector2__ctor_m9525B79969AFF
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Vector2Int_get_x_mA2CACB1B6E6B5AD0CCC32B2CD2EDCE3ECEB50576_inline (Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A* __this, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Vector2Int_get_y_m48454163ECF0B463FB5A16A0C4FC4B14DB0768B3_inline (Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A* __this, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector2Int__ctor_mC20D1312133EB8CB63EC11067088B043660F11CE_inline (Vector2Int_t69B2886EBAB732D9B880565E18E7568F3DE0CE6A* __this, int32_t ___0_x, int32_t ___1_y, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object_DontDestroyOnLoad_m4B70C3AEF886C176543D1295507B6455C9DCAEA7 (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___0_target, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RuntimeScreeLogger_Init_mDFBB90308963F5B70EA8AC25F8DAEB81A04B8DCE (RuntimeScreeLogger_t8C003055B540E02DEDBBEC6CBB2BC0E77BDCFAB2* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Texture2D__ctor_m3BA82E87442B7F69E118477069AE11101B9DF796 (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* __this, int32_t ___0_width, int32_t ___1_height, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Texture2D_SetPixel_m2CCFC5F729135D59DC4A697C2605A3FC5C8574DB (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* __this, int32_t ___0_x, int32_t ___1_y, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___2_color, const RuntimeMethod* method) ;
@@ -3432,7 +3434,6 @@ inline GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* Queue_1_Dequeue_m11
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Scene_tA1DC762B79745EB5140F054C884855B922318356 SceneManager_GetActiveScene_m0B320EC4302F51A71495D1CCD1A0FF9C2ED1FDC8 (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SceneManager_MoveGameObjectToScene_mF5DC73256FA145D321DE14771F93AF7B832FE62A (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___0_go, Scene_tA1DC762B79745EB5140F054C884855B922318356 ___1_scene, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method) ;
 inline Enumerator_t550E4A2DBCDB3A15F4A9C4EBC473A9787132793A Queue_1_GetEnumerator_mFA1E83229BB407C0F17B2F4302364B026942891B (Queue_1_t57484CF2A316F8471C210AA410F8270CCEFF92F4* __this, const RuntimeMethod* method)
 {
 	return ((  Enumerator_t550E4A2DBCDB3A15F4A9C4EBC473A9787132793A (*) (Queue_1_t57484CF2A316F8471C210AA410F8270CCEFF92F4*, const RuntimeMethod*))Queue_1_GetEnumerator_mBF0033C4BCEA408644D24F0B28A81F9145FB97C9_gshared)(__this, method);
@@ -4377,7 +4378,6 @@ inline void Dictionary_2__ctor_m0FDF2E9E21A34CFACAC2D05ECBF1077F02E1B33A (Dictio
 	((  void (*) (Dictionary_2_tF9C7A7420140531A6D858B91AF1526EA39D09195*, const RuntimeMethod*))Dictionary_2__ctor_m5B32FBC624618211EB461D59CFBB10E987FD1329_gshared)(__this, method);
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void JKFrameRoot_set_RootTransform_m1BC934B1EA80CE8C2C2AC71E31BDB147BAA1A1E2_inline (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_value, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object_DontDestroyOnLoad_m4B70C3AEF886C176543D1295507B6455C9DCAEA7 (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___0_target, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JKFrameRoot_Init_mA8BB522B33927A304B2156A716260D3155C32FE1 (JKFrameRoot_tB3C9777E79EC8E382030F657AFC5F26B02543FA5* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JKFrameRoot_InitSystems_m1A475BE309308BBDD4D82E58102D5EB3F2AC9545 (JKFrameRoot_tB3C9777E79EC8E382030F657AFC5F26B02543FA5* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PoolSystem_Init_m0B99244D9B5B37A7ED577201B6C7841365099EDE (const RuntimeMethod* method) ;
@@ -5708,7 +5708,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Serialized_Vector2_t1381CFF22300C35D66BD77153
 #endif
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RuntimeScreeLogger_Awake_m163FFBF9CA8AAE77D032685D08CDBBD07C3C7450 (RuntimeScreeLogger_t8C003055B540E02DEDBBEC6CBB2BC0E77BDCFAB2* __this, const RuntimeMethod* method) 
 {
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
 	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
+		L_0 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		Object_DontDestroyOnLoad_m4B70C3AEF886C176543D1295507B6455C9DCAEA7(L_0, NULL);
 		RuntimeScreeLogger_Init_mDFBB90308963F5B70EA8AC25F8DAEB81A04B8DCE(__this, NULL);
 		return;
 	}
@@ -8466,7 +8476,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectPoolModule_InitObjectPool_mF36CAA2
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		int32_t L_2 = ___1_maxCapacity;
 		ObjectPoolModule_InitObjectPool_mABC908B286BFC187254B1055FCEB91729024B236(__this, L_1, L_2, NULL);
 		return;
@@ -8578,7 +8588,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* ObjectPoolModule_GetObject_m53
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		RuntimeObject* L_2;
 		L_2 = ObjectPoolModule_GetObject_m490CB6532505686514F350F4E3E59B51C4D4E091(__this, L_1, NULL);
 		return L_2;
@@ -8594,7 +8604,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ObjectPoolModule_PushObject_mDD830A18299
 		L_2 = Object_GetType_mE10A8FC1E57F3DF29972CCBC026C2DC3942263B3(L_1, NULL);
 		NullCheck(L_2);
 		String_t* L_3;
-		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_2);
+		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_2);
 		bool L_4;
 		L_4 = ObjectPoolModule_PushObject_mA1C69006B18899870F793A871ED8C17F1A0399AC(__this, L_0, L_3, NULL);
 		return L_4;
@@ -8698,7 +8708,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectPoolModule_ClearObject_m738FDF7237
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		ObjectPoolModule_ClearObject_m94D2C516CC8037CB628E0D42DFAB9371C7186B47(__this, L_1, NULL);
 		return;
 	}
@@ -8987,7 +8997,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* PoolSystem_GetObject_mE851A54A
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		RuntimeObject* L_2;
 		L_2 = PoolSystem_GetObject_m67B21CFEBC2B93CD03FD6C4DD60DE30B981F3203(L_1, NULL);
 		return L_2;
@@ -9020,7 +9030,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool PoolSystem_PushObject_m78FDEED15952FA55A
 		L_2 = Object_GetType_mE10A8FC1E57F3DF29972CCBC026C2DC3942263B3(L_1, NULL);
 		NullCheck(L_2);
 		String_t* L_3;
-		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_2);
+		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_2);
 		bool L_4;
 		L_4 = PoolSystem_PushObject_mA498CA0D5A99AC94C8745D6CF59DABCAB895DF5B(L_0, L_3, NULL);
 		return L_4;
@@ -9066,7 +9076,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PoolSystem_ClearObject_mE2BB10CB5D240E8D
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		PoolSystem_ClearObject_m6CB8E2F0DF77C9DA73FC2C885D964B28CDEC3B65(L_1, NULL);
 		return;
 	}
@@ -15304,7 +15314,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UISystem_AddUIWindowData_m68FE27EC0043B1
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		UIWindowData_t140464FE06FCFA7FCEA8AF0181FB258F271592C4* L_2 = ___1_windowData;
 		bool L_3 = ___2_instantiateAtOnce;
 		il2cpp_codegen_runtime_class_init_inline(UISystem_t28E45A26E90EDF36792A6ACF626EBBE2BF38C2B8_il2cpp_TypeInfo_var);
@@ -15357,7 +15367,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR UIWindowData_t140464FE06FCFA7FCEA8AF0181FB258
 		Type_t* L_0 = ___0_windowType;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		il2cpp_codegen_runtime_class_init_inline(UISystem_t28E45A26E90EDF36792A6ACF626EBBE2BF38C2B8_il2cpp_TypeInfo_var);
 		UIWindowData_t140464FE06FCFA7FCEA8AF0181FB258F271592C4* L_2;
 		L_2 = UISystem_GetUIWindowData_m56931302689D7A5A85D8B55ED8CF28AEAEA9CB6A(L_1, NULL);
@@ -15516,7 +15526,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR UI_WindowBase_t66692A7524CB90AEAD853C7F22B0EB
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		int32_t L_2 = ___1_layer;
 		il2cpp_codegen_runtime_class_init_inline(UISystem_t28E45A26E90EDF36792A6ACF626EBBE2BF38C2B8_il2cpp_TypeInfo_var);
 		UI_WindowBase_t66692A7524CB90AEAD853C7F22B0EBA5ECB2D515* L_3;
@@ -15536,7 +15546,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UISystem_ShowAsync_mCE752737D4E39E6ED8A4
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		Action_1_t8BF7EF23098F8C3E62ECEDA1A83BBD959250CD79* L_2 = ___1_callback;
 		int32_t L_3 = ___2_layer;
 		il2cpp_codegen_runtime_class_init_inline(UISystem_t28E45A26E90EDF36792A6ACF626EBBE2BF38C2B8_il2cpp_TypeInfo_var);
@@ -16091,7 +16101,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR UI_WindowBase_t66692A7524CB90AEAD853C7F22B0EB
 		Type_t* L_0 = ___0_windowType;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		il2cpp_codegen_runtime_class_init_inline(UISystem_t28E45A26E90EDF36792A6ACF626EBBE2BF38C2B8_il2cpp_TypeInfo_var);
 		UI_WindowBase_t66692A7524CB90AEAD853C7F22B0EBA5ECB2D515* L_2;
 		L_2 = UISystem_GetWindow_m45047BE3599DBD4262F79E94612764793CC343F6(L_1, NULL);
@@ -16226,7 +16236,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UISystem_Close_mF542A1B03DFCE6AE633E3957
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		bool L_2 = ___1_destroy;
 		il2cpp_codegen_runtime_class_init_inline(UISystem_t28E45A26E90EDF36792A6ACF626EBBE2BF38C2B8_il2cpp_TypeInfo_var);
 		UISystem_Close_m10BCBF05001B515458372DA81156C46C271F2A84(L_1, L_2, NULL);
@@ -16320,7 +16330,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UISystem_TryColose_m419032B5C87F45AEE86F
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		bool L_2 = ___1_destroy;
 		il2cpp_codegen_runtime_class_init_inline(UISystem_t28E45A26E90EDF36792A6ACF626EBBE2BF38C2B8_il2cpp_TypeInfo_var);
 		bool L_3;
@@ -17065,7 +17075,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIWindowDataAttribute__ctor_mD056F3B97B6
 		Type_t* L_0 = ___0_type;
 		NullCheck(L_0);
 		String_t* L_1;
-		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_0);
+		L_1 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_0);
 		__this->___windowKey = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___windowKey), (void*)L_1);
 		bool L_2 = ___1_isCache;

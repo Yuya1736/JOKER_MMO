@@ -119,7 +119,7 @@ public class BuildMenuItem
         Debug.Log("完成构建客户端更新包");
     }
 
-    [MenuItem("Project/Build/GenerateDllBytesFiles")]
+    [MenuItem("Project/Generate/GenerateDllBytesFiles")]
     public static void GenerateDllBytesFiles()
     {
         Debug.Log("开始创建DllBytes");

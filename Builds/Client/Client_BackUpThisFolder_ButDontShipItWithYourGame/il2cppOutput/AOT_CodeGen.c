@@ -32,7 +32,8 @@ extern void U3CInitU3Ed__1_System_Collections_IEnumerator_get_Current_mC90D14103
 extern void HotUpdateSystem_StartHotUpdate_mD25C32C279FA9FAA914385798CD85178A16247B2 (void);
 extern void HotUpdateSystem_DoUpdateAddressables_m9B2843EA002BA217462EFEAAB16CF21EFA791D3E (void);
 extern void HotUpdateSystem_DownloadAssets_m26304ED672D1E65069625F6CC75389EA7E0E00A6 (void);
-extern void HotUpdateSystem_GetVersionInfo_mE07FB41F35DC713617DD4FB02E65A126A4BC5E2C (void);
+extern void HotUpdateSystem_SetLoadingWindowInfo_m9C08B7B1C962D44B46401AF779CF514D6D9FD737 (void);
+extern void HotUpdateSystem_GetVersionInfo_m6789EBD27FF6BDE1F4497C0270AF15D351C84F1A (void);
 extern void HotUpdateSystem_LoadUpdateDll_m6A6775CEE2F0E57CFC7605A97400C08952E4EE49 (void);
 extern void HotUpdateSystem_LoadAotDll_m1B471CF8E54C782B7C8158DCF34B6217B715A10A (void);
 extern void HotUpdateSystem_OpenLoadingWindow_m83A2C28D6049817551CEEB7EC49A1E47CC8B1B27 (void);
@@ -52,13 +53,19 @@ extern void U3CDownloadAssetsU3Ed__9_MoveNext_m8F3D2ECE7EE5CFA18B2F29F33D3CED159
 extern void U3CDownloadAssetsU3Ed__9_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m119585083389B454DF659FB955D242D7C0A71A97 (void);
 extern void U3CDownloadAssetsU3Ed__9_System_Collections_IEnumerator_Reset_m78E56B5F48C4D5D3E03F9A31B05998DE299B9E41 (void);
 extern void U3CDownloadAssetsU3Ed__9_System_Collections_IEnumerator_get_Current_m6CCC49712B7FEAB89F54A096F913622AF12FD395 (void);
-extern void UI_LoadingWindow_Init_m541FF15186679091426BDEA371D09E1E2AF45160 (void);
+extern void UI_LoadingWindow_SetDescription_m84661AE29D03A52F337CBBF61672420EB19FEB64 (void);
 extern void UI_LoadingWindow_UpdateProgress_mEFCA339F68D375C490536E3EDA1F75E254CA7163 (void);
+extern void UI_LoadingWindow_UpdateProgressByBytes_m689571713A1C6338024F798A2D4930B3674E04A9 (void);
 extern void UI_LoadingWindow__ctor_mC37A2411581F0FDF82C258844AE4B171C969B319 (void);
+extern void GameBasicSetting_GetVersionData_m1DF1C477202733DAD929C51D8F912D8971CC359D (void);
+extern void GameBasicSetting__ctor_m9FBBB0A2A678FE64BEDAC42A89B72AD1BCEA719D (void);
+extern void VersionData__ctor_mA40E93422BB2AC72D9128B8BD78FAB698DA73591 (void);
+extern void GlobalLocalizationConfig_Clear_mE23545E1213E0C1507162EC91E407D0D85240450 (void);
+extern void GlobalLocalizationConfig__ctor_m684A794B28CB33472E74D5E9F0A2CE0E8CA6F917 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mE2A38B84D65568DAB458D96293FE806416BDA49A (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mCC51736D91E996340D46FE10E67523B4A140BA04 (void);
 extern void NetworkVariableSerializationHelper_InitializeSerialization_mAFE3F2B3781AF79D8EB43A0ED859FD958FA97579 (void);
-static Il2CppMethodPointer s_methodPointers[47] = 
+static Il2CppMethodPointer s_methodPointers[54] = 
 {
 	AotTypeEnforcer_Init_m57EA2B1A76D2C1FD5956C468D7E2EF470F6514E2,
 	AotTypeEnforcer_EnsureAOT_mC73243068F0372A24A123FE10C0C60638488ED6B,
@@ -81,7 +88,8 @@ static Il2CppMethodPointer s_methodPointers[47] =
 	HotUpdateSystem_StartHotUpdate_mD25C32C279FA9FAA914385798CD85178A16247B2,
 	HotUpdateSystem_DoUpdateAddressables_m9B2843EA002BA217462EFEAAB16CF21EFA791D3E,
 	HotUpdateSystem_DownloadAssets_m26304ED672D1E65069625F6CC75389EA7E0E00A6,
-	HotUpdateSystem_GetVersionInfo_mE07FB41F35DC713617DD4FB02E65A126A4BC5E2C,
+	HotUpdateSystem_SetLoadingWindowInfo_m9C08B7B1C962D44B46401AF779CF514D6D9FD737,
+	HotUpdateSystem_GetVersionInfo_m6789EBD27FF6BDE1F4497C0270AF15D351C84F1A,
 	HotUpdateSystem_LoadUpdateDll_m6A6775CEE2F0E57CFC7605A97400C08952E4EE49,
 	HotUpdateSystem_LoadAotDll_m1B471CF8E54C782B7C8158DCF34B6217B715A10A,
 	HotUpdateSystem_OpenLoadingWindow_m83A2C28D6049817551CEEB7EC49A1E47CC8B1B27,
@@ -101,62 +109,75 @@ static Il2CppMethodPointer s_methodPointers[47] =
 	U3CDownloadAssetsU3Ed__9_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m119585083389B454DF659FB955D242D7C0A71A97,
 	U3CDownloadAssetsU3Ed__9_System_Collections_IEnumerator_Reset_m78E56B5F48C4D5D3E03F9A31B05998DE299B9E41,
 	U3CDownloadAssetsU3Ed__9_System_Collections_IEnumerator_get_Current_m6CCC49712B7FEAB89F54A096F913622AF12FD395,
-	UI_LoadingWindow_Init_m541FF15186679091426BDEA371D09E1E2AF45160,
+	UI_LoadingWindow_SetDescription_m84661AE29D03A52F337CBBF61672420EB19FEB64,
 	UI_LoadingWindow_UpdateProgress_mEFCA339F68D375C490536E3EDA1F75E254CA7163,
+	UI_LoadingWindow_UpdateProgressByBytes_m689571713A1C6338024F798A2D4930B3674E04A9,
 	UI_LoadingWindow__ctor_mC37A2411581F0FDF82C258844AE4B171C969B319,
+	GameBasicSetting_GetVersionData_m1DF1C477202733DAD929C51D8F912D8971CC359D,
+	GameBasicSetting__ctor_m9FBBB0A2A678FE64BEDAC42A89B72AD1BCEA719D,
+	VersionData__ctor_mA40E93422BB2AC72D9128B8BD78FAB698DA73591,
+	GlobalLocalizationConfig_Clear_mE23545E1213E0C1507162EC91E407D0D85240450,
+	GlobalLocalizationConfig__ctor_m684A794B28CB33472E74D5E9F0A2CE0E8CA6F917,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mE2A38B84D65568DAB458D96293FE806416BDA49A,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mCC51736D91E996340D46FE10E67523B4A140BA04,
 	NetworkVariableSerializationHelper_InitializeSerialization_mAFE3F2B3781AF79D8EB43A0ED859FD958FA97579,
 };
-static const int32_t s_InvokerIndices[47] = 
+static const int32_t s_InvokerIndices[54] = 
 {
-	10454,
-	10454,
+	10462,
+	10462,
 	0,
-	10454,
-	10454,
-	10454,
-	10454,
-	10454,
-	8185,
-	10454,
-	10300,
-	10454,
-	8272,
-	10454,
-	10171,
-	10300,
-	10454,
-	10300,
-	4842,
-	10300,
-	7422,
-	10300,
-	10454,
-	10454,
-	10454,
-	10454,
-	4921,
-	10454,
-	10454,
-	8272,
-	10454,
-	10171,
-	10300,
-	10454,
-	10300,
-	8272,
-	10454,
-	10171,
-	10300,
-	10454,
-	10300,
-	8318,
-	4921,
-	10454,
-	18007,
-	10454,
-	17984,
+	10462,
+	10462,
+	10462,
+	10462,
+	10462,
+	8193,
+	10462,
+	10308,
+	10462,
+	8280,
+	10462,
+	10179,
+	10308,
+	10462,
+	10308,
+	4849,
+	10308,
+	7430,
+	10462,
+	7426,
+	10462,
+	10462,
+	10462,
+	10462,
+	4928,
+	10462,
+	10462,
+	8280,
+	10462,
+	10179,
+	10308,
+	10462,
+	10308,
+	8280,
+	10462,
+	10179,
+	10308,
+	10462,
+	10308,
+	8326,
+	4928,
+	4928,
+	10462,
+	7426,
+	10462,
+	10462,
+	10462,
+	10462,
+	18016,
+	10462,
+	17993,
 };
 static const Il2CppTokenRangePair s_rgctxIndices[1] = 
 {
@@ -187,7 +208,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AOT_CodeGenModule;
 const Il2CppCodeGenModule g_AOT_CodeGenModule = 
 {
 	"AOT.dll",
-	47,
+	54,
 	s_methodPointers,
 	0,
 	NULL,

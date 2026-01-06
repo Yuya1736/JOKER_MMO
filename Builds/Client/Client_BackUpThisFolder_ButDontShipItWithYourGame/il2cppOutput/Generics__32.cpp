@@ -22802,7 +22802,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EnumField_1_AutoFillFromType_m0085458EA2
 		Type_t* L_2 = ___0_enumType;
 		NullCheck(L_2);
 		bool L_3;
-		L_3 = VirtualFuncInvoker0< bool >::Invoke(68, L_2);
+		L_3 = VirtualFuncInvoker0< bool >::Invoke(88, L_2);
 		if (L_3)
 		{
 			goto IL_001c;
@@ -22857,7 +22857,7 @@ FINALLY_00ee_1:
 						Type_t* L_7 = ___0_enumType;
 						NullCheck(L_7);
 						FieldInfoU5BU5D_t50D47CBECF1AEB152F555803E3329D9E34DBF8D8* L_8;
-						L_8 = VirtualFuncInvoker1< FieldInfoU5BU5D_t50D47CBECF1AEB152F555803E3329D9E34DBF8D8*, int32_t >::Invoke(85, L_7, (int32_t)((int32_t)24));
+						L_8 = VirtualFuncInvoker1< FieldInfoU5BU5D_t50D47CBECF1AEB152F555803E3329D9E34DBF8D8*, int32_t >::Invoke(114, L_7, (int32_t)((int32_t)24));
 						il2cpp_codegen_runtime_class_init_inline(il2cpp_rgctx_data(method->klass->rgctx_data, 2));
 						Func_2_t03668587D04B8ECC3E6CE9EF3B2852118286E630* L_9 = ((U3CU3Ec_t9F3CEDEE763A3064E583591FF2F1E58E8CA26B41_StaticFields*)il2cpp_codegen_static_fields_for(il2cpp_rgctx_data(method->klass->rgctx_data, 2)))->___U3CU3E9__6_0;
 						Func_2_t03668587D04B8ECC3E6CE9EF3B2852118286E630* L_10 = L_9;
@@ -23246,7 +23246,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EnumField_1_AutoFillFromType_m4EDB4C1D23
 		Type_t* L_2 = ___0_enumType;
 		NullCheck(L_2);
 		bool L_3;
-		L_3 = VirtualFuncInvoker0< bool >::Invoke(68, L_2);
+		L_3 = VirtualFuncInvoker0< bool >::Invoke(88, L_2);
 		if (L_3)
 		{
 			goto IL_001c;
@@ -23301,7 +23301,7 @@ FINALLY_00ee_1:
 						Type_t* L_7 = ___0_enumType;
 						NullCheck(L_7);
 						FieldInfoU5BU5D_t50D47CBECF1AEB152F555803E3329D9E34DBF8D8* L_8;
-						L_8 = VirtualFuncInvoker1< FieldInfoU5BU5D_t50D47CBECF1AEB152F555803E3329D9E34DBF8D8*, int32_t >::Invoke(85, L_7, (int32_t)((int32_t)24));
+						L_8 = VirtualFuncInvoker1< FieldInfoU5BU5D_t50D47CBECF1AEB152F555803E3329D9E34DBF8D8*, int32_t >::Invoke(114, L_7, (int32_t)((int32_t)24));
 						il2cpp_codegen_runtime_class_init_inline(il2cpp_rgctx_data(method->klass->rgctx_data, 2));
 						Func_2_t03668587D04B8ECC3E6CE9EF3B2852118286E630* L_9 = ((U3CU3Ec_t79333F46DFFACA9D7C8F7A90F070A23E24A5350B_StaticFields*)il2cpp_codegen_static_fields_for(il2cpp_rgctx_data(method->klass->rgctx_data, 2)))->___U3CU3E9__6_0;
 						Func_2_t03668587D04B8ECC3E6CE9EF3B2852118286E630* L_10 = L_9;
@@ -23690,7 +23690,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EnumField_1_AutoFillFromType_m17D466B125
 		Type_t* L_2 = ___0_enumType;
 		NullCheck(L_2);
 		bool L_3;
-		L_3 = VirtualFuncInvoker0< bool >::Invoke(68, L_2);
+		L_3 = VirtualFuncInvoker0< bool >::Invoke(88, L_2);
 		if (L_3)
 		{
 			goto IL_001c;
@@ -23745,7 +23745,7 @@ FINALLY_00ee_1:
 						Type_t* L_7 = ___0_enumType;
 						NullCheck(L_7);
 						FieldInfoU5BU5D_t50D47CBECF1AEB152F555803E3329D9E34DBF8D8* L_8;
-						L_8 = VirtualFuncInvoker1< FieldInfoU5BU5D_t50D47CBECF1AEB152F555803E3329D9E34DBF8D8*, int32_t >::Invoke(85, L_7, (int32_t)((int32_t)24));
+						L_8 = VirtualFuncInvoker1< FieldInfoU5BU5D_t50D47CBECF1AEB152F555803E3329D9E34DBF8D8*, int32_t >::Invoke(114, L_7, (int32_t)((int32_t)24));
 						il2cpp_codegen_runtime_class_init_inline(il2cpp_rgctx_data(method->klass->rgctx_data, 2));
 						Func_2_t03668587D04B8ECC3E6CE9EF3B2852118286E630* L_9 = ((U3CU3Ec_t1C0C5CAAD7F21BB008B23AD4ECB31906742A673F_StaticFields*)il2cpp_codegen_static_fields_for(il2cpp_rgctx_data(method->klass->rgctx_data, 2)))->___U3CU3E9__6_0;
 						Func_2_t03668587D04B8ECC3E6CE9EF3B2852118286E630* L_10 = L_9;
@@ -23972,7 +23972,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EnumSerializer_1__cctor_m7786CD92719D9C6
 		L_1 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_0, NULL);
 		NullCheck(L_1);
 		bool L_2;
-		L_2 = VirtualFuncInvoker0< bool >::Invoke(68, L_1);
+		L_2 = VirtualFuncInvoker0< bool >::Invoke(88, L_1);
 		if (L_2)
 		{
 			goto IL_0035;

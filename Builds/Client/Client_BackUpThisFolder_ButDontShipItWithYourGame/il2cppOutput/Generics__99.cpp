@@ -7927,7 +7927,7 @@ IL_000f:
 			Type_t* L_8 = V_2;
 			NullCheck(L_7);
 			bool L_9;
-			L_9 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(21, L_7, L_8);
+			L_9 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(27, L_7, L_8);
 			V_3 = (bool)((((int32_t)L_9) == ((int32_t)0))? 1 : 0);
 			bool L_10 = V_3;
 			if (!L_10)
@@ -7954,7 +7954,7 @@ IL_000f:
 			L_18 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_17, NULL);
 			NullCheck(L_18);
 			String_t* L_19;
-			L_19 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_18);
+			L_19 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_18);
 			NullCheck(L_16);
 			(L_16)->SetAt(static_cast<il2cpp_array_size_t>(3), (String_t*)L_19);
 			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_20 = L_16;
@@ -8139,7 +8139,7 @@ IL_000f:
 			Type_t* L_8 = V_2;
 			NullCheck(L_7);
 			bool L_9;
-			L_9 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(21, L_7, L_8);
+			L_9 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(27, L_7, L_8);
 			V_3 = (bool)((((int32_t)L_9) == ((int32_t)0))? 1 : 0);
 			bool L_10 = V_3;
 			if (!L_10)
@@ -8166,7 +8166,7 @@ IL_000f:
 			L_18 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_17, NULL);
 			NullCheck(L_18);
 			String_t* L_19;
-			L_19 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_18);
+			L_19 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_18);
 			NullCheck(L_16);
 			(L_16)->SetAt(static_cast<il2cpp_array_size_t>(3), (String_t*)L_19);
 			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_20 = L_16;

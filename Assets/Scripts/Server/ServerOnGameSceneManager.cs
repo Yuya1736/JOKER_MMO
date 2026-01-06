@@ -9,5 +9,6 @@ public class ServerOnGameSceneManager : MonoBehaviour
         ClientsManager.Instance.Init();
         ServerGlobal.Instance.Init();
         ServerMapManager.Instance.Init();
+        DataBaseManager.Instance.Init();
     }
 }

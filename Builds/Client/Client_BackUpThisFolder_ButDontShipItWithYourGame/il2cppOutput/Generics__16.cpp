@@ -6524,7 +6524,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void DelegateFormatter_1__ctor_m8B5A17EE5ADE5
 		Type_t* L_2 = ___0_delegateType;
 		NullCheck(L_1);
 		bool L_3;
-		L_3 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(21, L_1, L_2);
+		L_3 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(27, L_1, L_2);
 		if (L_3)
 		{
 			goto IL_003a;
@@ -7428,7 +7428,7 @@ IL_0354:
 		Type_t* L_140 = V_3;
 		NullCheck(L_140);
 		String_t* L_141;
-		L_141 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_140);
+		L_141 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_140);
 		NullCheck(L_139);
 		(L_139)->SetAt(static_cast<il2cpp_array_size_t>(5), (String_t*)L_141);
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_142 = L_139;
@@ -7930,7 +7930,7 @@ IL_0603:
 		Type_t* L_272 = V_22;
 		NullCheck(L_271);
 		bool L_273;
-		L_273 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(21, L_271, L_272);
+		L_273 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(27, L_271, L_272);
 		if (!L_273)
 		{
 			goto IL_068f;
@@ -12249,7 +12249,7 @@ IL_019b_1:
 							L_62 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_61, NULL);
 							NullCheck(L_62);
 							String_t* L_63;
-							L_63 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_62);
+							L_63 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_62);
 							String_t* L_64;
 							L_64 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteral6E308FB934D7DCBE6E83CC7CC96FD29475945FBB, L_63, _stringLiteralB78A24AD43A7AEBFD5840B756FF4A6F90FC7053E, NULL);
 							NullCheck(L_60);
@@ -12983,7 +12983,7 @@ IL_019b_1:
 							L_63 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_62, NULL);
 							NullCheck(L_63);
 							String_t* L_64;
-							L_64 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_63);
+							L_64 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_63);
 							String_t* L_65;
 							L_65 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteral6E308FB934D7DCBE6E83CC7CC96FD29475945FBB, L_64, _stringLiteralB78A24AD43A7AEBFD5840B756FF4A6F90FC7053E, NULL);
 							NullCheck(L_61);
@@ -14128,7 +14128,7 @@ IL_016d_1:
 							L_58 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_57, NULL);
 							NullCheck(L_58);
 							String_t* L_59;
-							L_59 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_58);
+							L_59 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_58);
 							String_t* L_60;
 							L_60 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteral6E308FB934D7DCBE6E83CC7CC96FD29475945FBB, L_59, _stringLiteralB78A24AD43A7AEBFD5840B756FF4A6F90FC7053E, NULL);
 							NullCheck(L_56);
@@ -14835,7 +14835,7 @@ IL_016d_1:
 							L_59 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_58, NULL);
 							NullCheck(L_59);
 							String_t* L_60;
-							L_60 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_59);
+							L_60 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_59);
 							String_t* L_61;
 							L_61 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteral6E308FB934D7DCBE6E83CC7CC96FD29475945FBB, L_60, _stringLiteralB78A24AD43A7AEBFD5840B756FF4A6F90FC7053E, NULL);
 							NullCheck(L_57);

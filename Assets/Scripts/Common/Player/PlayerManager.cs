@@ -7,17 +7,23 @@ public class PlayerManager : SingletonMono<PlayerManager>
     public static PlayerController localPlayer;
     [SerializeField] private CinemachineFreeLook cinemachineFreeLook;
 
-    protected override void Awake()
+    public bool IsCompeleted()
     {
-        base.Awake();
+        return localPlayer != null;
+    }
 
+    public void Init()
+    {
         EventSystem.AddTypeEventListener<LocalPlayerEvent>(OnInitLocalPlayer);
-        //print("EventSystem.AddTypeEventListener<LocalPlayerEvent>(OnInitLocalPlayer)");
+    }
+
+    private void OnDestroy()
+    {
+        EventSystem.RemoveTypeEventListener<LocalPlayerEvent>(OnInitLocalPlayer);
     }
 
     private void OnInitLocalPlayer(LocalPlayerEvent localPlayerEvent)
     {
-        //print("OnInitLocalPlayer");
         localPlayer = localPlayerEvent.localPlayer;
         
         cinemachineFreeLook.transform.position = localPlayer.transform.position;

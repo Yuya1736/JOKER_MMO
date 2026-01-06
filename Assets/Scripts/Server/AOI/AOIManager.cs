@@ -26,6 +26,12 @@ public class AOIManager : SingletonMono<AOIManager>
         EventSystem.AddTypeEventListener<InitClientAOIEvent>(OnInitClient);
         EventSystem.AddTypeEventListener<UpdateClientAOIEvent>(OnUpdateClientVisualChunk);
     }
+
+    private void OnDestroy()
+    {
+        EventSystem.RemoveTypeEventListener<InitClientAOIEvent>(OnInitClient);
+        EventSystem.RemoveTypeEventListener<UpdateClientAOIEvent>(OnUpdateClientVisualChunk);
+    }
     // --Start-- ½»¸øAOIUtility
     private void OnInitClient(InitClientAOIEvent arg)
     {

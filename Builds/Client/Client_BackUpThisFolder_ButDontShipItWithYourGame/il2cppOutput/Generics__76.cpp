@@ -18868,7 +18868,7 @@ IL_01ef:
 		Type_t* L_93 = V_2;
 		NullCheck(L_93);
 		String_t* L_94;
-		L_94 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_93);
+		L_94 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_93);
 		NullCheck(L_92);
 		(L_92)->SetAt(static_cast<il2cpp_array_size_t>(5), (String_t*)L_94);
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_95 = L_92;
@@ -25089,7 +25089,7 @@ IL_003f:
 		L_10 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_9, NULL);
 		NullCheck(L_10);
 		Type_t* L_11;
-		L_11 = VirtualFuncInvoker0< Type_t* >::Invoke(45, L_10);
+		L_11 = VirtualFuncInvoker0< Type_t* >::Invoke(54, L_10);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_12 = { reinterpret_cast<intptr_t> (il2cpp_rgctx_type(InitializedTypeInfo(method->klass)->rgctx_data, 6)) };
 		Type_t* L_13;
 		L_13 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_12, NULL);
@@ -25145,7 +25145,7 @@ IL_00ac:
 		L_30 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(L_29, NULL);
 		NullCheck(L_30);
 		int32_t L_31;
-		L_31 = VirtualFuncInvoker0< int32_t >::Invoke(46, L_30);
+		L_31 = VirtualFuncInvoker0< int32_t >::Invoke(55, L_30);
 		((MultiDimensionalArrayFormatter_2_tA39B0E4506275A0A07B12195526EB67FFA63292F_StaticFields*)il2cpp_codegen_static_fields_for(il2cpp_rgctx_data(InitializedTypeInfo(method->klass)->rgctx_data, 3)))->___ArrayRank = L_31;
 		int32_t L_32 = ((MultiDimensionalArrayFormatter_2_tA39B0E4506275A0A07B12195526EB67FFA63292F_StaticFields*)il2cpp_codegen_static_fields_for(il2cpp_rgctx_data(InitializedTypeInfo(method->klass)->rgctx_data, 3)))->___ArrayRank;
 		if ((((int32_t)L_32) > ((int32_t)1)))

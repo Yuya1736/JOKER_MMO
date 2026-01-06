@@ -14,13 +14,6 @@ public partial class PlayerController : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-
-    //    Debug.Log(
-    //$"[Player Spawn] " +
-    //$"IsServer={IsServer}, IsClient={IsClient}, IsOwner={IsOwner}, " +
-    //$"OwnerId={OwnerClientId}, LocalId={NetworkManager.LocalClientId}"
-//);
-
 #if !UNITY_SERVER
         if (IsClient && IsOwner)
         {
@@ -28,7 +21,6 @@ public partial class PlayerController : NetworkBehaviour
             Client_OnNetworkSpawn();
         }
 #endif
-
 #if UNITY_SERVER || UNITY_EDITOR
         if (IsServer)
         {
@@ -47,7 +39,6 @@ public partial class PlayerController : NetworkBehaviour
             Client_OnNetworkDespawn();
         }
 #endif
-
 #if UNITY_SERVER || UNITY_EDITOR
         if (IsServer)
         {
@@ -142,11 +133,11 @@ public partial class PlayerController : NetworkBehaviour, IStateMachineOwner
         ChangeState(PlayerState.Idle);
         verticalVelocity = 0f;
         this.AddUpdate(SetPlayerGravity);
-
     }
 
     private void Server_OnNetworkDespawn()
     {
+        stateMachine.Stop();
         stateMachine.Destroy();
         this.RemoveUpdate(SetPlayerGravity);
     }

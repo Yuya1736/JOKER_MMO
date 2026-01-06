@@ -25,6 +25,6 @@ public class ClientLaunch : MonoBehaviour
     private void OnHotUpdateSucceed()
     {
         ResSystem.InstantiateGameObject("ClientGlobal");
-        SceneManager.LoadScene("GameScene");
+        //SceneManager.LoadScene("GameScene");
     }
 }

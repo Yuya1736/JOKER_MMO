@@ -10646,7 +10646,7 @@ IL_006f:
 		Type_t* L_26 = V_3;
 		NullCheck(L_26);
 		String_t* L_27;
-		L_27 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_26);
+		L_27 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_26);
 		uint32_t L_28;
 		L_28 = XXHash_Hash32_mDAC30AB830DFD291A7AA57B33B1424F7DBC972AB_inline(L_27, NULL);
 		(&V_4)->___Hash = L_28;
@@ -11326,7 +11326,7 @@ IL_022c:
 		Type_t* L_91 = V_15;
 		NullCheck(L_91);
 		String_t* L_92;
-		L_92 = VirtualFuncInvoker0< String_t* >::Invoke(25, L_91);
+		L_92 = VirtualFuncInvoker0< String_t* >::Invoke(31, L_91);
 		uint32_t L_93;
 		L_93 = XXHash_Hash32_mDAC30AB830DFD291A7AA57B33B1424F7DBC972AB_inline(L_92, NULL);
 		(&V_16)->___Hash = L_93;
