@@ -9,7 +9,9 @@ public enum NetMessageType : byte // 每次添加新的Type过后，需要在NetMessageManag
     S2C_Login,
     C2S_EnterGame,
     C2S_Disconnect,
-    S2C_Disconnect
+    S2C_Disconnect,
+    C2S_Chat,
+    S2C_Chat
 }
 
 public enum NetMessageErrorCode
@@ -21,6 +23,26 @@ public enum NetMessageErrorCode
     AccountRepeatLogin
 }
 
+public struct C2S_Chat : INetworkSerializable
+{
+    public string info;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue(ref info);
+    }
+}
+public struct S2C_Chat : INetworkSerializable
+{
+    public NetMessageErrorCode errorType;
+    public string name;
+    public string info;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<NetMessageErrorCode>(ref errorType);
+        serializer.SerializeValue(ref name);
+        serializer.SerializeValue(ref info);
+    }
+}
 public struct C2S_Disconnect : INetworkSerializable
 {
     public NetMessageErrorCode errorType;

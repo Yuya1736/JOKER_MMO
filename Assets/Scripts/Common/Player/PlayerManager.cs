@@ -6,6 +6,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
 {
     public static PlayerController localPlayer;
     [SerializeField] private CinemachineFreeLook cinemachineFreeLook;
+    public CinemachineFreeLook FreeLook => cinemachineFreeLook;
 
     public bool IsCompeleted()
     {

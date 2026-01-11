@@ -2,7 +2,7 @@ using JKFrame;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_GameSettingsWindow : UI_WindowBase
+public class UI_GameSettingsWindow : UI_CustomWindowBase, IInputBlockerUI
 {
     [SerializeField] private Button btnBack;
     [SerializeField] private Button btnPrev;

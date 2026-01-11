@@ -2,22 +2,28 @@ using JKFrame;
 using Unity.Netcode;
 using UnityEngine;
 
-// π´π≤
+// ÂÖ¨ÂÖ±
 public partial class PlayerController : NetworkBehaviour
 {
+
+    public bool canControl;
     public Transform cameraLookPos;
     public Transform camaraFollow;
     
 
     public NetVariable<PlayerState> currentState = new NetVariable<PlayerState>(PlayerState.None);
-
+    
     public override void OnNetworkSpawn()
     {
+        //print("Client Spawn0");
+        //print($"IsClient {IsClient} IsOwner {IsOwner}");
+        //print($"IsClient {NetworkObject.OwnerClientId} IsOwner {IsOwner}");
+        //print(IsClient);
         base.OnNetworkSpawn();
 #if !UNITY_SERVER
         if (IsClient && IsOwner)
         {
-
+            //print("Client Spawn");
             Client_OnNetworkSpawn();
         }
 #endif
@@ -32,7 +38,6 @@ public partial class PlayerController : NetworkBehaviour
     public override void OnNetworkDespawn()
     {
         base.OnNetworkDespawn();
-
 #if !UNITY_SERVER
         if (IsClient)
         {
@@ -56,13 +61,14 @@ public partial class PlayerController : NetworkBehaviour
     }
 }
 
-// øÕªß∂À
+// ÂÆ¢Êà∑Á´Ø
 #if !UNITY_SERVER
 public partial class PlayerController : NetworkBehaviour
 {
     private Camera mainCamera;
     private void Client_OnNetworkSpawn()
     {
+        canControl = true;
         mainCamera = Camera.main;
         EventSystem.TypeEventTrigger<LocalPlayerEvent>(new LocalPlayerEvent() { localPlayer = this });
         this.AddUpdate(ClientMoveInput);
@@ -77,12 +83,14 @@ public partial class PlayerController : NetworkBehaviour
     private Vector2 lastDir = Vector2.zero;
     private void ClientMoveInput()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        if (!canControl) return;
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
         Vector2 dir = new Vector2(x, y).normalized;
-        if (Vector2.Distance(lastDir, dir) <= 0.01f) return;
+        if (Vector2.Distance(lastDir, dir) <= 0.02f) return;
         lastDir = dir;
-        // º”…œ…„œÒª˙ ”Ω«–˝◊™Ω«∂»
+
+ 
         Vector3 dir3 = new Vector3(dir.x, 0, dir.y);
         float yEuler = mainCamera.transform.eulerAngles.y;
         Vector3 newDir3 = Quaternion.Euler(new Vector3(0, yEuler, 0)) * dir3;
@@ -92,7 +100,7 @@ public partial class PlayerController : NetworkBehaviour
 }
 #endif
 
-// ∑˛ŒÒ∂À
+// ÊúçÂä°Á´Ø
 #if UNITY_SERVER || UNITY_EDITOR
 public partial class PlayerController : NetworkBehaviour, IStateMachineOwner
 {
@@ -108,7 +116,7 @@ public partial class PlayerController : NetworkBehaviour, IStateMachineOwner
     public PlayerView PlayerView => playerView;
     public CharacterController CharacterController => characterController;
 
-    [SerializeField, Header("÷ÿ¡¶œµÕ≥")] private float gravity = 9.8f;
+    [SerializeField, Header("ÈáçÂäõÁ≥ªÁªü")] private float gravity = 9.8f;
     [SerializeField] private float maxGravity = 52f;
     [SerializeField] private float CheckFallDeltaTime = 0.25f;
     [SerializeField] private float detectRadius = 0.2f;
@@ -166,7 +174,7 @@ public partial class PlayerController : NetworkBehaviour, IStateMachineOwner
         }
     }
 
-    public void PlayAnimation(string animation, float fixedTransitionDuration = 0.2f) 
+    public void PlayAnimation(string animation, float fixedTransitionDuration = 0.4f) 
     {
         animator.CrossFadeInFixedTime(animation, fixedTransitionDuration); 
     }

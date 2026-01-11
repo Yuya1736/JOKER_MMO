@@ -29,9 +29,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// JKFrame.ResSystem.<>c__DisplayClass21_0<object>
 	// JKFrame.SingletonMono<object>
 	// LocalizationConfigBase<int>
+	// System.Action<CheckUIInputBlockerEvent>
 	// System.Action<GameSceneLaunchEvent>
 	// System.Action<InitClientAOIEvent>
 	// System.Action<LocalPlayerEvent>
+	// System.Action<TerrainAudioVolumeChangeEvent>
 	// System.Action<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle,object>
 	// System.Action<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<UnityEngine.ResourceManagement.ResourceProviders.SceneInstance>>
 	// System.Action<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object>>
@@ -131,7 +133,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ObjectEqualityComparer<int>
 	// System.Collections.Generic.ObjectEqualityComparer<object>
 	// System.Collections.Generic.Queue.Enumerator<int>
+	// System.Collections.Generic.Queue.Enumerator<object>
 	// System.Collections.Generic.Queue<int>
+	// System.Collections.Generic.Queue<object>
+	// System.Collections.Generic.Stack.Enumerator<object>
+	// System.Collections.Generic.Stack<object>
 	// System.Collections.ObjectModel.ReadOnlyCollection<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
 	// System.Collections.ObjectModel.ReadOnlyCollection<UnityEngine.Vector2Int>
 	// System.Collections.ObjectModel.ReadOnlyCollection<object>
@@ -187,10 +193,13 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Unity.Netcode.UserNetworkVariableSerialization<object>
 	// UnityEngine.AddressableAssets.AddressablesImpl.<>c__DisplayClass79_0<object>
 	// UnityEngine.Events.InvokableCall<byte>
+	// UnityEngine.Events.InvokableCall<float>
 	// UnityEngine.Events.InvokableCall<object>
 	// UnityEngine.Events.UnityAction<byte>
+	// UnityEngine.Events.UnityAction<float>
 	// UnityEngine.Events.UnityAction<object>
 	// UnityEngine.Events.UnityEvent<byte>
+	// UnityEngine.Events.UnityEvent<float>
 	// UnityEngine.Events.UnityEvent<object>
 	// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase.<>c__DisplayClass60_0<UnityEngine.ResourceManagement.ResourceProviders.SceneInstance>
 	// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase.<>c__DisplayClass60_0<object>
@@ -212,25 +221,40 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	{
 		// System.Void JKFrame.EventModule.AddEventListener<object>(string,object)
 		// System.Void JKFrame.EventModule.AddMultipleParameterEventInfo<object>(string,object)
+		// System.Void JKFrame.EventModule.EventTrigger<CheckUIInputBlockerEvent>(string,CheckUIInputBlockerEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<InitClientAOIEvent>(string,InitClientAOIEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<LocalPlayerEvent>(string,LocalPlayerEvent)
+		// System.Void JKFrame.EventModule.EventTrigger<TerrainAudioVolumeChangeEvent>(string,TerrainAudioVolumeChangeEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<UpdateClientAOIEvent>(string,UpdateClientAOIEvent)
+		// System.Void JKFrame.EventModule.RemoveEventListener<object>(string,object)
+		// System.Void JKFrame.EventSystem.AddEventListener<CheckUIInputBlockerEvent>(string,System.Action<CheckUIInputBlockerEvent>)
 		// System.Void JKFrame.EventSystem.AddEventListener<GameSceneLaunchEvent>(string,System.Action<GameSceneLaunchEvent>)
 		// System.Void JKFrame.EventSystem.AddEventListener<LocalPlayerEvent>(string,System.Action<LocalPlayerEvent>)
+		// System.Void JKFrame.EventSystem.AddEventListener<TerrainAudioVolumeChangeEvent>(string,System.Action<TerrainAudioVolumeChangeEvent>)
+		// System.Void JKFrame.EventSystem.AddTypeEventListener<CheckUIInputBlockerEvent>(System.Action<CheckUIInputBlockerEvent>)
 		// System.Void JKFrame.EventSystem.AddTypeEventListener<GameSceneLaunchEvent>(System.Action<GameSceneLaunchEvent>)
 		// System.Void JKFrame.EventSystem.AddTypeEventListener<LocalPlayerEvent>(System.Action<LocalPlayerEvent>)
+		// System.Void JKFrame.EventSystem.AddTypeEventListener<TerrainAudioVolumeChangeEvent>(System.Action<TerrainAudioVolumeChangeEvent>)
+		// System.Void JKFrame.EventSystem.EventTrigger<CheckUIInputBlockerEvent>(string,CheckUIInputBlockerEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<InitClientAOIEvent>(string,InitClientAOIEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<LocalPlayerEvent>(string,LocalPlayerEvent)
+		// System.Void JKFrame.EventSystem.EventTrigger<TerrainAudioVolumeChangeEvent>(string,TerrainAudioVolumeChangeEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<UpdateClientAOIEvent>(string,UpdateClientAOIEvent)
+		// System.Void JKFrame.EventSystem.RemoveTypeEventListener<LocalPlayerEvent>(System.Action<LocalPlayerEvent>)
+		// System.Void JKFrame.EventSystem.RemoveTypeEventListener<TerrainAudioVolumeChangeEvent>(System.Action<TerrainAudioVolumeChangeEvent>)
+		// System.Void JKFrame.EventSystem.TypeEventTrigger<CheckUIInputBlockerEvent>(CheckUIInputBlockerEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<InitClientAOIEvent>(InitClientAOIEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<LocalPlayerEvent>(LocalPlayerEvent)
+		// System.Void JKFrame.EventSystem.TypeEventTrigger<TerrainAudioVolumeChangeEvent>(TerrainAudioVolumeChangeEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<UpdateClientAOIEvent>(UpdateClientAOIEvent)
 		// object JKFrame.PoolSystem.GetGameObject<object>(string,UnityEngine.Transform)
+		// object JKFrame.ResSystem.InstantiateGameObject<object>(UnityEngine.Transform,string,bool)
 		// object JKFrame.ResSystem.InstantiateGameObject<object>(string,UnityEngine.Transform,string,bool)
 		// System.Void JKFrame.ResSystem.InstantiateGameObjectAsync<object>(string,System.Action<object>,UnityEngine.Transform,string,bool)
 		// object JKFrame.ResSystem.LoadAsset<object>(string)
 		// System.Void JKFrame.UISystem.AddUIWindowData<object>(JKFrame.UIWindowData,bool)
 		// System.Void JKFrame.UISystem.Close<object>(bool)
+		// object JKFrame.UISystem.GetWindow<object>()
 		// object JKFrame.UISystem.Show<object>(int)
 		// object LocalizationConfigBase<int>.GetContent<object>(string,int)
 		// object LocalizationSystem.GetContent<object>(string,LanguageType)
@@ -238,9 +262,12 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object System.Activator.CreateInstance<object>()
 		// System.Void* Unity.Collections.LowLevel.Unsafe.UnsafeUtility.AddressOf<int>(int&)
 		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForEnums)
+		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_Chat>(C2S_Chat&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_Disconnect>(C2S_Disconnect&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_EnterGame>(C2S_EnterGame&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_Login>(C2S_Login&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_Register>(C2S_Register&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_Chat>(S2C_Chat&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_Disconnect>(S2C_Disconnect&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_Login>(S2C_Login&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_Register>(S2C_Register&)
@@ -248,12 +275,16 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.FastBufferReader.ReadUnmanagedSafe<object>(object&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<byte>(byte&,Unity.Netcode.FastBufferWriter.ForEnums)
 		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<object>(object&,Unity.Netcode.FastBufferWriter.ForEnums)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_Chat>(C2S_Chat&)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_Disconnect>(C2S_Disconnect&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_EnterGame>(C2S_EnterGame&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_Login>(C2S_Login&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_Register>(C2S_Register&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<object>(object&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteUnmanagedSafe<byte>(byte&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteUnmanagedSafe<object>(object&)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_Chat>(C2S_Chat&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_Disconnect>(C2S_Disconnect&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_EnterGame>(C2S_EnterGame&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_Login>(C2S_Login&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_Register>(C2S_Register&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
@@ -271,7 +302,10 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object> UnityEngine.AddressableAssets.AddressablesImpl.LoadAssetWithChain<object>(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle,object)
 		// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object> UnityEngine.AddressableAssets.AddressablesImpl.TrackHandle<object>(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object>)
 		// object UnityEngine.Component.GetComponent<object>()
+		// object[] UnityEngine.Component.GetComponentsInChildren<object>()
+		// object[] UnityEngine.Component.GetComponentsInChildren<object>(bool)
 		// object UnityEngine.GameObject.GetComponent<object>()
+		// object[] UnityEngine.GameObject.GetComponentsInChildren<object>(bool)
 		// object UnityEngine.JsonUtility.FromJson<object>(string)
 		// object UnityEngine.Object.Instantiate<object>(object)
 		// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object> UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle.Convert<object>()

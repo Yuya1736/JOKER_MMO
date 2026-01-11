@@ -7,6 +7,7 @@ public class ClientLaunch : MonoBehaviour
 {
     void Start()
     {
+        ShowCursor();
         Init();
     }
 
@@ -26,5 +27,11 @@ public class ClientLaunch : MonoBehaviour
     {
         ResSystem.InstantiateGameObject("ClientGlobal");
         //SceneManager.LoadScene("GameScene");
+    }
+
+    private void ShowCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

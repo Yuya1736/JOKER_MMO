@@ -3277,9 +3277,6 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* Func_3_Invoke_m31D
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void List_1_CopyTo_mDA4751F464411AB4C757C63C6EDBF4891BFD6891_gshared (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___0_array, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_NO_INLINE IL2CPP_METHOD_ATTR void List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4_gshared (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, RuntimeObject* ___0_item, const RuntimeMethod* method) ;
 
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2 (RuntimeObject* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object_Finalize_mC98C96301CCABFE00F1A7EF8E15DF507CACD42B2 (RuntimeObject* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LocalDataStoreMgr_FreeDataSlot_mF59A1C7C07F032738A40BCE7FEA4E29A59F4217A (LocalDataStoreMgr_t205F1783D5CC2B148E829B5882E5406FF9A3AC1E* __this, int32_t ___0_slot, int64_t ___1_cookie, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LocalDataStore__ctor_mF0B68949E727A1D6B00C8E764B2984A0113195FC (LocalDataStore_tFCE524A076B3FEBC2C1D1F7E49370896FF0788CA* __this, LocalDataStoreMgr_t205F1783D5CC2B148E829B5882E5406FF9A3AC1E* ___0_mgr, int32_t ___1_InitialCapacity, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LocalDataStoreHolder__ctor_m6DDA0A49BAD850F697AC0C295F4CB8F9298F2912 (LocalDataStoreHolder_t789DD474AE5141213C2105CE57830ECFC2D3C03F* __this, LocalDataStore_tFCE524A076B3FEBC2C1D1F7E49370896FF0788CA* ___0_store, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RuntimeHelpers_PrepareConstrainedRegions_mE852B0F834DB13A23B1CB04B359F81734FBB592C (const RuntimeMethod* method) ;
@@ -3329,6 +3326,7 @@ inline void Dictionary_2__ctor_m1358DB5BF14D81E59C83C662C5FD907CE2099395 (Dictio
 {
 	((  void (*) (Dictionary_2_t8CE98F372F16BA0B96FEC3C5AC31FA06153DE2C3*, const RuntimeMethod*))Dictionary_2__ctor_m5B32FBC624618211EB461D59CFBB10E987FD1329_gshared)(__this, method);
 }
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2 (RuntimeObject* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_NO_INLINE IL2CPP_METHOD_ATTR RuntimeObject* Activator_CreateInstance_mBA4E894FD2BB619F187B9049E50AFF802259E6AC (Type_t* ___0_type, int32_t ___1_bindingAttr, Binder_t91BFCE95A7057FADF4D8A1A342AFE52872246235* ___2_binder, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___3_args, CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0* ___4_culture, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___5_activationAttributes, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ArgumentNullException__ctor_m444AE141157E333844FC1A9500224C2F9FD24F4B (ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129* __this, String_t* ___0_paramName, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NotSupportedException__ctor_mE174750CF0247BBB47544FFD71D66BB89630945B (NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A* __this, String_t* ___0_message, const RuntimeMethod* method) ;
@@ -3981,102 +3979,6 @@ inline void List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4 (List
 {
 	((  void (*) (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D*, RuntimeObject*, const RuntimeMethod*))List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4_gshared)(__this, ___0_item, method);
 }
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LocalDataStoreSlot__ctor_m77AEE5C2EA8C0AD6540941AE76B1031290A37306 (LocalDataStoreSlot_tEE8D2C2A87B7336B3C04BFCF3963F1307EAA2499* __this, LocalDataStoreMgr_t205F1783D5CC2B148E829B5882E5406FF9A3AC1E* ___0_mgr, int32_t ___1_slot, int64_t ___2_cookie, const RuntimeMethod* method) 
-{
-	{
-		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		LocalDataStoreMgr_t205F1783D5CC2B148E829B5882E5406FF9A3AC1E* L_0 = ___0_mgr;
-		__this->___m_mgr = L_0;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_mgr), (void*)L_0);
-		int32_t L_1 = ___1_slot;
-		__this->___m_slot = L_1;
-		int64_t L_2 = ___2_cookie;
-		__this->___m_cookie = L_2;
-		return;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR LocalDataStoreMgr_t205F1783D5CC2B148E829B5882E5406FF9A3AC1E* LocalDataStoreSlot_get_Manager_m203CB87CFFF7CA2422F08BC0088268CBA5C90D37 (LocalDataStoreSlot_tEE8D2C2A87B7336B3C04BFCF3963F1307EAA2499* __this, const RuntimeMethod* method) 
-{
-	{
-		LocalDataStoreMgr_t205F1783D5CC2B148E829B5882E5406FF9A3AC1E* L_0 = __this->___m_mgr;
-		return L_0;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t LocalDataStoreSlot_get_Slot_m1F426571015D0EEC027394DDC55881331B6160A8 (LocalDataStoreSlot_tEE8D2C2A87B7336B3C04BFCF3963F1307EAA2499* __this, const RuntimeMethod* method) 
-{
-	{
-		int32_t L_0 = __this->___m_slot;
-		return L_0;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int64_t LocalDataStoreSlot_get_Cookie_m3605580D9AB903EB5A2BC9D9675A438334E89945 (LocalDataStoreSlot_tEE8D2C2A87B7336B3C04BFCF3963F1307EAA2499* __this, const RuntimeMethod* method) 
-{
-	{
-		int64_t L_0 = __this->___m_cookie;
-		return L_0;
-	}
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LocalDataStoreSlot_Finalize_mC4E350BF53B2D56ACC523188A9F9889166D56190 (LocalDataStoreSlot_tEE8D2C2A87B7336B3C04BFCF3963F1307EAA2499* __this, const RuntimeMethod* method) 
-{
-	LocalDataStoreMgr_t205F1783D5CC2B148E829B5882E5406FF9A3AC1E* V_0 = NULL;
-	int32_t V_1 = 0;
-	{
-		auto __finallyBlock = il2cpp::utils::Finally([&]
-		{
-
-FINALLY_0029:
-			{
-				Object_Finalize_mC98C96301CCABFE00F1A7EF8E15DF507CACD42B2(__this, NULL);
-				return;
-			}
-		});
-		try
-		{
-			{
-				LocalDataStoreMgr_t205F1783D5CC2B148E829B5882E5406FF9A3AC1E* L_0 = __this->___m_mgr;
-				V_0 = L_0;
-				LocalDataStoreMgr_t205F1783D5CC2B148E829B5882E5406FF9A3AC1E* L_1 = V_0;
-				if (L_1)
-				{
-					goto IL_000c_1;
-				}
-			}
-			{
-				goto IL_0030;
-			}
-
-IL_000c_1:
-			{
-				int32_t L_2 = __this->___m_slot;
-				V_1 = L_2;
-				__this->___m_slot = (-1);
-				LocalDataStoreMgr_t205F1783D5CC2B148E829B5882E5406FF9A3AC1E* L_3 = V_0;
-				int32_t L_4 = V_1;
-				int64_t L_5 = __this->___m_cookie;
-				NullCheck(L_3);
-				LocalDataStoreMgr_FreeDataSlot_mF59A1C7C07F032738A40BCE7FEA4E29A59F4217A(L_3, L_4, L_5, NULL);
-				goto IL_0030;
-			}
-		}
-		catch(Il2CppExceptionWrapper& e)
-		{
-			__finallyBlock.StoreException(e.ex);
-		}
-	}
-
-IL_0030:
-	{
-		return;
-	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
 #ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Winvalid-offsetof"

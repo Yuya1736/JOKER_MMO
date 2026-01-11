@@ -9,18 +9,18 @@ public class TestManager : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_SERVER || UNITY_EDITOR
-        if (networkObject == null && Input.GetKeyDown(KeyCode.S))
-        {
-            networkObject = NetManager.Instance.SpawnObject(NetManager.ServerClientId, testServerObject, Vector3.zero, new Quaternion());
-        }
-        if (networkObject != null && Input.GetKeyDown(KeyCode.D))
-        {
-            print(networkObject);
-            NetManager.Instance.DeSpawnObject(networkObject);
-            networkObject = null;
-        }
-#endif
+//#if UNITY_SERVER || UNITY_EDITOR
+//        if (networkObject == null && Input.GetKeyDown(KeyCode.S))
+//        {
+//            networkObject = NetManager.Instance.SpawnObject(NetManager.ServerClientId, testServerObject, Vector3.zero, new Quaternion());
+//        }
+//        if (networkObject != null && Input.GetKeyDown(KeyCode.D))
+//        {
+//            print(networkObject);
+//            NetManager.Instance.DeSpawnObject(networkObject);
+//            networkObject = null;
+//        }
+//#endif
     }
 
     private void Start()

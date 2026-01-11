@@ -17,9 +17,8 @@ public class ClientOnGameSceneManager : SingletonMono<ClientOnGameSceneManager>
         UI_LoadingWindow window = UISystem.Show<UI_LoadingWindow>();
         window.SetDescription("Loading");
         window.UpdateProgress(progress, 100);
-        NetMessageManager.Instance.SendMessageToServer<C2S_EnterGame>(NetMessageType.C2S_EnterGame, new C2S_EnterGame()); // 向服务端发送进入游戏请求，生成角色
 
-        print(progress);
+        NetMessageManager.Instance.SendMessageToServer<C2S_EnterGame>(NetMessageType.C2S_EnterGame, new C2S_EnterGame()); // 向服务端发送进入游戏请求，生成角色
         yield return new WaitForEndOfFrame();
         while (!ClientMapManager.Instance.IsCompeleted())
         {
@@ -27,7 +26,8 @@ public class ClientOnGameSceneManager : SingletonMono<ClientOnGameSceneManager>
             if (progress < 99) progress += 0.1f;
             window.UpdateProgress(progress, 100);
         }
-        progress = 99;
+        progress = 99.8f;
+        //yield return new WaitForSeconds(5);
         window.UpdateProgress(progress, 100);
         while(!PlayerManager.Instance.IsCompeleted())
         {
@@ -36,6 +36,7 @@ public class ClientOnGameSceneManager : SingletonMono<ClientOnGameSceneManager>
         progress = 100;
         window.UpdateProgress(progress, 100);
         UISystem.Close<UI_LoadingWindow>();
+        UISystem.Show<UI_ChatWindow>();
     }
 
 }

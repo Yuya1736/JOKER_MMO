@@ -1,5 +1,5 @@
 using JKFrame;
-using System;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -34,6 +34,25 @@ public class ClientsManager : SingletonMono<ClientsManager>
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.C2S_Login, OnReceiveLoginMessage);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.C2S_EnterGame, OnReceiveEnterGameMessage);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.C2S_Disconnect, OnReceiveDisconnectMessage);
+        NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.C2S_Chat, OnReceiveChatMessage);
+    }
+
+    private void OnReceiveChatMessage(ulong clientId, INetworkSerializable serializable)
+    {
+        C2S_Chat c2S_ChatInfo = (C2S_Chat)serializable;
+        Client client = clientIdDic[clientId];
+        string playerName = client.playerData.name;
+        // 分发给所有Gaming客户端
+        foreach (var item in clientStateDic[ClientState.Gaming])
+        {
+            if (item.clientId == clientId) continue; // 如果对应客户端的ID和发送客户端的ID相同，则不需要发送，发送消息的客户端自身就会显示
+            NetMessageManager.Instance.SendMessageToClient<S2C_Chat>(item.clientId, NetMessageType.S2C_Chat, new S2C_Chat
+            {
+                errorType = NetMessageErrorCode.None,
+                name = playerName,
+                info = c2S_ChatInfo.info
+            });
+        }
     }
 
     private void OnReceiveDisconnectMessage(ulong clientId, INetworkSerializable serializable)
@@ -46,13 +65,14 @@ public class ClientsManager : SingletonMono<ClientsManager>
         client.playerController = null;
         ChangeClientState(clientId, ClientState.Connected);
         // 收到客户端发来的断联请求后，需要先Despawn掉Player(NetworkObject)再发消息让客户端退出，否则客户端会在加载到别的场景时销毁Player（只有服务端可以销毁，否则会报错Destroy Invalid）
-        NetMessageManager.Instance.SendMessageToServer(NetMessageType.S2C_Disconnect, new S2C_Disconnect { errorType = NetMessageErrorCode.None });
+        NetMessageManager.Instance.SendMessageToClient<S2C_Disconnect>(clientId, NetMessageType.S2C_Disconnect, new S2C_Disconnect { errorType = NetMessageErrorCode.None });
     }
 
     private void OnReceiveEnterGameMessage(ulong clientId, INetworkSerializable serializable)
     {
         Client client = clientIdDic[clientId];
         if (client.playerController != null) return;
+        if (client.state == ClientState.Gaming) return;
         PlayerData playerData = client.playerData;
         CharacterData characterData = playerData.characterData;
         ChangeClientState(clientId, ClientState.Gaming);
@@ -126,9 +146,8 @@ public class ClientsManager : SingletonMono<ClientsManager>
 
     private void OnClientConnected(ulong clientId)
     {
-        Client client = ResSystem.GetOrNew<Client>();
+        Client client = ResSystem.GetOrNew<Client>(nameof(Client));
         client.clientId = clientId;
-
         clientIdDic.Add(clientId, client);
         ChangeClientState(clientId, ClientState.Connected);
     }
@@ -153,4 +172,44 @@ public class ClientsManager : SingletonMono<ClientsManager>
         client.state = newState;
         clientStateDic[client.state].Add(client);
     }
+
+    #region TestButton
+    [Button]
+    public void Spawn1()
+    {
+        NetManager.Instance.SpawnObject(1, player, ServerGlobal.Instance.ServerConfig.defaultPlayerBirthPos, default);
+    }
+    [Button]
+    public void Spawn2()
+    {
+        NetManager.Instance.SpawnObject(2, player, ServerGlobal.Instance.ServerConfig.defaultPlayerBirthPos, default);
+    }
+    [Button]
+    public void PrintClients()
+    {
+        print("-----------------");
+        print("------可见性------");
+        print($"clientIdDic[1].playerController.NetworkObject.IsNetworkVisibleTo(2):{clientIdDic[1].playerController.NetworkObject.IsNetworkVisibleTo(2)}");
+        print($"clientIdDic[2].playerController.NetworkObject.IsNetworkVisibleTo(1):{clientIdDic[2].playerController.NetworkObject.IsNetworkVisibleTo(1)}");
+        print("-----------------");
+        print("accountDic");
+        foreach (var item in accountDic)
+        {
+            print($"{item.Key} + {item.Value}");
+        }
+        print("-----------------");
+        print("clientStateDic");
+        foreach (var item in clientStateDic[ClientState.Gaming])
+        {
+            print($"{item.clientId}");
+        }
+        print("-----------------");
+        print("clientIdDic");
+        foreach (var item in clientIdDic)
+        {
+            print($"{item.Key} + {item.Value.clientId}");
+        }
+        print("-----------------");
+    }
+    #endregion
 }

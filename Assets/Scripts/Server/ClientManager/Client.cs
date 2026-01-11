@@ -12,6 +12,6 @@ public class Client
         playerData = null;
         state = default;
         playerController = null;
-        this.ObjectPushPool();
+        PoolSystem.PushObject(this);
     }
 }

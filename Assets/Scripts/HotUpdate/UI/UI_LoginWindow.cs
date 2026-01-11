@@ -33,6 +33,7 @@ public class UI_LoginWindow : UI_WindowBase
         {
             case NetMessageErrorCode.None:
                 UISystem.Show<UI_MessagePopUp>().ShowMessageByLocalizationKey(LocalizationKey.loginSucceed, Color.green);
+                //print("LoadGameScene");
                 ClientGlobal.Instance.LoadGameScene();
                 break;
             case NetMessageErrorCode.AccountFormat:

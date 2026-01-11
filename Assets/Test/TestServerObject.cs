@@ -9,30 +9,30 @@ public class TestServerObject : NetworkBehaviour
     public float speed = 2;
     public static TestServerObject instance;
 
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
-        instance = this;
-#if UNITY_SERVER || SERVER_EDITOR_TEST
-        AOIManager.Instance.InitServerObject(NetworkObject, Vector2Int.zero);
-#endif
-    }
+//    public override void OnNetworkSpawn()
+//    {
+//        base.OnNetworkSpawn();
+//        instance = this;
+//#if UNITY_SERVER || SERVER_EDITOR_TEST
+//        AOIManager.Instance.InitServerObject(NetworkObject, Vector2Int.zero);
+//#endif
+//    }
 
-    void FixedUpdate()
-    {
-#if UNITY_SERVER || SERVER_EDITOR_TEST
-        if (IsServer && IsOwner)
-        {
-            float x = Input.GetAxis("Horizontal");
-            float y = Input.GetAxis("Vertical");
-            Vector2 dir = new Vector2(x, y).normalized;
-            HandlerMovement(dir);
-        }
-#endif
-    }
+//    void FixedUpdate()
+//    {
+//#if UNITY_SERVER || SERVER_EDITOR_TEST
+//        if (IsServer && IsOwner)
+//        {
+//            float x = Input.GetAxis("Horizontal");
+//            float y = Input.GetAxis("Vertical");
+//            Vector2 dir = new Vector2(x, y).normalized;
+//            HandlerMovement(dir);
+//        }
+//#endif
+//    }
 
-    private Vector2Int oldChunkCoord = Vector2Int.zero;
-    private Vector2Int newChunkCoord = Vector2Int.zero;
+//    private Vector2Int oldChunkCoord = Vector2Int.zero;
+//    private Vector2Int newChunkCoord = Vector2Int.zero;
 
     //private void HandlerMovement(Vector2 dir)
     //{

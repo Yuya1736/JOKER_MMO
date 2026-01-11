@@ -1,4 +1,6 @@
 using JKFrame;
+using System;
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -7,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class ClientGlobal : SingletonMono<ClientGlobal>
 {
     public GameSetting gameSetting { get; private set; }
+    private Stack<UI_WindowBase> blockerInputUIStack = new Stack<UI_WindowBase>(10);
 
     private void Start()    
     {
@@ -29,32 +32,70 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
         LoadLoginScene();
 
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_Disconnect, OnReceiveDisconnect);
+
+        EventSystem.AddTypeEventListener<CheckUIInputBlockerEvent>(OnCheckUIInputBlocker);
     }
+
+    
 
     private UI_GamePopupWindow popupWindow;
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
+        if (SceneManager.GetSceneByName("GameScene").IsValid())
         {
-            // 只有在GameScene能呼出Escape弹窗
-            if (SceneManager.GetActiveScene().name != "GameScene") return;
-            if(popupWindow == null || !popupWindow.gameObject.activeSelf)
+            // 游戏内ESC菜单
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                UISystem.Show<UI_GamePopupWindow>();
-                if (popupWindow == null) popupWindow = UISystem.GetWindow<UI_GamePopupWindow>();
+                print("ESC");
+                // 只有在GameScene能呼出Escape弹窗
+                if (popupWindow == null || !popupWindow.gameObject.activeSelf)
+                {
+                    UISystem.Show<UI_GamePopupWindow>();
+                    if (popupWindow == null) popupWindow = UISystem.GetWindow<UI_GamePopupWindow>();
+                }
+                else
+                {
+                    UISystem.Close<UI_GamePopupWindow>();
+                }
             }
-            else
+            // Alt控制显隐鼠标
+            if (Input.GetKey(KeyCode.LeftAlt))
             {
-                UISystem.Close<UI_GamePopupWindow>();
+                SetCursorLockState(false);
             }
+            else if (blockerInputUIStack.Count == 0)
+            {
+                SetCursorLockState(true);
+            }
+        }
+    }
 
+    public void SetCursorLockState(bool isLocked)
+    {
+        if (isLocked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            // 恢复摄像机输入
+            PlayerManager.Instance.FreeLook.m_XAxis.m_InputAxisName = "Mouse X";
+            PlayerManager.Instance.FreeLook.m_YAxis.m_InputAxisName = "Mouse Y";
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            // 摄像机不能输入
+            PlayerManager.Instance.FreeLook.m_XAxis.m_InputAxisName = "";
+            PlayerManager.Instance.FreeLook.m_YAxis.m_InputAxisName = "";
         }
     }
 
     private void OnReceiveDisconnect(ulong clientId, INetworkSerializable serializable)
     {
-        C2S_Disconnect C2S_disconnectInfo = (C2S_Disconnect)serializable;
-        if(C2S_disconnectInfo.errorType == NetMessageErrorCode.AccountRepeatLogin)
+        S2C_Disconnect S2C_DisconnectInfo = (S2C_Disconnect)serializable;
+        if(S2C_DisconnectInfo.errorType == NetMessageErrorCode.AccountRepeatLogin)
         {
             UISystem.Show<UI_MessagePopUp>().ShowMessageByLocalizationKey(LocalizationKey.accountRepectLogin, Color.red);
             Invoke(nameof(LoadLoginScene), 2f);
@@ -65,14 +106,40 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
         }
     }
 
+    private void OnCheckUIInputBlocker(CheckUIInputBlockerEvent @event)
+    {
+        UI_WindowBase window = @event.uI_Window;
+        bool isEnter = @event.isEnter;
+        if(window is IInputBlockerUI)
+        {
+            if(isEnter)
+                blockerInputUIStack.Push(window);
+            else 
+                blockerInputUIStack.Pop();
+        }
+        print(blockerInputUIStack.Count);
+        if (blockerInputUIStack.Count == 0)
+        {
+            SetCursorLockState(true);
+            if (PlayerManager.localPlayer != null) PlayerManager.localPlayer.canControl = true;
+        }
+        else
+        {
+            SetCursorLockState(false);
+            if (PlayerManager.localPlayer != null) PlayerManager.localPlayer.canControl = false;
+        }
+    }
+
     private void InitUIWindows()
     {
         UISystem.AddUIWindowData<UI_MainMenuWindow>(new UIWindowData(false, nameof(UI_MainMenuWindow), 0));
         UISystem.AddUIWindowData<UI_MessagePopUp>(new UIWindowData(true, nameof(UI_MessagePopUp), 4));
-        UISystem.AddUIWindowData<UI_RegisterWindow>(new UIWindowData(true, nameof(UI_RegisterWindow), 1));
-        UISystem.AddUIWindowData<UI_LoginWindow>(new UIWindowData(true, nameof(UI_LoginWindow), 1));
-        UISystem.AddUIWindowData<UI_GamePopupWindow>(new UIWindowData(true, nameof(UI_GamePopupWindow), 4));
-        UISystem.AddUIWindowData<UI_GameSettingsWindow>(new UIWindowData(true, nameof(UI_GameSettingsWindow), 2));
+        UISystem.AddUIWindowData<UI_RegisterWindow>(new UIWindowData(false, nameof(UI_RegisterWindow), 1));
+        UISystem.AddUIWindowData<UI_LoginWindow>(new UIWindowData(false, nameof(UI_LoginWindow), 1));
+        UISystem.AddUIWindowData<UI_GamePopupWindow>(new UIWindowData(false, nameof(UI_GamePopupWindow), 1));
+        UISystem.AddUIWindowData<UI_GameSettingsWindow>(new UIWindowData(false, nameof(UI_GameSettingsWindow), 2));
+        UISystem.AddUIWindowData<UI_ChatWindow>(new UIWindowData(false, nameof(UI_ChatWindow), 1));
+        UISystem.AddUIWindowData<UI_ChatWindowItem>(new UIWindowData(false, nameof(UI_ChatWindowItem), 1));
     }
     private void OnGameSceneLaunchEvent(GameSceneLaunchEvent @event)
     {
@@ -106,6 +173,6 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
     public void LoadGameScene()
     {
         UISystem.CloseAllWindow();
-        SceneSystem.LoadScene("GameScene");
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Additive);
     }
 }

@@ -1,3 +1,4 @@
+using JKFrame;
 using UnityEngine;
 
 public struct LocalPlayerEvent
@@ -17,3 +18,4 @@ public struct UpdateClientAOIEvent
     public Vector2Int oldCoord;
     public Vector2Int newCoord;
 }
+

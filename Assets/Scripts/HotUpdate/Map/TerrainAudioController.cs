@@ -5,6 +5,7 @@ public class TerrainAudioController : MonoBehaviour
 {
     [SerializeField] private AudioSource[] audioSources;
 
+#if (!UNITY_SERVER && !UNITY_EDITOR)
     private void Start()
     {
         audioSources = GetComponentsInChildren<AudioSource>();
@@ -29,4 +30,5 @@ public class TerrainAudioController : MonoBehaviour
             audio.volume = ClientGlobal.Instance.gameSetting.musicValue;
         }
     }
+#endif
 }

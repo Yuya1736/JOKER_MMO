@@ -193,10 +193,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 455551417}
-    - targetCorrespondingSourceObject: {fileID: 1274743430832539229, guid: 4d3ebf7813c7a824daa27986e73d913f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 455551422}
   m_SourcePrefab: {fileID: 100100000, guid: 4d3ebf7813c7a824daa27986e73d913f, type: 3}
 --- !u!1 &455551412 stripped
 GameObject:
@@ -217,21 +213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectStr: mongodb://localhost:27017/
---- !u!114 &455551422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455551412}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21ee68e994b84bf4c801d99dbee2df71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  testServerObject: {fileID: 4882527812302720762, guid: 211d8139ad857e64ea924b3817bdfda4,
-    type: 3}
-  networkObject: {fileID: 0}
 --- !u!1001 &1620945182
 PrefabInstance:
   m_ObjectHideFlags: 0

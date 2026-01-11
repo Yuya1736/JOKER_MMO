@@ -57,6 +57,16 @@ public class NetMessageManager : SingletonMono<NetMessageManager>
                 reader.ReadNetworkSerializableInPlace(ref C2S_DisconnectInfo);
                 TriggerOnReceiveMessageCallback(NetMessageType.C2S_Disconnect, clientId, C2S_DisconnectInfo);
                 break;
+            case NetMessageType.C2S_Chat:
+                C2S_Chat C2S_ChatInfo = new C2S_Chat();
+                reader.ReadNetworkSerializableInPlace(ref C2S_ChatInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_Chat, clientId, C2S_ChatInfo);
+                break;
+            case NetMessageType.S2C_Chat:
+                S2C_Chat S2C_ChatInfo = new S2C_Chat();
+                reader.ReadNetworkSerializableInPlace(ref S2C_ChatInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_Chat, clientId, S2C_ChatInfo);
+                break;
         }
     }
 
@@ -128,4 +138,8 @@ public class NetMessageManager : SingletonMono<NetMessageManager>
         return writer;
     }
 
+    public void RegisterOnReceiveMessageCallback(object onReceiveChatMessage)
+    {
+        throw new NotImplementedException();
+    }
 }

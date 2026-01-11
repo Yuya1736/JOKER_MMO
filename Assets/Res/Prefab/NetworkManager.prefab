@@ -71,6 +71,7 @@ MonoBehaviour:
     OldPrefabList: []
   RunInBackground: 1
   LogLevel: 1
+  Player: {fileID: 0}
   unityTransport: {fileID: 0}
   netMessageManager: {fileID: 0}
 --- !u!114 &1346644606485357510
