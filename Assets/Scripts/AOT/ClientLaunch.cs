@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using JKFrame;
-using System;
 
 public class ClientLaunch : MonoBehaviour
 {

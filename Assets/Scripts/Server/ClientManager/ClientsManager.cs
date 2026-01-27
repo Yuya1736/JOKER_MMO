@@ -1,5 +1,6 @@
 using JKFrame;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -35,6 +36,57 @@ public class ClientsManager : SingletonMono<ClientsManager>
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.C2S_EnterGame, OnReceiveEnterGameMessage);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.C2S_Disconnect, OnReceiveDisconnectMessage);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.C2S_Chat, OnReceiveChatMessage);
+        NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.C2S_GetBagData, OnReceiveGetBagDataMessage);
+        NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.C2S_UseItem, OnReceiveUseItemMessage);
+    }
+
+    private void OnReceiveUseItemMessage(ulong clientId, INetworkSerializable serializable)
+    {
+#if UNITY_EDITOR || UNITY_SERVER
+        C2S_UseItem message = (C2S_UseItem)serializable;
+        Client client = clientIdDic[clientId];
+        PlayerData playerData = client.playerData;
+        S2C_UpdateBagData result = new S2C_UpdateBagData()
+        {
+            index = message.index,
+            itemType = ItemType.Empty,
+            itemData = null,
+            version = -1
+        };
+        if(playerData != null && playerData.bagData != null)
+        {
+            ItemDataBase itemData = playerData.bagData.UseItem(message.index);
+            result.itemData = itemData;
+            result.version = ++ playerData.bagData.version;
+            if (itemData != null) result.itemType = itemData.GetItemType();
+        }
+        NetMessageManager.Instance.SendMessageToClient<S2C_UpdateBagData>(clientId, NetMessageType.S2C_UpdateBagData, result);
+#endif
+    }
+
+    private void OnReceiveGetBagDataMessage(ulong clientId, INetworkSerializable serializable)
+    {
+        C2S_GetBagData c2S_GetBagInfo = (C2S_GetBagData)serializable;
+        Client client = clientIdDic[clientId];
+        S2C_GetBagData s2C_GetBagDataInfo = new S2C_GetBagData { haveBag = false };
+        if(client.playerData.bagData.version != c2S_GetBagInfo.version)
+        {
+            s2C_GetBagDataInfo.haveBag = true;
+            s2C_GetBagDataInfo.bagData = client.playerData.bagData;
+
+            s2C_GetBagDataInfo.bagData.itemDataList[0] = new WeaponData() { configKey = ItemConfigKey.weapon0 };
+            s2C_GetBagDataInfo.bagData.itemDataList[1] = new WeaponData() { configKey = ItemConfigKey.weapon1 };
+            s2C_GetBagDataInfo.bagData.itemDataList[2] = new MaterialData() { configKey = ItemConfigKey.material0, count = 11 };
+            s2C_GetBagDataInfo.bagData.itemDataList[3] = new MaterialData() { configKey = ItemConfigKey.material1, count = 22 };
+            s2C_GetBagDataInfo.bagData.itemDataList[4] = new MaterialData() { configKey = ItemConfigKey.material2, count = 33 };
+            s2C_GetBagDataInfo.bagData.itemDataList[5] = new MaterialData() { configKey = ItemConfigKey.material3, count = 44 };
+            s2C_GetBagDataInfo.bagData.itemDataList[6] = new ConsumableData() { configKey = ItemConfigKey.consumable0, count = 1 };
+            s2C_GetBagDataInfo.bagData.itemDataList[7] = new ConsumableData() { configKey = ItemConfigKey.consumable1, count = 2 };
+            s2C_GetBagDataInfo.bagData.itemDataList[8] = new ConsumableData() { configKey = ItemConfigKey.consumable2, count = 3 };
+            s2C_GetBagDataInfo.bagData.itemDataList[9] = new ConsumableData() { configKey = ItemConfigKey.consumable3, count = 4 };
+            s2C_GetBagDataInfo.bagData.itemDataList[10] = new ConsumableData() { configKey = ItemConfigKey.consumable4, count = 5 };
+        }
+        NetMessageManager.Instance.SendMessageToClient<S2C_GetBagData>(clientId, NetMessageType.S2C_GetBagData, s2C_GetBagDataInfo);
     }
 
     private void OnReceiveChatMessage(ulong clientId, INetworkSerializable serializable)
@@ -115,6 +167,7 @@ public class ClientsManager : SingletonMono<ClientsManager>
             // °ó¶¨ClientµÄPlayerData
             PlayerData playerData = DataBaseManager.Instance.GetPlayerData(accountInfo.playerName);
             clientIdDic[clientId].playerData = playerData;
+            playerData.bagData.version = 0;
             ChangeClientState(clientId, ClientState.Logined);
             accountDic.Add(playerData.name, clientId);
         }

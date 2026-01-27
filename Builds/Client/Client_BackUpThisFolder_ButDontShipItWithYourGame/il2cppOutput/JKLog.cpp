@@ -836,7 +836,7 @@ IL_00e9:
 		Il2CppCodeGenWriteBarrier((void**)(&((JKLog_t68B24504555304363AF6B7BF0F20F4979B002663_StaticFields*)il2cpp_codegen_static_fields_for(JKLog_t68B24504555304363AF6B7BF0F20F4979B002663_il2cpp_TypeInfo_var))->___logStreamWriter), (void*)L_31);
 		StreamWriter_t6E7DF7D524AA3C018A65F62EE80779873ED4D1E4* L_32 = ((JKLog_t68B24504555304363AF6B7BF0F20F4979B002663_StaticFields*)il2cpp_codegen_static_fields_for(JKLog_t68B24504555304363AF6B7BF0F20F4979B002663_il2cpp_TypeInfo_var))->___logStreamWriter;
 		NullCheck(L_32);
-		VirtualActionInvoker1< bool >::Invoke(17, L_32, (bool)1);
+		VirtualActionInvoker1< bool >::Invoke(23, L_32, (bool)1);
 	}
 
 IL_0103:
@@ -1192,7 +1192,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JKLog_WriteToFile_mB18F238D16F79B9B6D8BC
 		StreamWriter_t6E7DF7D524AA3C018A65F62EE80779873ED4D1E4* L_2 = ((JKLog_t68B24504555304363AF6B7BF0F20F4979B002663_StaticFields*)il2cpp_codegen_static_fields_for(JKLog_t68B24504555304363AF6B7BF0F20F4979B002663_il2cpp_TypeInfo_var))->___logStreamWriter;
 		String_t* L_3 = ___0_text;
 		NullCheck(L_2);
-		VirtualActionInvoker1< String_t* >::Invoke(14, L_2, L_3);
+		VirtualActionInvoker1< String_t* >::Invoke(20, L_2, L_3);
 	}
 
 IL_0019:

@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 679842823}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -414,6 +414,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JKFrame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737124639798830129, guid: 92a72c9a3d3131f498a24198d7029305,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

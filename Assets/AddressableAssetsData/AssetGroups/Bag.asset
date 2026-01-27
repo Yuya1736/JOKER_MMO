@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Bag
+  m_EditorClassIdentifier: 
+  m_GroupName: Bag
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 46a40f5c55e68d54ca5a4407d0ae24ac
+  m_SerializeEntries:
+  - m_GUID: 0866a03478048fd4fac82fb3e4237695
+    m_Address: UI_ConsumableSlot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3463a735e2490f340bfbcc97839ecf72
+    m_Address: UI_MaterialSlot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4408a1294a746e14b9b9a3784c9433af
+    m_Address: UI_WeaponSlot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66a3ea7ec28abda4fb70fb8fa6f0858a
+    m_Address: UI_BagWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ce4a517b314325409a735e6e065848b
+    m_Address: UI_EmptySlot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88de3f79f2e3c3449b44bd2ed2c47dc9
+    m_Address: UI_ItemInfoPopupWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: eb33c7a99e9b09d4a8554dc1632b0802, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d823d6ba917577d45af33ec67749d0a0, type: 2}
+    - {fileID: 11400000, guid: bf9ebf4cfdadaa742a0d53499d66ba04, type: 2}

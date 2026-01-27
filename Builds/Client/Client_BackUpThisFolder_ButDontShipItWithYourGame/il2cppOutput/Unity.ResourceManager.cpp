@@ -12517,7 +12517,7 @@ IL_000d:
 		Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* L_2 = ___0_inputStream;
 		NullCheck(L_2);
 		int64_t L_3;
-		L_3 = VirtualFuncInvoker0< int64_t >::Invoke(10, L_2);
+		L_3 = VirtualFuncInvoker0< int64_t >::Invoke(11, L_2);
 		G_B3_0 = L_3;
 	}
 
@@ -12532,7 +12532,7 @@ IL_0013:
 		NullCheck(L_7);
 		NullCheck(L_5);
 		int32_t L_8;
-		L_8 = VirtualFuncInvoker3< int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(22, L_5, L_6, 0, ((int32_t)(((RuntimeArray*)L_7)->max_length)));
+		L_8 = VirtualFuncInvoker3< int32_t, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(33, L_5, L_6, 0, ((int32_t)(((RuntimeArray*)L_7)->max_length)));
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_9 = V_0;
 		int32_t L_10 = ___2_maxCachedObjects;
 		ISerializationAdapterU5BU5D_t24C6A4B7B6A4D729C72BFE32FE873A782FB08879* L_11 = ___3_adapters;
@@ -14239,7 +14239,7 @@ IL_000e_1:
 				NullCheck(L_6);
 				uint32_t L_7 = L_6->___position;
 				NullCheck(L_3);
-				VirtualActionInvoker3< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(25, L_3, L_5, 0, L_7);
+				VirtualActionInvoker3< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(36, L_3, L_5, 0, L_7);
 			}
 
 IL_0029_1:

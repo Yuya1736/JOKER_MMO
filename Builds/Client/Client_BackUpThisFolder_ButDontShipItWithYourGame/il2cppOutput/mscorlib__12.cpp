@@ -4929,7 +4929,7 @@ IL_0055:
 		RuntimeConstructorInfo_tB41E49C7CFA74A03CCC986E78ABB0C0BD331A5AE* L_21 = V_2;
 		NullCheck(L_21);
 		bool L_22;
-		L_22 = VirtualFuncInvoker0< bool >::Invoke(32, L_21);
+		L_22 = VirtualFuncInvoker0< bool >::Invoke(35, L_21);
 		if (L_22)
 		{
 			goto IL_0055;
@@ -12775,7 +12775,7 @@ IL_0022:
 		Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* L_8 = ___0_serializationStream;
 		NullCheck(L_8);
 		int64_t L_9;
-		L_9 = VirtualFuncInvoker0< int64_t >::Invoke(10, L_8);
+		L_9 = VirtualFuncInvoker0< int64_t >::Invoke(11, L_8);
 		if (L_9)
 		{
 			goto IL_0042;

@@ -67,6 +67,26 @@ public class NetMessageManager : SingletonMono<NetMessageManager>
                 reader.ReadNetworkSerializableInPlace(ref S2C_ChatInfo);
                 TriggerOnReceiveMessageCallback(NetMessageType.S2C_Chat, clientId, S2C_ChatInfo);
                 break;
+            case NetMessageType.C2S_GetBagData:
+                C2S_GetBagData C2S_GetBagDataInfo = new C2S_GetBagData();
+                reader.ReadNetworkSerializableInPlace(ref C2S_GetBagDataInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_GetBagData, clientId, C2S_GetBagDataInfo);
+                break;
+            case NetMessageType.S2C_GetBagData:
+                S2C_GetBagData S2C_GetBagDataInfo = new S2C_GetBagData();
+                reader.ReadNetworkSerializableInPlace(ref S2C_GetBagDataInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_GetBagData, clientId, S2C_GetBagDataInfo);
+                break;
+            case NetMessageType.C2S_UseItem:
+                C2S_UseItem C2S_UseItemInfo = new C2S_UseItem();
+                reader.ReadNetworkSerializableInPlace(ref C2S_UseItemInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_UseItem, clientId, C2S_UseItemInfo);
+                break;
+            case NetMessageType.S2C_UpdateBagData:
+                S2C_UpdateBagData S2C_UpdateBagDataInfo = new S2C_UpdateBagData();
+                reader.ReadNetworkSerializableInPlace(ref S2C_UpdateBagDataInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_UpdateBagData, clientId, S2C_UpdateBagDataInfo);
+                break;
         }
     }
 

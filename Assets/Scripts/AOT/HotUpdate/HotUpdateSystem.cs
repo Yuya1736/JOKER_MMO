@@ -39,7 +39,7 @@ public class HotUpdateSystem : MonoBehaviour
         HotUpdateSystemState hotUpdateSystemState = SaveSystem.LoadSetting<HotUpdateSystemState>();
         if (hotUpdateSystemState == null || hotUpdateSystemState.succeed == false)
         {
-            string path = Application.persistentDataPath + "\\com.unity.addressables";
+            string path = Application.persistentDataPath + "/com.unity.addressables";
             if (Directory.Exists(path)) Directory.Delete(path, true);
         }
         succeed = true;
@@ -106,6 +106,8 @@ public class HotUpdateSystem : MonoBehaviour
         {
             LoadUpdateDll();
             LoadAotDll();
+            // 在LoadUpdateDll后才能LoadAsset出热更新类型的资源，否则会找不到对应类型的资源 Application.persistentDataPath + "\\com.unity.addressables\\catalog.json"
+            Addressables.LoadContentCatalogAsync(Directory.GetFiles(Application.persistentDataPath + "/com.unity.addressables", "*.json")[0]);
         }
         else
         {

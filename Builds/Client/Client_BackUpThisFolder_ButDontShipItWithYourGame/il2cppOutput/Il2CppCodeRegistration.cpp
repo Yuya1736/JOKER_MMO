@@ -26,6 +26,7 @@ IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Cinemachine_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_HybridCLR_Runtime_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_JKFrame_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_JKLog_CodeGenModule;
+IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_MongoDB_Bson_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Mono_Security_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Sirenix_OdinInspector_Attributes_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Sirenix_OdinInspector_Modules_Unity_Addressables_CodeGenModule;
@@ -35,6 +36,7 @@ IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Sirenix_Utilities_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_System_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_System_Configuration_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_System_Core_CodeGenModule;
+IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_System_Runtime_CompilerServices_Unsafe_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_System_Xml_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_UnityEngine_AIModule_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_UnityEngine_AndroidJNIModule_CodeGenModule;
@@ -92,7 +94,7 @@ IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Unity_Timeline_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g___Generated_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_mscorlib_CodeGenModule;
 IL2CPP_EXTERN_C const Il2CppCodeGenModule* g_CodeGenModules[];
-const Il2CppCodeGenModule* g_CodeGenModules[71] = 
+const Il2CppCodeGenModule* g_CodeGenModules[73] = 
 {
 	(&g_AOT_CodeGenModule),
 	(&g_AssemblyU2DCSharp_CodeGenModule),
@@ -100,6 +102,7 @@ const Il2CppCodeGenModule* g_CodeGenModules[71] =
 	(&g_HybridCLR_Runtime_CodeGenModule),
 	(&g_JKFrame_CodeGenModule),
 	(&g_JKLog_CodeGenModule),
+	(&g_MongoDB_Bson_CodeGenModule),
 	(&g_Mono_Security_CodeGenModule),
 	(&g_Sirenix_OdinInspector_Attributes_CodeGenModule),
 	(&g_Sirenix_OdinInspector_Modules_Unity_Addressables_CodeGenModule),
@@ -109,6 +112,7 @@ const Il2CppCodeGenModule* g_CodeGenModules[71] =
 	(&g_System_CodeGenModule),
 	(&g_System_Configuration_CodeGenModule),
 	(&g_System_Core_CodeGenModule),
+	(&g_System_Runtime_CompilerServices_Unsafe_CodeGenModule),
 	(&g_System_Xml_CodeGenModule),
 	(&g_UnityEngine_AIModule_CodeGenModule),
 	(&g_UnityEngine_AndroidJNIModule_CodeGenModule),
@@ -171,20 +175,20 @@ const Il2CppCodeRegistration g_CodeRegistration =
 {
 	62,
 	g_ReversePInvokeWrapperPointers,
-	81109,
+	84957,
 	g_Il2CppGenericMethodPointers,
 	g_Il2CppGenericAdjustorThunks,
-	18050,
+	18575,
 	g_Il2CppInvokerPointers,
-	2771,
+	2895,
 	g_UnresolvedVirtualMethodPointers,
 	g_UnresolvedInstanceMethodPointers,
 	g_UnresolvedStaticMethodPointers,
-	649,
+	667,
 	g_Il2CppInteropData,
 	0,
 	NULL,
-	71,
+	73,
 	g_CodeGenModules,
 };
 IL2CPP_EXTERN_C_CONST Il2CppMetadataRegistration g_MetadataRegistration;

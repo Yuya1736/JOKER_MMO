@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Config
+  m_EditorClassIdentifier: 
+  m_GroupName: Config
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 9268a5138ba229445bc98c8cfe76775f
+  m_SerializeEntries:
+  - m_GUID: 1313908bc8b9b5b4495a262868a1da18
+    m_Address: Material_0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 147d00114d3fb4944b7e2866b54debfe
+    m_Address: Material_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1799f79775b56e6458c0737a8110962b
+    m_Address: Consumable_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 227989ee559ff2a4680d896eb8e08b9c
+    m_Address: Material_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ba01ab7ab933e74188eb01c5e5b9238
+    m_Address: Weapon_0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 480018101a4cc644ab62267c841e7503
+    m_Address: Consumable_0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b4c423b735e8c340964d8bf6234671d
+    m_Address: Consumable_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8888c5bd1d624e14fba3097b79940730
+    m_Address: Consumable_4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b8000bef6a18224fabf2dfcd8fb852e
+    m_Address: GameBasicSetting
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a811f40955e33b042918775da717b83f
+    m_Address: Weapon_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d19b1f8381af6d148bd7f85b37d44567
+    m_Address: Material_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d51c709cca99dc2469503da97de7021c
+    m_Address: Consumable_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: eb33c7a99e9b09d4a8554dc1632b0802, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c81aa3c105013524a8379006c900c9a0, type: 2}
+    - {fileID: 11400000, guid: b4d81d1641cd10a4c9f33f7ca67d7b18, type: 2}
