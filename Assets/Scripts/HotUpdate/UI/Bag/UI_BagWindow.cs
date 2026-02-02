@@ -31,6 +31,7 @@ public class UI_BagWindow : UI_CustomWindowBase, IInputBlockerUI
 
     public void Show(BagData bagData)
     {
+        Clear();
         List<ItemDataBase> itemDataList = bagData.itemDataList;
         for (int i = 0; i < itemDataList.Count; ++i) slotList.Add(null);
         int currentIndex = 0;
@@ -39,13 +40,26 @@ public class UI_BagWindow : UI_CustomWindowBase, IInputBlockerUI
             if (itemData != null)
             {
                 slotList[currentIndex] = CreateSlot(currentIndex, itemData);
+                print($"{currentIndex} + {slotList[currentIndex]}");
             }
             else
             {
                 slotList[currentIndex] = CreateEmptySlot(currentIndex);
             }
+            if(currentIndex == bagData.usedWeponIndex) // 当前使用的武器需要加上UsedIcon
+            {
+                if(slotList[currentIndex] is UI_WeaponSlot)
+                {
+                    ((UI_WeaponSlot)slotList[currentIndex]).SetUseState(true);
+                }
+                else
+                {
+                    Debug.Log($"对应usedWeponIndex: {bagData.usedWeponIndex} 不是WeaponSlot");
+                }
+            }
             currentIndex ++;
         }
+        print(slotList[1]);
     }
 
     public void OnUseItem(int index)
@@ -64,7 +78,12 @@ public class UI_BagWindow : UI_CustomWindowBase, IInputBlockerUI
         {
             CreateEmptySlot(index);
         }
+    }
 
+    public void UpdateWeaponUsedIcon(int oldIndex, int newIndex)
+    {
+        ((UI_WeaponSlot)slotList[oldIndex]).SetUseState(false);
+        ((UI_WeaponSlot)slotList[newIndex]).SetUseState(true);
     }
 
     public UI_SlotBase CreateEmptySlot(int index)
@@ -79,7 +98,7 @@ public class UI_BagWindow : UI_CustomWindowBase, IInputBlockerUI
 
     public UI_SlotBase CreateSlot(int index, ItemDataBase itemData)
     {
-        ItemConfigBase itemConfig = ResSystem.LoadAsset<ItemConfigBase>(itemData.configKey);
+        ItemConfigBase itemConfig = ResSystem.LoadAsset<ItemConfigBase>(itemData.id);
         string slotKey = itemConfig.slotKey;
         UI_SlotBase slot = ResSystem.InstantiateGameObject(slotKey, itemRoot).GetComponent<UI_SlotBase>();
         slot.Init(itemData, itemConfig, index, OnUseItem);

@@ -39,11 +39,13 @@ public struct S2C_UpdateBagData : INetworkSerializable
 {
     public ItemDataBase itemData;
     public ItemType itemType;
+    public int oldIndex; // 需要原先的武器下标，来切换SelectIcon
     public int index;
     public int version;
     public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
     {
         serializer.SerializeValue<ItemType>(ref itemType);
+        serializer.SerializeValue<int>(ref oldIndex);
         serializer.SerializeValue<int>(ref index);
         serializer.SerializeValue<int>(ref version);
         if (serializer.IsReader) 

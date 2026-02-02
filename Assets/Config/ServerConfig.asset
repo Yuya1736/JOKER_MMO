@@ -1616,6 +1616,17 @@ MonoBehaviour:
     - {fileID: 6883805142402015016, guid: 00058bbe136f6f7488f4eeee2485b07e, type: 3}
     - {fileID: 5514641543283549136, guid: ccbffd256955e71438289635d5e86b0e, type: 3}
     - {fileID: 7580248360593605378, guid: 90041e093943f444bbc47030a6461163, type: 3}
+    - {fileID: 11400000, guid: 3ba01ab7ab933e74188eb01c5e5b9238, type: 2}
+    - {fileID: 11400000, guid: a811f40955e33b042918775da717b83f, type: 2}
+    - {fileID: 11400000, guid: 1313908bc8b9b5b4495a262868a1da18, type: 2}
+    - {fileID: 11400000, guid: 227989ee559ff2a4680d896eb8e08b9c, type: 2}
+    - {fileID: 11400000, guid: d19b1f8381af6d148bd7f85b37d44567, type: 2}
+    - {fileID: 11400000, guid: 147d00114d3fb4944b7e2866b54debfe, type: 2}
+    - {fileID: 11400000, guid: 480018101a4cc644ab62267c841e7503, type: 2}
+    - {fileID: 11400000, guid: d51c709cca99dc2469503da97de7021c, type: 2}
+    - {fileID: 11400000, guid: 4b4c423b735e8c340964d8bf6234671d, type: 2}
+    - {fileID: 11400000, guid: 1799f79775b56e6458c0737a8110962b, type: 2}
+    - {fileID: 11400000, guid: 8888c5bd1d624e14fba3097b79940730, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -20841,6 +20852,158 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: itemConfigDic
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ItemConfigBase,
+        Common]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 11
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Weapon_0
+    - Name: $v
+      Entry: 10
+      Data: 1600
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Weapon_1
+    - Name: $v
+      Entry: 10
+      Data: 1601
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Material_0
+    - Name: $v
+      Entry: 10
+      Data: 1602
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Material_1
+    - Name: $v
+      Entry: 10
+      Data: 1603
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Material_2
+    - Name: $v
+      Entry: 10
+      Data: 1604
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Material_3
+    - Name: $v
+      Entry: 10
+      Data: 1605
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Consumable_0
+    - Name: $v
+      Entry: 10
+      Data: 1606
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Consumable_1
+    - Name: $v
+      Entry: 10
+      Data: 1607
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Consumable_2
+    - Name: $v
+      Entry: 10
+      Data: 1608
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Consumable_3
+    - Name: $v
+      Entry: 10
+      Data: 1609
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Consumable_4
+    - Name: $v
+      Entry: 10
+      Data: 1610
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   NetworkManagerPrefab: {fileID: 6559842006975930018, guid: 3c58b8aecf7be2d4dabadfdbc0f63b89,
     type: 3}
   serverOnGameScenePrefab: {fileID: 1163381411858066478, guid: 1de89df1c0f9f534baeb88b088f5c79f,
@@ -20849,3 +21012,6 @@ MonoBehaviour:
     type: 3}
   defaultPlayerBirthPos: {x: 145, y: 54.5, z: 160}
   terrainsPath: Assets\EnvRes\Terrains
+  weaponConfigFolderPath: Assets\Config\Item\Weapon
+  materialConfigFolderPath: Assets\Config\Item\Material
+  consumableConfigFolderPath: Assets\Config\Item\Consumable

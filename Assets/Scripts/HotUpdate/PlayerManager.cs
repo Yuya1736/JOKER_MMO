@@ -19,6 +19,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
     public void Init()
     {
         EventSystem.AddTypeEventListener<LocalPlayerEvent>(OnInitLocalPlayer);
+        PlayerController.SetGetWeaponFunc(GetWeapon);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_GetBagData, OnReceiveBagData);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_UpdateBagData, OnReceiveUpdateBagData);
     }
@@ -66,7 +67,6 @@ public class PlayerManager : SingletonMono<PlayerManager>
 
     public void UseItem(int index)
     {
-        print("Send UseItem");
         NetMessageManager.Instance.SendMessageToServer<C2S_UseItem>(NetMessageType.C2S_UseItem, new C2S_UseItem
         {
             index = index
@@ -75,16 +75,34 @@ public class PlayerManager : SingletonMono<PlayerManager>
 
     private void OnReceiveUpdateBagData(ulong clientId, INetworkSerializable serializable)
     {
-        print("Receive UpdateItem");
-        S2C_UpdateBagData s2C_UpdateBagData = (S2C_UpdateBagData)serializable;
+        S2C_UpdateBagData message = (S2C_UpdateBagData)serializable;
         // 如果版本相同 不需要操作
-        if (bagData == null || bagData.version == s2C_UpdateBagData.version) return;
-        bagData.version = s2C_UpdateBagData.version;
+        if (bagData == null || bagData.version == message.version) return;
+        bagData.version = message.version;
         // 如果背包窗口存在 更新背包对应物体的表现
         if (UISystem.GetWindow<UI_BagWindow>() != null && UISystem.GetWindow<UI_BagWindow>().gameObject.activeInHierarchy)
         {
-            UISystem.GetWindow<UI_BagWindow>().UpdataItem(s2C_UpdateBagData.index, s2C_UpdateBagData.itemData);
+            if (message.itemType == ItemType.Weapon) // 如果是武器，切换UsedIcon
+            {
+                UISystem.GetWindow<UI_BagWindow>().UpdateWeaponUsedIcon(message.oldIndex, message.index);
+            }
+            else // 如果是消耗品
+            {
+                UISystem.GetWindow<UI_BagWindow>().UpdataItem(message.index, message.itemData);
+            }
         }
-        bagData.itemDataList[s2C_UpdateBagData.index] = s2C_UpdateBagData.itemData;
+        bagData.itemDataList[message.index] = message.itemData;
+    }
+
+    private GameObject GetWeapon(string WeaponId)
+    {
+        GameObject weaponObj = PoolSystem.GetGameObject(WeaponId);
+        if(weaponObj == null)
+        {
+            WeaponConfig weaponConfig = ResSystem.LoadAsset<WeaponConfig>(WeaponId);
+            weaponObj = Instantiate(weaponConfig.prefab);
+            weaponObj.name = WeaponId;
+        }
+        return weaponObj;
     }
 }

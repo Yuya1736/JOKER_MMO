@@ -15,8 +15,12 @@ public class ServerConfig : ConfigBase
     public Vector3 defaultPlayerBirthPos;
 
     public Dictionary<string, GameObject> terrainDic;
-
     [SerializeField] private string terrainsPath;
+
+    public Dictionary<string, ItemConfigBase> itemConfigDic;
+    [SerializeField] private string weaponConfigFolderPath;
+    [SerializeField] private string materialConfigFolderPath;
+    [SerializeField] private string consumableConfigFolderPath;
 
 #if UNITY_EDITOR
     [Button("ImportTerrains")]
@@ -34,6 +38,27 @@ public class ServerConfig : ConfigBase
             terrainDic.Add(terrainObj.name, terrainObj);
         }
         AssetDatabase.Refresh();
+    }
+
+    [Button("ImportConfigs")]
+    private void InitItemConfigDic()
+    {
+        if (itemConfigDic == null) itemConfigDic = new Dictionary<string, ItemConfigBase>(50);
+        itemConfigDic.Clear();
+        InitSingleConfig(weaponConfigFolderPath);
+        InitSingleConfig(materialConfigFolderPath);
+        InitSingleConfig(consumableConfigFolderPath);
+    }
+
+    private void InitSingleConfig(string path)
+    {
+        string[] files = Directory.GetFiles(path);
+        foreach (string file in files)
+        {
+            if (file.EndsWith(".meta")) continue;
+            ItemConfigBase config = AssetDatabase.LoadAssetAtPath<ItemConfigBase>(file);
+            itemConfigDic.Add(config.name, config);
+        }
     }
 #endif
 }

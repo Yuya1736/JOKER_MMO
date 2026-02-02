@@ -30,7 +30,7 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
         LocalizationSystem.GlobalConfig = ResSystem.LoadAsset<LocalizationConfig>("GlobalLocalizationConfig");
 
         InitUIWindows();
-
+        
         LoadLoginScene();
 
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_Disconnect, OnReceiveDisconnect);
@@ -76,7 +76,6 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
             // 游戏内ESC菜单
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                print("ESC");
                 // 只有在GameScene能呼出Escape弹窗
                 if (popupWindow == null || !popupWindow.gameObject.activeSelf)
                 {

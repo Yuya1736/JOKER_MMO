@@ -244,5 +244,6 @@ MonoBehaviour:
   iconImage: {fileID: 7941517289938480753}
   normalFrame: {fileID: 21300000, guid: 74670eb495c42448db0be880cfa86790, type: 3}
   selectFrame: {fileID: 21300000, guid: 451cd109040e0426483bf2ea4aa176ee, type: 3}
+  index: 0
   itemConfig: {fileID: 0}
-  selectIconPrefab: {fileID: 3841942051502697914}
+  selectIcon: {fileID: 3841942051502697914}

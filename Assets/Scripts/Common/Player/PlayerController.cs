@@ -1,4 +1,6 @@
 using JKFrame;
+using System;
+using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -9,21 +11,21 @@ public partial class PlayerController : NetworkBehaviour
     public bool canControl;
     public Transform cameraLookPos;
     public Transform camaraFollow;
+    [SerializeField] private PlayerView playerView;
+    public PlayerView PlayerView => playerView;
+    private static Func<string, GameObject> getWeaponFunc;
+    public static void SetGetWeaponFunc(Func<string, GameObject> func) {  getWeaponFunc = func; }
     
-
     public NetVariable<PlayerState> currentState = new NetVariable<PlayerState>(PlayerState.None);
-    
+    public NetVariable<FixedString32Bytes> currentWeapon = new NetVariable<FixedString32Bytes>();
+
     public override void OnNetworkSpawn()
     {
-        //print("Client Spawn0");
-        //print($"IsClient {IsClient} IsOwner {IsOwner}");
-        //print($"IsClient {NetworkObject.OwnerClientId} IsOwner {IsOwner}");
-        //print(IsClient);
         base.OnNetworkSpawn();
+        currentWeapon.OnValueChanged = OnWeaponChanged;
 #if !UNITY_SERVER
         if (IsClient && IsOwner)
         {
-            //print("Client Spawn");
             Client_OnNetworkSpawn();
         }
 #endif
@@ -34,6 +36,7 @@ public partial class PlayerController : NetworkBehaviour
         }
 #endif
     }
+
 
     public override void OnNetworkDespawn()
     {
@@ -50,6 +53,13 @@ public partial class PlayerController : NetworkBehaviour
             Server_OnNetworkDespawn();
         }
 #endif
+    }
+
+    private void OnWeaponChanged(FixedString32Bytes previousValue, FixedString32Bytes newValue)
+    {
+        GameObject weaponObj = getWeaponFunc?.Invoke(newValue.ToString());
+        playerView.SetWeapon(weaponObj);
+        print("WeaponChanged");
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -110,10 +120,8 @@ public partial class PlayerController : NetworkBehaviour, IStateMachineOwner
     public InputInfo inputData { get; private set; }
     public StateMachine stateMachine { get; private set; }
     [SerializeField] private Animator animator;
-    [SerializeField] private PlayerView playerView;
     [SerializeField] private CharacterController characterController;
     public Animator Animator => animator;
-    public PlayerView PlayerView => playerView;
     public CharacterController CharacterController => characterController;
 
     [SerializeField, Header("重力系统")] private float gravity = 9.8f;

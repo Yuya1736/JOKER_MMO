@@ -35,6 +35,10 @@ public class HotUpdateSystem : MonoBehaviour
     bool succeed;
     private IEnumerator DoUpdateAddressables()
     {
+#if UNITY_EDITOR
+        onEnd?.Invoke(true);
+        yield break;
+#endif
         // ¶Ïµã´«Ðø
         HotUpdateSystemState hotUpdateSystemState = SaveSystem.LoadSetting<HotUpdateSystemState>();
         if (hotUpdateSystemState == null || hotUpdateSystemState.succeed == false)

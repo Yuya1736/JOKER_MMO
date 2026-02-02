@@ -1,14 +1,26 @@
-﻿using UnityEngine;
-public class ServerResSystem
+﻿using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+public static class ServerResSystem
 {
     [SerializeField] public static ServerConfig serverConfig { get; private set; }
     [SerializeField] public static MapConfig mapConfig { get; private set; }
+
+    
+    
     static ServerResSystem()
     {
         if (serverConfig == null) serverConfig = ServerGlobal.Instance.ServerConfig;
         if (mapConfig == null) mapConfig = ServerGlobal.Instance.MapConfig;
     }
 
+    
+
+    public static T GetItemConfig<T>(string itemName) where T : ItemConfigBase
+    {
+        return (T)serverConfig.itemConfigDic[itemName];
+    }
     public static NetManager InsatantialteNetworkManager()
     {
         GameObject obj = GameObject.Instantiate(serverConfig.NetworkManagerPrefab);

@@ -8,6 +8,7 @@ public class BagData : INetworkSerializable
     public List<ItemDataBase> itemDataList = new List<ItemDataBase>(maxItemCount);
     [BsonIgnore]
     public int version;
+    public int usedWeponIndex;
 
     public BagData()
     {
@@ -92,7 +93,7 @@ public class BagData : INetworkSerializable
         for (int i = 0; i < itemDataList.Count; ++i) 
         {
             ItemDataBase itemData = itemDataList[i];
-            if(itemData !=  null || itemData.id == id)
+            if(itemData !=  null && itemData.id == id)
             {
                 index = i;
                 return itemData;
@@ -138,7 +139,7 @@ public class BagData : INetworkSerializable
         for (int i = 0; i < itemDataList.Count; ++i)
         {
             ItemDataBase itemData = itemDataList[i];
-            if(itemData != null || itemData.id == id)
+            if(itemData != null && itemData.id == id)
             {
                 StackableItemDataBase stackableItemData = itemData as StackableItemDataBase;
                 stackableItemData.count += count;
