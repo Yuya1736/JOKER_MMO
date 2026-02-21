@@ -9,4 +9,7 @@ public static class LocalizationKey
     public static string nameOrPasswordWrong = "账号或密码错误";
     public static string loginSucceed = "登录成功";
     public static string accountRepectLogin = "用户重复登录";
+    public static string moneyLack = "金币不足";
+    public static string bagSpaceLack = "背包空间不足";
+    public static string materialLack = "缺少材料";
 }

@@ -10,13 +10,20 @@ public class UI_SlotBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] protected Image iconImage;
     [SerializeField] private Sprite normalFrame;
     [SerializeField] private Sprite selectFrame;
+    public static UI_SlotBase enteredSlot;
+    public IBagWindow bagWindow;
     public int index;
-    public Action<int> onMouseRightClick;
+    public Action<int> onMouseRightClickAciton;
+    public Action<int> onMouseLeftClickAciton;
+    public Action<UI_SlotBase, UI_SlotBase> onDragItemToNewSlotAciton;
 
-    public virtual void Init(ItemDataBase itemData, ItemConfigBase itemConfig, int index, Action<int> onMouseRightClick)
+    public virtual void Init(IBagWindow bagWindow, ItemDataBase itemData, ItemConfigBase itemConfig, int index, Action<int> onMouseRightClick, Action<int> onMouseLeftClickAciton, Action<UI_SlotBase, UI_SlotBase> onDragItemToNewSlotAciton)
     {
+        this.bagWindow = bagWindow;
         this.index = index;
-        this.onMouseRightClick = onMouseRightClick;
+        this.onMouseRightClickAciton = onMouseRightClick;
+        this.onMouseLeftClickAciton = onMouseLeftClickAciton;
+        this.onDragItemToNewSlotAciton = onDragItemToNewSlotAciton;
         OnPointerExit(null);
     }
 
@@ -28,32 +35,64 @@ public class UI_SlotBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         slotImage.sprite = selectFrame;
+        enteredSlot = this;
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
         slotImage.sprite = normalFrame;
+        if (enteredSlot == this) enteredSlot = null;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if(eventData.button == PointerEventData.InputButton.Right)
         {
-            onMouseRightClick?.Invoke(index);
+            onMouseRightClickAciton?.Invoke(index);
         }
+        else if(eventData.button == PointerEventData.InputButton.Left)
+        {
+            onMouseLeftClickAciton?.Invoke(index);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (enteredSlot == this) enteredSlot = null;
     }
 }
 
-public class UI_SlotBase<D, C> : UI_SlotBase where D : ItemDataBase where C : ItemConfigBase
+public class UI_SlotBase<D, C> : UI_SlotBase, IBeginDragHandler, IDragHandler, IEndDragHandler where D : ItemDataBase where C : ItemConfigBase
 {
     public D itemData;
     public C itemConfig;
 
-    public override void Init(ItemDataBase itemData, ItemConfigBase itemConfig, int index, Action<int> onMouseRightClick)
+    public override void Init(IBagWindow bagWindow, ItemDataBase itemData, ItemConfigBase itemConfig, int index, Action<int> onMouseRightClick, Action<int> onMouseLeftClickAciton, Action<UI_SlotBase, UI_SlotBase> onDragItemToNewSlotAciton)
     {
-        base.Init(itemData, itemConfig, index, onMouseRightClick);
+        base.Init(bagWindow, itemData, itemConfig, index, onMouseRightClick, onMouseLeftClickAciton, onDragItemToNewSlotAciton);
         this.itemData = (D)itemData;
         this.itemConfig = (C)itemConfig;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        iconImage.transform.SetParent(UISystem.DragLayer);
+        iconImage.GetComponent<CanvasGroup>().blocksRaycasts = false; // 鼠标进入slot需要高亮显示，不能让iconImage挡住射线
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        iconImage.transform.position = eventData.position;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        iconImage.transform.SetParent(this.transform);
+        iconImage.transform.SetAsFirstSibling();
+        iconImage.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        iconImage.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        if (enteredSlot != null && enteredSlot != this) onDragItemToNewSlotAciton?.Invoke(this, enteredSlot);
+        enteredSlot = null;
     }
 
     public override void OnPointerEnter(PointerEventData eventData)

@@ -1,0 +1,126 @@
+﻿using JKFrame;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class UI_CraftWindow : UI_CustomWindowBase, IInputBlockerUI, IBagWindow
+{
+    [SerializeField] private Button btnClose;
+    [SerializeField] private Button btnCraft;
+    [SerializeField] private Transform itemRoot;
+    [SerializeField] private Transform targerItemRoot;
+    [SerializeField] private Transform targerChildItemRoot;
+    private string emptySlotkey => GlobalUtility.emptySlotKey;
+    private List<UI_SlotBase> itemSlotList = new List<UI_SlotBase>(10);
+    private const int maxItemSlotCount = 6;
+    private UI_SlotBase targerItemSlot;
+    private List<UI_SlotBase> targetChildItemList = new List<UI_SlotBase>(10);
+
+    private void Awake()
+    {
+        btnClose.onClick.AddListener(OnBtnCloseClick);
+    }
+
+    private void OnBtnCloseClick()
+    {
+        UISystem.Close<UI_BagWindow>();
+        UISystem.Close<UI_CraftWindow>();
+    }
+
+    public void ClearItemSlot()
+    {
+        for (int i = itemSlotList.Count - 1; i >= 0; i--)
+        {
+            itemSlotList[i].Destroy();
+        }
+        itemSlotList.Clear();
+    }
+
+    public void ClearTargetSlot()
+    {
+        if (targerItemSlot != null) targerItemSlot.Destroy();
+        targerItemSlot = null;
+        for (int i = targetChildItemList.Count - 1; i >= 0; i--)
+        {
+            targetChildItemList[i].Destroy();
+        }
+        targetChildItemList.Clear();
+    }
+
+    public void Show(CrafterConfig crafterConfig)
+    {
+        List<CrafterItemConfig> itemConfigs = crafterConfig.itemConfigs;
+        for (int i = 0; i < maxItemSlotCount; i++)
+        {
+            if (i >= itemConfigs.Count || itemConfigs[i].count <= 0) itemSlotList.Add(CreateEmptySlot(i, itemRoot));
+            else
+            {
+                
+                CrafterItemConfig craftItemConfig = itemConfigs[i];
+                ItemConfigBase itemConfigBase = craftItemConfig.itemConfig;
+                int count = craftItemConfig.count;
+                ItemDataBase itemDataBase  = itemConfigBase.GetDefaultItemData();
+                if (itemDataBase is StackableItemDataBase) ((StackableItemDataBase)itemDataBase).count = count;
+                UI_SlotBase slot = CreateSlot(i, itemDataBase, itemRoot);
+                itemSlotList.Add(slot);
+                print(slot);
+            }
+        }
+    }
+    public void OnBuyItem(int index)
+    {
+        MerchantConfig config = ResSystem.LoadAsset<MerchantConfig>(PlayerManager.currentMerchantConfig);
+        if (index >= config.itemConfigs.Count) return;
+        string itemId = config.itemConfigs[index].itemConfig.name;
+        PlayerManager.Instance.ShopBuyItem(itemId);
+    }
+
+    //public void UpdataItem(int index, ItemDataBase itemData, Transform itemRoot)
+    //{
+    //    slotList[index].Destroy();
+    //    if (itemData != null)
+    //    {
+    //        slotList[index] = CreateSlot(index, itemData, itemRoot);
+    //        if (itemData is WeaponData)
+    //        {
+    //            if (PlayerManager.bagData.usedWeponIndex == slotList[index].index) ((UI_WeaponSlot)slotList[index]).SetUseState(true);
+    //            else ((UI_WeaponSlot)slotList[index]).SetUseState(false);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        slotList[index] = CreateEmptySlot(index, itemRoot);
+    //    }
+    //}
+
+    public UI_SlotBase CreateEmptySlot(int index, Transform itemRoot)
+    {
+        //UI_SlotBase emptySlot = Instantiate(ResSystem.LoadAsset<GameObject>(emptySlotkey), itemRoot).GetComponent<UI_SlotBase>();
+        UI_SlotBase emptySlot = ResSystem.InstantiateGameObject<UI_SlotBase>(emptySlotkey, itemRoot);
+        emptySlot.Init(this, null, null, index, null, null);
+        emptySlot.transform.SetSiblingIndex(index);
+        return emptySlot;
+    }
+
+    public UI_SlotBase CreateSlot(int index, ItemDataBase itemData, Transform itemRoot)
+    {
+        ItemConfigBase itemConfig = ResSystem.LoadAsset<ItemConfigBase>(itemData.id);
+        string slotKey = itemConfig.slotKey;
+        UI_SlotBase slot = ResSystem.InstantiateGameObject<UI_SlotBase>(slotKey, itemRoot);
+        slot.Init(this, itemData, itemConfig, index, OnBuyItem, OnDragItemToNewSlot);
+        slot.transform.SetSiblingIndex(index);
+        return slot;
+    }
+
+    private void OnDragItemToNewSlot(UI_SlotBase oldSlot, UI_SlotBase newSlot) // oldSlot.bagWindow is UI_BagWindow
+    {
+        
+    }
+
+    public override void OnClose()
+    {
+        base.OnClose();
+        ClearItemSlot();
+        ClearTargetSlot();
+    }
+}

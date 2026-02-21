@@ -33,6 +33,7 @@ MonoBehaviour:
   - System.Core
   - System
   - Unity.Collections
+  - mscorlib
   outputLinkFile: HybridCLRGenerate/link.xml
   outputAOTGenericReferenceFile: HybridCLRGenerate/AOTGenericReferences.cs
   maxGenericReferenceIteration: 10

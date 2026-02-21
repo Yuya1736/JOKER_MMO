@@ -35,10 +35,10 @@ public class HotUpdateSystem : MonoBehaviour
     bool succeed;
     private IEnumerator DoUpdateAddressables()
     {
-#if UNITY_EDITOR
-        onEnd?.Invoke(true);
-        yield break;
-#endif
+//#if UNITY_EDITOR
+//        onEnd?.Invoke(true);
+//        yield break;
+//#endif
         // 断点传续
         HotUpdateSystemState hotUpdateSystemState = SaveSystem.LoadSetting<HotUpdateSystemState>();
         if (hotUpdateSystemState == null || hotUpdateSystemState.succeed == false)
@@ -108,8 +108,8 @@ public class HotUpdateSystem : MonoBehaviour
 
         if (succeed)
         {
-            LoadUpdateDll();
             LoadAotDll();
+            LoadUpdateDll();
             // 在LoadUpdateDll后才能LoadAsset出热更新类型的资源，否则会找不到对应类型的资源 Application.persistentDataPath + "\\com.unity.addressables\\catalog.json"
             Addressables.LoadContentCatalogAsync(Directory.GetFiles(Application.persistentDataPath + "/com.unity.addressables", "*.json")[0]);
         }
@@ -154,7 +154,7 @@ public class HotUpdateSystem : MonoBehaviour
                     onUpdatePercentDo?.Invoke(downloadPercent);
                     // 更新UI面板的进度
                     UpdateLoadingWindow(downloadSize * downloadPercent, downloadSize);
-                    Debug.Log("当前文件下载进度: " + downloadPercent * 100 + "%");
+                    //Debug.Log("当前文件下载进度: " + downloadPercent * 100 + "%");
                     yield return new WaitForSecondsRealtime(0.5f);
                 }
 
@@ -192,6 +192,7 @@ public class HotUpdateSystem : MonoBehaviour
         {
             TextAsset textAsset = Addressables.LoadAssetAsync<TextAsset>(dllName).WaitForCompletion();
             System.Reflection.Assembly.Load(textAsset.bytes);
+            Debug.Log("加载热更新dll完成: " + dllName);
         }
         Debug.Log("HotUpdate所有dll加载完成");
     }
@@ -202,7 +203,8 @@ public class HotUpdateSystem : MonoBehaviour
         {
             byte[] bytes = aotText.bytes;
             LoadImageErrorCode errorCode = RuntimeApi.LoadMetadataForAOTAssembly(bytes, HomologousImageMode.SuperSet);
-            if(errorCode != LoadImageErrorCode.OK)
+            Debug.Log("加载AOT dll完成: " + aotText.name);
+            if (errorCode != LoadImageErrorCode.OK)
             {
                 Debug.Log("加载AOT错误: " + errorCode);
             }

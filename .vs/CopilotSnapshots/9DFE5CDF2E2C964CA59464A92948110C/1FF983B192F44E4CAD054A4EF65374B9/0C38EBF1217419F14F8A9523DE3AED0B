@@ -1,0 +1,26 @@
+﻿using System;
+using UnityEngine;
+
+public class UI_WeaponSlot : UI_SlotBase<WeaponData, WeaponConfig>
+{
+    [SerializeField] private GameObject selectIcon; // TODO:
+
+    public override void Init(IBagWindow bagWindow, ItemDataBase itemData, ItemConfigBase itemConfig, int index, Action<int> onMouseRightClick, Action<UI_SlotBase, UI_SlotBase> onDragItemToNewSlotAciton)
+    {
+        base.Init(bagWindow, itemData, itemConfig, index, onMouseRightClick, onDragItemToNewSlotAciton);
+        iconImage.sprite = itemConfig.icon;
+        SetUseState(false);
+    }
+
+    public void SetUseState(bool isUsed)
+    {
+        if (isUsed)
+        {
+            selectIcon.SetActive(true);
+        }
+        else
+        {
+            selectIcon.SetActive(false);
+        }
+    }
+}

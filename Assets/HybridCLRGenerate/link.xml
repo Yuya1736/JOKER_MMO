@@ -17,6 +17,7 @@
     <type fullname="JKFrame.ResSystem" preserve="all" />
     <type fullname="JKFrame.SaveSystem" preserve="all" />
     <type fullname="JKFrame.SingletonMono`1" preserve="all" />
+    <type fullname="JKFrame.StateMachine" preserve="all" />
     <type fullname="JKFrame.UISystem" preserve="all" />
     <type fullname="JKFrame.UIWindowData" preserve="all" />
     <type fullname="JKFrame.UI_WindowBase" preserve="all" />
@@ -42,6 +43,7 @@
     <type fullname="Unity.Netcode.FastBufferReader" preserve="all" />
     <type fullname="Unity.Netcode.FastBufferWriter" preserve="all" />
     <type fullname="Unity.Netcode.FastBufferWriter/ForEnums" preserve="all" />
+    <type fullname="Unity.Netcode.FastBufferWriter/ForFixedStrings" preserve="all" />
     <type fullname="Unity.Netcode.FastBufferWriter/ForNetworkSerializable" preserve="all" />
     <type fullname="Unity.Netcode.FastBufferWriter/ForPrimitives" preserve="all" />
     <type fullname="Unity.Netcode.INetworkPrefabInstanceHandler" preserve="all" />
@@ -106,7 +108,9 @@
     <type fullname="UnityEngine.Events.UnityEvent`1" preserve="all" />
     <type fullname="UnityEngine.GameObject" preserve="all" />
     <type fullname="UnityEngine.GeometryUtility" preserve="all" />
+    <type fullname="UnityEngine.HeaderAttribute" preserve="all" />
     <type fullname="UnityEngine.KeyCode" preserve="all" />
+    <type fullname="UnityEngine.LayerMask" preserve="all" />
     <type fullname="UnityEngine.Mathf" preserve="all" />
     <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
@@ -130,6 +134,10 @@
   <assembly fullname="UnityEngine.InputLegacyModule">
     <type fullname="UnityEngine.Input" preserve="all" />
   </assembly>
+  <assembly fullname="UnityEngine.PhysicsModule">
+    <type fullname="UnityEngine.CharacterController" preserve="all" />
+    <type fullname="UnityEngine.Collider" preserve="all" />
+  </assembly>
   <assembly fullname="UnityEngine.TerrainModule">
     <type fullname="UnityEngine.Terrain" preserve="all" />
   </assembly>
@@ -137,6 +145,9 @@
     <type fullname="UnityEngine.TextAnchor" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.UI">
+    <type fullname="UnityEngine.EventSystems.IBeginDragHandler" preserve="all" />
+    <type fullname="UnityEngine.EventSystems.IDragHandler" preserve="all" />
+    <type fullname="UnityEngine.EventSystems.IEndDragHandler" preserve="all" />
     <type fullname="UnityEngine.EventSystems.IEventSystemHandler" preserve="all" />
     <type fullname="UnityEngine.EventSystems.IPointerClickHandler" preserve="all" />
     <type fullname="UnityEngine.EventSystems.IPointerEnterHandler" preserve="all" />
@@ -159,12 +170,17 @@
     <type fullname="UnityEngine.UI.Toggle" preserve="all" />
     <type fullname="UnityEngine.UI.Toggle/ToggleEvent" preserve="all" />
   </assembly>
+  <assembly fullname="UnityEngine.UIModule">
+    <type fullname="UnityEngine.CanvasGroup" preserve="all" />
+  </assembly>
   <assembly fullname="netstandard">
     <type fullname="System.Action" preserve="all" />
     <type fullname="System.Action`1" preserve="all" />
     <type fullname="System.Action`2" preserve="all" />
+    <type fullname="System.Activator" preserve="all" />
     <type fullname="System.Array" preserve="all" />
     <type fullname="System.Attribute" preserve="all" />
+    <type fullname="System.Boolean" preserve="all" />
     <type fullname="System.Byte" preserve="all" />
     <type fullname="System.CodeDom.Compiler.GeneratedCodeAttribute" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2" preserve="all" />
@@ -203,6 +219,7 @@
     <type fullname="System.Runtime.CompilerServices.RuntimeHelpers" preserve="all" />
     <type fullname="System.Runtime.InteropServices.UnmanagedType" preserve="all" />
     <type fullname="System.RuntimeFieldHandle" preserve="all" />
+    <type fullname="System.Security.UnverifiableCodeAttribute" preserve="all" />
     <type fullname="System.String" preserve="all" />
     <type fullname="System.Type" preserve="all" />
     <type fullname="System.ValueType" preserve="all" />

@@ -21011,6 +21011,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 2054718837051158178, guid: c5ae4c648984a0e4c9ef8e3a28319242,
     type: 3}
   defaultPlayerBirthPos: {x: 145, y: 54.5, z: 160}
+  defaultMoney: 500
   terrainsPath: Assets\EnvRes\Terrains
   weaponConfigFolderPath: Assets\Config\Item\Weapon
   materialConfigFolderPath: Assets\Config\Item\Material

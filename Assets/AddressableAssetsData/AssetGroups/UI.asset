@@ -62,6 +62,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f90d0cccf67e4154f96e9fe56b33f1d2
+    m_Address: UI_ShortCutBarWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: eb33c7a99e9b09d4a8554dc1632b0802, type: 2}
   m_SchemaSet:

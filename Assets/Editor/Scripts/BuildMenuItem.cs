@@ -54,7 +54,20 @@ public class BuildMenuItem
             locationPathName = new DirectoryInfo(Application.dataPath).Parent.FullName + '/' + buildPath + '/' + ServerPath + "/Server.exe"
         };
 
-        BuildPipeline.BuildPlayer(buildPlayerOptions);
+        string clientFolder = "Assets/Scripts/HotUpdate";
+        HideFolder(clientFolder);
+        try
+        {
+            BuildPipeline.BuildPlayer(buildPlayerOptions);
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            ShowFolder(clientFolder);
+        }
 
         HybridCLR.Editor.SettingsUtil.Enable = true;
         AddressableAssetSettingsDefaultObject.Settings.BuildAddressablesWithPlayerBuild = AddressableAssetSettings.PlayerBuildOption.PreferencesValue;
@@ -93,11 +106,22 @@ public class BuildMenuItem
             locationPathName = new DirectoryInfo(Application.dataPath).Parent.FullName + '/' + buildPath + '/' + ClientPath + "/Client.exe"
         };
         // Addressable会自动构建
-        Debug.Log(new DirectoryInfo(Application.dataPath).Parent.FullName + '/' + buildPath + '/' + ClientPath + "/Client.exe");
-        BuildPipeline.BuildPlayer(buildPlayerOptions);
-
+        string serverFolder = "Assets/Scripts/Server";
+        HideFolder(serverFolder);
+        try
+        {
+            BuildPipeline.BuildPlayer(buildPlayerOptions);
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            ShowFolder(serverFolder);
+        }
+        
         //if (serverEditorTest) JKFrameSetting.AddScriptCompilationSymbol(serverEditorTestSymbolName);
-
         Debug.Log("完成构建客户端");
     }
 
@@ -143,15 +167,25 @@ public class BuildMenuItem
         Debug.Log("完成创建DllBytes");
     }
 
-    private static bool serverEditorTest;
-    private const string serverEditorTestSymbolName = "SERVER_EDITOR_TEST";
-
-    [MenuItem("Project/ServerEditorTest")]
-    public static void ServerEditorTest()
+    public static void HideFolder(string folder)
     {
-        serverEditorTest = !serverEditorTest;
-        if (serverEditorTest) JKFrameSetting.AddScriptCompilationSymbol(serverEditorTestSymbolName);
-        else JKFrameSetting.RemoveScriptCompilationSymbol(serverEditorTestSymbolName);
-        Menu.SetChecked("Project/ServerEditorTest", serverEditorTest);
+        if (Directory.Exists(folder))
+        {
+            string newFolder = $"{folder}~";
+            Directory.Move(folder, newFolder);
+            File.Delete($"{folder}.meta");
+            AssetDatabase.Refresh();
+        }
     }
+
+    public static void ShowFolder(string folder)
+    {
+        string newFolder = $"{folder}~";
+        if (Directory.Exists(newFolder))
+        {
+            Directory.Move(newFolder, folder);
+            File.Delete($"{folder}.meta");
+            AssetDatabase.Refresh();
+        }
+    }   
 }

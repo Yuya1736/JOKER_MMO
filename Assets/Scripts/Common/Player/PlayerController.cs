@@ -5,6 +5,7 @@ using Unity.Netcode;
 using UnityEngine;
 
 // 公共
+//[GenerateSerializationForTypeAttribute(typeof(Unity.Collections.FixedString32Bytes))]
 public partial class PlayerController : NetworkBehaviour
 {
 
@@ -17,7 +18,29 @@ public partial class PlayerController : NetworkBehaviour
     public static void SetGetWeaponFunc(Func<string, GameObject> func) {  getWeaponFunc = func; }
     
     public NetVariable<PlayerState> currentState = new NetVariable<PlayerState>(PlayerState.None);
-    public NetVariable<FixedString32Bytes> currentWeapon = new NetVariable<FixedString32Bytes>();
+    public NetVariable<FixedString32Bytes> currentWeapon = new NetVariable<FixedString32Bytes>("");
+    // Client
+    private Camera mainCamera;
+    private Vector2 lastDir = Vector2.zero;
+    // Server
+    [SerializeField] public float speed = 3;
+    public class InputInfo { public Vector2 dir; }
+    public InputInfo inputData { get; private set; }
+    public StateMachine stateMachine { get; private set; }
+    [SerializeField] private Animator animator;
+    [SerializeField] private CharacterController characterController;
+    public CharacterController CharacterController => characterController;
+
+    [SerializeField, Header("重力系统")] private float gravity = 9.8f;
+    [SerializeField] private float maxGravity = 52f;
+    [SerializeField] private float CheckFallDeltaTime = 0.25f;
+    [SerializeField] private float detectRadius = 0.2f;
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private bool drawDetectRange;
+    [SerializeField] private float detectOffset;
+    [SerializeField] private Transform footTransform;
+    [SerializeField] private LayerMask groundLayer;
+    public float verticalVelocity { get; private set; }
 
     public override void OnNetworkSpawn()
     {
@@ -59,7 +82,6 @@ public partial class PlayerController : NetworkBehaviour
     {
         GameObject weaponObj = getWeaponFunc?.Invoke(newValue.ToString());
         playerView.SetWeapon(weaponObj);
-        print("WeaponChanged");
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -75,7 +97,6 @@ public partial class PlayerController : NetworkBehaviour
 #if !UNITY_SERVER
 public partial class PlayerController : NetworkBehaviour
 {
-    private Camera mainCamera;
     private void Client_OnNetworkSpawn()
     {
         canControl = true;
@@ -87,10 +108,8 @@ public partial class PlayerController : NetworkBehaviour
 
     private void Client_OnNetworkDespawn()
     {
-
+        
     }
-
-    private Vector2 lastDir = Vector2.zero;
     private void ClientMoveInput()
     {
         if (!canControl) return;
@@ -114,26 +133,11 @@ public partial class PlayerController : NetworkBehaviour
 #if UNITY_SERVER || UNITY_EDITOR
 public partial class PlayerController : NetworkBehaviour, IStateMachineOwner
 {
-    [SerializeField] public float speed = 3;
     public float Speed => speed;
-    public class InputInfo { public Vector2 dir; }
-    public InputInfo inputData { get; private set; }
-    public StateMachine stateMachine { get; private set; }
-    [SerializeField] private Animator animator;
-    [SerializeField] private CharacterController characterController;
     public Animator Animator => animator;
-    public CharacterController CharacterController => characterController;
-
-    [SerializeField, Header("重力系统")] private float gravity = 9.8f;
-    [SerializeField] private float maxGravity = 52f;
-    [SerializeField] private float CheckFallDeltaTime = 0.25f;
-    [SerializeField] private float detectRadius = 0.2f;
-    [SerializeField] private bool isGrounded;
-    [SerializeField] private bool drawDetectRange;
-    [SerializeField] private float detectOffset;
-    [SerializeField] private Transform footTransform;
-    [SerializeField] private LayerMask groundLayer;
-    public float verticalVelocity { get; private set; }
+    
+    
+    
 
     private void Server_OnNetworkSpawn()
     {

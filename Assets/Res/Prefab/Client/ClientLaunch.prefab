@@ -46,18 +46,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aotDllTextList:
-  - {fileID: 4900000, guid: aeb1e079e64b59349b876496bc269a79, type: 3}
-  - {fileID: 4900000, guid: 58f3d0752acd40649aca9f86c4dec64d, type: 3}
-  - {fileID: 4900000, guid: ad7d86241dcccef48b1431e4df930b04, type: 3}
-  - {fileID: 4900000, guid: 8d24d14ae891436498ca0747faba282b, type: 3}
-  - {fileID: 4900000, guid: 75bd818f217cc094180e99f011fef637, type: 3}
-  - {fileID: 4900000, guid: abb4662c4951f064db759eb05bde1bae, type: 3}
-  - {fileID: 4900000, guid: 75b7aa837207afb4e874209b25c9320b, type: 3}
-  - {fileID: 4900000, guid: 74c514017b3143a4e92dd046e7949a1a, type: 3}
+  - {fileID: 4900000, guid: 607f169707d5a584aa7b921a629f1893, type: 3}
+  - {fileID: 4900000, guid: dec476f0d91a51f49afbabd589025743, type: 3}
+  - {fileID: 4900000, guid: 62bbce2feefe2234089f9c41b8806eaa, type: 3}
+  - {fileID: 4900000, guid: 9c2638e1227345745bb65cdbc094592b, type: 3}
+  - {fileID: 4900000, guid: 4db1284c75e15a74e98ffa4594c87994, type: 3}
+  - {fileID: 4900000, guid: b6810330dfd71994b97a05adbe68824e, type: 3}
+  - {fileID: 4900000, guid: fbd09ba81529c88459fd93b4a0472b2e, type: 3}
+  - {fileID: 4900000, guid: d2e067c4e3fe33a4c9a3c8ee3cb6139d, type: 3}
+  - {fileID: 4900000, guid: 6ed62f77bc409d3469d7354f7db4d224, type: 3}
   hotUpdateDllKeyList:
-  - HotUpdate.dll
   - Common.dll
-  versionInfoAddressableKey: VersionInfo
+  - HotUpdate.dll
+  versionInfoAddressableKey: GameBasicSetting
 --- !u!114 &1642551673827931527
 MonoBehaviour:
   m_ObjectHideFlags: 0

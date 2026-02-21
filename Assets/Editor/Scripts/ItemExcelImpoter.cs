@@ -37,15 +37,19 @@ public static class ItemExcelImpoter
                         Sprite icon = AssetDatabase.LoadAssetAtPath<Sprite>(iconPath);
                         string atk = excelWorksheet.Cells[row, 6].Text.Trim();
                         string slotKey = excelWorksheet.Cells[row, 7].Text.Trim();
+                        int price = int.Parse(excelWorksheet.Cells[row, 8].Text.Trim());
+                        string[] craftItems = excelWorksheet.Cells[row, 9].Text.Trim().Split(',');
                         WeaponConfig weaponConfig = AssetDatabase.LoadAssetAtPath<WeaponConfig>(SOPath);
                         if (weaponConfig == null)
                         {
                             weaponConfig = ScriptableObject.CreateInstance<WeaponConfig>();
                             AssetDatabase.CreateAsset(weaponConfig, SOPath);
                         }
-                        ImportBaseInfo(weaponConfig, icon, slotKey, chineseName, englishName, chineseDescription, englishDescription);
+                        ImportBaseInfo(weaponConfig, icon, slotKey, chineseName, englishName, chineseDescription, englishDescription, price);
                         weaponConfig.atk = float.Parse(atk);
                         weaponConfig.prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+                        weaponConfig.craftItemDic.Clear();
+                        if (craftItems != null) for (int j = 0; j < craftItems.Length - 1; j += 2) weaponConfig.craftItemDic.Add(craftItems[j], int.Parse(craftItems[j + 1]));
                         EditorUtility.SetDirty(weaponConfig);
                     }
                     else if (i == 2) // 消耗品
@@ -55,14 +59,18 @@ public static class ItemExcelImpoter
                         Sprite icon = AssetDatabase.LoadAssetAtPath<Sprite>(iconPath);
                         string recoverNum = excelWorksheet.Cells[row, 6].Text.Trim();
                         string slotKey = excelWorksheet.Cells[row, 7].Text.Trim();
+                        int price = int.Parse(excelWorksheet.Cells[row, 8].Text.Trim());
+                        string[] craftItems = excelWorksheet.Cells[row, 9].Text.Trim().Split(',');
                         ConsumableConfig consumableConfig = AssetDatabase.LoadAssetAtPath<ConsumableConfig>(SOPath);
                         if (consumableConfig == null)
                         {
                             consumableConfig = ScriptableObject.CreateInstance<ConsumableConfig>();
                             AssetDatabase.CreateAsset(consumableConfig, SOPath);
                         }
-                        ImportBaseInfo(consumableConfig, icon, slotKey, chineseName, englishName, chineseDescription, englishDescription);
+                        ImportBaseInfo(consumableConfig, icon, slotKey, chineseName, englishName, chineseDescription, englishDescription, price);
                         consumableConfig.recoverNum = float.Parse(recoverNum);
+                        consumableConfig.craftItemDic.Clear();
+                        if (craftItems != null) for (int j = 0; j < craftItems.Length - 1; j += 2) consumableConfig.craftItemDic.Add(craftItems[j], int.Parse(craftItems[j + 1]));
                         EditorUtility.SetDirty(consumableConfig);
                     }
                     else if (i == 3) // 材料
@@ -71,13 +79,14 @@ public static class ItemExcelImpoter
                         string iconPath = $"Assets/Res/Icon/Material/{key}.png";
                         Sprite icon = AssetDatabase.LoadAssetAtPath<Sprite>(iconPath);
                         string slotKey = excelWorksheet.Cells[row, 6].Text.Trim();
+                        int price = int.Parse(excelWorksheet.Cells[row, 7].Text.Trim());
                         MaterialConfig materialConfig = AssetDatabase.LoadAssetAtPath<MaterialConfig>(SOPath);
                         if (materialConfig == null)
                         {
                             materialConfig = ScriptableObject.CreateInstance<MaterialConfig>();
                             AssetDatabase.CreateAsset(materialConfig, SOPath);
                         }
-                        ImportBaseInfo(materialConfig, icon, slotKey, chineseName, englishName, chineseDescription, englishDescription);
+                        ImportBaseInfo(materialConfig, icon, slotKey, chineseName, englishName, chineseDescription, englishDescription, price);
                         EditorUtility.SetDirty(materialConfig);
                     }
                     AssetDatabase.SaveAssets();
@@ -88,9 +97,10 @@ public static class ItemExcelImpoter
         Debug.Log("Excel转ItemConfig成功");
     }
 
-    private static void ImportBaseInfo(ItemConfigBase itemConfig, Sprite icon, string slotKey, string chineseName, string englishName, string chineseDescription, string englishDescription)
+    private static void ImportBaseInfo(ItemConfigBase itemConfig, Sprite icon, string slotKey, string chineseName, string englishName, string chineseDescription, string englishDescription, int price)
     {
         itemConfig.icon = icon;
+        itemConfig.price = price;
         if(string.IsNullOrEmpty(slotKey)) itemConfig.slotKey = slotKey;
 
         itemConfig.itemNameDic[LanguageType.SimplifiedChinese] = chineseName;

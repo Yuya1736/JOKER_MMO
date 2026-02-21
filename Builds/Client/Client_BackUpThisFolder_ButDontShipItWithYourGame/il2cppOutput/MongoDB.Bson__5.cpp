@@ -12369,7 +12369,7 @@ IL_0025:
 		int32_t L_15 = ___2_count;
 		NullCheck(L_12);
 		String_t* L_16;
-		L_16 = VirtualFuncInvoker3< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(33, L_12, L_13, L_14, L_15);
+		L_16 = VirtualFuncInvoker3< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t >::Invoke(34, L_12, L_13, L_14, L_15);
 		return L_16;
 	}
 }

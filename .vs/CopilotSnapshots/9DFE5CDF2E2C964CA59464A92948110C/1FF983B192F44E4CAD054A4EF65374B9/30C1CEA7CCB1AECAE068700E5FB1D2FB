@@ -1,0 +1,33 @@
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class UI_MaterialSlot : UI_SlotBase<MaterialData, MaterialConfig>
+{
+    [SerializeField] private Text textCount;
+    public int itemCount;
+
+    public override void Init(IBagWindow bagWindow, ItemDataBase itemData, ItemConfigBase itemConfig, int index, Action<int> onMouseRightClick, Action<UI_SlotBase, UI_SlotBase> onDragItemToNewSlotAciton)
+    {
+        base.Init(bagWindow, itemData, itemConfig, index, onMouseRightClick, onDragItemToNewSlotAciton);
+        itemCount = ((MaterialData)itemData).count;
+        iconImage.sprite = itemConfig.icon;
+        UpdateCount();
+    }
+
+    public void UpdateCount()
+    {
+        ShowCount();
+        textCount.text = itemCount.ToString();
+    }
+
+    public void HideCount()
+    {
+        textCount.gameObject.SetActive(false);
+    }
+
+    public void ShowCount()
+    {
+        textCount.gameObject.SetActive(true);
+    }
+}

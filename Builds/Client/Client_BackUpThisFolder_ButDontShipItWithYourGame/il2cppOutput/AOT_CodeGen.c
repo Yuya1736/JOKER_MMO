@@ -12,9 +12,6 @@
 
 
 
-extern void AotTypeEnforcer_Init_m57EA2B1A76D2C1FD5956C468D7E2EF470F6514E2 (void);
-extern void AotTypeEnforcer_EnsureAOT_mC73243068F0372A24A123FE10C0C60638488ED6B (void);
-extern void AotTypeEnforcer__ctor_mBB0360D8FD262F54E93D230B301CA4DA9068CB57 (void);
 extern void ClientLaunch_Start_m48235F0DB7ED56C1A22F6E98F9C676CC2D99E4FF (void);
 extern void ClientLaunch_Init_m7530C95C1ECAC13C454DA00749E254E02EEA39F3 (void);
 extern void ClientLaunch_OnHotUpdateSucceed_m86ACA07D40FD540E8F5B780533CBC6BCA03C91D4 (void);
@@ -63,15 +60,17 @@ extern void GameBasicSetting__ctor_m9FBBB0A2A678FE64BEDAC42A89B72AD1BCEA719D (vo
 extern void VersionData__ctor_mA40E93422BB2AC72D9128B8BD78FAB698DA73591 (void);
 extern void GlobalLocalizationConfig_Clear_mE23545E1213E0C1507162EC91E407D0D85240450 (void);
 extern void GlobalLocalizationConfig__ctor_m684A794B28CB33472E74D5E9F0A2CE0E8CA6F917 (void);
+extern void AotTypeEnforcer_Init_m57EA2B1A76D2C1FD5956C468D7E2EF470F6514E2 (void);
+extern void AotTypeEnforcer_EnsureAOT_mC73243068F0372A24A123FE10C0C60638488ED6B (void);
+extern void AotTypeEnforcer__ctor_mBB0360D8FD262F54E93D230B301CA4DA9068CB57 (void);
+extern void AotTypeEnforcer___initializeVariables_mB3DD7A81BF34EC8BCE8932FD332F0415127824C2 (void);
+extern void AotTypeEnforcer___initializeRpcs_mE427F3DE45061BF83D7F0BF221CF20540FF70C7E (void);
+extern void AotTypeEnforcer___getTypeName_mA0F340E55C3B4E8CBE1B90660A318D74068751BD (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mE2A38B84D65568DAB458D96293FE806416BDA49A (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mCC51736D91E996340D46FE10E67523B4A140BA04 (void);
 extern void NetworkVariableSerializationHelper_InitializeSerialization_mAFE3F2B3781AF79D8EB43A0ED859FD958FA97579 (void);
-static Il2CppMethodPointer s_methodPointers[55] = 
+static Il2CppMethodPointer s_methodPointers[58] = 
 {
-	AotTypeEnforcer_Init_m57EA2B1A76D2C1FD5956C468D7E2EF470F6514E2,
-	AotTypeEnforcer_EnsureAOT_mC73243068F0372A24A123FE10C0C60638488ED6B,
-	NULL,
-	AotTypeEnforcer__ctor_mBB0360D8FD262F54E93D230B301CA4DA9068CB57,
 	ClientLaunch_Start_m48235F0DB7ED56C1A22F6E98F9C676CC2D99E4FF,
 	ClientLaunch_Init_m7530C95C1ECAC13C454DA00749E254E02EEA39F3,
 	ClientLaunch_OnHotUpdateSucceed_m86ACA07D40FD540E8F5B780533CBC6BCA03C91D4,
@@ -120,71 +119,81 @@ static Il2CppMethodPointer s_methodPointers[55] =
 	VersionData__ctor_mA40E93422BB2AC72D9128B8BD78FAB698DA73591,
 	GlobalLocalizationConfig_Clear_mE23545E1213E0C1507162EC91E407D0D85240450,
 	GlobalLocalizationConfig__ctor_m684A794B28CB33472E74D5E9F0A2CE0E8CA6F917,
+	AotTypeEnforcer_Init_m57EA2B1A76D2C1FD5956C468D7E2EF470F6514E2,
+	AotTypeEnforcer_EnsureAOT_mC73243068F0372A24A123FE10C0C60638488ED6B,
+	NULL,
+	AotTypeEnforcer__ctor_mBB0360D8FD262F54E93D230B301CA4DA9068CB57,
+	AotTypeEnforcer___initializeVariables_mB3DD7A81BF34EC8BCE8932FD332F0415127824C2,
+	AotTypeEnforcer___initializeRpcs_mE427F3DE45061BF83D7F0BF221CF20540FF70C7E,
+	AotTypeEnforcer___getTypeName_mA0F340E55C3B4E8CBE1B90660A318D74068751BD,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mE2A38B84D65568DAB458D96293FE806416BDA49A,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mCC51736D91E996340D46FE10E67523B4A140BA04,
 	NetworkVariableSerializationHelper_InitializeSerialization_mAFE3F2B3781AF79D8EB43A0ED859FD958FA97579,
 };
-static const int32_t s_InvokerIndices[55] = 
+static const int32_t s_InvokerIndices[58] = 
 {
-	10814,
-	10814,
+	10832,
+	10832,
+	10832,
+	10832,
+	10832,
+	8512,
+	10832,
+	10675,
+	10832,
+	8602,
+	10832,
+	10541,
+	10675,
+	10832,
+	10675,
+	5043,
+	10675,
+	7723,
+	10832,
+	7719,
+	10832,
+	10832,
+	10832,
+	10832,
+	5123,
+	10832,
+	10832,
+	8602,
+	10832,
+	10541,
+	10675,
+	10832,
+	10675,
+	8602,
+	10832,
+	10541,
+	10675,
+	10832,
+	10675,
+	8650,
+	5123,
+	5123,
+	10832,
+	7719,
+	10832,
+	10832,
+	10832,
+	10832,
+	10832,
+	10832,
 	0,
-	10814,
-	10814,
-	10814,
-	10814,
-	10814,
-	10814,
-	8498,
-	10814,
-	10657,
-	10814,
-	8587,
-	10814,
-	10524,
-	10657,
-	10814,
-	10657,
-	5034,
-	10657,
-	7709,
-	10814,
-	7705,
-	10814,
-	10814,
-	10814,
-	10814,
-	5114,
-	10814,
-	10814,
-	8587,
-	10814,
-	10524,
-	10657,
-	10814,
-	10657,
-	8587,
-	10814,
-	10524,
-	10657,
-	10814,
-	10657,
-	8635,
-	5114,
-	5114,
-	10814,
-	7705,
-	10814,
-	10814,
-	10814,
-	10814,
-	18575,
-	10814,
-	18552,
+	10832,
+	10832,
+	10832,
+	10675,
+	18604,
+	10832,
+	18581,
 };
 static const Il2CppTokenRangePair s_rgctxIndices[1] = 
 {
-	{ 0x06000003, { 0, 9 } },
+	{ 0x06000033, { 0, 9 } },
 };
 extern const uint32_t g_rgctx_Dictionary_2_t04F9C6CBB74016BC4236632A0F6F06943E213A9C;
 extern const uint32_t g_rgctx_Dictionary_2__ctor_m7BD1AB3BD6830775BFC2ECA686C463FDBCC3CE20;
@@ -211,7 +220,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AOT_CodeGenModule;
 const Il2CppCodeGenModule g_AOT_CodeGenModule = 
 {
 	"AOT.dll",
-	55,
+	58,
 	s_methodPointers,
 	0,
 	NULL,

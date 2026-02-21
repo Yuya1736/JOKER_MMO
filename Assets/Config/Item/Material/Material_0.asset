@@ -113,3 +113,4 @@ MonoBehaviour:
       Data: 
   icon: {fileID: 21300000, guid: cf952c3e0f57246da9cc60ae0e5501ae, type: 3}
   slotKey: UI_MaterialSlot
+  price: 10

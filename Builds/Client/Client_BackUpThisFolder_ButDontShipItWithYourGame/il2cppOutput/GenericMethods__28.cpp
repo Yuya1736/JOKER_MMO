@@ -984,6 +984,45 @@ struct ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292
 		uint8_t ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292__padding[1];
 	};
 };
+struct AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA 
+{
+	bool ___HasBeenProcessed;
+	int32_t ___StateHash;
+	float ___NormalizedTime;
+	int32_t ___Layer;
+	float ___Weight;
+	float ___Duration;
+	bool ___Transition;
+	bool ___CrossFade;
+	uint8_t ___m_StateFlags;
+	int32_t ___DestinationStateHash;
+};
+struct AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA_marshaled_pinvoke
+{
+	int32_t ___HasBeenProcessed;
+	int32_t ___StateHash;
+	float ___NormalizedTime;
+	int32_t ___Layer;
+	float ___Weight;
+	float ___Duration;
+	int32_t ___Transition;
+	int32_t ___CrossFade;
+	uint8_t ___m_StateFlags;
+	int32_t ___DestinationStateHash;
+};
+struct AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA_marshaled_com
+{
+	int32_t ___HasBeenProcessed;
+	int32_t ___StateHash;
+	float ___NormalizedTime;
+	int32_t ___Layer;
+	float ___Weight;
+	float ___Duration;
+	int32_t ___Transition;
+	int32_t ___CrossFade;
+	uint8_t ___m_StateFlags;
+	int32_t ___DestinationStateHash;
+};
 struct AnimationTriggerMessage_t6E5D90F8238CB48B83329BAEEEF1847B2DD1EE46 
 {
 	int32_t ___Hash;
@@ -2886,6 +2925,19 @@ struct SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C  : public RuntimeA
 };
 
 
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool BufferSerializer_1_get_IsWriter_m6978D539067CE30EC81B6491589C7C30A1E16C28_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC BufferSerializer_1_GetFastBufferWriter_m9C29FD83F1F84F7DB243974892CB6612AE9ACCE9_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_m2EF2BEBABA4000D00D5AD6D9F41DDFE83CCCAAEE_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, uint8_t* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 BufferSerializer_1_GetFastBufferReader_mF14C151E60E6525341AD31B18744F2DCC23DE063_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m6101B238F07953CE18E1F86F2233DEFF3CB93159_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, float* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimationState_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_m4708197E9B5731D722735DA6065112E3A38C4100_gshared (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* __this, BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B ___0_serializer, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool BufferSerializer_1_get_IsWriter_mA81CADE3680B019327BD43C92F4743B2140A83EB_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC BufferSerializer_1_GetFastBufferWriter_m0EDCCFEDDC0A291D14ACA9BB1DA18CD0ABAD9C60_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_m5A85D8FBCAB39E645546BE02F1B40C70D768F74D_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, uint8_t* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 BufferSerializer_1_GetFastBufferReader_mBE4915BC31492038A896F4FE19E6A1D815815171_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m27B1CE4986F8F5797956E336EDF7FF730AB613E4_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, float* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimationState_NetworkSerialize_TisBufferSerializerWriter_t3F287564BDCF264BABBB18BF4D541A95238FBFD4_mB44E5A82A56437BD8D0F22E6EEB947D4B72938C8_gshared (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* __this, BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0 ___0_serializer, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimationState_NetworkSerialize_TisIl2CppFullySharedGenericAny_mFAD99C42F673091B016FE6E915258ADAC6275C80_gshared (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* __this, BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10 ___0_serializer, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m59AF230EB443B685CB322B5AA0898734756EADD7_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, int32_t* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m53224A30FDD9F347134C5F058A4AA1902F046703_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, bool* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimationTriggerMessage_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_m3A4043886A4C31365EB99E8D4009D96FBFF81008_gshared (AnimationTriggerMessage_t6E5D90F8238CB48B83329BAEEEF1847B2DD1EE46* __this, BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B ___0_serializer, const RuntimeMethod* method) ;
@@ -2898,25 +2950,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ParametersUpdateMessage_NetworkSerialize
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_TisByte_t94D9231AC217BE4D2E004C4CD32DF6D099EA41A3_mAD89D6AD1671054722C3ECC148291524285C35D8_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031** ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ParametersUpdateMessage_NetworkSerialize_TisBufferSerializerWriter_t3F287564BDCF264BABBB18BF4D541A95238FBFD4_m9AECB7C82E8E643ECEB357788F3BF6F5F6535097_gshared (ParametersUpdateMessage_t005A167C8BAC9D5842F589C807ABF3CF4B3EB536* __this, BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0 ___0_serializer, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ParametersUpdateMessage_NetworkSerialize_TisIl2CppFullySharedGenericAny_m77889F14D21C124F55D53B6DAE359421EC25991B_gshared (ParametersUpdateMessage_t005A167C8BAC9D5842F589C807ABF3CF4B3EB536* __this, BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10 ___0_serializer, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool BufferSerializer_1_get_IsWriter_m6978D539067CE30EC81B6491589C7C30A1E16C28_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC BufferSerializer_1_GetFastBufferWriter_m9C29FD83F1F84F7DB243974892CB6612AE9ACCE9_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 BufferSerializer_1_GetFastBufferReader_mF14C151E60E6525341AD31B18744F2DCC23DE063_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_m0773DBBB39CFDB93D7DE224B29AA3E23DADF8D16_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NetworkDeltaPosition_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_mDC7C63B97D1CB62A66224F617696006712694A3C_gshared (NetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187* __this, BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B ___0_serializer, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeNetworkSerializable_TisNetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187_mA4C486568DCD3BFE68EA5C62E4F210BA872555C0_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, NetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187* ___0_value, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m6101B238F07953CE18E1F86F2233DEFF3CB93159_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, float* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_mF8864064239A7820146C9482A6E1F7FE22607F81_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_TisUInt32_t1833D51FFA667B18A5AA4B8D34DE284F8495D29B_m175DEC7EA748331C16BF1972F3981E933059BE3A_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, uint32_t* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeNetworkSerializable_TisHalfVector4_t91FA8945A7448BC15F1C252A4046910F161F87CC_m2BE6775E459379A790847DEB39C71874549F7FBE_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, HalfVector4_t91FA8945A7448BC15F1C252A4046910F161F87CC* ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_TisHalfVector3_tBD839ED0C18A2EC6B7831CA4554A8A0B88D27FAD_m4A4E597D00C4E913CE0E881D1912EB2B440ED06B_gshared (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, HalfVector3_tBD839ED0C18A2EC6B7831CA4554A8A0B88D27FAD* ___0_value, ForNetworkSerializable_t9761409AA2A84D519B485A78188E85CFF1A9C7E3 ___1_unused, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NetworkTransformState_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_mA1443DCB5355BB444E05D9D2B856B29C4D9698C9_gshared (NetworkTransformState_t79E8E299A31239DA71F98A03FDE191019CF1C8C0* __this, BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B ___0_serializer, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool BufferSerializer_1_get_IsWriter_mA81CADE3680B019327BD43C92F4743B2140A83EB_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC BufferSerializer_1_GetFastBufferWriter_m0EDCCFEDDC0A291D14ACA9BB1DA18CD0ABAD9C60_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 BufferSerializer_1_GetFastBufferReader_mBE4915BC31492038A896F4FE19E6A1D815815171_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_m0364BE9DADF6A928C2E671E4712E0E74660342D6_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NetworkDeltaPosition_NetworkSerialize_TisBufferSerializerWriter_t3F287564BDCF264BABBB18BF4D541A95238FBFD4_m722DC25C9E88D9FC755356D5CA6377947EAEECFC_gshared (NetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187* __this, BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0 ___0_serializer, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeNetworkSerializable_TisNetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187_m283E1A8E6B025E806D15B7C961098B3751211E51_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, NetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187* ___0_value, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m27B1CE4986F8F5797956E336EDF7FF730AB613E4_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, float* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_m5703B125C4DB4384D52002A802AB88FA88E27331_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeValue_TisUInt32_t1833D51FFA667B18A5AA4B8D34DE284F8495D29B_m6F6DFB50403FF15EAF7B88A883C1739AE9E6900B_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, uint32_t* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BufferSerializer_1_SerializeNetworkSerializable_TisHalfVector4_t91FA8945A7448BC15F1C252A4046910F161F87CC_mB866930E038815304EFFE7B77B5EF0E89E604102_gshared (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, HalfVector4_t91FA8945A7448BC15F1C252A4046910F161F87CC* ___0_value, const RuntimeMethod* method) ;
@@ -3008,6 +3052,60 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR EqualityComparer_1_tD96337BB993FF6246388ED223
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR EqualityComparer_1_tE7F9CA4FFFE31F11BFD738023C1E489D3ECB371B* EqualityComparer_1_CreateComparer_mD5EE323D1C48F0C09CBB944FA81707B8FEE2DB6D_gshared (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR EqualityComparer_1_t8B3F40C676CD330DB13D396DB81564A00E2B7C70* EqualityComparer_1_CreateComparer_m5F906E9B13BCCCDF51EF0852BD9E5E0065D185F8_gshared (const RuntimeMethod* method) ;
 
+inline bool BufferSerializer_1_get_IsWriter_m6978D539067CE30EC81B6491589C7C30A1E16C28 (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method)
+{
+	return ((  bool (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, const RuntimeMethod*))BufferSerializer_1_get_IsWriter_m6978D539067CE30EC81B6491589C7C30A1E16C28_gshared)(__this, method);
+}
+inline FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC BufferSerializer_1_GetFastBufferWriter_m9C29FD83F1F84F7DB243974892CB6612AE9ACCE9 (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method)
+{
+	return ((  FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, const RuntimeMethod*))BufferSerializer_1_GetFastBufferWriter_m9C29FD83F1F84F7DB243974892CB6612AE9ACCE9_gshared)(__this, method);
+}
+inline void BufferSerializer_1_SerializeValue_m2EF2BEBABA4000D00D5AD6D9F41DDFE83CCCAAEE (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, uint8_t* ___0_value, const RuntimeMethod* method)
+{
+	((  void (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, uint8_t*, const RuntimeMethod*))BufferSerializer_1_SerializeValue_m2EF2BEBABA4000D00D5AD6D9F41DDFE83CCCAAEE_gshared)(__this, ___0_value, method);
+}
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline (FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC ___0_writer, int32_t ___1_value, const RuntimeMethod* method) ;
+inline FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 BufferSerializer_1_GetFastBufferReader_mF14C151E60E6525341AD31B18744F2DCC23DE063 (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method)
+{
+	return ((  FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, const RuntimeMethod*))BufferSerializer_1_GetFastBufferReader_mF14C151E60E6525341AD31B18744F2DCC23DE063_gshared)(__this, method);
+}
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline (FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 ___0_reader, int32_t* ___1_value, const RuntimeMethod* method) ;
+inline void BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m6101B238F07953CE18E1F86F2233DEFF3CB93159 (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, float* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method)
+{
+	((  void (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, float*, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292, const RuntimeMethod*))BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m6101B238F07953CE18E1F86F2233DEFF3CB93159_gshared)(__this, ___0_value, ___1_unused, method);
+}
+inline void AnimationState_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_m4708197E9B5731D722735DA6065112E3A38C4100 (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* __this, BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B ___0_serializer, const RuntimeMethod* method)
+{
+	((  void (*) (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA*, BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B, const RuntimeMethod*))AnimationState_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_m4708197E9B5731D722735DA6065112E3A38C4100_gshared)(__this, ___0_serializer, method);
+}
+inline bool BufferSerializer_1_get_IsWriter_mA81CADE3680B019327BD43C92F4743B2140A83EB (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method)
+{
+	return ((  bool (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, const RuntimeMethod*))BufferSerializer_1_get_IsWriter_mA81CADE3680B019327BD43C92F4743B2140A83EB_gshared)(__this, method);
+}
+inline FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC BufferSerializer_1_GetFastBufferWriter_m0EDCCFEDDC0A291D14ACA9BB1DA18CD0ABAD9C60 (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method)
+{
+	return ((  FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, const RuntimeMethod*))BufferSerializer_1_GetFastBufferWriter_m0EDCCFEDDC0A291D14ACA9BB1DA18CD0ABAD9C60_gshared)(__this, method);
+}
+inline void BufferSerializer_1_SerializeValue_m5A85D8FBCAB39E645546BE02F1B40C70D768F74D (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, uint8_t* ___0_value, const RuntimeMethod* method)
+{
+	((  void (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, uint8_t*, const RuntimeMethod*))BufferSerializer_1_SerializeValue_m5A85D8FBCAB39E645546BE02F1B40C70D768F74D_gshared)(__this, ___0_value, method);
+}
+inline FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 BufferSerializer_1_GetFastBufferReader_mBE4915BC31492038A896F4FE19E6A1D815815171 (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method)
+{
+	return ((  FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, const RuntimeMethod*))BufferSerializer_1_GetFastBufferReader_mBE4915BC31492038A896F4FE19E6A1D815815171_gshared)(__this, method);
+}
+inline void BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m27B1CE4986F8F5797956E336EDF7FF730AB613E4 (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, float* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method)
+{
+	((  void (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, float*, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292, const RuntimeMethod*))BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m27B1CE4986F8F5797956E336EDF7FF730AB613E4_gshared)(__this, ___0_value, ___1_unused, method);
+}
+inline void AnimationState_NetworkSerialize_TisBufferSerializerWriter_t3F287564BDCF264BABBB18BF4D541A95238FBFD4_mB44E5A82A56437BD8D0F22E6EEB947D4B72938C8 (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* __this, BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0 ___0_serializer, const RuntimeMethod* method)
+{
+	((  void (*) (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA*, BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0, const RuntimeMethod*))AnimationState_NetworkSerialize_TisBufferSerializerWriter_t3F287564BDCF264BABBB18BF4D541A95238FBFD4_mB44E5A82A56437BD8D0F22E6EEB947D4B72938C8_gshared)(__this, ___0_serializer, method);
+}
+inline void AnimationState_NetworkSerialize_TisIl2CppFullySharedGenericAny_mFAD99C42F673091B016FE6E915258ADAC6275C80 (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* __this, BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10 ___0_serializer, const RuntimeMethod* method)
+{
+	((  void (*) (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA*, BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10, const RuntimeMethod*))AnimationState_NetworkSerialize_TisIl2CppFullySharedGenericAny_mFAD99C42F673091B016FE6E915258ADAC6275C80_gshared)((AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA*)__this, ___0_serializer, method);
+}
 inline void BufferSerializer_1_SerializeValue_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m59AF230EB443B685CB322B5AA0898734756EADD7 (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, int32_t* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method)
 {
 	((  void (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, int32_t*, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292, const RuntimeMethod*))BufferSerializer_1_SerializeValue_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m59AF230EB443B685CB322B5AA0898734756EADD7_gshared)(__this, ___0_value, ___1_unused, method);
@@ -3056,19 +3154,7 @@ inline void ParametersUpdateMessage_NetworkSerialize_TisIl2CppFullySharedGeneric
 {
 	((  void (*) (ParametersUpdateMessage_t005A167C8BAC9D5842F589C807ABF3CF4B3EB536*, BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10, const RuntimeMethod*))ParametersUpdateMessage_NetworkSerialize_TisIl2CppFullySharedGenericAny_m77889F14D21C124F55D53B6DAE359421EC25991B_gshared)((ParametersUpdateMessage_t005A167C8BAC9D5842F589C807ABF3CF4B3EB536*)__this, ___0_serializer, method);
 }
-inline bool BufferSerializer_1_get_IsWriter_m6978D539067CE30EC81B6491589C7C30A1E16C28 (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method)
-{
-	return ((  bool (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, const RuntimeMethod*))BufferSerializer_1_get_IsWriter_m6978D539067CE30EC81B6491589C7C30A1E16C28_gshared)(__this, method);
-}
-inline FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC BufferSerializer_1_GetFastBufferWriter_m9C29FD83F1F84F7DB243974892CB6612AE9ACCE9 (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method)
-{
-	return ((  FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, const RuntimeMethod*))BufferSerializer_1_GetFastBufferWriter_m9C29FD83F1F84F7DB243974892CB6612AE9ACCE9_gshared)(__this, method);
-}
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t FastBufferWriter_get_Position_m87642B5268B41B7D15D4E628DF93A5B5776A4B05_inline (FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC* __this, const RuntimeMethod* method) ;
-inline FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 BufferSerializer_1_GetFastBufferReader_mF14C151E60E6525341AD31B18744F2DCC23DE063 (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, const RuntimeMethod* method)
-{
-	return ((  FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, const RuntimeMethod*))BufferSerializer_1_GetFastBufferReader_mF14C151E60E6525341AD31B18744F2DCC23DE063_gshared)(__this, method);
-}
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t FastBufferReader_get_Position_m6B9DC9ECC9F2D943EA0103248E10AB9B95C8F4CF_inline (FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NetworkTransformState_get_UseUnreliableDeltas_m270E4809697670D9F8CE7FDFCE6CE003A2EC27AF (NetworkTransformState_t79E8E299A31239DA71F98A03FDE191019CF1C8C0* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NetworkTransformState_get_IsTeleportingNextFrame_mE165AC8E2E423AA70047E5CFF5792B4065E1E233 (NetworkTransformState_t79E8E299A31239DA71F98A03FDE191019CF1C8C0* __this, const RuntimeMethod* method) ;
@@ -3098,10 +3184,6 @@ inline void NetworkDeltaPosition_NetworkSerialize_TisBufferSerializerReader_t821
 inline void BufferSerializer_1_SerializeNetworkSerializable_TisNetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187_mA4C486568DCD3BFE68EA5C62E4F210BA872555C0 (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, NetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187* ___0_value, const RuntimeMethod* method)
 {
 	((  void (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, NetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187*, const RuntimeMethod*))BufferSerializer_1_SerializeNetworkSerializable_TisNetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187_mA4C486568DCD3BFE68EA5C62E4F210BA872555C0_gshared)(__this, ___0_value, method);
-}
-inline void BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m6101B238F07953CE18E1F86F2233DEFF3CB93159 (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B* __this, float* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method)
-{
-	((  void (*) (BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B*, float*, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292, const RuntimeMethod*))BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m6101B238F07953CE18E1F86F2233DEFF3CB93159_gshared)(__this, ___0_value, ___1_unused, method);
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NetworkTransformState_get_HasRotAngleChange_m422A91DCE0FBAFD8B608131ED3D2C0C5E123EAF0 (NetworkTransformState_t79E8E299A31239DA71F98A03FDE191019CF1C8C0* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NetworkTransformState_get_QuaternionSync_mD6C5DCEB4B7EB4C2A0E869F2BD446C28C1021198 (NetworkTransformState_t79E8E299A31239DA71F98A03FDE191019CF1C8C0* __this, const RuntimeMethod* method) ;
@@ -3143,18 +3225,6 @@ inline void NetworkTransformState_NetworkSerialize_TisBufferSerializerReader_t82
 {
 	((  void (*) (NetworkTransformState_t79E8E299A31239DA71F98A03FDE191019CF1C8C0*, BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B, const RuntimeMethod*))NetworkTransformState_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_mA1443DCB5355BB444E05D9D2B856B29C4D9698C9_gshared)(__this, ___0_serializer, method);
 }
-inline bool BufferSerializer_1_get_IsWriter_mA81CADE3680B019327BD43C92F4743B2140A83EB (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method)
-{
-	return ((  bool (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, const RuntimeMethod*))BufferSerializer_1_get_IsWriter_mA81CADE3680B019327BD43C92F4743B2140A83EB_gshared)(__this, method);
-}
-inline FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC BufferSerializer_1_GetFastBufferWriter_m0EDCCFEDDC0A291D14ACA9BB1DA18CD0ABAD9C60 (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method)
-{
-	return ((  FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, const RuntimeMethod*))BufferSerializer_1_GetFastBufferWriter_m0EDCCFEDDC0A291D14ACA9BB1DA18CD0ABAD9C60_gshared)(__this, method);
-}
-inline FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 BufferSerializer_1_GetFastBufferReader_mBE4915BC31492038A896F4FE19E6A1D815815171 (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, const RuntimeMethod* method)
-{
-	return ((  FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, const RuntimeMethod*))BufferSerializer_1_GetFastBufferReader_mBE4915BC31492038A896F4FE19E6A1D815815171_gshared)(__this, method);
-}
 inline void BufferSerializer_1_SerializeValue_m0364BE9DADF6A928C2E671E4712E0E74660342D6 (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* ___0_value, const RuntimeMethod* method)
 {
 	((  void (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*, const RuntimeMethod*))BufferSerializer_1_SerializeValue_m0364BE9DADF6A928C2E671E4712E0E74660342D6_gshared)(__this, ___0_value, method);
@@ -3166,10 +3236,6 @@ inline void NetworkDeltaPosition_NetworkSerialize_TisBufferSerializerWriter_t3F2
 inline void BufferSerializer_1_SerializeNetworkSerializable_TisNetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187_m283E1A8E6B025E806D15B7C961098B3751211E51 (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, NetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187* ___0_value, const RuntimeMethod* method)
 {
 	((  void (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, NetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187*, const RuntimeMethod*))BufferSerializer_1_SerializeNetworkSerializable_TisNetworkDeltaPosition_t4C67065CCCE1DB13273DF573BA24819B977E2187_m283E1A8E6B025E806D15B7C961098B3751211E51_gshared)(__this, ___0_value, method);
-}
-inline void BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m27B1CE4986F8F5797956E336EDF7FF730AB613E4 (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, float* ___0_value, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 ___1_unused, const RuntimeMethod* method)
-{
-	((  void (*) (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0*, float*, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292, const RuntimeMethod*))BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m27B1CE4986F8F5797956E336EDF7FF730AB613E4_gshared)(__this, ___0_value, ___1_unused, method);
 }
 inline void BufferSerializer_1_SerializeValue_m5703B125C4DB4384D52002A802AB88FA88E27331 (BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* ___0_value, const RuntimeMethod* method)
 {
@@ -3577,6 +3643,405 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t math_asint_mBDED7FE966CA6
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_asfloat_m9FA56DE5C61FCEF3DCD0675252D40DFD9C9B712F_inline (int32_t ___0_x, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Single_IsNaN_mFE637F6ECA9F7697CE8EFF56427858F4C5EDF75D_inline (float ___0_f, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t BitConverter_SingleToInt32Bits_mC760C7CFC89725E3CF68DC45BE3A9A42A7E7DA73_inline (float ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimationState_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_m4708197E9B5731D722735DA6065112E3A38C4100_gshared (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* __this, BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B ___0_serializer, const RuntimeMethod* method) 
+{
+	il2cpp_rgctx_method_init(method);
+	FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 V_1;
+	memset((&V_1), 0, sizeof(V_1));
+	ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 V_2;
+	memset((&V_2), 0, sizeof(V_2));
+	{
+		bool L_0;
+		L_0 = BufferSerializer_1_get_IsWriter_m6978D539067CE30EC81B6491589C7C30A1E16C28((&___0_serializer), il2cpp_rgctx_method(method->rgctx_data, 1));
+		if (!L_0)
+		{
+			goto IL_0081;
+		}
+	}
+	{
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_1;
+		L_1 = BufferSerializer_1_GetFastBufferWriter_m9C29FD83F1F84F7DB243974892CB6612AE9ACCE9((&___0_serializer), il2cpp_rgctx_method(method->rgctx_data, 3));
+		V_0 = L_1;
+		__this->___m_StateFlags = (uint8_t)0;
+		bool L_2 = __this->___Transition;
+		if (!L_2)
+		{
+			goto IL_002f;
+		}
+	}
+	{
+		uint8_t L_3 = __this->___m_StateFlags;
+		__this->___m_StateFlags = (uint8_t)((int32_t)(uint8_t)((int32_t)((int32_t)L_3|1)));
+	}
+
+IL_002f:
+	{
+		bool L_4 = __this->___CrossFade;
+		if (!L_4)
+		{
+			goto IL_0046;
+		}
+	}
+	{
+		uint8_t L_5 = __this->___m_StateFlags;
+		__this->___m_StateFlags = (uint8_t)((int32_t)(uint8_t)((int32_t)((int32_t)L_5|2)));
+	}
+
+IL_0046:
+	{
+		uint8_t* L_6 = (uint8_t*)(&__this->___m_StateFlags);
+		BufferSerializer_1_SerializeValue_m2EF2BEBABA4000D00D5AD6D9F41DDFE83CCCAAEE((&___0_serializer), L_6, il2cpp_rgctx_method(method->rgctx_data, 4));
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_7 = V_0;
+		int32_t L_8 = __this->___StateHash;
+		BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline(L_7, L_8, NULL);
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_9 = V_0;
+		int32_t L_10 = __this->___Layer;
+		BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline(L_9, L_10, NULL);
+		bool L_11 = __this->___Transition;
+		if (!L_11)
+		{
+			goto IL_00e4;
+		}
+	}
+	{
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_12 = V_0;
+		int32_t L_13 = __this->___DestinationStateHash;
+		BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline(L_12, L_13, NULL);
+		goto IL_00e4;
+	}
+
+IL_0081:
+	{
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_14;
+		L_14 = BufferSerializer_1_GetFastBufferReader_mF14C151E60E6525341AD31B18744F2DCC23DE063((&___0_serializer), il2cpp_rgctx_method(method->rgctx_data, 5));
+		V_1 = L_14;
+		uint8_t* L_15 = (uint8_t*)(&__this->___m_StateFlags);
+		BufferSerializer_1_SerializeValue_m2EF2BEBABA4000D00D5AD6D9F41DDFE83CCCAAEE((&___0_serializer), L_15, il2cpp_rgctx_method(method->rgctx_data, 4));
+		uint8_t L_16 = __this->___m_StateFlags;
+		__this->___Transition = (bool)((((int32_t)((int32_t)((int32_t)L_16&1))) == ((int32_t)1))? 1 : 0);
+		uint8_t L_17 = __this->___m_StateFlags;
+		__this->___CrossFade = (bool)((((int32_t)((int32_t)((int32_t)L_17&2))) == ((int32_t)2))? 1 : 0);
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_18 = V_1;
+		int32_t* L_19 = (int32_t*)(&__this->___StateHash);
+		ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline(L_18, L_19, NULL);
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_20 = V_1;
+		int32_t* L_21 = (int32_t*)(&__this->___Layer);
+		ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline(L_20, L_21, NULL);
+		bool L_22 = __this->___Transition;
+		if (!L_22)
+		{
+			goto IL_00e4;
+		}
+	}
+	{
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_23 = V_1;
+		int32_t* L_24 = (int32_t*)(&__this->___DestinationStateHash);
+		ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline(L_23, L_24, NULL);
+	}
+
+IL_00e4:
+	{
+		float* L_25 = (float*)(&__this->___NormalizedTime);
+		il2cpp_codegen_initobj((&V_2), sizeof(ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292));
+		ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 L_26 = V_2;
+		BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m6101B238F07953CE18E1F86F2233DEFF3CB93159((&___0_serializer), L_25, L_26, il2cpp_rgctx_method(method->rgctx_data, 6));
+		float* L_27 = (float*)(&__this->___Weight);
+		il2cpp_codegen_initobj((&V_2), sizeof(ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292));
+		ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 L_28 = V_2;
+		BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m6101B238F07953CE18E1F86F2233DEFF3CB93159((&___0_serializer), L_27, L_28, il2cpp_rgctx_method(method->rgctx_data, 6));
+		bool L_29 = __this->___CrossFade;
+		if (!L_29)
+		{
+			goto IL_012e;
+		}
+	}
+	{
+		float* L_30 = (float*)(&__this->___Duration);
+		il2cpp_codegen_initobj((&V_2), sizeof(ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292));
+		ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 L_31 = V_2;
+		BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m6101B238F07953CE18E1F86F2233DEFF3CB93159((&___0_serializer), L_30, L_31, il2cpp_rgctx_method(method->rgctx_data, 6));
+	}
+
+IL_012e:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void AnimationState_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_m4708197E9B5731D722735DA6065112E3A38C4100_AdjustorThunk (RuntimeObject* __this, BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B ___0_serializer, const RuntimeMethod* method)
+{
+	AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA*>(__this + _offset);
+	AnimationState_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_m4708197E9B5731D722735DA6065112E3A38C4100(_thisAdjusted, ___0_serializer, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimationState_NetworkSerialize_TisBufferSerializerWriter_t3F287564BDCF264BABBB18BF4D541A95238FBFD4_mB44E5A82A56437BD8D0F22E6EEB947D4B72938C8_gshared (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* __this, BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0 ___0_serializer, const RuntimeMethod* method) 
+{
+	il2cpp_rgctx_method_init(method);
+	FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 V_1;
+	memset((&V_1), 0, sizeof(V_1));
+	ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 V_2;
+	memset((&V_2), 0, sizeof(V_2));
+	{
+		bool L_0;
+		L_0 = BufferSerializer_1_get_IsWriter_mA81CADE3680B019327BD43C92F4743B2140A83EB((&___0_serializer), il2cpp_rgctx_method(method->rgctx_data, 1));
+		if (!L_0)
+		{
+			goto IL_0081;
+		}
+	}
+	{
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_1;
+		L_1 = BufferSerializer_1_GetFastBufferWriter_m0EDCCFEDDC0A291D14ACA9BB1DA18CD0ABAD9C60((&___0_serializer), il2cpp_rgctx_method(method->rgctx_data, 3));
+		V_0 = L_1;
+		__this->___m_StateFlags = (uint8_t)0;
+		bool L_2 = __this->___Transition;
+		if (!L_2)
+		{
+			goto IL_002f;
+		}
+	}
+	{
+		uint8_t L_3 = __this->___m_StateFlags;
+		__this->___m_StateFlags = (uint8_t)((int32_t)(uint8_t)((int32_t)((int32_t)L_3|1)));
+	}
+
+IL_002f:
+	{
+		bool L_4 = __this->___CrossFade;
+		if (!L_4)
+		{
+			goto IL_0046;
+		}
+	}
+	{
+		uint8_t L_5 = __this->___m_StateFlags;
+		__this->___m_StateFlags = (uint8_t)((int32_t)(uint8_t)((int32_t)((int32_t)L_5|2)));
+	}
+
+IL_0046:
+	{
+		uint8_t* L_6 = (uint8_t*)(&__this->___m_StateFlags);
+		BufferSerializer_1_SerializeValue_m5A85D8FBCAB39E645546BE02F1B40C70D768F74D((&___0_serializer), L_6, il2cpp_rgctx_method(method->rgctx_data, 4));
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_7 = V_0;
+		int32_t L_8 = __this->___StateHash;
+		BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline(L_7, L_8, NULL);
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_9 = V_0;
+		int32_t L_10 = __this->___Layer;
+		BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline(L_9, L_10, NULL);
+		bool L_11 = __this->___Transition;
+		if (!L_11)
+		{
+			goto IL_00e4;
+		}
+	}
+	{
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_12 = V_0;
+		int32_t L_13 = __this->___DestinationStateHash;
+		BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline(L_12, L_13, NULL);
+		goto IL_00e4;
+	}
+
+IL_0081:
+	{
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_14;
+		L_14 = BufferSerializer_1_GetFastBufferReader_mBE4915BC31492038A896F4FE19E6A1D815815171((&___0_serializer), il2cpp_rgctx_method(method->rgctx_data, 5));
+		V_1 = L_14;
+		uint8_t* L_15 = (uint8_t*)(&__this->___m_StateFlags);
+		BufferSerializer_1_SerializeValue_m5A85D8FBCAB39E645546BE02F1B40C70D768F74D((&___0_serializer), L_15, il2cpp_rgctx_method(method->rgctx_data, 4));
+		uint8_t L_16 = __this->___m_StateFlags;
+		__this->___Transition = (bool)((((int32_t)((int32_t)((int32_t)L_16&1))) == ((int32_t)1))? 1 : 0);
+		uint8_t L_17 = __this->___m_StateFlags;
+		__this->___CrossFade = (bool)((((int32_t)((int32_t)((int32_t)L_17&2))) == ((int32_t)2))? 1 : 0);
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_18 = V_1;
+		int32_t* L_19 = (int32_t*)(&__this->___StateHash);
+		ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline(L_18, L_19, NULL);
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_20 = V_1;
+		int32_t* L_21 = (int32_t*)(&__this->___Layer);
+		ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline(L_20, L_21, NULL);
+		bool L_22 = __this->___Transition;
+		if (!L_22)
+		{
+			goto IL_00e4;
+		}
+	}
+	{
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_23 = V_1;
+		int32_t* L_24 = (int32_t*)(&__this->___DestinationStateHash);
+		ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline(L_23, L_24, NULL);
+	}
+
+IL_00e4:
+	{
+		float* L_25 = (float*)(&__this->___NormalizedTime);
+		il2cpp_codegen_initobj((&V_2), sizeof(ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292));
+		ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 L_26 = V_2;
+		BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m27B1CE4986F8F5797956E336EDF7FF730AB613E4((&___0_serializer), L_25, L_26, il2cpp_rgctx_method(method->rgctx_data, 6));
+		float* L_27 = (float*)(&__this->___Weight);
+		il2cpp_codegen_initobj((&V_2), sizeof(ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292));
+		ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 L_28 = V_2;
+		BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m27B1CE4986F8F5797956E336EDF7FF730AB613E4((&___0_serializer), L_27, L_28, il2cpp_rgctx_method(method->rgctx_data, 6));
+		bool L_29 = __this->___CrossFade;
+		if (!L_29)
+		{
+			goto IL_012e;
+		}
+	}
+	{
+		float* L_30 = (float*)(&__this->___Duration);
+		il2cpp_codegen_initobj((&V_2), sizeof(ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292));
+		ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 L_31 = V_2;
+		BufferSerializer_1_SerializeValue_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m27B1CE4986F8F5797956E336EDF7FF730AB613E4((&___0_serializer), L_30, L_31, il2cpp_rgctx_method(method->rgctx_data, 6));
+	}
+
+IL_012e:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void AnimationState_NetworkSerialize_TisBufferSerializerWriter_t3F287564BDCF264BABBB18BF4D541A95238FBFD4_mB44E5A82A56437BD8D0F22E6EEB947D4B72938C8_AdjustorThunk (RuntimeObject* __this, BufferSerializer_1_tB07CC05C8821999D2912FC2880FC1CAF4094FEF0 ___0_serializer, const RuntimeMethod* method)
+{
+	AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA*>(__this + _offset);
+	AnimationState_NetworkSerialize_TisBufferSerializerWriter_t3F287564BDCF264BABBB18BF4D541A95238FBFD4_mB44E5A82A56437BD8D0F22E6EEB947D4B72938C8(_thisAdjusted, ___0_serializer, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimationState_NetworkSerialize_TisIl2CppFullySharedGenericAny_mFAD99C42F673091B016FE6E915258ADAC6275C80_gshared (AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* __this, BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10 ___0_serializer, const RuntimeMethod* method) 
+{
+	il2cpp_rgctx_method_init(method);
+	FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 V_1;
+	memset((&V_1), 0, sizeof(V_1));
+	ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 V_2;
+	memset((&V_2), 0, sizeof(V_2));
+	{
+		bool L_0;
+		L_0 = ((  bool (*) (BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*, const RuntimeMethod*))il2cpp_codegen_get_direct_method_pointer(il2cpp_rgctx_method(method->rgctx_data, 1)))((BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*)___0_serializer, il2cpp_rgctx_method(method->rgctx_data, 1));
+		if (!L_0)
+		{
+			goto IL_0081;
+		}
+	}
+	{
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_1;
+		L_1 = ((  FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC (*) (BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*, const RuntimeMethod*))il2cpp_codegen_get_direct_method_pointer(il2cpp_rgctx_method(method->rgctx_data, 3)))((BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*)___0_serializer, il2cpp_rgctx_method(method->rgctx_data, 3));
+		V_0 = L_1;
+		__this->___m_StateFlags = (uint8_t)0;
+		bool L_2 = __this->___Transition;
+		if (!L_2)
+		{
+			goto IL_002f;
+		}
+	}
+	{
+		uint8_t L_3 = __this->___m_StateFlags;
+		__this->___m_StateFlags = (uint8_t)((int32_t)(uint8_t)((int32_t)((int32_t)L_3|1)));
+	}
+
+IL_002f:
+	{
+		bool L_4 = __this->___CrossFade;
+		if (!L_4)
+		{
+			goto IL_0046;
+		}
+	}
+	{
+		uint8_t L_5 = __this->___m_StateFlags;
+		__this->___m_StateFlags = (uint8_t)((int32_t)(uint8_t)((int32_t)((int32_t)L_5|2)));
+	}
+
+IL_0046:
+	{
+		uint8_t* L_6 = (uint8_t*)(&__this->___m_StateFlags);
+		((  void (*) (BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*, uint8_t*, const RuntimeMethod*))il2cpp_codegen_get_direct_method_pointer(il2cpp_rgctx_method(method->rgctx_data, 4)))((BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*)___0_serializer, L_6, il2cpp_rgctx_method(method->rgctx_data, 4));
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_7 = V_0;
+		int32_t L_8 = __this->___StateHash;
+		BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline(L_7, L_8, NULL);
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_9 = V_0;
+		int32_t L_10 = __this->___Layer;
+		BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline(L_9, L_10, NULL);
+		bool L_11 = __this->___Transition;
+		if (!L_11)
+		{
+			goto IL_00e4;
+		}
+	}
+	{
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_12 = V_0;
+		int32_t L_13 = __this->___DestinationStateHash;
+		BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline(L_12, L_13, NULL);
+		goto IL_00e4;
+	}
+
+IL_0081:
+	{
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_14;
+		L_14 = ((  FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 (*) (BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*, const RuntimeMethod*))il2cpp_codegen_get_direct_method_pointer(il2cpp_rgctx_method(method->rgctx_data, 5)))((BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*)___0_serializer, il2cpp_rgctx_method(method->rgctx_data, 5));
+		V_1 = L_14;
+		uint8_t* L_15 = (uint8_t*)(&__this->___m_StateFlags);
+		((  void (*) (BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*, uint8_t*, const RuntimeMethod*))il2cpp_codegen_get_direct_method_pointer(il2cpp_rgctx_method(method->rgctx_data, 4)))((BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*)___0_serializer, L_15, il2cpp_rgctx_method(method->rgctx_data, 4));
+		uint8_t L_16 = __this->___m_StateFlags;
+		__this->___Transition = (bool)((((int32_t)((int32_t)((int32_t)L_16&1))) == ((int32_t)1))? 1 : 0);
+		uint8_t L_17 = __this->___m_StateFlags;
+		__this->___CrossFade = (bool)((((int32_t)((int32_t)((int32_t)L_17&2))) == ((int32_t)2))? 1 : 0);
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_18 = V_1;
+		int32_t* L_19 = (int32_t*)(&__this->___StateHash);
+		ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline(L_18, L_19, NULL);
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_20 = V_1;
+		int32_t* L_21 = (int32_t*)(&__this->___Layer);
+		ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline(L_20, L_21, NULL);
+		bool L_22 = __this->___Transition;
+		if (!L_22)
+		{
+			goto IL_00e4;
+		}
+	}
+	{
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_23 = V_1;
+		int32_t* L_24 = (int32_t*)(&__this->___DestinationStateHash);
+		ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline(L_23, L_24, NULL);
+	}
+
+IL_00e4:
+	{
+		float* L_25 = (float*)(&__this->___NormalizedTime);
+		il2cpp_codegen_initobj((&V_2), sizeof(ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292));
+		ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 L_26 = V_2;
+		((  void (*) (BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*, float*, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292, const RuntimeMethod*))il2cpp_codegen_get_direct_method_pointer(il2cpp_rgctx_method(method->rgctx_data, 6)))((BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*)___0_serializer, L_25, L_26, il2cpp_rgctx_method(method->rgctx_data, 6));
+		float* L_27 = (float*)(&__this->___Weight);
+		il2cpp_codegen_initobj((&V_2), sizeof(ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292));
+		ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 L_28 = V_2;
+		((  void (*) (BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*, float*, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292, const RuntimeMethod*))il2cpp_codegen_get_direct_method_pointer(il2cpp_rgctx_method(method->rgctx_data, 6)))((BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*)___0_serializer, L_27, L_28, il2cpp_rgctx_method(method->rgctx_data, 6));
+		bool L_29 = __this->___CrossFade;
+		if (!L_29)
+		{
+			goto IL_012e;
+		}
+	}
+	{
+		float* L_30 = (float*)(&__this->___Duration);
+		il2cpp_codegen_initobj((&V_2), sizeof(ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292));
+		ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292 L_31 = V_2;
+		((  void (*) (BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*, float*, ForPrimitives_t4120884959A3BC3EAC3D4980A4DA8010E09DA292, const RuntimeMethod*))il2cpp_codegen_get_direct_method_pointer(il2cpp_rgctx_method(method->rgctx_data, 6)))((BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10*)___0_serializer, L_30, L_31, il2cpp_rgctx_method(method->rgctx_data, 6));
+	}
+
+IL_012e:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void AnimationState_NetworkSerialize_TisIl2CppFullySharedGenericAny_mFAD99C42F673091B016FE6E915258ADAC6275C80_AdjustorThunk (RuntimeObject* __this, BufferSerializer_1_tC485B3539F0BCD2241145A679FB202806C206C10 ___0_serializer, const RuntimeMethod* method)
+{
+	AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<AnimationState_t55E23D2724829C98A7EAE9CC857CE589E5B4C9AA*>(__this + _offset);
+	AnimationState_NetworkSerialize_TisIl2CppFullySharedGenericAny_mFAD99C42F673091B016FE6E915258ADAC6275C80(_thisAdjusted, ___0_serializer, method);
+}
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnimationTriggerMessage_NetworkSerialize_TisBufferSerializerReader_t821F6D93FEA6652401EA14C2C96FB7328355A091_m3A4043886A4C31365EB99E8D4009D96FBFF81008_gshared (AnimationTriggerMessage_t6E5D90F8238CB48B83329BAEEEF1847B2DD1EE46* __this, BufferSerializer_1_t8B54D07A3EDD3D37E1369C511353FC3344A0FF3B ___0_serializer, const RuntimeMethod* method) 
 {
 	il2cpp_rgctx_method_init(method);
@@ -13645,6 +14110,24 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MemoryBlock_t83C4AD217E04686899AC67FBD8D14A7C
 		void* L_6;
 		L_6 = Array_Resize_mC7BE2965DE3FCF4014D43B606D94951480A65380((void*)L_0, L_1, L_2, L_3, ((int64_t)L_4), L_5, NULL);
 		return (MemoryBlock_t83C4AD217E04686899AC67FBD8D14A7C9AAC6E84*)(L_6);
+	}
+}
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void BytePacker_WriteValuePacked_m28A6B72074DC64885C3C9CDD75E9B9F955F8C3C5_inline (FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC ___0_writer, int32_t ___1_value, const RuntimeMethod* method) 
+{
+	{
+		FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC L_0 = ___0_writer;
+		int32_t L_1 = ___1_value;
+		BytePacker_WriteValueBitPacked_m510F6322BA0F2C85AF9527A7927FF9B03F0AE613(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ByteUnpacker_ReadValuePacked_m7096AA51201BA17A76B47364E7021F390E9A6FD6_inline (FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 ___0_reader, int32_t* ___1_value, const RuntimeMethod* method) 
+{
+	{
+		FastBufferReader_t1FA49C2063B2EAAADB8DE7FF571FF284719D0E99 L_0 = ___0_reader;
+		int32_t* L_1 = ___1_value;
+		ByteUnpacker_ReadValueBitPacked_mC5142499F3BA1F4D8C60EDF335D6C54B0D78C4AC(L_0, L_1, NULL);
+		return;
 	}
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t FastBufferWriter_get_Position_m87642B5268B41B7D15D4E628DF93A5B5776A4B05_inline (FastBufferWriter_tE6AFE9436BD125AF309056A81B70F95625FB96EC* __this, const RuntimeMethod* method) 

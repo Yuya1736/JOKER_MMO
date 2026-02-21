@@ -15,7 +15,16 @@ public enum NetMessageType : byte // 每次添加新的Type过后，需要在NetMessageManag
     C2S_GetBagData,
     S2C_GetBagData,
     C2S_UseItem,
-    S2C_UpdateBagData
+    S2C_BagUpdateItem,
+    C2S_BagExchangeItem,
+    S2C_BagExchangeItem,
+    C2S_ChangeShortCutIndex,
+    S2C_ChangeShortCutIndex,
+    C2S_ExchangeShortCut,
+    C2S_ShopBuyItem,
+    S2C_BagUpdateMoney,
+    C2S_ShopSellItem,
+    C2S_CraftItem
 }
 
 public enum NetMessageErrorCode
@@ -27,6 +36,98 @@ public enum NetMessageErrorCode
     AccountRepeatLogin
 }
 
+public struct C2S_CraftItem : INetworkSerializable
+{
+    public string itemId;
+    public int count;
+    public int bagIndex;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue(ref itemId);
+        serializer.SerializeValue<int>(ref count);
+        serializer.SerializeValue<int>(ref bagIndex);
+    }
+}
+
+public struct C2S_ShopSellItem : INetworkSerializable
+{
+    public int index;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref index);
+    }
+}
+
+public struct S2C_BagUpdateMoney : INetworkSerializable
+{
+    public int money;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref money);
+    }
+}
+
+public struct C2S_ShopBuyItem : INetworkSerializable
+{
+    public string itemId;
+    public int bagIndex;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue(ref itemId);
+        serializer.SerializeValue<int>(ref bagIndex);
+    }
+}
+
+public struct C2S_ExchangeShortCut : INetworkSerializable
+{
+    public int shortCutIndex1;
+    public int shortCutIndex2;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref shortCutIndex1);
+        serializer.SerializeValue<int>(ref shortCutIndex2);
+    }
+}
+public struct C2S_ChangeShortCutIndex : INetworkSerializable
+{
+    public int shortCutIndex;
+    public int itemIndex;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref shortCutIndex);
+        serializer.SerializeValue<int>(ref itemIndex);
+    }
+}
+public struct S2C_ChangeShortCutIndex : INetworkSerializable
+{
+    public int shortCutIndex;
+    public int itemIndex;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref shortCutIndex);
+        serializer.SerializeValue<int>(ref itemIndex);
+    }
+}
+public struct S2C_BagExchangeItem : INetworkSerializable
+{
+    public int oldIndex;
+    public int newIndex;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref oldIndex);
+        serializer.SerializeValue<int>(ref newIndex);
+    }
+}
+public struct C2S_BagExchangeItem : INetworkSerializable
+{
+    public int oldIndex;
+    public int newIndex;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref oldIndex);
+        serializer.SerializeValue<int>(ref newIndex);
+    }
+}
 public struct C2S_UseItem : INetworkSerializable
 {
     public int index;
@@ -35,16 +136,18 @@ public struct C2S_UseItem : INetworkSerializable
         serializer.SerializeValue<int>(ref index);
     }
 }
-public struct S2C_UpdateBagData : INetworkSerializable
+public struct S2C_BagUpdateItem : INetworkSerializable
 {
     public ItemDataBase itemData;
     public ItemType itemType;
+    public bool isUse;
     public int oldIndex; // 需要原先的武器下标，来切换SelectIcon
     public int index;
     public int version;
     public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
     {
         serializer.SerializeValue<ItemType>(ref itemType);
+        serializer.SerializeValue<bool>(ref isUse);
         serializer.SerializeValue<int>(ref oldIndex);
         serializer.SerializeValue<int>(ref index);
         serializer.SerializeValue<int>(ref version);

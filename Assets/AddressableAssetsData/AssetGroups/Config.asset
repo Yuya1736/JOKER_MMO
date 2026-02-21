@@ -37,6 +37,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32602ca3cec230e45aaa6776430d959b
+    m_Address: MerchantConfig_0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37905d25ef1fd3f4db3f6c92bd170966
+    m_Address: CrafterConfig_0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3ba01ab7ab933e74188eb01c5e5b9238
     m_Address: Weapon_0
     m_ReadOnly: 0

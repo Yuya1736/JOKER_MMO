@@ -174,6 +174,9 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
         UISystem.AddUIWindowData<UI_ChatWindowItem>(new UIWindowData(false, nameof(UI_ChatWindowItem), 1)); // TODO:这里应该不需要
         UISystem.AddUIWindowData<UI_BagWindow>(new UIWindowData(true, nameof(UI_BagWindow), 2));
         UISystem.AddUIWindowData<UI_ItemInfoPopupWindow>(new UIWindowData(true, nameof(UI_ItemInfoPopupWindow), 2));
+        UISystem.AddUIWindowData<UI_ShortCutBarWindow>(new UIWindowData(false, nameof(UI_ShortCutBarWindow), 2));
+        UISystem.AddUIWindowData<UI_ShopWindow>(new UIWindowData(false, nameof(UI_ShopWindow), 2));
+        UISystem.AddUIWindowData<UI_CraftWindow>(new UIWindowData(false, nameof(UI_CraftWindow), 2));
     }
     private void OnGameSceneLaunchEvent(GameSceneLaunchEvent @event)
     {

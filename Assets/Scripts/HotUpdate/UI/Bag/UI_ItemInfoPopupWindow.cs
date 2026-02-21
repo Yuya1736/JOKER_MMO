@@ -7,6 +7,7 @@ public class UI_ItemInfoPopupWindow : UI_WindowBase
     [SerializeField] private Text textName;
     [SerializeField] private Text textType;
     [SerializeField] private Text textDescription;
+    [SerializeField] private Text textPrice;
     [SerializeField] private Image imgIcon;
     private Vector2 CanvasSize => ClientGlobal.Instance.canvasSize;
     private RectTransform rectTransform => (RectTransform)transform;
@@ -26,6 +27,7 @@ public class UI_ItemInfoPopupWindow : UI_WindowBase
         textName.text = itemConfig.GetItemName(LocalizationSystem.LanguageType);
         textType.text = itemConfig.GetItemType(LocalizationSystem.LanguageType);
         textDescription.text = itemConfig.GetItemDescription(LocalizationSystem.LanguageType);
+        textPrice.text = itemConfig.price.ToString();
     }
 
 }

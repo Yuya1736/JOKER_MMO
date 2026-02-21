@@ -259,6 +259,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1638733847
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2267462966740490160, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 151.95639
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267462966740490160, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 495.70496
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267462966740490160, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -244.12325
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267462966740490160, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267462966740490160, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267462966740490160, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267462966740490160, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267462966740490160, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267462966740490160, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267462966740490160, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196720942601977923, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3753274498
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196720942601977923, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1936561936
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521813853561864683, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c,
+        type: 3}
+      propertyPath: m_Name
+      value: AotHelper
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7d1c67cc0ee6eb14cbde08ebb5eebd3c, type: 3}
 --- !u!1001 &1715973376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -415,6 +493,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: JKFrame
       objectReference: {fileID: 0}
+    - target: {fileID: 6029324473013266668, guid: 92a72c9a3d3131f498a24198d7029305,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7737124639798830129, guid: 92a72c9a3d3131f498a24198d7029305,
         type: 3}
       propertyPath: m_IsActive
@@ -483,51 +566,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7560962953620065258, guid: 84a3d9c7da866e44b8ef11ab8cf98509,
-        type: 3}
-      propertyPath: aotDllTextList.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560962953620065258, guid: 84a3d9c7da866e44b8ef11ab8cf98509,
-        type: 3}
-      propertyPath: versionInfoAddressableKey
-      value: GameBasicSetting
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560962953620065258, guid: 84a3d9c7da866e44b8ef11ab8cf98509,
-        type: 3}
-      propertyPath: aotDllTextList.Array.data[0]
-      value: 
-      objectReference: {fileID: 4900000, guid: 58f3d0752acd40649aca9f86c4dec64d, type: 3}
-    - target: {fileID: 7560962953620065258, guid: 84a3d9c7da866e44b8ef11ab8cf98509,
-        type: 3}
-      propertyPath: aotDllTextList.Array.data[1]
-      value: 
-      objectReference: {fileID: 4900000, guid: aeb1e079e64b59349b876496bc269a79, type: 3}
-    - target: {fileID: 7560962953620065258, guid: 84a3d9c7da866e44b8ef11ab8cf98509,
-        type: 3}
-      propertyPath: aotDllTextList.Array.data[6]
-      value: 
-      objectReference: {fileID: 4900000, guid: a6376c253e6709a47b08d54911bebbe4, type: 3}
-    - target: {fileID: 7560962953620065258, guid: 84a3d9c7da866e44b8ef11ab8cf98509,
-        type: 3}
-      propertyPath: aotDllTextList.Array.data[7]
-      value: 
-      objectReference: {fileID: 4900000, guid: 75b7aa837207afb4e874209b25c9320b, type: 3}
-    - target: {fileID: 7560962953620065258, guid: 84a3d9c7da866e44b8ef11ab8cf98509,
-        type: 3}
-      propertyPath: hotUpdateDllKeyList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560962953620065258, guid: 84a3d9c7da866e44b8ef11ab8cf98509,
-        type: 3}
-      propertyPath: hotUpdateDllKeyList.Array.data[0]
-      value: Common.dll
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560962953620065258, guid: 84a3d9c7da866e44b8ef11ab8cf98509,
-        type: 3}
-      propertyPath: hotUpdateDllKeyList.Array.data[1]
-      value: HotUpdate.dll
-      objectReference: {fileID: 0}
     - target: {fileID: 8061968995721793407, guid: 84a3d9c7da866e44b8ef11ab8cf98509,
         type: 3}
       propertyPath: m_Name
@@ -546,3 +584,4 @@ SceneRoots:
   - {fileID: 1754916871}
   - {fileID: 1715973376}
   - {fileID: 679842826}
+  - {fileID: 1638733847}

@@ -1,13 +1,15 @@
 using JKFrame;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_BagWindow : UI_CustomWindowBase, IInputBlockerUI
+public class UI_BagWindow : UI_CustomWindowBase, IInputBlockerUI, IBagWindow
 {
     [SerializeField] private Button btnClose;
     [SerializeField] private Transform itemRoot;
-    [SerializeField] private string emptySlotkey;
+    [SerializeField] private Text textMoney;
+    private string emptySlotkey => GlobalUtility.emptySlotKey;
     private List<UI_SlotBase> slotList = new List<UI_SlotBase>(100);
 
     private void Awake()
@@ -18,53 +20,47 @@ public class UI_BagWindow : UI_CustomWindowBase, IInputBlockerUI
     private void OnBtnCloseClick()
     {
         UISystem.Close<UI_BagWindow>();
+        UISystem.Close<UI_ShopWindow>();
     }
 
     public void Clear()
     {
-        foreach (UI_SlotBase slot in slotList)
+        for(int i = slotList.Count - 1; i >= 0; i--)
         {
-            slot.Destroy();
+            slotList[i].Destroy();
         }
         slotList.Clear();
     }
 
     public void Show(BagData bagData)
     {
-        Clear();
+        if(slotList.Count != 0) Clear();
         List<ItemDataBase> itemDataList = bagData.itemDataList;
-        for (int i = 0; i < itemDataList.Count; ++i) slotList.Add(null);
-        int currentIndex = 0;
-        foreach (ItemDataBase itemData in itemDataList)
+        UpdateMoney(bagData.money);
+        for (int i = 0;i < itemDataList.Count;++ i)
         {
-            if (itemData != null)
+            ItemDataBase itemData = bagData.itemDataList[i];
+            if (itemData != null) slotList.Add(CreateSlot(i, itemData));
+            else slotList.Add(CreateEmptySlot(i));
+            if (i == bagData.usedWeponIndex) // 当前使用的武器需要加上UsedIcon
             {
-                slotList[currentIndex] = CreateSlot(currentIndex, itemData);
-                print($"{currentIndex} + {slotList[currentIndex]}");
-            }
-            else
-            {
-                slotList[currentIndex] = CreateEmptySlot(currentIndex);
-            }
-            if(currentIndex == bagData.usedWeponIndex) // 当前使用的武器需要加上UsedIcon
-            {
-                if(slotList[currentIndex] is UI_WeaponSlot)
+                if(slotList[i] is UI_WeaponSlot)
                 {
-                    ((UI_WeaponSlot)slotList[currentIndex]).SetUseState(true);
+                    ((UI_WeaponSlot)slotList[i]).SetUseState(true);
                 }
                 else
                 {
                     Debug.Log($"对应usedWeponIndex: {bagData.usedWeponIndex} 不是WeaponSlot");
                 }
             }
-            currentIndex ++;
         }
-        print(slotList[1]);
     }
-
-    public void OnUseItem(int index)
+     
+    public void OnRightClickItem(int index)
     {
-        PlayerManager.Instance.UseItem(index);
+        if (index == 1) print($"{ClientUtility.UIWindowExist<UI_ShopWindow>()}_{PlayerManager.Instance.RequestShopWindow}");
+        if (ClientUtility.UIWindowExist<UI_ShopWindow>() || PlayerManager.Instance.RequestShopWindow) PlayerManager.Instance.ShopSellItem(index);
+        else PlayerManager.Instance.UseItem(index);
     }
 
     public void UpdataItem(int index, ItemDataBase itemData)
@@ -72,27 +68,31 @@ public class UI_BagWindow : UI_CustomWindowBase, IInputBlockerUI
         slotList[index].Destroy();
         if (itemData != null)
         {
-            CreateSlot(index, itemData);
+            slotList[index] = CreateSlot(index, itemData);
+            if (itemData is WeaponData)
+            {
+                if (PlayerManager.bagData.usedWeponIndex == slotList[index].index) ((UI_WeaponSlot)slotList[index]).SetUseState(true);
+                else ((UI_WeaponSlot)slotList[index]).SetUseState(false);
+            }
         }
         else
         {
-            CreateEmptySlot(index);
+            slotList[index] = CreateEmptySlot(index);
         }
     }
 
     public void UpdateWeaponUsedIcon(int oldIndex, int newIndex)
     {
-        ((UI_WeaponSlot)slotList[oldIndex]).SetUseState(false);
-        ((UI_WeaponSlot)slotList[newIndex]).SetUseState(true);
+        if (slotList[oldIndex] is UI_WeaponSlot) ((UI_WeaponSlot)slotList[oldIndex]).SetUseState(false);
+        if (slotList[newIndex] is UI_WeaponSlot) ((UI_WeaponSlot)slotList[newIndex]).SetUseState(true);
     }
 
     public UI_SlotBase CreateEmptySlot(int index)
     {
         //UI_SlotBase emptySlot = Instantiate(ResSystem.LoadAsset<GameObject>(emptySlotkey), itemRoot).GetComponent<UI_SlotBase>();
-        UI_SlotBase emptySlot = ResSystem.InstantiateGameObject(emptySlotkey, itemRoot).GetComponent<UI_SlotBase>();
-        emptySlot.Init(null, null, index, null);
+        UI_SlotBase emptySlot = ResSystem.InstantiateGameObject<UI_SlotBase>(emptySlotkey, itemRoot);
+        emptySlot.Init(this, null, null, index, null, null, null);
         emptySlot.transform.SetSiblingIndex(index);
-        slotList[index] = emptySlot;
         return emptySlot;
     }
 
@@ -100,16 +100,40 @@ public class UI_BagWindow : UI_CustomWindowBase, IInputBlockerUI
     {
         ItemConfigBase itemConfig = ResSystem.LoadAsset<ItemConfigBase>(itemData.id);
         string slotKey = itemConfig.slotKey;
-        UI_SlotBase slot = ResSystem.InstantiateGameObject(slotKey, itemRoot).GetComponent<UI_SlotBase>();
-        slot.Init(itemData, itemConfig, index, OnUseItem);
+        UI_SlotBase slot = ResSystem.InstantiateGameObject<UI_SlotBase>(slotKey, itemRoot);
+        slot.Init(this, itemData, itemConfig, index, OnRightClickItem, null, OnDragItemToNewSlot);
         slot.transform.SetSiblingIndex(index);
-        slotList[index] = slot;
         return slot;
+    }
+
+    private void OnDragItemToNewSlot(UI_SlotBase oldSlot, UI_SlotBase newSlot) // oldSlot.bagWindow is UI_BagWindow
+    {
+        if(newSlot.bagWindow is UI_BagWindow) // 背包->背包
+        {
+            NetMessageManager.Instance.SendMessageToServer<C2S_BagExchangeItem>(NetMessageType.C2S_BagExchangeItem, new C2S_BagExchangeItem
+            {
+                oldIndex = oldSlot.index,
+                newIndex = newSlot.index
+            });
+        }
+        else if(newSlot.bagWindow is UI_ShortCutBarWindow) // 背包->快捷栏
+        {
+            NetMessageManager.Instance.SendMessageToServer<C2S_ChangeShortCutIndex>(NetMessageType.C2S_ChangeShortCutIndex, new C2S_ChangeShortCutIndex
+            {
+                itemIndex = oldSlot.index,
+                shortCutIndex = newSlot.index
+            });
+        }
     }
 
     public override void OnClose()
     {
         base.OnClose();
         Clear();
+    }
+
+    internal void UpdateMoney(int money)
+    {
+        textMoney.text = money.ToString();
     }
 }

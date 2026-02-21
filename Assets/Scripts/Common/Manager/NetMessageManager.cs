@@ -82,10 +82,55 @@ public class NetMessageManager : SingletonMono<NetMessageManager>
                 reader.ReadNetworkSerializableInPlace(ref C2S_UseItemInfo);
                 TriggerOnReceiveMessageCallback(NetMessageType.C2S_UseItem, clientId, C2S_UseItemInfo);
                 break;
-            case NetMessageType.S2C_UpdateBagData:
-                S2C_UpdateBagData S2C_UpdateBagDataInfo = new S2C_UpdateBagData();
+            case NetMessageType.S2C_BagUpdateItem:
+                S2C_BagUpdateItem S2C_UpdateBagDataInfo = new S2C_BagUpdateItem();
                 reader.ReadNetworkSerializableInPlace(ref S2C_UpdateBagDataInfo);
-                TriggerOnReceiveMessageCallback(NetMessageType.S2C_UpdateBagData, clientId, S2C_UpdateBagDataInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_BagUpdateItem, clientId, S2C_UpdateBagDataInfo);
+                break;
+            case NetMessageType.C2S_BagExchangeItem:
+                C2S_BagExchangeItem C2S_BagExchangeItemInfo = new C2S_BagExchangeItem();
+                reader.ReadNetworkSerializableInPlace(ref C2S_BagExchangeItemInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_BagExchangeItem, clientId, C2S_BagExchangeItemInfo);
+                break;
+            case NetMessageType.S2C_BagExchangeItem:
+                S2C_BagExchangeItem S2C_BagExchangeItemInfo = new S2C_BagExchangeItem();
+                reader.ReadNetworkSerializableInPlace(ref S2C_BagExchangeItemInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_BagExchangeItem, clientId, S2C_BagExchangeItemInfo);
+                break;
+            case NetMessageType.S2C_ChangeShortCutIndex:
+                S2C_ChangeShortCutIndex S2C_ChangeShortCutIndexInfo = new S2C_ChangeShortCutIndex();
+                reader.ReadNetworkSerializableInPlace(ref S2C_ChangeShortCutIndexInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_ChangeShortCutIndex, clientId, S2C_ChangeShortCutIndexInfo);
+                break;
+            case NetMessageType.C2S_ChangeShortCutIndex:
+                C2S_ChangeShortCutIndex C2S_ChangeShortCutIndexInfo = new C2S_ChangeShortCutIndex();
+                reader.ReadNetworkSerializableInPlace(ref C2S_ChangeShortCutIndexInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_ChangeShortCutIndex, clientId, C2S_ChangeShortCutIndexInfo);
+                break;
+            case NetMessageType.C2S_ExchangeShortCut:
+                C2S_ExchangeShortCut C2S_ExchangeShortCutInfo = new C2S_ExchangeShortCut();
+                reader.ReadNetworkSerializableInPlace(ref C2S_ExchangeShortCutInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_ExchangeShortCut, clientId, C2S_ExchangeShortCutInfo);
+                break;
+            case NetMessageType.C2S_ShopBuyItem:
+                C2S_ShopBuyItem C2S_ShopBuyItemInfo = new C2S_ShopBuyItem();
+                reader.ReadNetworkSerializableInPlace(ref C2S_ShopBuyItemInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_ShopBuyItem, clientId, C2S_ShopBuyItemInfo);
+                break;
+            case NetMessageType.S2C_BagUpdateMoney:
+                S2C_BagUpdateMoney S2C_BagUpdateMoneyInfo = new S2C_BagUpdateMoney();
+                reader.ReadNetworkSerializableInPlace(ref S2C_BagUpdateMoneyInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_BagUpdateMoney, clientId, S2C_BagUpdateMoneyInfo);
+                break;
+            case NetMessageType.C2S_ShopSellItem:
+                C2S_ShopSellItem C2S_ShopSellItemInfo = new C2S_ShopSellItem();
+                reader.ReadNetworkSerializableInPlace(ref C2S_ShopSellItemInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_ShopSellItem, clientId, C2S_ShopSellItemInfo);
+                break;
+            case NetMessageType.C2S_CraftItem:
+                C2S_CraftItem C2S_CraftItemInfo = new C2S_CraftItem();
+                reader.ReadNetworkSerializableInPlace(ref C2S_CraftItemInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_CraftItem, clientId, C2S_CraftItemInfo);
                 break;
         }
     }
