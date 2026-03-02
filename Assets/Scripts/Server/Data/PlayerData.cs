@@ -9,6 +9,7 @@ public class PlayerData
     public CharacterData characterData = new CharacterData() {position = ServerResSystem.serverConfig.defaultPlayerBirthPos};
     public BagData bagData = new BagData();
     public string weaponName = "Weapon_0"; // Ĭ�ϳ�ʼΪWeapon_0
+    public float hp;
 }
 
 public class CharacterData

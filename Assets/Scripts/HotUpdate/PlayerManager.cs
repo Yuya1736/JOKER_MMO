@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerManager : SingletonMono<PlayerManager>
 {
-    public static PlayerController localPlayer;
+    public static PlayerController playerController;
+    public static PlayerClientController playerClientController;
     public static BagData bagData;
     public static string currentMerchantConfig;
     public static string currentCrafterConfig;
@@ -17,16 +18,10 @@ public class PlayerManager : SingletonMono<PlayerManager>
     public bool RequestShopWindow => requestShopWindow;
     public bool RequestBagWindow => requestBagWindow;
     public bool RequestCraftWindow => requestCraftWindow;
-
-
-    public bool IsCompeleted()
-    {
-        return localPlayer != null;
-    }
-
+    
     public void Init()
     {
-        EventSystem.AddTypeEventListener<LocalPlayerEvent>(OnInitLocalPlayer);
+        EventSystem.AddTypeEventListener<PlayerSpawnEvent>(OnPlayerSpawn);
         PlayerController.SetGetWeaponFunc(GetWeapon);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_GetBagData, OnReceiveBagData);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_BagUpdateItem, OnReceiveUpdateBagData);
@@ -37,8 +32,8 @@ public class PlayerManager : SingletonMono<PlayerManager>
     }
 
     private void OnDestroy()
-    {
-        EventSystem.RemoveTypeEventListener<LocalPlayerEvent>(OnInitLocalPlayer);
+    { 
+        EventSystem.RemoveTypeEventListener<PlayerSpawnEvent>(OnPlayerSpawn);
         NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_GetBagData, OnReceiveBagData);
         NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_BagUpdateItem, OnReceiveUpdateBagData);
         NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_ChangeShortCutIndex, OnReceiveChangeShortCutIndex);
@@ -54,20 +49,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
         UpdateHandleShortCutInput();
     }
 
-    private void UpdateHandleShortCutInput()
-    {
-        if (UISystem.GetWindow<UI_ShortCutBarWindow>())
-        {
-            for (int i = 1; i <= GlobalUtility.shortCutNum; ++i)
-            {
-                if (Input.GetKeyDown(KeyCode.Alpha0 + i))
-                {
-                    UseShortCutItem(i - 1);
-                }
-            }
-        }
-    }
-
+    #region 服务端交互
     private void OnReceiveBagUpdateMoney(ulong clientId, INetworkSerializable serializable)
     {
         S2C_BagUpdateMoney message = (S2C_BagUpdateMoney)serializable;
@@ -138,55 +120,9 @@ public class PlayerManager : SingletonMono<PlayerManager>
             UISystem.GetWindow<UI_ShortCutBarWindow>().Show(bagData);
         }
     }
+    #endregion
 
-    private void UpdateOpenBag()
-    {
-        //  打开背包
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            if (!ClientUtility.UIWindowExist<UI_BagWindow>())
-            {
-                requestBagWindow = true;
-                RequestBagData();
-            }
-            else
-            {
-                UISystem.Close<UI_BagWindow>();
-                UISystem.Close<UI_ShopWindow>();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            for(int i = 0;i < bagData.itemIndexInShortCut.Count; ++i)
-            {
-                print($"{i} -> {bagData.itemIndexInShortCut[i]}");
-            }
-        }
-    }
-
-    public void UpdateOpenShop()
-    {
-        if (requestShopWindow)
-        {
-            MerchantConfig config = ResSystem.LoadAsset<MerchantConfig>(currentMerchantConfig);
-            if (!ClientUtility.UIWindowExist<UI_ShopWindow>())
-            {
-                UISystem.Show<UI_ShopWindow>().Show(config);
-                if (!ClientUtility.UIWindowExist<UI_BagWindow>())
-                {
-                    requestBagWindow = true;
-                    RequestBagData();
-                } // 同时打开Shop和Bag
-            }
-            else
-            {
-                UISystem.Close<UI_ShopWindow>();
-                UISystem.Close<UI_BagWindow>();
-            }
-            requestShopWindow = false;
-        }
-    }
-
+    #region 锻造
     public void UpdateOpenCraft()
     {
         if (requestCraftWindow)
@@ -210,45 +146,46 @@ public class PlayerManager : SingletonMono<PlayerManager>
         }
     }
 
-    private void ShowShortCutBat()
-    {
-        RequestBagData();
-    }
-
-    private void RequestBagData()
-    {
-        NetMessageManager.Instance.SendMessageToServer<C2S_GetBagData>(NetMessageType.C2S_GetBagData, new C2S_GetBagData
-        {
-            version = bagData == null ? -1 : bagData.version
-        });
-    }
-
-    public void RequestOpenShop(string merchantConfig)
-    {
-        currentMerchantConfig = merchantConfig;
-        requestShopWindow = true;
-    }
-
     public void RequestOpenCraft(string crafterConfig)
     {
         currentCrafterConfig = crafterConfig;
         requestCraftWindow = true;
     }
 
-    public void UseItem(int index)
+    public void CraftItem(ItemDataBase itemDataBase)
     {
-        if (bagData.itemDataList[index] is MaterialData) return;
-        NetMessageManager.Instance.SendMessageToServer<C2S_UseItem>(NetMessageType.C2S_UseItem, new C2S_UseItem
+        string itemId = itemDataBase.id;
+        int count = itemDataBase is StackableItemDataBase stackableItemData ? stackableItemData.count : 1;
+        ItemConfigBase itemConfig = ResSystem.LoadAsset<ItemConfigBase>(itemId);
+        foreach (var item in itemConfig.craftItemDic)
         {
-            index = index
+            if (!bagData.CheckHasItem(item.Key, item.Value, out int index))
+            {
+                UISystem.Show<UI_MessagePopUp>().ShowMessage(LocalizationKey.materialLack, Color.yellow);
+                return;
+            }
+        }
+        int bagIndex = -1;
+        bagData.TryGetItemLayPos(itemId, out bagIndex);
+        if (bagIndex == -1)
+        {
+            UISystem.Show<UI_MessagePopUp>().ShowMessage(LocalizationKey.bagSpaceLack, Color.yellow);
+            return;
+        }
+        NetMessageManager.Instance.SendMessageToServer<C2S_CraftItem>(NetMessageType.C2S_CraftItem, new C2S_CraftItem
+        {
+            itemId = itemId,
+            count = count,
+            bagIndex = bagIndex
         });
     }
+    #endregion
 
-    private void UseShortCutItem(int shortCutIndex)
+    #region 商店
+    public void RequestOpenShop(string merchantConfig)
     {
-        int index = bagData.itemIndexInShortCut[shortCutIndex];
-        if (index == -1 || bagData.itemDataList[index] is MaterialData) return;
-        UseItem(index);
+        currentMerchantConfig = merchantConfig;
+        requestShopWindow = true;
     }
 
     public void ShopBuyItem(string itemId)
@@ -281,32 +218,84 @@ public class PlayerManager : SingletonMono<PlayerManager>
         });
     }
 
-    public void CraftItem(ItemDataBase itemDataBase)
+    public void UpdateOpenShop()
     {
-        string itemId = itemDataBase.id;
-        int count = itemDataBase is StackableItemDataBase stackableItemData ? stackableItemData.count : 1;
-        ItemConfigBase itemConfig = ResSystem.LoadAsset<ItemConfigBase>(itemId);
-        foreach (var item in itemConfig.craftItemDic)
+        if (requestShopWindow)
         {
-            if (!bagData.CheckHasItem(item.Key, item.Value, out int index))
+            MerchantConfig config = ResSystem.LoadAsset<MerchantConfig>(currentMerchantConfig);
+            if (!ClientUtility.UIWindowExist<UI_ShopWindow>())
             {
-                UISystem.Show<UI_MessagePopUp>().ShowMessage(LocalizationKey.materialLack, Color.yellow);
-                return;
+                UISystem.Show<UI_ShopWindow>().Show(config);
+                if (!ClientUtility.UIWindowExist<UI_BagWindow>())
+                {
+                    requestBagWindow = true;
+                    RequestBagData();
+                } // 同时打开Shop和Bag
+            }
+            else
+            {
+                UISystem.Close<UI_ShopWindow>();
+                UISystem.Close<UI_BagWindow>();
+            }
+            requestShopWindow = false;
+        }
+    }
+    #endregion
+
+    #region 背包
+    private void RequestBagData()
+    {
+        NetMessageManager.Instance.SendMessageToServer<C2S_GetBagData>(NetMessageType.C2S_GetBagData, new C2S_GetBagData
+        {
+            version = bagData == null ? -1 : bagData.version
+        });
+    }
+
+    public void UseItem(int index)
+    {
+        if (bagData.itemDataList[index] is MaterialData) return;
+        NetMessageManager.Instance.SendMessageToServer<C2S_UseItem>(NetMessageType.C2S_UseItem, new C2S_UseItem
+        {
+            index = index
+        });
+    }
+    private void UpdateOpenBag()
+    {
+        //  打开背包
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (!ClientUtility.UIWindowExist<UI_BagWindow>())
+            {
+                requestBagWindow = true;
+                RequestBagData();
+            }
+            else
+            {
+                UISystem.Close<UI_BagWindow>();
+                UISystem.Close<UI_ShopWindow>();
             }
         }
-        int bagIndex = -1;
-        bagData.TryGetItemLayPos(itemId, out bagIndex);
-        if (bagIndex == -1)
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            UISystem.Show<UI_MessagePopUp>().ShowMessage(LocalizationKey.bagSpaceLack, Color.yellow);
-            return;
+            for (int i = 0; i < bagData.itemIndexInShortCut.Count; ++i)
+            {
+                print($"{i} -> {bagData.itemIndexInShortCut[i]}");
+            }
         }
-        NetMessageManager.Instance.SendMessageToServer<C2S_CraftItem>(NetMessageType.C2S_CraftItem, new C2S_CraftItem
-        {
-            itemId = itemId,
-            count = count,
-            bagIndex = bagIndex
-        });
+    }
+    #endregion
+
+    #region 快捷栏
+    private void ShowShortCutBat()
+    {
+        RequestBagData();
+    }
+
+    private void UseShortCutItem(int shortCutIndex)
+    {
+        int index = bagData.itemIndexInShortCut[shortCutIndex];
+        if (index == -1 || bagData.itemDataList[index] is MaterialData) return;
+        UseItem(index);
     }
 
     private void CloseShortCutBar()
@@ -314,17 +303,37 @@ public class PlayerManager : SingletonMono<PlayerManager>
         UISystem.Close<UI_ShortCutBarWindow>();
     }
 
-    private void OnInitLocalPlayer(LocalPlayerEvent localPlayerEvent)
+    private void UpdateHandleShortCutInput()
     {
-        localPlayer = localPlayerEvent.localPlayer;
-        
-        cinemachineFreeLook.transform.position = localPlayer.transform.position;
-        cinemachineFreeLook.Follow = localPlayer.camaraFollow;
-        cinemachineFreeLook.LookAt = localPlayer.cameraLookPos;
+        if (UISystem.GetWindow<UI_ShortCutBarWindow>())
+        {
+            for (int i = 1; i <= GlobalUtility.shortCutNum; ++i)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha0 + i))
+                {
+                    UseShortCutItem(i - 1);
+                }
+            }
+        }
+    }
+    #endregion
+
+    private void OnPlayerSpawn(PlayerSpawnEvent playerSpawnEvent)
+    {
+        if (!playerSpawnEvent.mainPlayerController.NetworkObject.IsOwner) return;
+        playerController = playerSpawnEvent.mainPlayerController;
+        if (!playerController.TryGetComponent<PlayerClientController>(out playerClientController)) playerClientController = playerController.gameObject.AddComponent<PlayerClientController>();
+        playerClientController.Init();
+        cinemachineFreeLook.transform.position = playerController.transform.position;
+        cinemachineFreeLook.Follow = playerClientController.camaraFollow;
+        cinemachineFreeLook.LookAt = playerClientController.cameraLookPos;
+
+        UISystem.Show<UI_PlayerInfoWindow>();
     }
 
     private GameObject GetWeapon(string WeaponId)
     {
+        if (WeaponId == "") return null;
         GameObject weaponObj = PoolSystem.GetGameObject(WeaponId);
         if(weaponObj == null)
         {
@@ -335,4 +344,8 @@ public class PlayerManager : SingletonMono<PlayerManager>
         return weaponObj;
     }
 
+    public bool IsCompeleted()
+    {
+        return playerController != null;
+    }
 }

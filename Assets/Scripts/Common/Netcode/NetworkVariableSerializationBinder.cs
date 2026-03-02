@@ -19,7 +19,25 @@ public static class NetworkVariableSerializationBinder
     public static void Init()
     {
         BindNetworkVariableSerialization<PlayerState>();
+        BindFixedfloatSerialization();
         //BindFixedString32BytesSerialization();
+    }
+    public static void BindFixedfloatSerialization()
+    {
+        UserNetworkVariableSerialization<float>.WriteValue = (FastBufferWriter writer, in float value) =>
+        {
+            writer.WriteValueSafe(value);
+        };
+
+        UserNetworkVariableSerialization<float>.ReadValue = (FastBufferReader reader, out float value) =>
+        {
+            reader.ReadValueSafe(out value);
+        };
+
+        UserNetworkVariableSerialization<float>.DuplicateValue = (in float value, ref float duplicateValue) =>
+        {
+            duplicateValue = value;
+        };
     }
     public static void BindFixedString32BytesSerialization()
     {

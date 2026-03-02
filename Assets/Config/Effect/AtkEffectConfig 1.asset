@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78c385cd1910fc4db7a4d16e6d0d4fc, type: 3}
+  m_Name: AtkEffectConfig 1
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  position: {x: 0.04899597, y: 0.2550011, z: 0.25}
+  rotation: {x: 0, y: -15, z: 3.624}
+  scale: {x: 0.35, y: 0.35, z: 0.35}
+  effectPrefab: {fileID: 1650728547227103719, guid: 2c9bc020e3a62584982b5610385ac3d4,
+    type: 3}
+  effectAudio: {fileID: 8300000, guid: 9de973f636495eb4ebe2632f80038612, type: 3}
+  effTimeOffset: 0.6

@@ -3,225 +3,106 @@ using System;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor.Animations;
+#endif
 
 // 公共
-//[GenerateSerializationForTypeAttribute(typeof(Unity.Collections.FixedString32Bytes))]
 public partial class PlayerController : NetworkBehaviour
 {
-
-    public bool canControl;
-    public Transform cameraLookPos;
-    public Transform camaraFollow;
-    [SerializeField] private PlayerView playerView;
-    public PlayerView PlayerView => playerView;
     private static Func<string, GameObject> getWeaponFunc;
     public static void SetGetWeaponFunc(Func<string, GameObject> func) {  getWeaponFunc = func; }
-    
+
+    [SerializeField] private PlayerAtkConfigList playerAtkConfigList;
+    public List<PlayerAtkConfig> playerAtkConfigs => playerAtkConfigList.playerAtkConfigs;
+    public float playerAtkToZeroCd { get; private set; } = 5f;
+    public float maxHp;
+
+    public NetVariable<int> playerAtkIndex = new NetVariable<int>(0);
     public NetVariable<PlayerState> currentState = new NetVariable<PlayerState>(PlayerState.None);
     public NetVariable<FixedString32Bytes> currentWeapon = new NetVariable<FixedString32Bytes>("");
-    // Client
-    private Camera mainCamera;
-    private Vector2 lastDir = Vector2.zero;
-    // Server
-    [SerializeField] public float speed = 3;
-    public class InputInfo { public Vector2 dir; }
-    public InputInfo inputData { get; private set; }
-    public StateMachine stateMachine { get; private set; }
-    [SerializeField] private Animator animator;
-    [SerializeField] private CharacterController characterController;
-    public CharacterController CharacterController => characterController;
+    public NetVariable<FixedString32Bytes> playerName = new NetVariable<FixedString32Bytes>("");
+    public NetVariable<float> currentHp = new NetVariable<float>(100); 
 
-    [SerializeField, Header("重力系统")] private float gravity = 9.8f;
-    [SerializeField] private float maxGravity = 52f;
-    [SerializeField] private float CheckFallDeltaTime = 0.25f;
-    [SerializeField] private float detectRadius = 0.2f;
-    [SerializeField] private bool isGrounded;
-    [SerializeField] private bool drawDetectRange;
-    [SerializeField] private float detectOffset;
-    [SerializeField] private Transform footTransform;
-    [SerializeField] private LayerMask groundLayer;
-    public float verticalVelocity { get; private set; }
+    public IPlayerServerController playerServerController;
+    public IPlayerClientController playerClientController;
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
+        EventSystem.TypeEventTrigger<PlayerSpawnEvent>(new PlayerSpawnEvent() { mainPlayerController = this });
         currentWeapon.OnValueChanged = OnWeaponChanged;
-#if !UNITY_SERVER
-        if (IsClient && IsOwner)
-        {
-            Client_OnNetworkSpawn();
-        }
-#endif
-#if UNITY_SERVER || UNITY_EDITOR
-        if (IsServer)
-        {
-            Server_OnNetworkSpawn();
-        }
-#endif
+        currentHp.OnValueChanged = OnHpChanged;
     }
 
+    public Action onHpChanged;
+    private void OnHpChanged(float previousValue, float newValue)
+    {
+        onHpChanged?.Invoke();
+    }
 
     public override void OnNetworkDespawn()
     {
         base.OnNetworkDespawn();
-#if !UNITY_SERVER
-        if (IsClient)
-        {
-            Client_OnNetworkDespawn();
-        }
-#endif
-#if UNITY_SERVER || UNITY_EDITOR
-        if (IsServer)
-        {
-            Server_OnNetworkDespawn();
-        }
-#endif
     }
 
+    public Action<GameObject> onWeaponChanged;
     private void OnWeaponChanged(FixedString32Bytes previousValue, FixedString32Bytes newValue)
     {
         GameObject weaponObj = getWeaponFunc?.Invoke(newValue.ToString());
-        playerView.SetWeapon(weaponObj);
+        onWeaponChanged?.Invoke(weaponObj);
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    private void Send_InputInfo_ServerRpc(Vector2 dir)
+    [ServerRpc(RequireOwnership = true)]
+    public void Send_InputInfo_ServerRpc(Vector2 dir)
     {
-#if UNITY_SERVER || UNITY_EDITOR
-        MovementOnServer(dir);
-#endif
-    }
-}
-
-// 客户端
-#if !UNITY_SERVER
-public partial class PlayerController : NetworkBehaviour
-{
-    private void Client_OnNetworkSpawn()
-    {
-        canControl = true;
-        mainCamera = Camera.main;
-        EventSystem.TypeEventTrigger<LocalPlayerEvent>(new LocalPlayerEvent() { localPlayer = this });
-        this.AddUpdate(ClientMoveInput);
-        AOIUtility.InitClient(this, AOIUtility.GetChunkCoordByWorldPosition(this.transform.position));
+        playerServerController?.MoveOnServer(dir);
     }
 
-    private void Client_OnNetworkDespawn()
+    [ServerRpc(RequireOwnership = true)]
+    public void Send_Jump_ServerRpc()
     {
-        
+        playerServerController?.JumpOnServer();
     }
-    private void ClientMoveInput()
+    [ServerRpc(RequireOwnership = true)]
+    public void Send_Atk_ServerRpc()
     {
-        if (!canControl) return;
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-        Vector2 dir = new Vector2(x, y).normalized;
-        if (Vector2.Distance(lastDir, dir) <= 0.02f) return;
-        lastDir = dir;
-
- 
-        Vector3 dir3 = new Vector3(dir.x, 0, dir.y);
-        float yEuler = mainCamera.transform.eulerAngles.y;
-        Vector3 newDir3 = Quaternion.Euler(new Vector3(0, yEuler, 0)) * dir3;
-        
-        Send_InputInfo_ServerRpc(new Vector2(newDir3.x, newDir3.z));
-    }
-}
-#endif
-
-// 服务端
-#if UNITY_SERVER || UNITY_EDITOR
-public partial class PlayerController : NetworkBehaviour, IStateMachineOwner
-{
-    public float Speed => speed;
-    public Animator Animator => animator;
-    
-    
-    
-
-    private void Server_OnNetworkSpawn()
-    {
-        if (playerView == null) playerView = transform.Find("PlayerView").GetComponent<PlayerView>();
-        if (animator == null) animator = playerView.GetComponent<Animator>();
-        if (characterController == null) characterController = this.GetComponent<CharacterController>();
-        if (footTransform == null) footTransform = playerView.transform;
-
-        AOIUtility.InitClient(this, AOIUtility.GetChunkCoordByWorldPosition(this.transform.position));
-        inputData = new InputInfo();
-        stateMachine = new StateMachine();
-        stateMachine.Init(this);
-        ChangeState(PlayerState.Idle);
-        verticalVelocity = 0f;
-        this.AddUpdate(SetPlayerGravity);
+        playerServerController?.AtkOnServer();
     }
 
-    private void Server_OnNetworkDespawn()
+    [ClientRpc]
+    public void Send_PlayEffect_ClientRpc(Vector3 point)
     {
-        stateMachine.Stop();
-        stateMachine.Destroy();
-        this.RemoveUpdate(SetPlayerGravity);
+        playerClientController.PlaySkillEffect(point);
     }
 
-    private void MovementOnServer(Vector2 dir)
+#if UNITY_EDITOR
+    [ContextMenu("自动设置Animator")]
+    public void SetAnimatorSettings()
     {
-        inputData.dir = dir.normalized;
-    }
-
-    public void ChangeState(PlayerState state)
-    {
-        //currentState.Value = state;
-
-        switch (state)
+        AnimatorController animatorController = (AnimatorController)GetComponentInChildren<Animator>().runtimeAnimatorController;
+        animatorController.parameters = null;
+        AnimatorStateMachine stateMachine = animatorController.layers[0].stateMachine;
+        stateMachine.anyStateTransitions = null;
+        foreach (ChildAnimatorState state in stateMachine.states)
         {
-            case PlayerState.None:
-                break;
-            case PlayerState.Idle:
-                stateMachine.ChangeState<PlayerIdleState>();
-                break;
-            case PlayerState.Move:
-                stateMachine.ChangeState<PlayerMoveState>();
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void PlayAnimation(string animation, float fixedTransitionDuration = 0.4f) 
-    {
-        animator.CrossFadeInFixedTime(animation, fixedTransitionDuration); 
-    }
-
-    public void UpdateClientVisualChunk(Vector2Int oldChunkCoord, Vector2Int newChunkCoord)
-    {
-        AOIUtility.UpdateClientVisualChunk(this, oldChunkCoord, newChunkCoord);
-    }
-
-    public bool GroundedDetect()
-    {
-        return Physics.CheckSphere(footTransform.position + Vector3.down * detectOffset, detectRadius, groundLayer, QueryTriggerInteraction.Ignore);
-    }
-
-    public void SetPlayerGravity()
-    {
-        isGrounded = GroundedDetect();
-        if (isGrounded)
-        {
-            if (verticalVelocity < 0f) verticalVelocity = -2f;
-        }
-        else
-        {
-            if (verticalVelocity < maxGravity)
+            string triggerName = state.state.name;
+            AnimatorControllerParameter animatorControllerParameter = new AnimatorControllerParameter()
             {
-                verticalVelocity += Time.deltaTime * gravity;
-            }
+                name = triggerName,
+                type = AnimatorControllerParameterType.Trigger
+            };
+            animatorController.AddParameter(animatorControllerParameter);
+            AnimatorStateTransition animatorStateTransition = stateMachine.AddAnyStateTransition(state.state);
+            animatorStateTransition.AddCondition(AnimatorConditionMode.If, 0, triggerName);
         }
     }
-    private void OnDrawGizmos()
-    {
-        if (!drawDetectRange) return;
-        Gizmos.DrawWireSphere(footTransform.position + Vector3.down * detectOffset, detectRadius);
-    }
-
-    
-}
 #endif
+    //private void OnDrawGizmos()
+    //{
+    //    if (!drawDetectRange) return;
+    //    Gizmos.DrawWireSphere(footTransform.position + Vector3.down * detectOffset, detectRadius);
+    //}
+}

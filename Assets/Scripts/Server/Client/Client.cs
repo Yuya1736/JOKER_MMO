@@ -6,6 +6,7 @@ public class Client
     public PlayerData playerData;
     public ClientState state;
     public PlayerController playerController;
+    public PlayerServerController playerServerController;
 
     public void Destroy()
     {

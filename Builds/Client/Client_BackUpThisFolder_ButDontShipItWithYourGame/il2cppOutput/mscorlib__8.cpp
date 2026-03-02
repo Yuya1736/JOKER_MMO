@@ -681,6 +681,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* EncodingNLS_GetCharCount_mB814550C4F515D198
 IL2CPP_EXTERN_C const RuntimeMethod* EncodingNLS_GetChars_m32623C423F9B42EC97FAE20BA142927E8136431C_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* EncodingNLS_GetChars_mC2EFBF90E6499BB43C520368FD520267C34A981E_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* EncodingNLS_GetString_m22F021B89A70F2F1EE61560A87A46B07EFC291A7_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Interlocked_SpeculationBarrier_m02979C90932396297926C873133FA67341EC13E4_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* InternalEncoderBestFitFallbackBuffer_Fallback_mBF4BBCF9ACAE51BD760F501EBA54BCF047D8335A_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Latin1Encoding_GetMaxByteCount_m40FD5C50308F9ACB43A3570ADC2E4E070ECC480B_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Latin1Encoding_GetMaxCharCount_m74D8A2B8C0B413013110ED5E566FB93AA2CE0DA8_RuntimeMethod_var;
@@ -6693,6 +6694,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Interlocked_MemoryBarrier_m544E79984FB21
 {
 	{
 		Thread_MemoryBarrier_m83873F1E6CEB16C0781941141382DA874A36097D(NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Interlocked_MemoryBarrierProcessWide_mE733A168AB5BAF556D7AF797A46270DD47DEEBE9 (const RuntimeMethod* method) 
+{
+	typedef void (*Interlocked_MemoryBarrierProcessWide_mE733A168AB5BAF556D7AF797A46270DD47DEEBE9_ftn) ();
+	using namespace il2cpp::icalls;
+	((Interlocked_MemoryBarrierProcessWide_mE733A168AB5BAF556D7AF797A46270DD47DEEBE9_ftn)mscorlib::System::Threading::Interlocked::MemoryBarrierProcessWide) ();
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Interlocked_SpeculationBarrier_m02979C90932396297926C873133FA67341EC13E4 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Interlocked_SpeculationBarrier_m02979C90932396297926C873133FA67341EC13E4_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		il2cpp_codegen_raise_profile_exception(Interlocked_SpeculationBarrier_m02979C90932396297926C873133FA67341EC13E4_RuntimeMethod_var);
 		return;
 	}
 }

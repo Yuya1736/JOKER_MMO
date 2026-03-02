@@ -6,28 +6,15 @@ public class PlayerView : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Transform weaponRoot;
+    [SerializeField] private AudioClip[] footStepAudioClips;
     private GameObject currentWeapon;
+    public Transform playerAtkEffTransform;
 
-    private Action<Vector3, Quaternion> action;
     private void OnAnimatorMove()
     {
-        action?.Invoke(animator.deltaPosition, animator.deltaRotation);
+        rootMotionAction?.Invoke(animator.deltaPosition, animator.deltaRotation);
     }
 
-    public void AddAction(Action<Vector3, Quaternion> action)
-    {
-        this.action += action;
-    }
-
-    public void RemoveAction(Action<Vector3, Quaternion> action)
-    {
-        this.action -= action; 
-    }
-
-    public void ClearAction()
-    {
-        this.action = null; 
-    }
     public void SetWeapon(GameObject weaponObj)
     {
         if (currentWeapon != null) currentWeapon.GameObjectPushPool();
@@ -39,11 +26,43 @@ public class PlayerView : MonoBehaviour
     }
 
     #region AnimationEvent
+    public event Action<Vector3, Quaternion> rootMotionAction;
+    public event Action onJumpStartEndAcion;
+    public event Action StartSkillHitAcion;
+    public event Action StopSkillHitAcion;
+    public event Action SkillCanSwitchAcion;
+    public event Action SkillEndAcion;
+
     private void FootStep()
     {
-
+        AudioClip audioClip = footStepAudioClips[UnityEngine.Random.Range(0, footStepAudioClips.Length)];
+        AudioSystem.PlayOneShot(audioClip, transform.position);
     }
 
-    
+    private void OnJumpStartEnd()
+    {
+        onJumpStartEndAcion?.Invoke();
+    }
+
+    private void StartSkillHit()
+    {
+        StartSkillHitAcion?.Invoke();
+    }
+
+    private void StopSkillHit()
+    {
+        StopSkillHitAcion?.Invoke();
+    }
+
+    private void SkillCanSwitch()
+    {
+        SkillCanSwitchAcion?.Invoke();
+    }
+
+    private void SkillEnd()
+    {
+        SkillEndAcion?.Invoke();
+    }
+
     #endregion
 }

@@ -595,6 +595,7 @@ struct Predicate_1_t336B56DFF7E459495165306F45876B1779041734;
 struct Predicate_1_tE7A821CD57BA00206E0206E8CE3F6FF208B143AE;
 struct Predicate_1_t4F649148E5D11BED4C95925FFD84920020C07AF7;
 struct Predicate_1_t22892C4367A718A8683C5BDBBD7B96B7D5B11D5E;
+struct Predicate_1_tF4CF6B0C23053BF2F64E5DFDE472BDB99846EC0A;
 struct Predicate_1_t51DBC74A7C1E0943D5EFA3FE74416B197013147C;
 struct Predicate_1_tCA00AFB0FFFC20530268DA32E61FC1158C9B7071;
 struct Predicate_1_tD3B34BCD8F723535970D1979BC4794FB9B7BBF38;
@@ -2326,6 +2327,12 @@ struct FormatterLocatorInfo_tD7CD48AFF11F94CB59F52F47570DDFDD6190FD69_marshaled_
 {
 	RuntimeObject* ___LocatorInstance;
 	int32_t ___Priority;
+};
+struct SVA_t07222AEB54F88E49E92052BDF234BCD99FD1B1DF 
+{
+	float ___S;
+	float ___V;
+	float ___A;
 };
 struct AnimationMessage_t49CE48EDAE50CAD493D95D676E848F87613EBE26 
 {
@@ -4757,6 +4764,9 @@ struct Predicate_1_t4F649148E5D11BED4C95925FFD84920020C07AF7  : public Multicast
 {
 };
 struct Predicate_1_t22892C4367A718A8683C5BDBBD7B96B7D5B11D5E  : public MulticastDelegate_t
+{
+};
+struct Predicate_1_tF4CF6B0C23053BF2F64E5DFDE472BDB99846EC0A  : public MulticastDelegate_t
 {
 };
 struct Predicate_1_t51DBC74A7C1E0943D5EFA3FE74416B197013147C  : public MulticastDelegate_t
@@ -16073,6 +16083,70 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Predicate_1__ctor_mD50E4AC4C8E193365F53A
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Predicate_1_Invoke_m0364A600CB0A5E38098C9C977875AF7D067D9BBF_gshared (Predicate_1_t22892C4367A718A8683C5BDBBD7B96B7D5B11D5E* __this, FormatterLocatorInfo_tD7CD48AFF11F94CB59F52F47570DDFDD6190FD69 ___0_obj, const RuntimeMethod* method) 
 {
 	typedef bool (*FunctionPointerType) (RuntimeObject*, FormatterLocatorInfo_tD7CD48AFF11F94CB59F52F47570DDFDD6190FD69, const RuntimeMethod*);
+	return ((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_obj, reinterpret_cast<RuntimeMethod*>(__this->___method));
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+bool Predicate_1_Invoke_m0CB9F29881A0091D2F79C82A5660EB1E67713748_Multicast(Predicate_1_tF4CF6B0C23053BF2F64E5DFDE472BDB99846EC0A* __this, SVA_t07222AEB54F88E49E92052BDF234BCD99FD1B1DF ___0_obj, const RuntimeMethod* method)
+{
+	il2cpp_array_size_t length = __this->___delegates->max_length;
+	Delegate_t** delegatesToInvoke = reinterpret_cast<Delegate_t**>(__this->___delegates->GetAddressAtUnchecked(0));
+	bool retVal = false;
+	for (il2cpp_array_size_t i = 0; i < length; i++)
+	{
+		Predicate_1_tF4CF6B0C23053BF2F64E5DFDE472BDB99846EC0A* currentDelegate = reinterpret_cast<Predicate_1_tF4CF6B0C23053BF2F64E5DFDE472BDB99846EC0A*>(delegatesToInvoke[i]);
+		typedef bool (*FunctionPointerType) (RuntimeObject*, SVA_t07222AEB54F88E49E92052BDF234BCD99FD1B1DF, const RuntimeMethod*);
+		retVal = ((FunctionPointerType)currentDelegate->___invoke_impl)((Il2CppObject*)currentDelegate->___method_code, ___0_obj, reinterpret_cast<RuntimeMethod*>(currentDelegate->___method));
+	}
+	return retVal;
+}
+bool Predicate_1_Invoke_m0CB9F29881A0091D2F79C82A5660EB1E67713748_OpenInst(Predicate_1_tF4CF6B0C23053BF2F64E5DFDE472BDB99846EC0A* __this, SVA_t07222AEB54F88E49E92052BDF234BCD99FD1B1DF ___0_obj, const RuntimeMethod* method)
+{
+	typedef bool (*FunctionPointerType) (SVA_t07222AEB54F88E49E92052BDF234BCD99FD1B1DF, const RuntimeMethod*);
+	return ((FunctionPointerType)__this->___method_ptr)(___0_obj, method);
+}
+bool Predicate_1_Invoke_m0CB9F29881A0091D2F79C82A5660EB1E67713748_OpenStatic(Predicate_1_tF4CF6B0C23053BF2F64E5DFDE472BDB99846EC0A* __this, SVA_t07222AEB54F88E49E92052BDF234BCD99FD1B1DF ___0_obj, const RuntimeMethod* method)
+{
+	typedef bool (*FunctionPointerType) (SVA_t07222AEB54F88E49E92052BDF234BCD99FD1B1DF, const RuntimeMethod*);
+	return ((FunctionPointerType)__this->___method_ptr)(___0_obj, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Predicate_1__ctor_mFD8406F4D7059B672D54E5A4C6A94FA0E4B2C436_gshared (Predicate_1_tF4CF6B0C23053BF2F64E5DFDE472BDB99846EC0A* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) 
+{
+	__this->___method_ptr = (intptr_t)il2cpp_codegen_get_method_pointer((RuntimeMethod*)___1_method);
+	__this->___method = ___1_method;
+	__this->___m_target = ___0_object;
+	Il2CppCodeGenWriteBarrier((void**)(&__this->___m_target), (void*)___0_object);
+	int parameterCount = il2cpp_codegen_method_parameter_count((RuntimeMethod*)___1_method);
+	__this->___method_code = (intptr_t)__this;
+	if (MethodIsStatic((RuntimeMethod*)___1_method))
+	{
+		bool isOpen = parameterCount == 1;
+		if (isOpen)
+			__this->___invoke_impl = (intptr_t)&Predicate_1_Invoke_m0CB9F29881A0091D2F79C82A5660EB1E67713748_OpenStatic;
+		else
+			{
+				__this->___invoke_impl = __this->___method_ptr;
+				__this->___method_code = (intptr_t)__this->___m_target;
+			}
+	}
+	else
+	{
+		if (___0_object == NULL)
+			il2cpp_codegen_raise_exception(il2cpp_codegen_get_argument_exception(NULL, "Delegate to an instance method cannot have null 'this'."), NULL);
+		__this->___invoke_impl = __this->___method_ptr;
+		__this->___method_code = (intptr_t)__this->___m_target;
+	}
+	__this->___extra_arg = (intptr_t)&Predicate_1_Invoke_m0CB9F29881A0091D2F79C82A5660EB1E67713748_Multicast;
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Predicate_1_Invoke_m0CB9F29881A0091D2F79C82A5660EB1E67713748_gshared (Predicate_1_tF4CF6B0C23053BF2F64E5DFDE472BDB99846EC0A* __this, SVA_t07222AEB54F88E49E92052BDF234BCD99FD1B1DF ___0_obj, const RuntimeMethod* method) 
+{
+	typedef bool (*FunctionPointerType) (RuntimeObject*, SVA_t07222AEB54F88E49E92052BDF234BCD99FD1B1DF, const RuntimeMethod*);
 	return ((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_obj, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
 #ifdef __clang__

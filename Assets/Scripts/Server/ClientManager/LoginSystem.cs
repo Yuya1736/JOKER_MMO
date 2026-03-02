@@ -23,7 +23,10 @@ public partial class ClientsManager
         ChangeClientState(clientId, ClientState.Gaming);
         NetworkObject networkObject = NetManager.Instance.SpawnObject(clientId, player, characterData.position, Quaternion.Euler(0, characterData.rotate_Y, 0));
         client.playerController = networkObject.gameObject.GetComponent<PlayerController>();
+        if (!networkObject.gameObject.TryGetComponent<PlayerServerController>(out client.playerServerController)) client.playerServerController = networkObject.gameObject.AddComponent<PlayerServerController>();
+        client.playerServerController.Init(client.playerController);
         client.playerController.currentWeapon.Value = playerData.weaponName;
+        client.playerController.currentHp.Value = playerData.hp;
     }
 
     private void OnReceiveLoginMessage(ulong clientId, INetworkSerializable serializable)
@@ -85,7 +88,8 @@ public partial class ClientsManager
         }
         else
         {
-            PlayerData playerData = new PlayerData() { name = accountInfo.playerName, password = accountInfo.password };
+            // 新玩家数据初始化
+            PlayerData playerData = new PlayerData() { name = accountInfo.playerName, password = accountInfo.password, hp = ServerResSystem.serverConfig.maxHp};
             DataBaseManager.Instance.AddPlayerData(playerData);
         }
         NetMessageManager.Instance.SendMessageToClient<S2C_Register>(clientId, NetMessageType.S2C_Register, s2C_Register);

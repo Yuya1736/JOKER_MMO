@@ -1,6 +1,5 @@
 <linker>
   <assembly fullname="AOT, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="AotTypeEnforcer" preserve="all" />
     <type fullname="GameBasicSetting" preserve="all" />
     <type fullname="UI_LoadingWindow" preserve="all" />
   </assembly>
@@ -26,10 +25,13 @@
   </assembly>
   <assembly fullname="Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="ConsumableConfig" preserve="all" />
+    <type fullname="EffectConfig" preserve="all" />
     <type fullname="MapConfig" preserve="all" />
     <type fullname="MaterialConfig" preserve="all" />
     <type fullname="NetManager" preserve="all" />
     <type fullname="NetMessageManager" preserve="all" />
+    <type fullname="PlayerAtkConfig" preserve="all" />
+    <type fullname="PlayerAtkConfigList" preserve="all" />
     <type fullname="PlayerController" preserve="all" />
     <type fullname="PlayerView" preserve="all" />
     <type fullname="WeaponConfig" preserve="all" />
@@ -44,6 +46,7 @@
     <type fullname="LoginSceneManager" preserve="all" />
     <type fullname="MerchantConfig" preserve="all" />
     <type fullname="MerchantController" preserve="all" />
+    <type fullname="NPCFloatInfo" preserve="all" />
     <type fullname="PlayerManager" preserve="all" />
     <type fullname="UI_BagWindow" preserve="all" />
     <type fullname="UI_ChatWindow" preserve="all" />
@@ -58,6 +61,7 @@
     <type fullname="UI_MainMenuWindow" preserve="all" />
     <type fullname="UI_MaterialSlot" preserve="all" />
     <type fullname="UI_MessagePopUp" preserve="all" />
+    <type fullname="UI_PlayerInfoWindow" preserve="all" />
     <type fullname="UI_RegisterWindow" preserve="all" />
     <type fullname="UI_ShopWindow" preserve="all" />
     <type fullname="UI_ShortCutBarWindow" preserve="all" />
@@ -81,7 +85,6 @@
     <type fullname="Unity.Netcode.NetworkConfig" preserve="nothing" serialized="true" />
     <type fullname="Unity.Netcode.NetworkPrefab" preserve="nothing" serialized="true" />
     <type fullname="Unity.Netcode.NetworkPrefabs" preserve="nothing" serialized="true" />
-    <type fullname="Unity.Netcode.NetworkVariable`1[Unity.Collections.FixedString32Bytes]" preserve="nothing" serialized="true" />
     <type fullname="Unity.Netcode.Transports.UTP.UnityTransport/ConnectionAddressData" preserve="nothing" serialized="true" />
     <type fullname="Unity.Netcode.Transports.UTP.UnityTransport/SimulatorParameters" preserve="nothing" serialized="true" />
   </assembly>
@@ -154,6 +157,7 @@
     <type fullname="UnityEngine.Mesh" preserve="all" />
     <type fullname="UnityEngine.MeshFilter" preserve="all" />
     <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
     <type fullname="UnityEngine.RectTransform" preserve="all" />
     <type fullname="UnityEngine.RenderSettings" preserve="all" />
@@ -176,6 +180,7 @@
     <type fullname="UnityEngine.CapsuleCollider" preserve="all" />
     <type fullname="UnityEngine.CharacterController" preserve="all" />
     <type fullname="UnityEngine.MeshCollider" preserve="all" />
+    <type fullname="UnityEngine.Rigidbody" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.TerrainModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.Terrain" preserve="all" />
@@ -187,6 +192,7 @@
   </assembly>
   <assembly fullname="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.Font" preserve="all" />
+    <type fullname="UnityEngine.TextMesh" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.UI.Button" preserve="all" />
@@ -226,10 +232,5 @@
   </assembly>
   <assembly fullname="Sirenix.Serialization">
     <type fullname="Sirenix.Serialization.SerializationData" preserve="nothing" serialized="true" />
-  </assembly>
-  <assembly fullname="Unity.Collections">
-    <type fullname="Unity.Collections.FixedBytes16" preserve="nothing" serialized="true" />
-    <type fullname="Unity.Collections.FixedBytes30" preserve="nothing" serialized="true" />
-    <type fullname="Unity.Collections.FixedString32Bytes" preserve="nothing" serialized="true" />
   </assembly>
 </linker>

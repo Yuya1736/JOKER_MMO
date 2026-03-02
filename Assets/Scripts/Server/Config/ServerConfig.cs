@@ -13,6 +13,7 @@ public class ServerConfig : ConfigBase
 
     public GameObject playerPrefab;
     public Vector3 defaultPlayerBirthPos;
+    public float maxHp = 100; // hp为固定值
     public int defaultMoney;
 
     public Dictionary<string, GameObject> terrainDic;

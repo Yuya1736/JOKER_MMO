@@ -436,6 +436,7 @@ IL2CPP_EXTERN_C RuntimeClass* UnityException_tA1EC1E95ADE689CF6EB7FAFF77C160AE1F
 IL2CPP_EXTERN_C RuntimeClass* Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Vector4U5BU5D_tC0F3A7115F85007510F6D173968200CD31BCF7AD_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeField* Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD____texture_FieldInfo_var;
 IL2CPP_EXTERN_C RuntimeField* LightmapData_t043B36B9B0FF7D245CE561E2400F108F8596A4AA____m_Light_FieldInfo_var;
 IL2CPP_EXTERN_C RuntimeField* RenderRequest_t432931B06439AC4704282E924DE8A9A474DB6B9A____m_ResultRT_FieldInfo_var;
 IL2CPP_EXTERN_C String_t* _stringLiteral00B28FF06B788B9B67C6B259800F404F9F3761FD;
@@ -646,6 +647,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* Stack_1_get_Count_mBBF18F06E59C15BC37DAA27F
 IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec_U3CExpressionToTokensU3Eb__14_0_mED0A7EEADBF72B4F54461A0D1E6C939772258CAC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Vector4_get_Item_mB1D001A235857569E479FB799EF77C52391D19EF_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeType* BeforeRenderOrderAttribute_tA8FE37086C591C22052237ABB6EE2B64C1429D8E_0_0_0_var;
+IL2CPP_EXTERN_C const RuntimeType* Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_0_0_0_var;
 IL2CPP_EXTERN_C const RuntimeType* LightmapData_t043B36B9B0FF7D245CE561E2400F108F8596A4AA_0_0_0_var;
 IL2CPP_EXTERN_C const RuntimeType* RenderRequest_t432931B06439AC4704282E924DE8A9A474DB6B9A_0_0_0_var;
 struct CultureData_tEEFDCF4ECA1BBF6C0C8C94EB3541657245598F9D_marshaled_com;
@@ -2688,6 +2690,66 @@ struct ImplicitUseTargetFlags_tFB69F6BC8EDBC8BCE9497534B57303E38D02C38D
 struct Int32Enum_tCBAC8BA2BFF3A845FA599F303093BBBA374B6F0C 
 {
 	int32_t ___value__;
+};
+struct Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD 
+{
+	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___screenRect;
+	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___sourceRect;
+	int32_t ___leftBorder;
+	int32_t ___rightBorder;
+	int32_t ___topBorder;
+	int32_t ___bottomBorder;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___leftBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___rightBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___topBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___bottomBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___color;
+	Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 ___borderWidths;
+	Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 ___cornerRadiuses;
+	bool ___smoothCorners;
+	int32_t ___pass;
+	Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* ___texture;
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___mat;
+};
+struct Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshaled_pinvoke
+{
+	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___screenRect;
+	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___sourceRect;
+	int32_t ___leftBorder;
+	int32_t ___rightBorder;
+	int32_t ___topBorder;
+	int32_t ___bottomBorder;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___leftBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___rightBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___topBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___bottomBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___color;
+	Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 ___borderWidths;
+	Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 ___cornerRadiuses;
+	int32_t ___smoothCorners;
+	int32_t ___pass;
+	Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* ___texture;
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___mat;
+};
+struct Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshaled_com
+{
+	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___screenRect;
+	Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D ___sourceRect;
+	int32_t ___leftBorder;
+	int32_t ___rightBorder;
+	int32_t ___topBorder;
+	int32_t ___bottomBorder;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___leftBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___rightBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___topBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___bottomBorderColor;
+	Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___color;
+	Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 ___borderWidths;
+	Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 ___cornerRadiuses;
+	int32_t ___smoothCorners;
+	int32_t ___pass;
+	Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* ___texture;
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___mat;
 };
 struct JobRanges_t5A1CDFF3E0DB1197050E1E28617B517C15AF6DC3 
 {
@@ -31531,6 +31593,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Graphics_CopyTexture_Region_m6703654C79E
 	_il2cpp_icall_func = (Graphics_CopyTexture_Region_m6703654C79E667E8720B08D738A2BEA193D0847C_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Graphics::CopyTexture_Region(UnityEngine.Texture,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,UnityEngine.Texture,System.Int32,System.Int32,System.Int32,System.Int32)");
 	_il2cpp_icall_func(___0_src, ___1_srcElement, ___2_srcMip, ___3_srcX, ___4_srcY, ___5_srcWidth, ___6_srcHeight, ___7_dst, ___8_dstElement, ___9_dstMip, ___10_dstX, ___11_dstY);
 }
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Graphics_Internal_DrawTexture_mE77C1541F911E0CEF8A9B7C9E3661A8393EFCD27 (Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD* ___0_args, const RuntimeMethod* method) 
+{
+	typedef void (*Graphics_Internal_DrawTexture_mE77C1541F911E0CEF8A9B7C9E3661A8393EFCD27_ftn) (Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD*);
+	static Graphics_Internal_DrawTexture_mE77C1541F911E0CEF8A9B7C9E3661A8393EFCD27_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (Graphics_Internal_DrawTexture_mE77C1541F911E0CEF8A9B7C9E3661A8393EFCD27_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Graphics::Internal_DrawTexture(UnityEngine.Internal_DrawTextureArguments&)");
+	_il2cpp_icall_func(___0_args);
+}
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Graphics_Internal_DrawMesh_mF402668A92387C5DA6C4984BFEACF16983649BD8 (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* ___0_mesh, int32_t ___1_submeshIndex, Matrix4x4_tDB70CF134A14BA38190C59AA700BCE10E2AED3E6 ___2_matrix, Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___3_material, int32_t ___4_layer, Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* ___5_camera, MaterialPropertyBlock_t2308669579033A857EFE6E4831909F638B27411D* ___6_properties, int32_t ___7_castShadows, bool ___8_receiveShadows, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___9_probeAnchor, int32_t ___10_lightProbeUsage, LightProbeProxyVolume_t431001CA94D2BB5DB419E2A89E7D8116E4E1B658* ___11_lightProbeProxyVolume, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -33309,6 +33379,68 @@ IL2CPP_EXTERN_C  String_t* Resolution_ToString_m058CE120CC83F314D0C8D4A706F9AA06
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+IL2CPP_EXTERN_C void Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshal_pinvoke(const Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD& unmarshaled, Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshaled_pinvoke& marshaled)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD____texture_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___textureException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD____texture_FieldInfo_var, Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_0_0_0_var);
+	IL2CPP_RAISE_MANAGED_EXCEPTION(___textureException, NULL);
+}
+IL2CPP_EXTERN_C void Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshal_pinvoke_back(const Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshaled_pinvoke& marshaled, Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD& unmarshaled)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD____texture_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___textureException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD____texture_FieldInfo_var, Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_0_0_0_var);
+	IL2CPP_RAISE_MANAGED_EXCEPTION(___textureException, NULL);
+}
+IL2CPP_EXTERN_C void Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshal_pinvoke_cleanup(Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshaled_pinvoke& marshaled)
+{
+}
+IL2CPP_EXTERN_C void Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshal_com(const Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD& unmarshaled, Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshaled_com& marshaled)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD____texture_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___textureException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD____texture_FieldInfo_var, Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_0_0_0_var);
+	IL2CPP_RAISE_MANAGED_EXCEPTION(___textureException, NULL);
+}
+IL2CPP_EXTERN_C void Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshal_com_back(const Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshaled_com& marshaled, Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD& unmarshaled)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_0_0_0_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD____texture_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t* ___textureException = il2cpp_codegen_get_marshal_directive_exception("Cannot marshal field '%s' of type '%s': Reference type field marshaling is not supported.", Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD____texture_FieldInfo_var, Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_0_0_0_var);
+	IL2CPP_RAISE_MANAGED_EXCEPTION(___textureException, NULL);
+}
+IL2CPP_EXTERN_C void Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshal_com_cleanup(Internal_DrawTextureArguments_t90CA68F41AF546B63FA02B9EF8D37F641FA26FFD_marshaled_com& marshaled)
+{
+}
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif

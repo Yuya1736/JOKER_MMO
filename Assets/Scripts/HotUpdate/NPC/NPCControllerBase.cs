@@ -12,14 +12,14 @@ public class NPCControllerBase : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (PlayerManager.localPlayer != null && other.gameObject == PlayerManager.localPlayer.gameObject)
+        if (PlayerManager.playerController != null && other.gameObject == PlayerManager.playerController.gameObject)
         {
             headIcon.SetActive(true);
         }
     }
     private void OnTriggerStay(Collider other)
     {
-        if (PlayerManager.localPlayer != null && other.gameObject == PlayerManager.localPlayer.gameObject && headIcon != null) headIcon.transform.LookAt(PlayerManager.Instance.FreeLook.transform);
+        if (PlayerManager.playerController != null && other.gameObject == PlayerManager.playerController.gameObject && headIcon != null) headIcon.transform.LookAt(PlayerManager.Instance.FreeLook.transform);
         if (Input.GetKeyDown(KeyCode.E))
         {
             OnInteract();
@@ -33,7 +33,7 @@ public class NPCControllerBase : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (PlayerManager.localPlayer != null && other.gameObject == PlayerManager.localPlayer.gameObject)
+        if (PlayerManager.playerController != null && other.gameObject == PlayerManager.playerController.gameObject)
         {
             headIcon.SetActive(false);
         }

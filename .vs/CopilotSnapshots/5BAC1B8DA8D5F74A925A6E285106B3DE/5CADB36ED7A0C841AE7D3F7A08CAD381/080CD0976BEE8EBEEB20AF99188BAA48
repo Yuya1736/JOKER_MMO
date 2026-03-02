@@ -1,0 +1,60 @@
+﻿#if UNITY_SERVER || UNITY_EDITOR
+using UnityEngine;
+
+public class PlayerMoveState : PlayerStateBase
+{
+    private Vector2Int oldChunkCoord = Vector2Int.zero;
+    private Vector2Int newChunkCoord = Vector2Int.zero;
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        player.PlayAnimation(AnimationEvent.Move);
+        player.playerView.rootMotionAction += OnRootMotion;
+    }
+    public override void Update()
+    {
+        base.Update();
+        if (player.inputData.atk)
+        {
+            player.ChangeState(PlayerState.Atk);
+            player.inputData.atk = false;
+            return;
+        }
+        if (player.inputData.jump)
+        {
+            player.ChangeState(PlayerState.Jump);
+            player.inputData.jump = false;
+            return;
+        }
+        if (player.inputData.dir == Vector2.zero)
+        {
+            player.ChangeState(PlayerState.Idle);
+            return;
+        }
+        else
+        {
+            UpdateTurnDir();
+        }
+    }
+
+    private void OnRootMotion(Vector3 deltaVector, Quaternion deltaQuaternion)
+    {
+        player.animator.speed = player.speed;
+        //deltaVector.y -= player.verticalVelocity * Time.deltaTime;
+
+        oldChunkCoord = AOIUtility.GetChunkCoordByWorldPosition(player.transform.position);
+        player.characterController?.Move(deltaVector);
+        newChunkCoord = AOIUtility.GetChunkCoordByWorldPosition(player.transform.position);
+        if (oldChunkCoord != newChunkCoord) player.UpdateClientVisualChunk(oldChunkCoord, newChunkCoord);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        player.playerView.rootMotionAction -= OnRootMotion;
+    }
+}
+#endif

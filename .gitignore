@@ -5,6 +5,7 @@ Logs/
 obj/
 ServerData/
 Temp/
+Builds/
 *.sln
 *.csproj
 *.sln
@@ -15,3 +16,4 @@ Temp/
 *.pdb
 *.tif
 *.pdb
+*.unitypackage

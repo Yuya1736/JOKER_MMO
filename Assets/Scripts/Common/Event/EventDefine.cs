@@ -1,9 +1,9 @@
 using JKFrame;
 using UnityEngine;
 
-public struct LocalPlayerEvent
+public struct PlayerSpawnEvent
 {
-    public PlayerController localPlayer;
+    public PlayerController mainPlayerController;
 }
 
 public struct InitClientAOIEvent

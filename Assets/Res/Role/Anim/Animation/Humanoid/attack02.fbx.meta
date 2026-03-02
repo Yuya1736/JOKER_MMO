@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 0f13517a0d923fb488368d8e909d4ef3
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: 4189676145174806922
@@ -60,28 +60,28 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.22006473
+      - time: 0.23766302
         functionName: StartSkillHit
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.29126212
+      - time: 0.2877223
         functionName: FootStep
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.38892737
+      - time: 0.38414645
         functionName: StopSkillHit
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6642857
+      - time: 0.40437424
         functionName: SkillCanSwitch
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -90,6 +90,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.8381877
         functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.94871795
+        functionName: SkillEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -107,6 +114,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -134,6 +142,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -747,7 +756,8 @@ ModelImporter:
     - name: Bip001 L Finger42
       parentName: Bip001 L Finger41
       position: {x: -0.02977356, y: 0, z: 0.000000009536743}
-      rotation: {x: -0.0000000018667592, y: -0.0000000012745636, z: -0.0032202841, w: 0.9999948}
+      rotation: {x: -0.0000000018667592, y: -0.0000000012745636, z: -0.0032202841,
+        w: 0.9999948}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 L ForeTwist
       parentName: Bip001 L UpperArm
@@ -857,7 +867,8 @@ ModelImporter:
     - name: Bip001 R Finger41
       parentName: Bip001 R Finger4
       position: {x: -0.035138626, y: 0, z: 0}
-      rotation: {x: -0.0000000065730323, y: -0.0000000044619903, z: -0.011946662, w: 0.99992865}
+      rotation: {x: -0.0000000065730323, y: -0.0000000044619903, z: -0.011946662,
+        w: 0.99992865}
       scale: {x: 1, y: 1.0000001, z: 1}
     - name: Bip001 R Finger42
       parentName: Bip001 R Finger41
@@ -896,12 +907,14 @@ ModelImporter:
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e21bde0edb14d7c479dc892de0b82673, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e21bde0edb14d7c479dc892de0b82673,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 

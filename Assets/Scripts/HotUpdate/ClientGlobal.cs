@@ -44,33 +44,6 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.B))
-        //{
-        //    if (UISystem.GetWindow<UI_BagWindow>() == null || !UISystem.GetWindow<UI_BagWindow>().gameObject.activeInHierarchy)
-        //    {
-        //        //NetMessageManager.Instance.SendMessageToServer<C2S_GetBagData>(NetMessageType.C2S_GetBagData, new C2S_GetBagData
-        //        //{
-        //        //    version = bagData == null ? -1 : bagData.version
-        //        //});
-        //        BagData bagData = new BagData();
-        //        bagData.itemDataList[0] = new WeaponData() { configKey = ItemConfigKey.weapon0 };
-        //        bagData.itemDataList[1] = new WeaponData() { configKey = ItemConfigKey.weapon1 };
-        //        bagData.itemDataList[2] = new MaterialData() { configKey = ItemConfigKey.material0, count = 11 };
-        //        bagData.itemDataList[3] = new MaterialData() { configKey = ItemConfigKey.material1, count = 22 };
-        //        bagData.itemDataList[4] = new MaterialData() { configKey = ItemConfigKey.material2, count = 33 };
-        //        bagData.itemDataList[5] = new MaterialData() { configKey = ItemConfigKey.material3, count = 44 };
-        //        bagData.itemDataList[6] = new ConsumableData() { configKey = ItemConfigKey.consumable0, count = 1 };
-        //        bagData.itemDataList[7] = new ConsumableData() { configKey = ItemConfigKey.consumable1, count = 2 };
-        //        bagData.itemDataList[8] = new ConsumableData() { configKey = ItemConfigKey.consumable2, count = 3 };
-        //        bagData.itemDataList[9] = new ConsumableData() { configKey = ItemConfigKey.consumable3, count = 4 };
-        //        bagData.itemDataList[10] = new ConsumableData() { configKey = ItemConfigKey.consumable4, count = 5 };
-        //        UISystem.Show<UI_BagWindow>().Show(bagData);
-        //    }
-        //    else
-        //    {
-        //        UISystem.Close<UI_BagWindow>();
-        //    }
-        //}
         if (SceneManager.GetSceneByName("GameScene").IsValid())
         {
             // ÓÎÏ·ÄÚESC²Ëµ¥
@@ -153,12 +126,12 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
         if (blockerInputUIStack.Count == 0)
         {
             SetCursorLockState(true);
-            if (PlayerManager.localPlayer != null) PlayerManager.localPlayer.canControl = true;
+            if (PlayerManager.playerController != null) PlayerManager.playerClientController.canControl = true;
         }
         else
         {
             SetCursorLockState(false);
-            if (PlayerManager.localPlayer != null) PlayerManager.localPlayer.canControl = false;
+            if (PlayerManager.playerController != null) PlayerManager.playerClientController.canControl = false;
         }
     }
 
@@ -177,6 +150,7 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
         UISystem.AddUIWindowData<UI_ShortCutBarWindow>(new UIWindowData(false, nameof(UI_ShortCutBarWindow), 2));
         UISystem.AddUIWindowData<UI_ShopWindow>(new UIWindowData(false, nameof(UI_ShopWindow), 2));
         UISystem.AddUIWindowData<UI_CraftWindow>(new UIWindowData(false, nameof(UI_CraftWindow), 2));
+        UISystem.AddUIWindowData<UI_PlayerInfoWindow>(new UIWindowData(false, nameof(UI_PlayerInfoWindow), 1));
     }
     private void OnGameSceneLaunchEvent(GameSceneLaunchEvent @event)
     {

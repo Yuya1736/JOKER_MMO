@@ -10,6 +10,7 @@
     <type fullname="Cinemachine.CinemachineVirtualCameraBase" preserve="all" />
   </assembly>
   <assembly fullname="JKFrame">
+    <type fullname="JKFrame.AudioSystem" preserve="all" />
     <type fullname="JKFrame.ConfigBase" preserve="all" />
     <type fullname="JKFrame.EventSystem" preserve="all" />
     <type fullname="JKFrame.JKFrameExtension" preserve="all" />
@@ -17,7 +18,6 @@
     <type fullname="JKFrame.ResSystem" preserve="all" />
     <type fullname="JKFrame.SaveSystem" preserve="all" />
     <type fullname="JKFrame.SingletonMono`1" preserve="all" />
-    <type fullname="JKFrame.StateMachine" preserve="all" />
     <type fullname="JKFrame.UISystem" preserve="all" />
     <type fullname="JKFrame.UIWindowData" preserve="all" />
     <type fullname="JKFrame.UI_WindowBase" preserve="all" />
@@ -38,6 +38,8 @@
   </assembly>
   <assembly fullname="Unity.Netcode.Runtime">
     <type fullname="Unity.Netcode.BufferSerializer`1" preserve="all" />
+    <type fullname="Unity.Netcode.ClientRpcAttribute" preserve="all" />
+    <type fullname="Unity.Netcode.ClientRpcParams" preserve="all" />
     <type fullname="Unity.Netcode.CustomMessagingManager" preserve="all" />
     <type fullname="Unity.Netcode.CustomMessagingManager/UnnamedMessageDelegate" preserve="all" />
     <type fullname="Unity.Netcode.FastBufferReader" preserve="all" />
@@ -49,6 +51,7 @@
     <type fullname="Unity.Netcode.INetworkPrefabInstanceHandler" preserve="all" />
     <type fullname="Unity.Netcode.INetworkSerializable" preserve="all" />
     <type fullname="Unity.Netcode.IReaderWriter" preserve="all" />
+    <type fullname="Unity.Netcode.LogLevel" preserve="all" />
     <type fullname="Unity.Netcode.NetworkBehaviour" preserve="all" />
     <type fullname="Unity.Netcode.NetworkBehaviour/RpcReceiveHandler" preserve="all" />
     <type fullname="Unity.Netcode.NetworkBehaviour/__RpcExecStage" preserve="all" />
@@ -71,6 +74,7 @@
     <type fullname="Unity.Netcode.RpcDelivery" preserve="all" />
     <type fullname="Unity.Netcode.ServerRpcAttribute" preserve="all" />
     <type fullname="Unity.Netcode.ServerRpcParams" preserve="all" />
+    <type fullname="Unity.Netcode.ServerRpcReceiveParams" preserve="all" />
     <type fullname="Unity.Netcode.Transports.UTP.UnityTransport" preserve="all" />
     <type fullname="Unity.Netcode.UserNetworkVariableSerialization`1" preserve="all" />
     <type fullname="Unity.Netcode.UserNetworkVariableSerialization`1/DuplicateValueDelegate" preserve="all" />
@@ -87,6 +91,7 @@
     <type fullname="UnityEngine.Animator" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.AudioModule">
+    <type fullname="UnityEngine.AudioClip" preserve="all" />
     <type fullname="UnityEngine.AudioSource" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.CoreModule">
@@ -108,14 +113,13 @@
     <type fullname="UnityEngine.Events.UnityEvent`1" preserve="all" />
     <type fullname="UnityEngine.GameObject" preserve="all" />
     <type fullname="UnityEngine.GeometryUtility" preserve="all" />
-    <type fullname="UnityEngine.HeaderAttribute" preserve="all" />
     <type fullname="UnityEngine.KeyCode" preserve="all" />
-    <type fullname="UnityEngine.LayerMask" preserve="all" />
     <type fullname="UnityEngine.Mathf" preserve="all" />
     <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
     <type fullname="UnityEngine.Plane" preserve="all" />
     <type fullname="UnityEngine.Quaternion" preserve="all" />
+    <type fullname="UnityEngine.Random" preserve="all" />
     <type fullname="UnityEngine.RectTransform" preserve="all" />
     <type fullname="UnityEngine.RuntimeInitializeOnLoadMethodAttribute" preserve="all" />
     <type fullname="UnityEngine.SceneManagement.LoadSceneMode" preserve="all" />
@@ -130,12 +134,15 @@
     <type fullname="UnityEngine.Vector2Int" preserve="all" />
     <type fullname="UnityEngine.Vector3" preserve="all" />
     <type fullname="UnityEngine.WaitForEndOfFrame" preserve="all" />
+    <type fullname="UnityEngine.WaitForSeconds" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.InputLegacyModule">
     <type fullname="UnityEngine.Input" preserve="all" />
   </assembly>
+  <assembly fullname="UnityEngine.ParticleSystemModule">
+    <type fullname="UnityEngine.ParticleSystem" preserve="all" />
+  </assembly>
   <assembly fullname="UnityEngine.PhysicsModule">
-    <type fullname="UnityEngine.CharacterController" preserve="all" />
     <type fullname="UnityEngine.Collider" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.TerrainModule">
@@ -143,6 +150,7 @@
   </assembly>
   <assembly fullname="UnityEngine.TextRenderingModule">
     <type fullname="UnityEngine.TextAnchor" preserve="all" />
+    <type fullname="UnityEngine.TextMesh" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.UI">
     <type fullname="UnityEngine.EventSystems.IBeginDragHandler" preserve="all" />
@@ -221,6 +229,7 @@
     <type fullname="System.RuntimeFieldHandle" preserve="all" />
     <type fullname="System.Security.UnverifiableCodeAttribute" preserve="all" />
     <type fullname="System.String" preserve="all" />
+    <type fullname="System.Threading.Interlocked" preserve="all" />
     <type fullname="System.Type" preserve="all" />
     <type fullname="System.ValueType" preserve="all" />
   </assembly>

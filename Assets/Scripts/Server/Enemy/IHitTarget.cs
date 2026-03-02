@@ -1,0 +1,14 @@
+
+
+using UnityEngine;
+
+public interface IHitTarget
+{
+    public void BeHit(AtkData atkData);
+}
+
+public class AtkData
+{
+    public int atkValue;
+    public Vector3 atkPos;
+}

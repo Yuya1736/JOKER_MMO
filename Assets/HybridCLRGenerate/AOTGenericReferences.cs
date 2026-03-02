@@ -34,8 +34,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Action<CrafterItemConfig>
 	// System.Action<GameSceneLaunchEvent>
 	// System.Action<InitClientAOIEvent>
-	// System.Action<LocalPlayerEvent>
 	// System.Action<MerchantItemConfig>
+	// System.Action<PlayerSpawnEvent>
 	// System.Action<TerrainAudioVolumeChangeEvent>
 	// System.Action<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle,object>
 	// System.Action<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<UnityEngine.ResourceManagement.ResourceProviders.SceneInstance>>
@@ -201,6 +201,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Func<object,object>
 	// System.Func<object>
 	// System.IEquatable<Unity.Collections.FixedString32Bytes>
+	// System.IEquatable<float>
 	// System.Predicate<CrafterItemConfig>
 	// System.Predicate<MerchantItemConfig>
 	// System.Predicate<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
@@ -223,44 +224,58 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Unity.Netcode.BufferSerializer<Unity.Netcode.BufferSerializerWriter>
 	// Unity.Netcode.BufferSerializer<object>
 	// Unity.Netcode.FallbackSerializer<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.FallbackSerializer<float>
 	// Unity.Netcode.FallbackSerializer<int>
 	// Unity.Netcode.FallbackSerializer<object>
 	// Unity.Netcode.FixedStringSerializer<Unity.Collections.FixedString32Bytes>
 	// Unity.Netcode.INetworkVariableSerializer<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.INetworkVariableSerializer<float>
 	// Unity.Netcode.INetworkVariableSerializer<int>
 	// Unity.Netcode.INetworkVariableSerializer<object>
 	// Unity.Netcode.NetworkVariable.CheckExceedsDirtinessThresholdDelegate<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.NetworkVariable.CheckExceedsDirtinessThresholdDelegate<float>
 	// Unity.Netcode.NetworkVariable.CheckExceedsDirtinessThresholdDelegate<int>
 	// Unity.Netcode.NetworkVariable.CheckExceedsDirtinessThresholdDelegate<object>
 	// Unity.Netcode.NetworkVariable.OnValueChangedDelegate<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.NetworkVariable.OnValueChangedDelegate<float>
 	// Unity.Netcode.NetworkVariable.OnValueChangedDelegate<int>
 	// Unity.Netcode.NetworkVariable.OnValueChangedDelegate<object>
 	// Unity.Netcode.NetworkVariable<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.NetworkVariable<float>
 	// Unity.Netcode.NetworkVariable<int>
 	// Unity.Netcode.NetworkVariable<object>
 	// Unity.Netcode.NetworkVariableSerialization.EqualsDelegate<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.NetworkVariableSerialization.EqualsDelegate<float>
 	// Unity.Netcode.NetworkVariableSerialization.EqualsDelegate<int>
 	// Unity.Netcode.NetworkVariableSerialization.EqualsDelegate<object>
 	// Unity.Netcode.NetworkVariableSerialization<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.NetworkVariableSerialization<float>
 	// Unity.Netcode.NetworkVariableSerialization<int>
 	// Unity.Netcode.NetworkVariableSerialization<object>
+	// Unity.Netcode.UnmanagedTypeSerializer<float>
 	// Unity.Netcode.UnmanagedTypeSerializer<int>
 	// Unity.Netcode.UserNetworkVariableSerialization.DuplicateValueDelegate<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.UserNetworkVariableSerialization.DuplicateValueDelegate<float>
 	// Unity.Netcode.UserNetworkVariableSerialization.DuplicateValueDelegate<int>
 	// Unity.Netcode.UserNetworkVariableSerialization.DuplicateValueDelegate<object>
 	// Unity.Netcode.UserNetworkVariableSerialization.ReadDeltaDelegate<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.UserNetworkVariableSerialization.ReadDeltaDelegate<float>
 	// Unity.Netcode.UserNetworkVariableSerialization.ReadDeltaDelegate<int>
 	// Unity.Netcode.UserNetworkVariableSerialization.ReadDeltaDelegate<object>
 	// Unity.Netcode.UserNetworkVariableSerialization.ReadValueDelegate<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.UserNetworkVariableSerialization.ReadValueDelegate<float>
 	// Unity.Netcode.UserNetworkVariableSerialization.ReadValueDelegate<int>
 	// Unity.Netcode.UserNetworkVariableSerialization.ReadValueDelegate<object>
 	// Unity.Netcode.UserNetworkVariableSerialization.WriteDeltaDelegate<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.UserNetworkVariableSerialization.WriteDeltaDelegate<float>
 	// Unity.Netcode.UserNetworkVariableSerialization.WriteDeltaDelegate<int>
 	// Unity.Netcode.UserNetworkVariableSerialization.WriteDeltaDelegate<object>
 	// Unity.Netcode.UserNetworkVariableSerialization.WriteValueDelegate<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.UserNetworkVariableSerialization.WriteValueDelegate<float>
 	// Unity.Netcode.UserNetworkVariableSerialization.WriteValueDelegate<int>
 	// Unity.Netcode.UserNetworkVariableSerialization.WriteValueDelegate<object>
 	// Unity.Netcode.UserNetworkVariableSerialization<Unity.Collections.FixedString32Bytes>
+	// Unity.Netcode.UserNetworkVariableSerialization<float>
 	// Unity.Netcode.UserNetworkVariableSerialization<object>
 	// UnityEngine.AddressableAssets.AddressablesImpl.<>c__DisplayClass79_0<object>
 	// UnityEngine.Events.InvokableCall<byte>
@@ -294,28 +309,28 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void JKFrame.EventModule.AddMultipleParameterEventInfo<object>(string,object)
 		// System.Void JKFrame.EventModule.EventTrigger<CheckUIInputBlockerEvent>(string,CheckUIInputBlockerEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<InitClientAOIEvent>(string,InitClientAOIEvent)
-		// System.Void JKFrame.EventModule.EventTrigger<LocalPlayerEvent>(string,LocalPlayerEvent)
+		// System.Void JKFrame.EventModule.EventTrigger<PlayerSpawnEvent>(string,PlayerSpawnEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<TerrainAudioVolumeChangeEvent>(string,TerrainAudioVolumeChangeEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<UpdateClientAOIEvent>(string,UpdateClientAOIEvent)
 		// System.Void JKFrame.EventModule.RemoveEventListener<object>(string,object)
 		// System.Void JKFrame.EventSystem.AddEventListener<CheckUIInputBlockerEvent>(string,System.Action<CheckUIInputBlockerEvent>)
 		// System.Void JKFrame.EventSystem.AddEventListener<GameSceneLaunchEvent>(string,System.Action<GameSceneLaunchEvent>)
-		// System.Void JKFrame.EventSystem.AddEventListener<LocalPlayerEvent>(string,System.Action<LocalPlayerEvent>)
+		// System.Void JKFrame.EventSystem.AddEventListener<PlayerSpawnEvent>(string,System.Action<PlayerSpawnEvent>)
 		// System.Void JKFrame.EventSystem.AddEventListener<TerrainAudioVolumeChangeEvent>(string,System.Action<TerrainAudioVolumeChangeEvent>)
 		// System.Void JKFrame.EventSystem.AddTypeEventListener<CheckUIInputBlockerEvent>(System.Action<CheckUIInputBlockerEvent>)
 		// System.Void JKFrame.EventSystem.AddTypeEventListener<GameSceneLaunchEvent>(System.Action<GameSceneLaunchEvent>)
-		// System.Void JKFrame.EventSystem.AddTypeEventListener<LocalPlayerEvent>(System.Action<LocalPlayerEvent>)
+		// System.Void JKFrame.EventSystem.AddTypeEventListener<PlayerSpawnEvent>(System.Action<PlayerSpawnEvent>)
 		// System.Void JKFrame.EventSystem.AddTypeEventListener<TerrainAudioVolumeChangeEvent>(System.Action<TerrainAudioVolumeChangeEvent>)
 		// System.Void JKFrame.EventSystem.EventTrigger<CheckUIInputBlockerEvent>(string,CheckUIInputBlockerEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<InitClientAOIEvent>(string,InitClientAOIEvent)
-		// System.Void JKFrame.EventSystem.EventTrigger<LocalPlayerEvent>(string,LocalPlayerEvent)
+		// System.Void JKFrame.EventSystem.EventTrigger<PlayerSpawnEvent>(string,PlayerSpawnEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<TerrainAudioVolumeChangeEvent>(string,TerrainAudioVolumeChangeEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<UpdateClientAOIEvent>(string,UpdateClientAOIEvent)
-		// System.Void JKFrame.EventSystem.RemoveTypeEventListener<LocalPlayerEvent>(System.Action<LocalPlayerEvent>)
+		// System.Void JKFrame.EventSystem.RemoveTypeEventListener<PlayerSpawnEvent>(System.Action<PlayerSpawnEvent>)
 		// System.Void JKFrame.EventSystem.RemoveTypeEventListener<TerrainAudioVolumeChangeEvent>(System.Action<TerrainAudioVolumeChangeEvent>)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<CheckUIInputBlockerEvent>(CheckUIInputBlockerEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<InitClientAOIEvent>(InitClientAOIEvent)
-		// System.Void JKFrame.EventSystem.TypeEventTrigger<LocalPlayerEvent>(LocalPlayerEvent)
+		// System.Void JKFrame.EventSystem.TypeEventTrigger<PlayerSpawnEvent>(PlayerSpawnEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<TerrainAudioVolumeChangeEvent>(TerrainAudioVolumeChangeEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<UpdateClientAOIEvent>(UpdateClientAOIEvent)
 		// object JKFrame.PoolSystem.GetGameObject<object>(string,UnityEngine.Transform)
@@ -332,6 +347,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object LocalizationSystem.GetContentByKey<object>(string,LanguageType)
 		// Unity.Collections.FixedString32Bytes System.Activator.CreateInstance<Unity.Collections.FixedString32Bytes>()
 		// object System.Activator.CreateInstance<object>()
+		// object& System.Runtime.CompilerServices.Unsafe.As<object,object>(object&)
+		// System.Void* System.Runtime.CompilerServices.Unsafe.AsPointer<object>(object&)
 		// System.Void* Unity.Collections.LowLevel.Unsafe.UnsafeUtility.AddressOf<int>(int&)
 		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<byte>(byte&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForEnums)
@@ -359,10 +376,12 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_Login>(S2C_Login&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_Register>(S2C_Register&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadUnmanagedSafe<byte>(byte&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadUnmanagedSafe<float>(float&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadUnmanagedSafe<int>(int&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadUnmanagedSafe<object>(object&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<Unity.Collections.FixedString32Bytes>(Unity.Collections.FixedString32Bytes&,Unity.Netcode.FastBufferWriter.ForFixedStrings)
 		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<byte>(byte&,Unity.Netcode.FastBufferWriter.ForEnums)
+		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<float>(float&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<int>(int&,Unity.Netcode.FastBufferWriter.ForEnums)
 		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<object>(object&,Unity.Netcode.FastBufferWriter.ForEnums)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_BagExchangeItem>(C2S_BagExchangeItem&)
@@ -381,6 +400,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<object>(object&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteUnmanaged<int>(int&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteUnmanagedSafe<byte>(byte&)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteUnmanagedSafe<float>(float&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteUnmanagedSafe<int>(int&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteUnmanagedSafe<object>(object&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValue<Unity.Collections.FixedString32Bytes>(Unity.Collections.FixedString32Bytes&,Unity.Netcode.FastBufferWriter.ForFixedStrings)
@@ -399,6 +419,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_UseItem>(C2S_UseItem&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<Unity.Collections.FixedString32Bytes>(Unity.Collections.FixedString32Bytes&,Unity.Netcode.FastBufferWriter.ForFixedStrings)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<byte>(byte&,Unity.Netcode.FastBufferWriter.ForEnums)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<float>(float&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<int>(int&,Unity.Netcode.FastBufferWriter.ForEnums)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<object>(object&,Unity.Netcode.FastBufferWriter.ForEnums)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<object>(object&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
@@ -408,10 +429,13 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForEnums)
 		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// bool Unity.Netcode.NetworkVariableSerialization<Unity.Collections.FixedString32Bytes>.EqualityEquals<Unity.Collections.FixedString32Bytes>(Unity.Collections.FixedString32Bytes&,Unity.Collections.FixedString32Bytes&)
+		// bool Unity.Netcode.NetworkVariableSerialization<float>.EqualityEquals<float>(float&,float&)
 		// bool Unity.Netcode.NetworkVariableSerialization<int>.ValueEquals<int>(int&,int&)
 		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeEqualityChecker_UnmanagedIEquatable<Unity.Collections.FixedString32Bytes>()
+		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeEqualityChecker_UnmanagedIEquatable<float>()
 		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeEqualityChecker_UnmanagedValueEquals<int>()
 		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeSerializer_FixedString<Unity.Collections.FixedString32Bytes>()
+		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeSerializer_UnmanagedByMemcpy<float>()
 		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeSerializer_UnmanagedByMemcpy<int>()
 		// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object> UnityEngine.AddressableAssets.Addressables.LoadAssetAsync<object>(object)
 		// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object> UnityEngine.AddressableAssets.AddressablesImpl.LoadAssetAsync<object>(object)
@@ -420,8 +444,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object UnityEngine.Component.GetComponent<object>()
 		// object[] UnityEngine.Component.GetComponentsInChildren<object>()
 		// object[] UnityEngine.Component.GetComponentsInChildren<object>(bool)
+		// bool UnityEngine.Component.TryGetComponent<object>(object&)
+		// object UnityEngine.GameObject.AddComponent<object>()
 		// object UnityEngine.GameObject.GetComponent<object>()
 		// object[] UnityEngine.GameObject.GetComponentsInChildren<object>(bool)
+		// bool UnityEngine.GameObject.TryGetComponent<object>(object&)
 		// object UnityEngine.JsonUtility.FromJson<object>(string)
 		// object UnityEngine.Object.Instantiate<object>(object)
 		// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object> UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle.Convert<object>()
