@@ -24,10 +24,15 @@
     <type fullname="Cinemachine.LensSettings" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="BulletConfig" preserve="all" />
+    <type fullname="BulletController" preserve="all" />
     <type fullname="ConsumableConfig" preserve="all" />
     <type fullname="EffectConfig" preserve="all" />
     <type fullname="MapConfig" preserve="all" />
     <type fullname="MaterialConfig" preserve="all" />
+    <type fullname="MonsterConfig" preserve="all" />
+    <type fullname="MonsterController" preserve="all" />
+    <type fullname="MonsterView" preserve="all" />
     <type fullname="NetManager" preserve="all" />
     <type fullname="NetMessageManager" preserve="all" />
     <type fullname="PlayerAtkConfig" preserve="all" />
@@ -37,6 +42,7 @@
     <type fullname="WeaponConfig" preserve="all" />
   </assembly>
   <assembly fullname="HotUpdate, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CharacterFloatInfo" preserve="all" />
     <type fullname="ClientGlobal" preserve="all" />
     <type fullname="ClientMapManager" preserve="all" />
     <type fullname="ClientOnGameSceneManager" preserve="all" />
@@ -46,7 +52,6 @@
     <type fullname="LoginSceneManager" preserve="all" />
     <type fullname="MerchantConfig" preserve="all" />
     <type fullname="MerchantController" preserve="all" />
-    <type fullname="NPCFloatInfo" preserve="all" />
     <type fullname="PlayerManager" preserve="all" />
     <type fullname="UI_BagWindow" preserve="all" />
     <type fullname="UI_ChatWindow" preserve="all" />
@@ -129,6 +134,10 @@
   </assembly>
   <assembly fullname="UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEditor.Audio.AudioMixerSnapshotController" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.AIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AI.NavMeshAgent" preserve="all" />
+    <type fullname="UnityEngine.AI.NavMeshObstacle" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.Animation" preserve="all" />

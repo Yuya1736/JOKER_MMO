@@ -84,8 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2a9588615187d40943e3b74ce74322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2186460772380240218}
-  weaponRoot: {fileID: 1897246791165394982}
+  atkEffTransform: {fileID: 6062515947968266838}
   footStepAudioClips:
   - {fileID: 8300000, guid: 75dc068412e381649a373b9956c186aa, type: 3}
   - {fileID: 8300000, guid: 33c3651b23df8ed46855ec26cb3858c3, type: 3}
@@ -107,7 +106,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 88838998441d6d040a20b1f3d17cc253, type: 3}
   - {fileID: 8300000, guid: a7aa3554928a270478f7e93eef9c45a7, type: 3}
   - {fileID: 8300000, guid: ba42854e77ac9bb4e8b730aa84cce8a9, type: 3}
-  playerAtkEffTransform: {fileID: 6062515947968266838}
+  animator: {fileID: 2186460772380240218}
+  weaponRoot: {fileID: 1897246791165394982}
 --- !u!1 &2054718837051158178
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 7077697680815552228}
   - component: {fileID: 8762305045743330703}
   - component: {fileID: 251295188633388414}
+  - component: {fileID: 8383460477221982589}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -208,6 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79485162808de0f4c969b07ac7fe01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viewBase: {fileID: 274513632319346878}
+  view: {fileID: 274513632319346878}
   playerAtkConfigList: {fileID: 11400000, guid: d6e68ff254860034996049f6152f9f0c,
     type: 2}
 --- !u!143 &251295188633388414
@@ -236,6 +239,22 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.73, z: 0}
+--- !u!208 &8383460477221982589
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054718837051158178}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.25, y: 0.8, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.73, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4018051852274820698
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6062515947968266838}
   m_Layer: 0
-  m_Name: EffectOriginPos
+  m_Name: AtkEffPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerAtkState : PlayerStateBase
 {
-    List<PlayerAtkConfig> playerAtkConfigs => player.mainPlayerController.playerAtkConfigs;
+    List<PlayerAtkConfig> playerAtkConfigs => player.mainController.playerAtkConfigs;
     private bool canSwitch = false;
     public PlayerAtkConfig currentPlayerAtkConfig;
     public override void Enter()
@@ -20,7 +20,7 @@ public class PlayerAtkState : PlayerStateBase
 
     private void OnStartSKillHit()
     {
-        currentPlayerAtkConfig = playerAtkConfigs[player.mainPlayerController.playerAtkIndex.Value];
+        currentPlayerAtkConfig = playerAtkConfigs[player.mainController.playerAtkIndex.Value];
         player.weaponController.StartHit();
     }
 
@@ -33,33 +33,38 @@ public class PlayerAtkState : PlayerStateBase
     private void OnSkillCanSwitch()
     {
         canSwitch = true;
+        TryCombo();
     }
 
     private void OnStopSkillHit()
     {
         player.weaponController.CloseHit();
-        player.mainPlayerController.playerAtkIndex.Value++;
-        if (player.mainPlayerController.playerAtkIndex.Value >= playerAtkConfigs.Count)
+        player.mainController.playerAtkIndex.Value++;
+        if (player.mainController.playerAtkIndex.Value >= playerAtkConfigs.Count)
         {
-            player.mainPlayerController.playerAtkIndex.Value = 0;
+            player.mainController.playerAtkIndex.Value = 0;
         }
     }
 
     private void Atk()
     {
-        player.PlayAnimation(playerAtkConfigs[player.mainPlayerController.playerAtkIndex.Value].animName);
+        player.PlayAnimation(playerAtkConfigs[player.mainController.playerAtkIndex.Value].animName);
     }
 
     public override void Update()
     {
         base.Update();
+        TryCombo();
+    }
+
+    public void TryCombo()
+    {
         if (canSwitch && player.inputData.atk)
         {
             canSwitch = false;
             player.inputData.atk = false;
             Atk();
         }
-    
     }
 
     public override void Exit()
@@ -75,8 +80,9 @@ public class PlayerAtkState : PlayerStateBase
         AtkData atkData = new AtkData()
         {
             atkValue = currentPlayerAtkConfig.damage +
-            (int)ServerResSystem.GetItemConfig<WeaponConfig>(player.mainPlayerController.currentWeapon.Value.ToString()).atk,
-            atkPos = point
+            (int)ServerResSystem.GetItemConfig<WeaponConfig>(player.mainController.currentWeapon.Value.ToString()).atk,
+            atkPos = point,
+            repelSourcePos = player.transform.position
         };
         player.PlayEffectOnClient(point);
         target.BeHit(atkData);

@@ -1,69 +1,48 @@
 using JKFrame;
-using System;
-using Unity.Netcode.Components;
 using UnityEngine;
 
-public class PlayerServerController : MonoBehaviour, IPlayerServerController, IStateMachineOwner
+public class PlayerServerController : CharacterServerControllerBase<PlayerController>, IPlayerServerController, INetworkSideController
 {
-    public class InputInfo 
-    { 
+    public class InputInfo
+    {
         public Vector2 dir;
         public bool jump;
         public bool atk;
     }
     public InputInfo inputData { get; private set; }
-    public StateMachine stateMachine { get; private set; }
+
     public CharacterController characterController { get; private set; }
-    public Animator animator { get; private set; }
-    public NetworkAnimator networkAnimator { get; private set; }
-    public float verticalVelocity { get; private set; }
-     
-    public PlayerController mainPlayerController;
 
     public PlayerView playerView { get; private set; }
-    public float speed { get; private set; } = 1f;
 
     public float airSpeed { get; private set; } = 2f;
 
     public float jumpHeight { get; private set; } = 2f;
 
     public WeaponController weaponController { get; private set; }
+    
 
-    [SerializeField, Header("重力系统")] private float gravity = 9.8f;
-    [SerializeField] public bool hasGravity { get; private set; } = true;
-
-    [SerializeField] private float maxGravity = 52f;
-#pragma warning disable 0414
-    [SerializeField] private float CheckFallDeltaTime = 0.25f;
-#pragma warning restore  0414
-    [SerializeField] private float detectRadius = 0.25f;
-    [SerializeField] public bool isGrounded { get; private set; }
-    //[SerializeField] private bool drawDetectRange;
-    [SerializeField] private float detectOffset = 0f;
-    [SerializeField] private Transform footTransform;
-    [SerializeField] private LayerMask groundLayer;
-    public void Init(PlayerController mainPlayerController)
+    public override void Init(PlayerController mainPlayerController)
     {
-        groundLayer = LayerMask.GetMask("Ground", "Walkable");
-
+        base.Init(mainPlayerController);
+        
         stateMachine = new StateMachine();
         if (characterController == null) characterController = this.GetComponent<CharacterController>();
         if (playerView == null) playerView = transform.Find("PlayerView").GetComponent<PlayerView>();
-        if (animator == null) animator = playerView.GetComponent<Animator>();
-        if (networkAnimator == null) networkAnimator = playerView.GetComponent<NetworkAnimator>();
         if (footTransform == null) footTransform = playerView.transform;
-        this.mainPlayerController = mainPlayerController;
 
-        mainPlayerController.playerServerController = this;
-        mainPlayerController.maxHp = ServerResSystem.serverConfig.maxHp;
+        mainPlayerController.InitHp();
+        mainPlayerController.maxHp.Value = ServerResSystem.serverConfig.maxHp;
+        mainController.serverController = this;
+
         mainPlayerController.onWeaponChanged += playerView.SetWeapon;
         mainPlayerController.onWeaponChanged += MainController_OnWeaponChanged;
-        AOIUtility.InitClient(mainPlayerController, AOIUtility.GetChunkCoordByWorldPosition(this.transform.position));
+
         inputData = new InputInfo();
         stateMachine.Init(this);
         ChangeState(PlayerState.Idle);
-        verticalVelocity = 0f;
-        this.AddUpdate(SetPlayerGravity);
+        this.AddUpdate(SetGravity);
+
     }
 
     private void MainController_OnWeaponChanged(GameObject weapon)
@@ -88,16 +67,16 @@ public class PlayerServerController : MonoBehaviour, IPlayerServerController, IS
         effectConfig.position = point;
     }
 
-    private void OnDestroy()
+    public override void OnDestroy()
     {
         stateMachine.Stop();
         stateMachine.Destroy();
-        this.RemoveUpdate(SetPlayerGravity);
+        this.RemoveUpdate(SetGravity);
     }
 
     public void PlayEffectOnClient(Vector3 point)
     {
-        mainPlayerController.Send_PlayEffect_ClientRpc(point);
+        mainController.Send_PlayEffect_ClientRpc(point);
     }
 
     public void MoveOnServer(Vector2 dir)
@@ -107,7 +86,7 @@ public class PlayerServerController : MonoBehaviour, IPlayerServerController, IS
 
     public void JumpOnServer()
     {
-        switch (mainPlayerController.currentState.Value)
+        switch (mainController.currentState.Value)
         {
             case PlayerState.Idle:
             case PlayerState.Move:
@@ -118,7 +97,7 @@ public class PlayerServerController : MonoBehaviour, IPlayerServerController, IS
 
     public void AtkOnServer()
     {
-        switch (mainPlayerController.currentState.Value)
+        switch (mainController.currentState.Value)
         {
             case PlayerState.Idle:
             case PlayerState.Move:
@@ -130,7 +109,7 @@ public class PlayerServerController : MonoBehaviour, IPlayerServerController, IS
 
     public void ChangeState(PlayerState state)
     {
-        mainPlayerController.currentState.Value = state;
+        mainController.currentState.Value = state;
 
         switch (state)
         {
@@ -156,40 +135,5 @@ public class PlayerServerController : MonoBehaviour, IPlayerServerController, IS
         }
     }
 
-    public void PlayAnimation(string animation)
-    {
-        networkAnimator.SetTrigger(animation);
-    }
-
-    public void UpdateClientVisualChunk(Vector2Int oldChunkCoord, Vector2Int newChunkCoord)
-    {
-        AOIUtility.UpdateClientVisualChunk(mainPlayerController, oldChunkCoord, newChunkCoord);
-    }
-
-    public bool GroundedDetect()
-    {
-        return Physics.CheckSphere(footTransform.position + Vector3.down * detectOffset, detectRadius, groundLayer, QueryTriggerInteraction.Ignore);
-    }
-
-    public void SetPlayerGravity()
-    {
-        isGrounded = GroundedDetect();
-        if (isGrounded)
-        {
-            if (verticalVelocity < 0f) verticalVelocity = 2f;
-        }
-        else
-        {
-            if (verticalVelocity < maxGravity)
-            {
-                verticalVelocity += Time.deltaTime * gravity;
-            }
-        }
-    }
-
-    public void SetHasGravity(bool hasGravity)
-    {
-        verticalVelocity = 0f;
-        this.hasGravity = hasGravity;
-    }
+    
 }

@@ -4,14 +4,17 @@ public static class ServerResSystem
     [SerializeField] public static ServerConfig serverConfig { get; private set; }
     [SerializeField] public static MapConfig mapConfig { get; private set; }
 
-    
-    
     static ServerResSystem()
     {
         if (serverConfig == null) serverConfig = ServerGlobal.Instance.ServerConfig;
         if (mapConfig == null) mapConfig = ServerGlobal.Instance.MapConfig;
     }
-    
+
+    public static MonsterConfig GetMonsterConfig(string monsterName)
+    {
+        return serverConfig.monsterConfigDic[monsterName];
+    }
+
     public static T GetItemConfig<T>(string itemName) where T : ItemConfigBase
     {
         return (T)serverConfig.itemConfigDic[itemName];
@@ -42,7 +45,7 @@ public static class ServerResSystem
         GameObject obj = GameObject.Instantiate(serverConfig.terrainDic[resKey]);
         Terrain terrain = obj.GetComponent<Terrain>();
 
-        terrain.enabled = false;
+        terrain.enabled = true;
         terrain.basemapDistance = 100;
         terrain.heightmapPixelError = 50;
         terrain.heightmapMaximumLOD = 1;

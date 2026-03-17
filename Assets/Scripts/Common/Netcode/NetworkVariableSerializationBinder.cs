@@ -12,6 +12,9 @@ public static class NetworkVariableSerializationBinder
         NetworkVariable<PlayerState> _ = new NetworkVariable<PlayerState>(PlayerState.None);
         NetVariable<PlayerState> __ = new NetVariable<PlayerState>(PlayerState.None); ;
 
+        NetworkVariable<MonsterState> _2 = new NetworkVariable<MonsterState>(MonsterState.None);
+        NetVariable<MonsterState> __2 = new NetVariable<MonsterState>(MonsterState.None); ;
+
         NetworkVariable<FixedString32Bytes> _1 = new NetworkVariable<FixedString32Bytes>();
         NetVariable<FixedString32Bytes> __1 = new NetVariable<FixedString32Bytes>();
     }
@@ -19,6 +22,7 @@ public static class NetworkVariableSerializationBinder
     public static void Init()
     {
         BindNetworkVariableSerialization<PlayerState>();
+        BindNetworkVariableSerialization<MonsterState>();
         BindFixedfloatSerialization();
         //BindFixedString32BytesSerialization();
     }

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
-public interface IPlayerServerController
+public interface IPlayerServerController : ICharacterServerController
 {
     public void MoveOnServer(Vector2 dir);
-    public void JumpOnServer();
     public void AtkOnServer();
+    public void JumpOnServer();
+    
 }

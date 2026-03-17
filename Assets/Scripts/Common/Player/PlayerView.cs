@@ -2,14 +2,11 @@
 using System;
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+public class PlayerView : CharacterViewBase
 {
-    [SerializeField] private Animator animator;
     [SerializeField] private Transform weaponRoot;
-    [SerializeField] private AudioClip[] footStepAudioClips;
     private GameObject currentWeapon;
-    public Transform playerAtkEffTransform;
-
+    
     private void OnAnimatorMove()
     {
         rootMotionAction?.Invoke(animator.deltaPosition, animator.deltaRotation);
@@ -27,7 +24,7 @@ public class PlayerView : MonoBehaviour
 
     #region AnimationEvent
     public event Action<Vector3, Quaternion> rootMotionAction;
-    public event Action onJumpStartEndAcion;
+    public event Action JumpStartEndAcion;
     public event Action StartSkillHitAcion;
     public event Action StopSkillHitAcion;
     public event Action SkillCanSwitchAcion;
@@ -41,7 +38,7 @@ public class PlayerView : MonoBehaviour
 
     private void OnJumpStartEnd()
     {
-        onJumpStartEndAcion?.Invoke();
+        JumpStartEndAcion?.Invoke();
     }
 
     private void StartSkillHit()

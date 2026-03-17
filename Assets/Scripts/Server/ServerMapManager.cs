@@ -1,10 +1,11 @@
 using JKFrame;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class ServerMapManager : SingletonMono<ServerMapManager>
 {
     [SerializeField] private MapConfig mapConfig;
-    [SerializeField] private int noTestRange = 30; // 40 * 40原 现在中间15 - 25 为10 * 10
+    [SerializeField] private int noTestRange = 36; // 40 * 40原 现在中间15 - 25 为10 * 10
     [SerializeField] private bool openTestRange = true;
     public void Init()
     {
@@ -19,12 +20,15 @@ public class ServerMapManager : SingletonMono<ServerMapManager>
                 {
                     ServerResSystem.InsatantialteTerrain(x, y, transform);
                 }
-            return;
         }
-        for (int x = 0; x < width; ++x)
-            for (int y = 0; y < height; ++y)
-            {
-                ServerResSystem.InsatantialteTerrain(x, y, transform);
-            }
+        else
+        {
+            for (int x = 0; x < width; ++x)
+                for (int y = 0; y < height; ++y)
+                {
+                    ServerResSystem.InsatantialteTerrain(x, y, transform);
+                }
+        }
+        GetComponent<NavMeshSurface>().BuildNavMesh();
     }
 }

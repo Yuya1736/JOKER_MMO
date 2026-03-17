@@ -10,7 +10,7 @@ public static class AOIUtility
         return new Vector2Int((int)(worldPosition.x / chunkSize), (int)(worldPosition.z / chunkSize));
     }
 
-    public static void InitClient(PlayerController playerController, Vector2Int chunkCoord)
+    public static void InitClient(CharacterControllerBase playerController, Vector2Int chunkCoord)
     {
         EventSystem.TypeEventTrigger<InitClientAOIEvent>(new InitClientAOIEvent()
         {
@@ -19,7 +19,7 @@ public static class AOIUtility
         });
     }
 
-    public static void UpdateClientVisualChunk(PlayerController playerController, Vector2Int oldChunkCoord, Vector2Int newChunkCoord)
+    public static void UpdateClientVisualChunk(CharacterControllerBase playerController, Vector2Int oldChunkCoord, Vector2Int newChunkCoord)
     {
         EventSystem.TypeEventTrigger<UpdateClientAOIEvent>(new UpdateClientAOIEvent()
         {

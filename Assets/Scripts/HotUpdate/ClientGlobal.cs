@@ -21,7 +21,12 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
 
         NetworkVariableSerializationBinder.Init();
 
+        InitNetworkSideControllerDic();
+
         LoadGameSetting();
+
+        MonsterManager.Instance.Init();
+        BulletManager.Instance.Init();
 
         ResSystem.InstantiateGameObject<NetManager>("NetworkManager").Init(true);
 
@@ -37,8 +42,6 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
 
         EventSystem.AddTypeEventListener<CheckUIInputBlockerEvent>(OnCheckUIInputBlocker);
     }
-
-    
 
     private UI_GamePopupWindow popupWindow;
 
@@ -133,6 +136,16 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
             SetCursorLockState(false);
             if (PlayerManager.playerController != null) PlayerManager.playerClientController.canControl = false;
         }
+    }
+
+    private void InitNetworkSideControllerDic()
+    {
+        NetworkEntityBase.sideControllerDic = new Dictionary<Type, Type>()
+        {
+            {typeof(PlayerController), typeof(PlayerClientController)},
+            {typeof(MonsterController), typeof(MonsterClientController)},
+            {typeof(BulletController), typeof(BulletClientController)}
+        };
     }
 
     private void InitUIWindows()

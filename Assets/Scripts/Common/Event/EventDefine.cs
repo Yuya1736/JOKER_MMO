@@ -1,6 +1,16 @@
 using JKFrame;
 using UnityEngine;
 
+public struct BulletSpawnEvent
+{
+    public BulletController mainBulletController;
+}
+
+public struct MonsterSpawnEvent
+{
+    public MonsterController mainMonsterController;
+}
+
 public struct PlayerSpawnEvent
 {
     public PlayerController mainPlayerController;
@@ -8,13 +18,13 @@ public struct PlayerSpawnEvent
 
 public struct InitClientAOIEvent
 {
-    public PlayerController player;
+    public CharacterControllerBase player;
     public Vector2Int coord;
 }
 
 public struct UpdateClientAOIEvent
 {
-    public PlayerController player;
+    public CharacterControllerBase player;
     public Vector2Int oldCoord;
     public Vector2Int newCoord;
 }

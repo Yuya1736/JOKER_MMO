@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78c385cd1910fc4db7a4d16e6d0d4fc, type: 3}
+  m_Name: Stone1AtkEffectConfig
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  position: {x: 0, y: 0.328, z: -0.945}
+  rotation: {x: 0, y: 0, z: 0}
+  scale: {x: 0.2, y: 0.2, z: 0.2}
+  effectPrefab: {fileID: 1339488555614120916, guid: 9ff083134a8497846b91102429274d26,
+    type: 3}
+  effectAudio: {fileID: 8300000, guid: daae9b7ce9bda9d41ab524f1196ebde8, type: 3}
+  effTimeOffset: 0

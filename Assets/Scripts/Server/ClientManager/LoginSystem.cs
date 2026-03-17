@@ -23,7 +23,9 @@ public partial class ClientsManager
         ChangeClientState(clientId, ClientState.Gaming);
         NetworkObject networkObject = NetManager.Instance.SpawnObject(clientId, player, characterData.position, Quaternion.Euler(0, characterData.rotate_Y, 0));
         client.playerController = networkObject.gameObject.GetComponent<PlayerController>();
-        if (!networkObject.gameObject.TryGetComponent<PlayerServerController>(out client.playerServerController)) client.playerServerController = networkObject.gameObject.AddComponent<PlayerServerController>();
+        client.playerController.Init();
+        client.playerServerController = (PlayerServerController)client.playerController.sideController;
+        //if (!networkObject.gameObject.TryGetComponent<PlayerServerController>(out client.playerServerController)) client.playerServerController = networkObject.gameObject.AddComponent<PlayerServerController>();
         client.playerServerController.Init(client.playerController);
         client.playerController.currentWeapon.Value = playerData.weaponName;
         client.playerController.currentHp.Value = playerData.hp;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class NetManager : NetworkManager
 {
@@ -67,6 +66,7 @@ public class NetManager : NetworkManager
     }
     public void DeSpawnObject(NetworkObject networkObject)
     {
+        if (networkObject == null || !networkObject.IsSpawned) return;
         networkObject.Despawn();
     }
 }

@@ -8,7 +8,7 @@ public class PlayerJumpState : PlayerStateBase
         base.Enter();
         player.PlayAnimation(AnimationEvent.Jump);
         player.playerView.rootMotionAction += OnRootMotion;
-        player.playerView.onJumpStartEndAcion += OnJumpEnd;
+        player.playerView.JumpStartEndAcion += OnJumpEnd;
         player.SetHasGravity(false);
     }
 
@@ -37,6 +37,6 @@ public class PlayerJumpState : PlayerStateBase
         base.Exit();
 
         player.playerView.rootMotionAction -= OnRootMotion;
-        player.playerView.onJumpStartEndAcion -= OnJumpEnd;
+        player.playerView.JumpStartEndAcion -= OnJumpEnd;
     }
 }

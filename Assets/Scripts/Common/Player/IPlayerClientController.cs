@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public interface IPlayerClientController
+public interface IPlayerClientController : ICharacterClientController
 {
-    public void PlaySkillEffect(Vector3 point);
+    public void PlayPlayerAtkEffect(Vector3 point);
 }
