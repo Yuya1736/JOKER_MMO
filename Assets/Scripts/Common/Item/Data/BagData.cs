@@ -122,7 +122,7 @@ public class BagData : INetworkSerializable
             if (consumableData.count <= 0)
             {
                 itemDataList[index] = null;
-                consumableData = null;
+                //consumableData = null;
             }
             return consumableData;
         }

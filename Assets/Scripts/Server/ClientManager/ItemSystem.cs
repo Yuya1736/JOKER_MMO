@@ -69,6 +69,7 @@ public partial class ClientsManager
                 version = playerData.bagData.version
             });
         }
+        UpdateCollectTaskProgress(clientId);
     }
 
     private void OnReceiveShopSellItem(ulong clientId, INetworkSerializable serializable)
@@ -119,6 +120,7 @@ public partial class ClientsManager
                 money = playerData.bagData.money
             });
         }
+        UpdateCollectTaskProgress(clientId);
     }
 
     private void OnReceiveShopBuyItem(ulong clientId, INetworkSerializable serializable)
@@ -153,6 +155,7 @@ public partial class ClientsManager
                 money = playerData.bagData.money
             });    
         }
+        UpdateCollectTaskProgress(clientId);
     }
 
     private void OnReceiveExchangeShortCut(ulong clientId, INetworkSerializable serializable)
@@ -282,8 +285,21 @@ public partial class ClientsManager
                     client.playerController.currentWeapon.Value = playerData.bagData.itemDataList[message.index].id; // 将PlayerController中的武器网络变量修改为当前武器
                 }
             }
+            else if (itemData is ConsumableData)
+            {
+                ConsumableConfig consumableConfig = ServerResSystem.GetItemConfig<ConsumableConfig>(itemData.id);
+                if (consumableConfig != null && client.playerController != null)
+                {
+                    client.playerController.ChangeHp(consumableConfig.recoverNum);
+                }
+                if (((ConsumableData)itemData).count <= 0)
+                {
+                    result.itemType = ItemType.Empty;
+                }
+            }
         }
         NetMessageManager.Instance.SendMessageToClient<S2C_BagUpdateItem>(clientId, NetMessageType.S2C_BagUpdateItem, result);
+        UpdateCollectTaskProgress(clientId);
 #endif
     }
 
@@ -320,5 +336,7 @@ public partial class ClientsManager
             s2C_GetBagDataInfo.bagData.itemIndexInShortCut[7] = -1;
         }
         NetMessageManager.Instance.SendMessageToClient<S2C_GetBagData>(clientId, NetMessageType.S2C_GetBagData, s2C_GetBagDataInfo);
+        UpdateCollectTaskProgress(clientId);
     }
 }
+

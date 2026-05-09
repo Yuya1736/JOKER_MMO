@@ -55,6 +55,7 @@ public class QuadTree
         public void CheckVisual()
         {
             bool isVisual = ClientMapManager.Instance.CheckVisual(bounds);
+            // bool isVisual = true;
 
             if (active && !isVisual) Disable();
             else if(isVisual)

@@ -42,9 +42,9 @@ public abstract class CharacterServerControllerBase<M> : MonoBehaviour, ICharact
         }
         if (footTransform == null)
         {
-            footTransform = transform.Find("FootTransform"); 
+            footTransform = transform.Find("FootTransform");
         }
-        AOIUtility.InitClient(mainController, AOIUtility.GetChunkCoordByWorldPosition(this.transform.position));
+        
     }
 
     public virtual void OnDestroy()
@@ -61,11 +61,6 @@ public abstract class CharacterServerControllerBase<M> : MonoBehaviour, ICharact
     {
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
         return info.normalizedTime;
-    }
-
-    public void UpdateClientVisualChunk(Vector2Int oldChunkCoord, Vector2Int newChunkCoord)
-    {
-        AOIUtility.UpdateClientVisualChunk(mainController, oldChunkCoord, newChunkCoord);
     }
 
     public bool GroundedDetect()

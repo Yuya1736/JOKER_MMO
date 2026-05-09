@@ -55,6 +55,7 @@ public class PlayerAtkState : PlayerStateBase
     {
         base.Update();
         TryCombo();
+        TryMove();
     }
 
     public void TryCombo()
@@ -67,18 +68,29 @@ public class PlayerAtkState : PlayerStateBase
         }
     }
 
+    public void TryMove()
+    {
+        if (canSwitch && player.inputData.dir != Vector2.zero)
+        {
+            player.inputData.atk = false;
+            player.ChangeState(PlayerState.Move);
+        }
+    }
+
     public override void Exit()
     {
         player.playerView.StartSkillHitAcion -= OnStartSKillHit;
         player.playerView.StopSkillHitAcion -= OnStopSkillHit;
         player.playerView.SkillCanSwitchAcion -= OnSkillCanSwitch;
         player.playerView.SkillEndAcion -= OnSkillEnd;
+        canSwitch = true;
     }
 
     public void OnHitTarget(IHitTarget target, Vector3 point)
     {
         AtkData atkData = new AtkData()
         {
+            clientId = player.mainController.OwnerClientId,
             atkValue = currentPlayerAtkConfig.damage +
             (int)ServerResSystem.GetItemConfig<WeaponConfig>(player.mainController.currentWeapon.Value.ToString()).atk,
             atkPos = point,

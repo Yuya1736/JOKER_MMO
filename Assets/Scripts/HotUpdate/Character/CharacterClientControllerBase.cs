@@ -11,7 +11,7 @@ public abstract class CharacterClientControllerBase<M> : MonoBehaviour, ICharact
         this.mainController = mainController;       
     }    
 
-    public void PlaySkillEffect(EffectConfig effectConfig) // 直接通过特效配置来播放，适用于攻击开始时播放atk特效
+    public void PlayEffect(EffectConfig effectConfig) // 直接通过特效配置来播放，适用于攻击开始时播放atk特效
     { 
         // 播放特效
         string effectName = effectConfig.effectPrefab.name;

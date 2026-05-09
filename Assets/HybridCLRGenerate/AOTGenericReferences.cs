@@ -5,6 +5,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// {{ AOT assemblies
 	public static readonly IReadOnlyList<string> PatchedAOTAssemblyList = new List<string>
 	{
+		"DOTween.dll",
 		"JKFrame.dll",
 		"System.Core.dll",
 		"System.dll",
@@ -36,6 +37,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Action<CrafterItemConfig>
 	// System.Action<GameSceneLaunchEvent>
 	// System.Action<InitClientAOIEvent>
+	// System.Action<InitServerObjectAOIEvent>
 	// System.Action<MerchantItemConfig>
 	// System.Action<MonsterSpawnEvent>
 	// System.Action<PlayerSpawnEvent>
@@ -47,6 +49,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Action<UnityEngine.Vector2Int>
 	// System.Action<UnityEngine.Vector3,UnityEngine.Quaternion>
 	// System.Action<UpdateClientAOIEvent>
+	// System.Action<UpdateServerObjectAOIEvent>
+	// System.Action<float,float>
 	// System.Action<float>
 	// System.Action<int>
 	// System.Action<object,object>
@@ -308,15 +312,19 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 
 	public void RefMethods()
 	{
+		// object DG.Tweening.TweenSettingsExtensions.OnComplete<object>(object,DG.Tweening.TweenCallback)
+		// object DG.Tweening.TweenSettingsExtensions.SetSpeedBased<object>(object,bool)
 		// System.Void JKFrame.EventModule.AddEventListener<object>(string,object)
 		// System.Void JKFrame.EventModule.AddMultipleParameterEventInfo<object>(string,object)
 		// System.Void JKFrame.EventModule.EventTrigger<BulletSpawnEvent>(string,BulletSpawnEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<CheckUIInputBlockerEvent>(string,CheckUIInputBlockerEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<InitClientAOIEvent>(string,InitClientAOIEvent)
+		// System.Void JKFrame.EventModule.EventTrigger<InitServerObjectAOIEvent>(string,InitServerObjectAOIEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<MonsterSpawnEvent>(string,MonsterSpawnEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<PlayerSpawnEvent>(string,PlayerSpawnEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<TerrainAudioVolumeChangeEvent>(string,TerrainAudioVolumeChangeEvent)
 		// System.Void JKFrame.EventModule.EventTrigger<UpdateClientAOIEvent>(string,UpdateClientAOIEvent)
+		// System.Void JKFrame.EventModule.EventTrigger<UpdateServerObjectAOIEvent>(string,UpdateServerObjectAOIEvent)
 		// System.Void JKFrame.EventModule.RemoveEventListener<object>(string,object)
 		// System.Void JKFrame.EventSystem.AddEventListener<BulletSpawnEvent>(string,System.Action<BulletSpawnEvent>)
 		// System.Void JKFrame.EventSystem.AddEventListener<CheckUIInputBlockerEvent>(string,System.Action<CheckUIInputBlockerEvent>)
@@ -333,19 +341,23 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void JKFrame.EventSystem.EventTrigger<BulletSpawnEvent>(string,BulletSpawnEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<CheckUIInputBlockerEvent>(string,CheckUIInputBlockerEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<InitClientAOIEvent>(string,InitClientAOIEvent)
+		// System.Void JKFrame.EventSystem.EventTrigger<InitServerObjectAOIEvent>(string,InitServerObjectAOIEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<MonsterSpawnEvent>(string,MonsterSpawnEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<PlayerSpawnEvent>(string,PlayerSpawnEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<TerrainAudioVolumeChangeEvent>(string,TerrainAudioVolumeChangeEvent)
 		// System.Void JKFrame.EventSystem.EventTrigger<UpdateClientAOIEvent>(string,UpdateClientAOIEvent)
+		// System.Void JKFrame.EventSystem.EventTrigger<UpdateServerObjectAOIEvent>(string,UpdateServerObjectAOIEvent)
 		// System.Void JKFrame.EventSystem.RemoveTypeEventListener<PlayerSpawnEvent>(System.Action<PlayerSpawnEvent>)
 		// System.Void JKFrame.EventSystem.RemoveTypeEventListener<TerrainAudioVolumeChangeEvent>(System.Action<TerrainAudioVolumeChangeEvent>)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<BulletSpawnEvent>(BulletSpawnEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<CheckUIInputBlockerEvent>(CheckUIInputBlockerEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<InitClientAOIEvent>(InitClientAOIEvent)
+		// System.Void JKFrame.EventSystem.TypeEventTrigger<InitServerObjectAOIEvent>(InitServerObjectAOIEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<MonsterSpawnEvent>(MonsterSpawnEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<PlayerSpawnEvent>(PlayerSpawnEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<TerrainAudioVolumeChangeEvent>(TerrainAudioVolumeChangeEvent)
 		// System.Void JKFrame.EventSystem.TypeEventTrigger<UpdateClientAOIEvent>(UpdateClientAOIEvent)
+		// System.Void JKFrame.EventSystem.TypeEventTrigger<UpdateServerObjectAOIEvent>(UpdateServerObjectAOIEvent)
 		// object JKFrame.ResSystem.InstantiateGameObject<object>(UnityEngine.Transform,string,bool)
 		// object JKFrame.ResSystem.InstantiateGameObject<object>(string,UnityEngine.Transform,string,bool)
 		// System.Void JKFrame.ResSystem.InstantiateGameObjectAsync<object>(string,System.Action<object>,UnityEngine.Transform,string,bool)
@@ -365,14 +377,17 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<byte>(byte&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForEnums)
 		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForPrimitives)
+		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<object>(object&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_BagExchangeItem>(C2S_BagExchangeItem&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_ChangeShortCutIndex>(C2S_ChangeShortCutIndex&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_Chat>(C2S_Chat&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_CompeleteTask>(C2S_CompeleteTask&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_CraftItem>(C2S_CraftItem&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_Disconnect>(C2S_Disconnect&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_EnterGame>(C2S_EnterGame&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_ExchangeShortCut>(C2S_ExchangeShortCut&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_GetBagData>(C2S_GetBagData&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_GetTaskData>(C2S_GetTaskData&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_Login>(C2S_Login&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_Register>(C2S_Register&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<C2S_ShopBuyItem>(C2S_ShopBuyItem&)
@@ -385,8 +400,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_Chat>(S2C_Chat&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_Disconnect>(S2C_Disconnect&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_GetBagData>(S2C_GetBagData&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_GetMoneyReward>(S2C_GetMoneyReward&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_GetTaskData>(S2C_GetTaskData&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_Login>(S2C_Login&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_Register>(S2C_Register&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializableInPlace<S2C_UpdateTaskData>(S2C_UpdateTaskData&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadUnmanagedSafe<byte>(byte&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadUnmanagedSafe<float>(float&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadUnmanagedSafe<int>(int&)
@@ -399,11 +417,13 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_BagExchangeItem>(C2S_BagExchangeItem&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_ChangeShortCutIndex>(C2S_ChangeShortCutIndex&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_Chat>(C2S_Chat&)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_CompeleteTask>(C2S_CompeleteTask&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_CraftItem>(C2S_CraftItem&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_Disconnect>(C2S_Disconnect&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_EnterGame>(C2S_EnterGame&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_ExchangeShortCut>(C2S_ExchangeShortCut&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_GetBagData>(C2S_GetBagData&)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_GetTaskData>(C2S_GetTaskData&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_Login>(C2S_Login&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_Register>(C2S_Register&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<C2S_ShopBuyItem>(C2S_ShopBuyItem&)
@@ -419,11 +439,13 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_BagExchangeItem>(C2S_BagExchangeItem&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_ChangeShortCutIndex>(C2S_ChangeShortCutIndex&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_Chat>(C2S_Chat&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_CompeleteTask>(C2S_CompeleteTask&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_CraftItem>(C2S_CraftItem&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_Disconnect>(C2S_Disconnect&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_EnterGame>(C2S_EnterGame&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_ExchangeShortCut>(C2S_ExchangeShortCut&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_GetBagData>(C2S_GetBagData&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_GetTaskData>(C2S_GetTaskData&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_Login>(C2S_Login&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_Register>(C2S_Register&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<C2S_ShopBuyItem>(C2S_ShopBuyItem&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
@@ -440,6 +462,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<byte>(byte&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForEnums)
 		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForPrimitives)
+		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<object>(object&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
 		// bool Unity.Netcode.NetworkVariableSerialization<Unity.Collections.FixedString32Bytes>.EqualityEquals<Unity.Collections.FixedString32Bytes>(Unity.Collections.FixedString32Bytes&,Unity.Collections.FixedString32Bytes&)
 		// bool Unity.Netcode.NetworkVariableSerialization<float>.EqualityEquals<float>(float&,float&)
 		// bool Unity.Netcode.NetworkVariableSerialization<int>.ValueEquals<int>(int&,int&)

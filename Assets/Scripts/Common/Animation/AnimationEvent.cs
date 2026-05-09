@@ -7,6 +7,7 @@
     private const string damage = "Damage";
     private const string attack = "Attack";
     private const string die = "Die";
+    private const string equip = "Equip";
 
     public static string Idle => idle;
     public static string Move => move;
@@ -15,5 +16,6 @@
     public static string Damage => damage;
     public static string Attack => attack;
     public static string Die => die;
+    public static string Equip => equip;
 
 }

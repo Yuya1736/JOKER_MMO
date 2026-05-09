@@ -83,6 +83,7 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
             Cursor.visible = false;
 
             // 恢复摄像机输入
+            if (PlayerManager.playerClientController) PlayerManager.playerClientController.canControl = true;
             if (!PlayerManager.Instance) return;
             PlayerManager.Instance.FreeLook.m_XAxis.m_InputAxisName = "Mouse X";
             PlayerManager.Instance.FreeLook.m_YAxis.m_InputAxisName = "Mouse Y";
@@ -93,6 +94,7 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
             Cursor.visible = true;
 
             // 摄像机不能输入
+            if (PlayerManager.playerClientController) PlayerManager.playerClientController.canControl = false;
             if (!PlayerManager.Instance) return;
             PlayerManager.Instance.FreeLook.m_XAxis.m_InputAxisName = "";
             PlayerManager.Instance.FreeLook.m_YAxis.m_InputAxisName = "";
@@ -164,6 +166,9 @@ public class ClientGlobal : SingletonMono<ClientGlobal>
         UISystem.AddUIWindowData<UI_ShopWindow>(new UIWindowData(false, nameof(UI_ShopWindow), 2));
         UISystem.AddUIWindowData<UI_CraftWindow>(new UIWindowData(false, nameof(UI_CraftWindow), 2));
         UISystem.AddUIWindowData<UI_PlayerInfoWindow>(new UIWindowData(false, nameof(UI_PlayerInfoWindow), 1));
+        UISystem.AddUIWindowData<UI_TaskWindow>(new UIWindowData(false, nameof(UI_TaskWindow), 1));
+        UISystem.AddUIWindowData<UI_DialogWindow>(new UIWindowData(false, nameof(UI_DialogWindow), 2));
+        UISystem.AddUIWindowData<UI_GetRewardWindow>(new UIWindowData(false, nameof(UI_GetRewardWindow), 3));
     }
     private void OnGameSceneLaunchEvent(GameSceneLaunchEvent @event)
     {

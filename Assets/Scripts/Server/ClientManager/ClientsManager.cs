@@ -35,6 +35,7 @@ public partial class ClientsManager : SingletonMono<ClientsManager>
         InitLoginSystem();
         InitChatSystem();
         InitItemSystem();
+        InitTaskSystem();
     }
 
     private void OnClientConnected(ulong clientId)

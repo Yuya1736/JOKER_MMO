@@ -60,7 +60,7 @@ public partial class PlayerController : CharacterControllerBase<PlayerView, IPla
     }
 
     [ClientRpc]
-    public void Send_PlayEffect_ClientRpc(Vector3 point)
+    public void Send_PlayPlayerAtkEffect_ClientRpc(Vector3 point)
     {
         clientController.PlayPlayerAtkEffect(point);
     }
@@ -69,6 +69,10 @@ public partial class PlayerController : CharacterControllerBase<PlayerView, IPla
     {
         maxHp.Value = 100f;
         currentHp.Value = MaxHp;
+        //print("GetInstanceID(): " + GetInstanceID());
+        //print("NetworkObjectId: " + NetworkObjectId);
+        //print("InitHp: " + currentHp.Value);
+        //print("------------");
     }
 
 

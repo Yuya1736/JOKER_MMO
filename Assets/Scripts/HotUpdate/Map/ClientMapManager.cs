@@ -1,12 +1,14 @@
 using JKFrame;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ClientMapManager : SingletonMono<ClientMapManager>
 {
+    [SerializeField] private MapNavMeshConfig mapNavMeshConfig;
     private enum TerrainState
     {
-        Enable, Disable, Loading
+        Loading, Enable, Disable
     }
 
     public Transform terrainsFolder;
@@ -14,13 +16,28 @@ public class ClientMapManager : SingletonMono<ClientMapManager>
     public class TerrainController
     {
         public Terrain terrain;
+        private Vector2Int coord;
         private float destroyTimer;
         private TerrainState state;
 
+        private NavMeshData navMeshData;
+        private NavMeshDataInstance navMeshDataInstance;
+
+        public bool IsNavMeshReady => navMeshDataInstance.valid;
+
         public void Load(Vector2Int coord)
         {
+            this.coord = coord;
+            navMeshData = null;
+            navMeshDataInstance = default;
+            destroyTimer = 0;
+            state = TerrainState.Loading;
+
             Vector2Int coordKey = coord + Instance.mapConfig.terrainCoordOffset;
             string resKey = $"{coordKey.x}_{coordKey.y}";
+            string navMeshResKey = MapNavMeshConfig.NavMeshKeyPrefix + resKey;
+            ClientMapManager.Instance.mapNavMeshConfig.navMeshDataDic.TryGetValue(navMeshResKey, out navMeshData);
+
             ResSystem.InstantiateGameObjectAsync<Terrain>(resKey, (terrain) =>
             {
                 this.terrain = terrain;
@@ -34,36 +51,36 @@ public class ClientMapManager : SingletonMono<ClientMapManager>
                 terrain.treeMaximumFullLODCount = 10;
 
                 terrain.gameObject.transform.position = new Vector3(coord.x * Instance.mapConfig.terrainSize, 0, coord.y * Instance.mapConfig.terrainSize);
-                if (state == TerrainState.Disable)
-                {
-                    terrain.gameObject.SetActive(false);
-                }
+                if (state == TerrainState.Disable) terrain.gameObject.SetActive(false);
             }, Instance.terrainsFolder, null, false);
         }
 
         public void Enable()
         {
-            if (state == TerrainState.Disable)
+            if (state == TerrainState.Enable) return;
+
+            if (navMeshData && !navMeshDataInstance.valid)
             {
-                destroyTimer = 0;
-                if(terrain != null)
-                {
-                    terrain.gameObject.SetActive(true);
-                }
-                state = TerrainState.Enable;
+
+                navMeshDataInstance = NavMesh.AddNavMeshData(navMeshData);
             }
+
+            destroyTimer = 0;
+            if (terrain != null) terrain.gameObject.SetActive(true);
+            state = TerrainState.Enable;
         }
 
         public void Disable()
         {
-            if (state == TerrainState.Enable)
+            if (state != TerrainState.Enable) return;
+
+            if (terrain != null) terrain.gameObject.SetActive(false);
+            if (navMeshDataInstance.valid)
             {
-                if (terrain != null)
-                {
-                    terrain.gameObject.SetActive(false);
-                }
-                state = TerrainState.Disable;
+                NavMesh.RemoveNavMeshData(navMeshDataInstance);
+                navMeshDataInstance = default;
             }
+            state = TerrainState.Disable;
         }
 
         public bool CheckAndDestroy()
@@ -82,7 +99,13 @@ public class ClientMapManager : SingletonMono<ClientMapManager>
 
         public void Destroy()
         {
-            if(terrain != null) ResSystem.UnloadInstance(terrain.gameObject);
+            if (navMeshDataInstance.valid)
+            {
+                NavMesh.RemoveNavMeshData(navMeshDataInstance);
+                navMeshDataInstance = default;
+            }
+
+            if (terrain != null) ResSystem.UnloadInstance(terrain.gameObject);
             terrain = null;
             destroyTimer = 0;
             PoolSystem.PushObject(this);
@@ -185,4 +208,28 @@ public class ClientMapManager : SingletonMono<ClientMapManager>
         if(drawGizmos) quadTree?.Draw();
     }
 #endif
+
+    public bool IsWorldPosNavMeshReady(Vector3 worldPos)
+    {
+        Vector2Int coord = GetCoordByWorldPos(worldPos);
+        return terrainControllerDic.TryGetValue(coord, out TerrainController controller) && controller.IsNavMeshReady;
+    }
+
+    public bool TrySampleOnLoadedNavMesh(Vector3 worldPos, out Vector3 hitPos, float maxDistance = 6f)
+    {
+        if (!IsWorldPosNavMeshReady(worldPos))
+        {
+            hitPos = worldPos;
+            return false;
+        }
+
+        if (NavMesh.SamplePosition(worldPos, out NavMeshHit hit, maxDistance, NavMesh.AllAreas))
+        {
+            hitPos = hit.position;
+            return true;
+        }
+
+        hitPos = worldPos;
+        return false;
+    }
 }

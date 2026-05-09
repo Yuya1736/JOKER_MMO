@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59b8c2d3d0c024468e6c8bdcbc9616e, type: 3}
+  m_Name: Task_1
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: taskInfo
+      Entry: 7
+      Data: 0|DialogTaskInfo, Common
+    - Name: npcId
+      Entry: 1
+      Data: Merchant0
+    - Name: DialogId
+      Entry: 1
+      Data: "\u521D\u89C1\u5546\u4EBA"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: taskReward
+      Entry: 7
+      Data: 1|CoinTaskReward, Common
+    - Name: coinCount
+      Entry: 3
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+  taskName: "\u65B0\u624B"
+  taskDescription: "\u8DDF\u5546\u4EBA\u8C08\u8C08"
+  nextTaskId: Task_2
+  targetPos: {x: 143.36, y: 54, z: 165.32}

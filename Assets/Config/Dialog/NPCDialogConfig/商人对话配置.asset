@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f63a3c7384100449715ab3d67b717d, type: 3}
+  m_Name: "\u5546\u4EBA\u5BF9\u8BDD\u914D\u7F6E"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: eb383e7a11c4e3943ab0fce89bac1d5e, type: 2}
+    - {fileID: 11400000, guid: 90ad0bcb3f2452d428f54275ca98f810, type: 2}
+    - {fileID: 11400000, guid: b641099d764e4d84ebd6d5179a088d42, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: clipList
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[DialogConfigKV, Common]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 1|DialogConfigKV, Common
+    - Name: key
+      Entry: 1
+      Data: "\u6253\u62DB\u547C"
+    - Name: value
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|DialogConfigKV, Common
+    - Name: key
+      Entry: 1
+      Data: "\u521D\u89C1\u5546\u4EBA"
+    - Name: value
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|DialogConfigKV, Common
+    - Name: key
+      Entry: 1
+      Data: "\u53C8\u89C1\u5546\u4EBA"
+    - Name: value
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

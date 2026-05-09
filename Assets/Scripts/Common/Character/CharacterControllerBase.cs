@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+using JKFrame;
+
 
 #if UNITY_EDITOR
 using UnityEditor.Animations;
@@ -40,10 +42,13 @@ public abstract class CharacterControllerBase<V, C, S> : CharacterControllerBase
     public V view;
     [HideInInspector] public S serverController;
     [HideInInspector] public C clientController;
+    public Action<float, float> HpChangedAction;
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
+        //currentHp.Value = MaxHp;
+        //print(currentHp.Value);
         currentHp.OnValueChanged = OnHpChanged;
     }
 
@@ -54,10 +59,9 @@ public abstract class CharacterControllerBase<V, C, S> : CharacterControllerBase
 
     public abstract void InitHp();
 
-    public Action HpChangedAction;
     protected void OnHpChanged(float previousValue, float newValue)
     {
-        HpChangedAction?.Invoke();
+        HpChangedAction?.Invoke(previousValue, newValue);
     }
 
     public void ChangeHp(float value)

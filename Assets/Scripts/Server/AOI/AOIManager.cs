@@ -1,4 +1,5 @@
 using JKFrame;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -25,22 +26,32 @@ public class AOIManager : SingletonMono<AOIManager>
         // 交给AOIUtility
         EventSystem.AddTypeEventListener<InitClientAOIEvent>(OnInitClient);
         EventSystem.AddTypeEventListener<UpdateClientAOIEvent>(OnUpdateClientVisualChunk);
+        EventSystem.AddTypeEventListener<InitServerObjectAOIEvent>(OnInitServerObjectVisualChunk);
+        EventSystem.AddTypeEventListener<UpdateServerObjectAOIEvent>(OnUpdateServerObjectVisualChunk);
     }
-
     private void OnDestroy()
     {
         EventSystem.RemoveTypeEventListener<InitClientAOIEvent>(OnInitClient);
         EventSystem.RemoveTypeEventListener<UpdateClientAOIEvent>(OnUpdateClientVisualChunk);
+        EventSystem.RemoveTypeEventListener<InitServerObjectAOIEvent>(OnInitServerObjectVisualChunk);
+        EventSystem.RemoveTypeEventListener<UpdateServerObjectAOIEvent>(OnUpdateServerObjectVisualChunk);
     }
     // --Start-- 交给AOIUtility
+    private void OnInitServerObjectVisualChunk(InitServerObjectAOIEvent arg)
+    {
+        InitServerObject(arg.networkObject, arg.coord);
+    }
+    private void OnUpdateServerObjectVisualChunk(UpdateServerObjectAOIEvent arg)
+    {
+        UpdateServerObjectVisualChunk(arg.networkObject, arg.oldCoord, arg.newCoord);
+    }
     private void OnInitClient(InitClientAOIEvent arg)
     {
-        InitClient(arg.player.OwnerClientId, arg.coord);
+        InitClient(arg.clientId, arg.coord);
     }
-
     private void OnUpdateClientVisualChunk(UpdateClientAOIEvent arg)
     {
-        UpdateClientVisualChunk(arg.player.OwnerClientId, arg.oldCoord, arg.newCoord);
+        UpdateClientVisualChunk(arg.clientId, arg.oldCoord, arg.newCoord);
     }
     // --End-- 交给AOIUtility
     public void InitClient(ulong clientId, Vector2Int ChunkCoord)

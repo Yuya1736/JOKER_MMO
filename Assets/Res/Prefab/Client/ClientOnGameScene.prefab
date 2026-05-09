@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0378826876cc8640afaf42a1157a192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapNavMeshConfig: {fileID: 11400000, guid: 23825b03f584ca941b5a52e8f78a9d51, type: 2}
   terrainsFolder: {fileID: 2004725215473474530}
   mapConfig: {fileID: 11400000, guid: 682bb68519a5727408eb264a4034d0cf, type: 2}
   mainCamera: {fileID: 0}

@@ -15,12 +15,12 @@ public class MonsterClientController : CharacterClientControllerBase<MonsterCont
         mainController.view.monsterAttackAction += OnMonsterAtk;
         mainController.currentState.OnValueChanged += OnMonsterDie;
         mainController.HpChangedAction += MainController_UpdateMonsterHp;
-        MainController_UpdateMonsterHp();
+        MainController_UpdateMonsterHp(mainController.currentHp.Value, mainController.currentHp.Value);
     }
 
     private void OnMonsterAtk()
     {
-        PlaySkillEffect(mainController.atkEffectConfig);
+        PlayEffect(mainController.atkEffectConfig);
     }
 
     private void OnMonsterDie(MonsterState oldState, MonsterState newState)
@@ -38,7 +38,7 @@ public class MonsterClientController : CharacterClientControllerBase<MonsterCont
         mainController.HpChangedAction -= MainController_UpdateMonsterHp;
     }
 
-    private void MainController_UpdateMonsterHp()
+    private void MainController_UpdateMonsterHp(float oldValue, float newValue)
     {
         if (mainController.currentState.Value != MonsterState.die)
         {

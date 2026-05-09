@@ -1,4 +1,5 @@
 using JKFrame;
+using Unity.Netcode;
 using UnityEngine;
 
 public struct BulletSpawnEvent
@@ -18,14 +19,29 @@ public struct PlayerSpawnEvent
 
 public struct InitClientAOIEvent
 {
-    public CharacterControllerBase player;
+    public ulong clientId;
     public Vector2Int coord;
 }
 
 public struct UpdateClientAOIEvent
 {
-    public CharacterControllerBase player;
+    public ulong clientId;
     public Vector2Int oldCoord;
     public Vector2Int newCoord;
 }
+
+public struct InitServerObjectAOIEvent
+{
+    public NetworkObject networkObject;
+    public Vector2Int coord;
+}
+
+public struct UpdateServerObjectAOIEvent
+{
+    public NetworkObject networkObject;
+    public Vector2Int oldCoord;
+    public Vector2Int newCoord;
+}
+
+
 

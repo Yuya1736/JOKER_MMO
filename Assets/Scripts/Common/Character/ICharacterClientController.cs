@@ -2,5 +2,5 @@
 
 public interface ICharacterClientController
 {
-    public void PlaySkillEffect(EffectConfig effectConfig);
+    public void PlayEffect(EffectConfig effectConfig);
 }

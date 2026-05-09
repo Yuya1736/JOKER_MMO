@@ -17,6 +17,11 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 00d70d59f36f4974ba087f08a83ee91c
   m_SerializeEntries:
+  - m_GUID: 03ff091b4075c424ebb8dcb396ec0ed2
+    m_Address: PathLineGuide
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0b40d7ba85ddda840b5995c1d41f1b1d
     m_Address: LoginScene
     m_ReadOnly: 0

@@ -1,7 +1,8 @@
 using JKFrame;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerServerController : CharacterServerControllerBase<PlayerController>, IPlayerServerController, INetworkSideController
+public class PlayerServerController : CharacterServerControllerBase<PlayerController>, IPlayerServerController, INetworkSideController, IHitTarget
 {
     public class InputInfo
     {
@@ -25,14 +26,18 @@ public class PlayerServerController : CharacterServerControllerBase<PlayerContro
     public override void Init(PlayerController mainPlayerController)
     {
         base.Init(mainPlayerController);
-        
+        AOIUtility.InitClientVisualChunk(mainController.OwnerClientId, AOIUtility.GetChunkCoordByWorldPosition(this.transform.position));
+
         stateMachine = new StateMachine();
         if (characterController == null) characterController = this.GetComponent<CharacterController>();
         if (playerView == null) playerView = transform.Find("PlayerView").GetComponent<PlayerView>();
         if (footTransform == null) footTransform = playerView.transform;
 
         mainPlayerController.InitHp();
-        mainPlayerController.maxHp.Value = ServerResSystem.serverConfig.maxHp;
+
+        //mainPlayerController.maxHp.Value = ServerResSystem.serverConfig.maxHp;
+        //mainController.currentHp.Value = mainPlayerController.maxHp.Value;
+
         mainController.serverController = this;
 
         mainPlayerController.onWeaponChanged += playerView.SetWeapon;
@@ -54,6 +59,7 @@ public class PlayerServerController : CharacterServerControllerBase<PlayerContro
         }
         this.weaponController = weaponController;
         weaponController.Init(WeaponController_OnHitTargetAction);
+        ChangeState(PlayerState.Equip);
     }
 
     private void WeaponController_OnHitTargetAction(IHitTarget target, Vector3 point)
@@ -76,7 +82,7 @@ public class PlayerServerController : CharacterServerControllerBase<PlayerContro
 
     public void PlayEffectOnClient(Vector3 point)
     {
-        mainController.Send_PlayEffect_ClientRpc(point);
+        mainController.Send_PlayPlayerAtkEffect_ClientRpc(point);
     }
 
     public void MoveOnServer(Vector2 dir)
@@ -130,10 +136,28 @@ public class PlayerServerController : CharacterServerControllerBase<PlayerContro
             case PlayerState.Atk:
                 stateMachine.ChangeState<PlayerAtkState>();
                 break;
+            case PlayerState.Damage:
+                stateMachine.ChangeState<PlayerDamageState>();
+                break;
+            case PlayerState.Equip:
+                stateMachine.ChangeState<PlayerEquipState>();
+                break;
             default:
                 break;
         }
     }
 
-    
+    public void UpdateClientVisualChunk(Vector2Int oldChunkCoord, Vector2Int newChunkCoord)
+    {
+        AOIUtility.UpdateClientVisualChunk(mainController.OwnerClientId, oldChunkCoord, newChunkCoord);
+    }
+
+    public void BeHit(AtkData atkData)
+    {
+        if (!isAlive) return;
+        ChangeState(PlayerState.Damage);
+        var state = (PlayerDamageState)stateMachine.currStateObj;
+        state.SetAtkData(atkData);
+        state.PlayerBeAtk(); 
+    }
 }

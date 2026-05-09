@@ -132,6 +132,31 @@ public class NetMessageManager : SingletonMono<NetMessageManager>
                 reader.ReadNetworkSerializableInPlace(ref C2S_CraftItemInfo);
                 TriggerOnReceiveMessageCallback(NetMessageType.C2S_CraftItem, clientId, C2S_CraftItemInfo);
                 break;
+            case NetMessageType.C2S_GetTaskData:
+                C2S_GetTaskData C2S_GetTaskDataInfo = new C2S_GetTaskData();
+                reader.ReadNetworkSerializableInPlace(ref C2S_GetTaskDataInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_GetTaskData, clientId, C2S_GetTaskDataInfo);
+                break;
+            case NetMessageType.S2C_GetTaskData:
+                S2C_GetTaskData S2C_GetTaskDataInfo = new S2C_GetTaskData();
+                reader.ReadNetworkSerializableInPlace(ref S2C_GetTaskDataInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_GetTaskData, clientId, S2C_GetTaskDataInfo);
+                break;
+            case NetMessageType.C2S_CompeleteTask:
+                C2S_CompeleteTask C2S_CompeleteTaskInfo = new C2S_CompeleteTask();
+                reader.ReadNetworkSerializableInPlace(ref C2S_CompeleteTaskInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_CompeleteTask, clientId, C2S_CompeleteTaskInfo);
+                break;
+            case NetMessageType.S2C_UpdateTaskData:
+                S2C_UpdateTaskData S2C_UpdateTaskDataInfo = new S2C_UpdateTaskData();
+                reader.ReadNetworkSerializableInPlace(ref S2C_UpdateTaskDataInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_UpdateTaskData, clientId, S2C_UpdateTaskDataInfo);
+                break;
+            case NetMessageType.S2C_GetMoneyReward:
+                S2C_GetMoneyReward S2C_GetMoneyRewardInfo = new S2C_GetMoneyReward();
+                reader.ReadNetworkSerializableInPlace(ref S2C_GetMoneyRewardInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_GetMoneyReward, clientId, S2C_GetMoneyRewardInfo);
+                break;
         }
     }
 

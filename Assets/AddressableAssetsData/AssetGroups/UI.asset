@@ -22,8 +22,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1fcf51ca34be37b4f85b1ddeef786ae8
+    m_Address: UI_TaskWindowItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 396ff722e4d8be245adc22c5d8823ef8
     m_Address: UI_GamePopupWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 435a5af4005ba1141b44e7e54c482374
+    m_Address: UI_GetRewardWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -37,6 +47,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53d13dc2f9ec4ae43887d8249f7de4cd
+    m_Address: UI_RewardItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 647661fa9eac8d54491dc4920e1391b9
     m_Address: UI_MainMenuWindow
     m_ReadOnly: 0
@@ -44,6 +59,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70d44056fc9e55f46ac718554f20dd52
     m_Address: UI_RegisterWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73694d974052579458fb6cca2aeef0b0
+    m_Address: UI_TaskWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e431543bb2f4284b96c7fe5e3e88048
+    m_Address: UI_DialogWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -10,6 +10,10 @@ public static class ServerResSystem
         if (mapConfig == null) mapConfig = ServerGlobal.Instance.MapConfig;
     }
 
+    public static TaskConfig GetTaskConfig(string configKey)
+    {
+        return serverConfig.taskConfigDic[configKey];
+    }
     public static MonsterConfig GetMonsterConfig(string monsterName)
     {
         return serverConfig.monsterConfigDic[monsterName];

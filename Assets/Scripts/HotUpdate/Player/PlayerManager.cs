@@ -1,13 +1,16 @@
 using Cinemachine;
 using JKFrame;
+using System;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerManager : SingletonMono<PlayerManager>
 {
     public static PlayerController playerController;
     public static PlayerClientController playerClientController;
     public static BagData bagData;
+    public static TaskDatas taskDatas;
     public static string currentMerchantConfig;
     public static string currentCrafterConfig;
     [SerializeField] private CinemachineFreeLook cinemachineFreeLook;
@@ -28,7 +31,11 @@ public class PlayerManager : SingletonMono<PlayerManager>
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_ChangeShortCutIndex, OnReceiveChangeShortCutIndex);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_BagExchangeItem, OnReceiveBagExchangeItem);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_BagUpdateMoney, OnReceiveBagUpdateMoney);
+        NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_GetTaskData, OnReceiveTaskData);
+        NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_UpdateTaskData, OnReceiveUpdateTaskData);
+        NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_GetMoneyReward, OnReceiveGetMoneyReward);
         ShowShortCutBat();
+        RequestTaskDatas();
     }
 
     private void OnDestroy()
@@ -39,8 +46,14 @@ public class PlayerManager : SingletonMono<PlayerManager>
         NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_ChangeShortCutIndex, OnReceiveChangeShortCutIndex);
         NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_BagExchangeItem, OnReceiveBagExchangeItem);
         NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_BagUpdateMoney, OnReceiveBagUpdateMoney);
+        NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_GetTaskData, OnReceiveTaskData);
+        NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_UpdateTaskData, OnReceiveUpdateTaskData);
+        NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_GetMoneyReward, OnReceiveGetMoneyReward);
         CloseShortCutBar();
     }
+
+    
+
     private void Update()
     {
         UpdateOpenBag();
@@ -49,7 +62,108 @@ public class PlayerManager : SingletonMono<PlayerManager>
         UpdateHandleShortCutInput();
     }
 
+    #region 任务
+    private void OnReceiveTaskData(ulong clientId, INetworkSerializable serializable)
+    {
+        S2C_GetTaskData message = (S2C_GetTaskData)serializable;
+        taskDatas = message.taskDatas;
+        taskDatas.version = message.version;
+        UI_TaskWindow window = UISystem.Show<UI_TaskWindow>();
+        window.onTaskBeClickAction = FindTaskPath;
+        window.onTaskEndAction = PathLineGuide.Instance.HidePath;
+        window.BindAction();
+    }
+
+    private void FindTaskPath(TaskConfig config)
+    {
+        if (config == null || playerClientController == null || playerClientController.navMeshAgent == null)
+        {
+            PathLineGuide.Instance.HidePath();
+            return;
+        }
+
+        NavMeshAgent agent = playerClientController.navMeshAgent;
+        if (!agent.enabled)
+        {
+            PathLineGuide.Instance.HidePath();
+            return;
+        }
+
+        Vector3 rawStart = playerClientController.transform.position;
+        Vector3 rawTarget = config.targetPos;
+
+        if (!NavMesh.SamplePosition(rawStart, out NavMeshHit startHit, 6f, NavMesh.AllAreas))
+        {
+            PathLineGuide.Instance.HidePath();
+            return;
+        }
+
+        if (!NavMesh.SamplePosition(rawTarget, out NavMeshHit targetHit, 12f, NavMesh.AllAreas))
+        {
+            PathLineGuide.Instance.HidePath();
+            return;
+        }
+
+        NavMeshPath path = new NavMeshPath();
+        bool ok = NavMesh.CalculatePath(startHit.position, targetHit.position, NavMesh.AllAreas, path);
+        if (!ok || path.status == NavMeshPathStatus.PathInvalid || path.corners == null || path.corners.Length < 2)
+        {
+            PathLineGuide.Instance.HidePath();
+            return;
+        }
+
+        // PathComplete / PathPartial 都绘制，至少给玩家方向指引
+        PathLineGuide.Instance.DrawPath(path.corners);
+    }
+
+    public void DialogTaskCompeleted(int index)
+    {
+        TaskData taskData = PlayerManager.taskDatas.taskDataList[index];
+        TaskConfig taskConfig = ResSystem.LoadAsset<TaskConfig>(taskData.taskConfigId);
+        TaskInfoBase taskInfo = taskConfig.taskInfo;
+        if (taskInfo is DialogTaskInfo)
+        {
+             NetMessageManager.Instance.SendMessageToServer<C2S_CompeleteTask>(NetMessageType.C2S_CompeleteTask, new C2S_CompeleteTask
+             {
+                 index = index
+             });
+        }
+    }
+    #endregion
+
     #region 服务端交互
+
+    private void OnReceiveGetMoneyReward(ulong clientId, INetworkSerializable serializable)
+    {
+        UISystem.Show<UI_GetRewardWindow>().Show(new RewardData
+        {
+            iconKey = "coin",
+            count = ((S2C_GetMoneyReward)serializable).count
+        });
+    }
+
+    private void OnReceiveUpdateTaskData(ulong clientId, INetworkSerializable serializable)
+    {
+        S2C_UpdateTaskData message = (S2C_UpdateTaskData)serializable;
+        if (taskDatas.version == message.version) return;
+        taskDatas.version = message.version;
+        for(int i = 0;i < taskDatas.taskDataList.Count; ++i)
+        {
+            if (taskDatas.taskDataList[i].taskConfigId == message.data.taskConfigId)
+            {
+                taskDatas.taskDataList[i] = message.data;
+                break;
+            }
+        }
+        UISystem.Show<UI_TaskWindow>();
+    }
+    private void RequestTaskDatas()
+    {
+        NetMessageManager.Instance.SendMessageToServer<C2S_GetTaskData>(NetMessageType.C2S_GetTaskData, new C2S_GetTaskData
+        {
+            version = taskDatas == null ? -1 : taskDatas.version
+        });
+    }
     private void OnReceiveBagUpdateMoney(ulong clientId, INetworkSerializable serializable)
     {
         S2C_BagUpdateMoney message = (S2C_BagUpdateMoney)serializable;
@@ -331,6 +445,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
         cinemachineFreeLook.LookAt = playerClientController.cameraLookPos;
 
         UISystem.Show<UI_PlayerInfoWindow>();
+        playerClientController.MainController_UpdatePlayerHp(playerController.currentHp.Value, playerController.currentHp.Value);
     }
 
     private GameObject GetWeapon(string WeaponId)
@@ -351,3 +466,4 @@ public class PlayerManager : SingletonMono<PlayerManager>
         return playerController != null;
     }
 }
+

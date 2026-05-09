@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletClientController : MonoBehaviour, IBulletClientController, INetworkSideController
 {
     public BulletController mainController;
+    private GameObject boomEff;
     public void Init(BulletController mainController)
     {
         this.mainController = mainController;
@@ -28,7 +29,8 @@ public class BulletClientController : MonoBehaviour, IBulletClientController, IN
         effObj.transform.localScale = effectConfig.scale;
         effObj.GetComponent<ParticleSystem>().Simulate(effectConfig.effTimeOffset); // 让粒子系统从指定时间点开始播放
         effObj.GetComponent<ParticleSystem>().Play();
-        StartCoroutine(DestroySkillEffect(effObj, .5f));
+        boomEff = effObj;
+        TimerUtils.ExecuteAfterDelay(.5f, DestroySkillEffect);
         // 播放音效
         AudioSystem.PlayOneShot(effectConfig.effectAudio, mainController.bulletBoomEffPos);
     }
@@ -52,16 +54,19 @@ public class BulletClientController : MonoBehaviour, IBulletClientController, IN
         effObj.transform.localScale = effectConfig.scale;
         effObj.GetComponent<ParticleSystem>().Simulate(effectConfig.effTimeOffset); // 让粒子系统从指定时间点开始播放
         effObj.GetComponent<ParticleSystem>().Play();
-        StartCoroutine(DestroySkillEffect(effObj, .5f));
+        //StartCoroutine(DestroySkillEffect(effObj, .5f));
+        boomEff = effObj;
+        TimerUtils.ExecuteAfterDelay(.5f, DestroySkillEffect);
         // 播放音效
         AudioSystem.PlayOneShot(effectConfig.effectAudio, point);
     }
 
-    public IEnumerator DestroySkillEffect(GameObject eff, float delayTime)
+    public void DestroySkillEffect()
     {
-        yield return new WaitForSeconds(delayTime);
-        eff.GetComponent<ParticleSystem>().Stop(true);
-        eff.SetActive(false);
-        eff.GameObjectPushPool();
+        if (!boomEff) return;
+        boomEff.GetComponent<ParticleSystem>().Stop(true);
+        boomEff.SetActive(false);
+        boomEff.GameObjectPushPool();
+        boomEff = null;
     }
 }

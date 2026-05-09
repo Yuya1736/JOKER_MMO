@@ -27,6 +27,7 @@
     <type fullname="BulletConfig" preserve="all" />
     <type fullname="BulletController" preserve="all" />
     <type fullname="ConsumableConfig" preserve="all" />
+    <type fullname="DialogConfig" preserve="all" />
     <type fullname="EffectConfig" preserve="all" />
     <type fullname="MapConfig" preserve="all" />
     <type fullname="MaterialConfig" preserve="all" />
@@ -35,10 +36,12 @@
     <type fullname="MonsterView" preserve="all" />
     <type fullname="NetManager" preserve="all" />
     <type fullname="NetMessageManager" preserve="all" />
+    <type fullname="NPCDialogConfig" preserve="all" />
     <type fullname="PlayerAtkConfig" preserve="all" />
     <type fullname="PlayerAtkConfigList" preserve="all" />
     <type fullname="PlayerController" preserve="all" />
     <type fullname="PlayerView" preserve="all" />
+    <type fullname="TaskConfig" preserve="all" />
     <type fullname="WeaponConfig" preserve="all" />
   </assembly>
   <assembly fullname="HotUpdate, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -50,17 +53,21 @@
     <type fullname="CrafterConfig" preserve="all" />
     <type fullname="CrafterController" preserve="all" />
     <type fullname="LoginSceneManager" preserve="all" />
+    <type fullname="MapNavMeshConfig" preserve="all" />
     <type fullname="MerchantConfig" preserve="all" />
     <type fullname="MerchantController" preserve="all" />
+    <type fullname="PathLineGuide" preserve="all" />
     <type fullname="PlayerManager" preserve="all" />
     <type fullname="UI_BagWindow" preserve="all" />
     <type fullname="UI_ChatWindow" preserve="all" />
     <type fullname="UI_ChatWindowItem" preserve="all" />
     <type fullname="UI_ConsumableSlot" preserve="all" />
     <type fullname="UI_CraftWindow" preserve="all" />
+    <type fullname="UI_DialogWindow" preserve="all" />
     <type fullname="UI_EmptySlot" preserve="all" />
     <type fullname="UI_GamePopupWindow" preserve="all" />
     <type fullname="UI_GameSettingsWindow" preserve="all" />
+    <type fullname="UI_GetRewardWindow" preserve="all" />
     <type fullname="UI_ItemInfoPopupWindow" preserve="all" />
     <type fullname="UI_LoginWindow" preserve="all" />
     <type fullname="UI_MainMenuWindow" preserve="all" />
@@ -68,8 +75,11 @@
     <type fullname="UI_MessagePopUp" preserve="all" />
     <type fullname="UI_PlayerInfoWindow" preserve="all" />
     <type fullname="UI_RegisterWindow" preserve="all" />
+    <type fullname="UI_RewardItem" preserve="all" />
     <type fullname="UI_ShopWindow" preserve="all" />
     <type fullname="UI_ShortCutBarWindow" preserve="all" />
+    <type fullname="UI_TaskWindow" preserve="all" />
+    <type fullname="UI_TaskWindowItem" preserve="all" />
     <type fullname="UI_WeaponSlot" preserve="all" />
   </assembly>
   <assembly fullname="JKFrame, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -137,7 +147,7 @@
   </assembly>
   <assembly fullname="UnityEngine.AIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.AI.NavMeshAgent" preserve="all" />
-    <type fullname="UnityEngine.AI.NavMeshObstacle" preserve="all" />
+    <type fullname="UnityEngine.AI.NavMeshData" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.Animation" preserve="all" />
@@ -161,6 +171,7 @@
     <type fullname="UnityEngine.GameObject" preserve="all" />
     <type fullname="UnityEngine.Light" preserve="all" />
     <type fullname="UnityEngine.LightmapSettings" preserve="all" />
+    <type fullname="UnityEngine.LineRenderer" preserve="all" />
     <type fullname="UnityEngine.LODGroup" preserve="all" />
     <type fullname="UnityEngine.Material" preserve="all" />
     <type fullname="UnityEngine.Mesh" preserve="all" />

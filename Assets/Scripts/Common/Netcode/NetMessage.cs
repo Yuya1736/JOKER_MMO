@@ -24,7 +24,12 @@ public enum NetMessageType : byte // 每次添加新的Type过后，需要在NetMessageManag
     C2S_ShopBuyItem,
     S2C_BagUpdateMoney,
     C2S_ShopSellItem,
-    C2S_CraftItem
+    C2S_CraftItem,
+    C2S_GetTaskData,
+    S2C_GetTaskData,
+    C2S_CompeleteTask,
+    S2C_UpdateTaskData,
+    S2C_GetMoneyReward
 }
 
 public enum NetMessageErrorCode
@@ -36,6 +41,52 @@ public enum NetMessageErrorCode
     AccountRepeatLogin
 }
 
+public struct S2C_GetMoneyReward : INetworkSerializable
+{
+    public int count;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref count);
+    }
+}
+public struct S2C_UpdateTaskData : INetworkSerializable
+{
+    public TaskData data;
+    public int version;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref version);
+        if (serializer.IsReader && data == null) data = new TaskData();
+        serializer.SerializeValue<TaskData>(ref data);
+    }
+}
+public struct C2S_CompeleteTask : INetworkSerializable
+{
+    public int index;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref index);
+    }
+}
+public struct S2C_GetTaskData : INetworkSerializable
+{
+    public int version;
+    public TaskDatas taskDatas;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref version);
+        if (serializer.IsReader && taskDatas == null) taskDatas = new TaskDatas();
+        serializer.SerializeValue<TaskDatas>(ref taskDatas);
+    }
+}
+public struct C2S_GetTaskData : INetworkSerializable
+{
+    public int version;
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref version);
+    }
+}
 public struct C2S_CraftItem : INetworkSerializable
 {
     public string itemId;
@@ -287,4 +338,4 @@ public struct AccountInfo : INetworkSerializable
         serializer.SerializeValue(ref playerName);
         serializer.SerializeValue(ref password);
     }
-} 
+}

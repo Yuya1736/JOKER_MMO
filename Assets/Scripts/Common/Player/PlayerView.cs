@@ -29,6 +29,9 @@ public class PlayerView : CharacterViewBase
     public event Action StopSkillHitAcion;
     public event Action SkillCanSwitchAcion;
     public event Action SkillEndAcion;
+    public event Action DamageCanControlAction;
+    public event Action EquipCanControlAction;
+    public event Action EquipEndAction;
 
     private void FootStep()
     {
@@ -59,6 +62,21 @@ public class PlayerView : CharacterViewBase
     private void SkillEnd()
     {
         SkillEndAcion?.Invoke();
+    }
+
+    private void DamageCanControl()
+    {
+        DamageCanControlAction?.Invoke();
+    }
+
+    private void EquipCanControl()
+    {
+        EquipCanControlAction?.Invoke();
+    }
+
+    private void EquipEnd()
+    {
+        EquipEndAction?.Invoke();
     }
 
     #endregion

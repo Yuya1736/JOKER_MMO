@@ -1,5 +1,4 @@
 using JKFrame;
-using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,9 +16,13 @@ public class MonsterServerController : CharacterServerControllerBase<MonsterCont
     public float repelSpeed = 1f;
     public float repelTime = 0.8f;
 
+    private LayerMask playerLayerMask;
+
+
     public override void Init(MonsterController mainController)
     {
         base.Init(mainController);
+        AOIUtility.InitServerObjectVisualChunk(mainController.NetworkObject, AOIUtility.GetChunkCoordByWorldPosition(transform.position));
         characterController = GetComponent<CharacterController>();
         playerLayerMask = LayerMask.GetMask("Player");
         agent = GetComponent<NavMeshAgent>();
@@ -36,7 +39,12 @@ public class MonsterServerController : CharacterServerControllerBase<MonsterCont
 
         mainController.view.monsterShootAction -= OnMonsterShoot;
         mainController.view.monsterShootAction += OnMonsterShoot;
+
+        mainController.view.monsterAttackAction -= OnMonsterAtk;
+        mainController.view.monsterAttackAction += OnMonsterAtk;
     }
+
+    
 
     private void Update()
     {
@@ -51,6 +59,7 @@ public class MonsterServerController : CharacterServerControllerBase<MonsterCont
         base.OnDestroy();
         mainController.view.monsterShootAction -= OnMonsterShoot;
         mainController.view.monsterDieAction -= OnMonsterDie;
+        mainController.view.monsterAttackAction -= OnMonsterAtk;
         stateMachine.Stop();
         stateMachine.Destroy();
     }
@@ -175,7 +184,6 @@ public class MonsterServerController : CharacterServerControllerBase<MonsterCont
     #endregion
 
     #region 搜索玩家
-    private LayerMask playerLayerMask;
     private Collider[] colliders = new Collider[10];
     public PlayerServerController chasePlayer;
     private float searchPlayerTimer;
@@ -262,6 +270,11 @@ public class MonsterServerController : CharacterServerControllerBase<MonsterCont
     }
     #endregion
 
+    public void NotifyStruckDownTaskSystem(ulong clientId, string monsterName)
+    {
+        ClientsManager.Instance.OnPlayerKillMonster(clientId, monsterName);
+    }
+
     public void OnMonsterShoot()
     {
         if (chasePlayer == null) return;
@@ -272,7 +285,7 @@ public class MonsterServerController : CharacterServerControllerBase<MonsterCont
         obj.transform.SetParent(null, true);
         bulletController.Init();
         BulletServerController bulletServerController = bulletController.gameObject.GetComponent<BulletServerController>();
-        bulletServerController.Init(bulletController);
+        bulletServerController.Init(bulletController, OnHitTarget);
     }
 
     public Vector3 GetRandomPatrolPosition()
@@ -282,11 +295,40 @@ public class MonsterServerController : CharacterServerControllerBase<MonsterCont
 
     public void BeHit(AtkData atkData)
     {
+        if (!isAlive) return;
         ChangeState(MonsterState.damage);
         var state = (MonsterDamageState)stateMachine.currStateObj;
         state.SetAtkData(atkData);
         state.MonsterBeAtk();
+        if (!isAlive) NotifyStruckDownTaskSystem(atkData.clientId, gameObject.name);
     }
 
-    
+    private void OnMonsterAtk()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position + transform.forward * config.atkDistance / 2, config.atkDistance / 2, playerLayerMask, QueryTriggerInteraction.Ignore);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            IHitTarget target = colliders[i].GetComponentInChildren<IHitTarget>();
+            if (target != null)
+            {
+                OnHitTarget(target, Vector3.zero);
+            }
+        }
+    }
+
+    public void OnHitTarget(IHitTarget target, Vector3 point)
+    {
+        AtkData atkData = new AtkData()
+        {
+            atkValue = (int)config.atk,
+            atkPos = point,
+            repelSourcePos = transform.position
+        };
+        target.BeHit(atkData);
+    }
+
+    public void UpdateServerObjectVisualChunk(Vector2Int oldChunkCoord, Vector2Int newChunkCoord)
+    {
+        AOIUtility.UpdateServerObjectVisualChunk(mainController.NetworkObject, oldChunkCoord, newChunkCoord);
+    }
 }

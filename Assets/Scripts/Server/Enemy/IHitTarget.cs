@@ -7,6 +7,8 @@ public interface IHitTarget
 
 public class AtkData
 {
+    public ulong clientId;
+
     public int atkValue;
     public Vector3 atkPos;
 

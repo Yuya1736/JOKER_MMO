@@ -1,4 +1,5 @@
 using JKFrame;
+using Unity.Netcode;
 using UnityEngine;
 
 public static class AOIUtility
@@ -10,20 +11,38 @@ public static class AOIUtility
         return new Vector2Int((int)(worldPosition.x / chunkSize), (int)(worldPosition.z / chunkSize));
     }
 
-    public static void InitClient(CharacterControllerBase playerController, Vector2Int chunkCoord)
+    public static void InitClientVisualChunk(ulong clientId, Vector2Int chunkCoord)
     {
         EventSystem.TypeEventTrigger<InitClientAOIEvent>(new InitClientAOIEvent()
         {
-            player = playerController,
+            clientId = clientId,
             coord = chunkCoord
         });
     }
 
-    public static void UpdateClientVisualChunk(CharacterControllerBase playerController, Vector2Int oldChunkCoord, Vector2Int newChunkCoord)
+    public static void UpdateClientVisualChunk(ulong clientId, Vector2Int oldChunkCoord, Vector2Int newChunkCoord)
     {
         EventSystem.TypeEventTrigger<UpdateClientAOIEvent>(new UpdateClientAOIEvent()
         {
-            player = playerController,
+            clientId = clientId,
+            oldCoord = oldChunkCoord,
+            newCoord = newChunkCoord
+        });
+    }
+    public static void InitServerObjectVisualChunk(NetworkObject networkObject, Vector2Int chunkCoord)
+    {
+        EventSystem.TypeEventTrigger<InitServerObjectAOIEvent>(new InitServerObjectAOIEvent()
+        {
+            networkObject = networkObject,
+            coord = chunkCoord
+        });
+    }
+
+    public static void UpdateServerObjectVisualChunk(NetworkObject networkObject, Vector2Int oldChunkCoord, Vector2Int newChunkCoord)
+    {
+        EventSystem.TypeEventTrigger<UpdateServerObjectAOIEvent>(new UpdateServerObjectAOIEvent()
+        {
+            networkObject = networkObject,
             oldCoord = oldChunkCoord,
             newCoord = newChunkCoord
         });

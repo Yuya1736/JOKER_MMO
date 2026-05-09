@@ -16,14 +16,17 @@ public class ServerConfig : ConfigBase
     public Vector3 defaultPlayerBirthPos;
     public float maxHp = 100; // hp为固定值
     public int defaultMoney;
-
     [Header("怪物")]
+
     public float patrolRadius = 8f;
     public float monsterSearchPlayerCd = 0.5f;
     public float maxDistanceFromSpawner = 20f;
     public float respawnCd = 30;
     [SerializeField] private string monsterConfigFolderPath;
     public Dictionary<string, MonsterConfig> monsterConfigDic;
+    [Header("任务")]
+    [SerializeField] private string taskConfigFolderPath;
+    public Dictionary<string, TaskConfig> taskConfigDic;
     [Header("其他")]
     public Dictionary<string, GameObject> terrainDic;
     [SerializeField] private string terrainsPath;
@@ -52,17 +55,31 @@ public class ServerConfig : ConfigBase
     }
 
     [Button("ImportConfigs")]
-    private void InitItemConfigDic()
+    private void InitConfigDic()
     {
         if (itemConfigDic == null) itemConfigDic = new Dictionary<string, ItemConfigBase>(50);
+        if (monsterConfigDic == null) monsterConfigDic = new Dictionary<string, MonsterConfig>(50);
+        if (taskConfigDic == null) taskConfigDic = new Dictionary<string, TaskConfig>(50);
         itemConfigDic.Clear();
         monsterConfigDic.Clear();
+        taskConfigDic.Clear();
         InitSingleMonsterConfig(monsterConfigFolderPath);
         InitSingleItemConfig(weaponConfigFolderPath);
         InitSingleItemConfig(materialConfigFolderPath);
         InitSingleItemConfig(consumableConfigFolderPath);
+        InitSingleTaskConfig(taskConfigFolderPath);
     }
 
+    private void InitSingleTaskConfig(string path)
+    {
+        string[] files = Directory.GetFiles(path);
+        foreach (string file in files)
+        {
+            if (file.EndsWith(".meta")) continue;
+            TaskConfig config = AssetDatabase.LoadAssetAtPath<TaskConfig>(file);
+            taskConfigDic.Add(config.name, config);
+        }
+    }
     private void InitSingleMonsterConfig(string path)
     {
         string[] files = Directory.GetFiles(path);

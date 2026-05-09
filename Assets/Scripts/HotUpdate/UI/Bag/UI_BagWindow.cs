@@ -58,7 +58,7 @@ public class UI_BagWindow : UI_CustomWindowBase, IInputBlockerUI, IBagWindow
      
     public void OnRightClickItem(int index)
     {
-        if (index == 1) print($"{ClientUtility.UIWindowExist<UI_ShopWindow>()}_{PlayerManager.Instance.RequestShopWindow}");
+        //if (index == 1) print($"{ClientUtility.UIWindowExist<UI_ShopWindow>()}_{PlayerManager.Instance.RequestShopWindow}");
         if (ClientUtility.UIWindowExist<UI_ShopWindow>() || PlayerManager.Instance.RequestShopWindow) PlayerManager.Instance.ShopSellItem(index);
         else PlayerManager.Instance.UseItem(index);
     }
