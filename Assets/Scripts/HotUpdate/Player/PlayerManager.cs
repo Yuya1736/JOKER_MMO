@@ -487,8 +487,11 @@ public class PlayerManager : SingletonMono<PlayerManager>
             return;
         }
 
-        predictedLocalState = message.snapshot.State;
         reconciliationClient.Reconcile(message.snapshot);
+        if (predictionClient.TryGetState(predictionClient.CurrentTick, out PlayerStateSnapshot latest))
+        {
+            predictedLocalState = latest.State;
+        }
     }
 
     public void PredictMove(PlayerInputCommand input)
@@ -501,21 +504,9 @@ public class PlayerManager : SingletonMono<PlayerManager>
         predictionClient.Tick(input);
         predictionClient.SendInput();
 
-        if ((input.Buttons & PlayerMoveMotor.JumpButtonMask) != 0)
+        if (predictionClient.TryGetState(input.Tick, out PlayerStateSnapshot snap))
         {
-            predictedLocalState = PlayerState.Jump;
-        }
-        else if ((input.Buttons & PlayerMoveMotor.AttackButtonMask) != 0)
-        {
-            predictedLocalState = PlayerState.Atk;
-        }
-        else if (input.MoveDir.sqrMagnitude > 0.0001f)
-        {
-            predictedLocalState = PlayerState.Move;
-        }
-        else
-        {
-            predictedLocalState = PlayerState.Idle;
+            predictedLocalState = snap.State;
         }
     }
 

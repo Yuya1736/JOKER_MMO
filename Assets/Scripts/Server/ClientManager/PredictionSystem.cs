@@ -25,13 +25,14 @@ public partial class ClientsManager
             return;
         }
 
+        PlayerStateSnapshot snapshot = default;
         for (int i = 0; i < message.count; i++)
         {
-            PlayerStateSnapshot snapshot = client.playerServerController.ProcessPredictedMove(clientId, message.commands[i]);
-            NetMessageManager.Instance.SendMessageToClient(
-                clientId,
-                NetMessageType.S2C_OwnerSnapshot,
-                new S2C_OwnerSnapshot { snapshot = snapshot });
+            snapshot = client.playerServerController.ProcessPredictedMove(clientId, message.commands[i]);
         }
+        NetMessageManager.Instance.SendMessageToClient(
+            clientId,
+            NetMessageType.S2C_OwnerSnapshot,
+            new S2C_OwnerSnapshot { snapshot = snapshot });
     }
 }
