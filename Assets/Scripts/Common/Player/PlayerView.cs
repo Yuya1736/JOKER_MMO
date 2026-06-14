@@ -9,7 +9,7 @@ public class PlayerView : CharacterViewBase
     
     private void OnAnimatorMove()
     {
-        rootMotionAction?.Invoke(animator.deltaPosition, animator.deltaRotation);
+        //rootMotionAction?.Invoke(animator.deltaPosition, animator.deltaRotation);
     }
 
     public void SetWeapon(GameObject weaponObj)

@@ -24,7 +24,7 @@ MonoBehaviour:
   mosterName: "\u706B\u7130\u5C0F\u62F3\u77F3"
   maxHp: 90
   atk: 13
-  atkDistance: 2
+  atkDistance: 1.5
   maxIdleTime: 5
   maxPatrolTime: 10
   maxChaseDistance: 10

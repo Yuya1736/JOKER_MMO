@@ -1,6 +1,6 @@
 using Unity.Netcode;
 
-public enum NetMessageType : byte // 每次添加新的Type过后，需要在NetMessageManager中给ReceiveMessage加上对应case处理该类型
+public enum NetMessageType : byte // 每锟斤拷锟斤拷锟斤拷锟铰碉拷Type锟斤拷锟斤拷锟斤拷要锟斤拷NetMessageManager锟叫革拷ReceiveMessage锟斤拷锟较讹拷应case锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
 {
     None,
     C2S_Register,
@@ -29,8 +29,11 @@ public enum NetMessageType : byte // 每次添加新的Type过后，需要在NetMessageManag
     S2C_GetTaskData,
     C2S_CompeleteTask,
     S2C_UpdateTaskData,
-    S2C_GetMoneyReward
+    S2C_GetMoneyReward,
+    C2S_InputBatch,
+    S2C_OwnerSnapshot
 }
+
 
 public enum NetMessageErrorCode
 {
@@ -39,6 +42,38 @@ public enum NetMessageErrorCode
     NameDuplicaiton,
     NameOrPassword,
     AccountRepeatLogin
+}
+
+
+public struct C2S_InputBatch : INetworkSerializable
+{
+    public PlayerInputCommand[] commands;
+    public int count;
+
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<int>(ref count);
+
+        if (serializer.IsReader)
+        {
+            commands = new PlayerInputCommand[count];
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            serializer.SerializeValue<PlayerInputCommand>(ref commands[i]);
+        }
+    }
+}
+
+public struct S2C_OwnerSnapshot : INetworkSerializable
+{
+    public PlayerStateSnapshot snapshot;
+
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue<PlayerStateSnapshot>(ref snapshot);
+    }
 }
 
 public struct S2C_GetMoneyReward : INetworkSerializable
@@ -192,7 +227,7 @@ public struct S2C_BagUpdateItem : INetworkSerializable
     public ItemDataBase itemData;
     public ItemType itemType;
     public bool isUse;
-    public int oldIndex; // 需要原先的武器下标，来切换SelectIcon
+    public int oldIndex; // 锟斤拷要原锟饺碉拷锟斤拷锟斤拷锟铰标，锟斤拷锟叫伙拷SelectIcon
     public int index;
     public int version;
     public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
@@ -339,3 +374,5 @@ public struct AccountInfo : INetworkSerializable
         serializer.SerializeValue(ref password);
     }
 }
+
+

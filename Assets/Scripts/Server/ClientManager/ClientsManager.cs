@@ -1,17 +1,15 @@
-using JKFrame;
+ï»¿using JKFrame;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
 
 public partial class ClientsManager : SingletonMono<ClientsManager>
 {
     public GameObject player;
 
-    public Dictionary<ClientState, HashSet<Client>> clientStateDic;// Á¬½ÓÊ±Á¢Âí¼ÓÈë
-    public Dictionary<ulong, Client> clientIdDic;  // Á¬½ÓÊ±Á¢Âí¼ÓÈë
-    public Dictionary<string, ulong> accountDic; // Loginºó²Å»á¼ÓÈë
+    public Dictionary<ClientState, HashSet<Client>> clientStateDic;// è¿æ¥æ—¶ç«‹é©¬åŠ å…¥
+    public Dictionary<ulong, Client> clientIdDic;  // è¿æ¥æ—¶ç«‹é©¬åŠ å…¥
+    public Dictionary<string, ulong> accountDic; // Loginåæ‰ä¼šåŠ å…¥
     protected override void Awake()
     {
         base.Awake();
@@ -36,6 +34,7 @@ public partial class ClientsManager : SingletonMono<ClientsManager>
         InitChatSystem();
         InitItemSystem();
         InitTaskSystem();
+        InitPredictionSystem();
     }
 
     private void OnClientConnected(ulong clientId)
@@ -48,7 +47,7 @@ public partial class ClientsManager : SingletonMono<ClientsManager>
 
     private void OnClientDisconnected(ulong clientId)
     {
-        if(clientIdDic.TryGetValue(clientId, out Client client))
+        if (clientIdDic.TryGetValue(clientId, out Client client))
         {
             if (client.playerData != null) accountDic.Remove(client.playerData.name);
             if (client.playerController != null) NetManager.Instance.DeSpawnObject(client.playerController.NetworkObject);
@@ -82,7 +81,7 @@ public partial class ClientsManager : SingletonMono<ClientsManager>
     public void PrintClients()
     {
         print("-----------------");
-        print("------¿É¼ûĞÔ------");
+        print("------å¯è§æ€§------");
         print($"clientIdDic[1].playerController.NetworkObject.IsNetworkVisibleTo(2):{clientIdDic[1].playerController.NetworkObject.IsNetworkVisibleTo(2)}");
         print($"clientIdDic[2].playerController.NetworkObject.IsNetworkVisibleTo(1):{clientIdDic[2].playerController.NetworkObject.IsNetworkVisibleTo(1)}");
         print("-----------------");

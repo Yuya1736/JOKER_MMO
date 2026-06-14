@@ -9,6 +9,8 @@ public class PlayerServerController : CharacterServerControllerBase<PlayerContro
         public Vector2 dir;
         public bool jump;
         public bool atk;
+        public bool comboAtk;
+        public bool sprint;
     }
     public InputInfo inputData { get; private set; }
 
@@ -19,9 +21,14 @@ public class PlayerServerController : CharacterServerControllerBase<PlayerContro
     public float airSpeed { get; private set; } = 2f;
 
     public float jumpHeight { get; private set; } = 2f;
+    public float PredictionVerticalVelocity => predictionMotorState.Velocity.y;
+    public bool PredictionIsGrounded => predictionMotorState.IsGrounded;
 
     public WeaponController weaponController { get; private set; }
-    
+    private PlayerMoveMotor.MotorState predictionMotorState;
+    private uint lastProcessedInputTick;
+    private uint lastJumpInputTick;
+    private uint lastAttackInputTick;
 
     public override void Init(PlayerController mainPlayerController)
     {
@@ -88,6 +95,142 @@ public class PlayerServerController : CharacterServerControllerBase<PlayerContro
     public void MoveOnServer(Vector2 dir)
     {
         inputData.dir = dir.normalized;
+    }
+
+    public PlayerStateSnapshot ProcessPredictedMove(ulong clientId, PlayerInputCommand input)
+    {
+        // Skip already-processed ticks (redundant inputs from packet-loss recovery).
+        if (input.Tick <= lastProcessedInputTick)
+        {
+            return new PlayerStateSnapshot
+            {
+                ClientId = clientId,
+                Tick = input.Tick,
+                Position = transform.position,
+                Velocity = predictionMotorState.Velocity,
+                Yaw = transform.eulerAngles.y,
+                State = mainController.currentState.Value,
+                IsGrounded = predictionMotorState.IsGrounded,
+                LastProcessedInputTick = lastProcessedInputTick
+            };
+        }
+        lastProcessedInputTick = input.Tick;
+
+        switch (mainController.currentState.Value)
+        {
+            case PlayerState.Damage:
+            case PlayerState.Equip:
+                return new PlayerStateSnapshot
+                {
+                    ClientId = clientId,
+                    Tick = input.Tick,
+                    Position = transform.position,
+                    Velocity = predictionMotorState.Velocity,
+                    Yaw = transform.eulerAngles.y,
+                    State = mainController.currentState.Value,
+                    IsGrounded = predictionMotorState.IsGrounded,
+                    LastProcessedInputTick = input.Tick
+                };
+        }
+
+        inputData.dir = input.MoveDir;
+        inputData.sprint = (input.Buttons & PlayerMoveMotor.SprintButtonMask) != 0;
+        bool jumpPressed = (input.Buttons & PlayerMoveMotor.JumpButtonMask) != 0;
+        if (jumpPressed && input.Tick != lastJumpInputTick)
+        {
+            lastJumpInputTick = input.Tick;
+            inputData.jump = true;
+            if (mainController.currentState.Value == PlayerState.Idle || mainController.currentState.Value == PlayerState.Move)
+            {
+                ChangeState(PlayerState.Jump);
+            }
+        }
+
+        bool attackPressed = (input.Buttons & PlayerMoveMotor.AttackButtonMask) != 0;
+        if (attackPressed && input.Tick != lastAttackInputTick)
+        {
+            lastAttackInputTick = input.Tick;
+            if (mainController.currentState.Value == PlayerState.Atk)
+            {
+                inputData.comboAtk = true;
+            }
+            else
+            {
+                inputData.atk = true;
+                if (mainController.currentState.Value == PlayerState.Idle || mainController.currentState.Value == PlayerState.Move)
+                {
+                    ChangeState(PlayerState.Atk);
+                    inputData.atk = false;
+                }
+            }
+        }
+        Vector3 previousPosition = transform.position;
+        PlayerInputCommand movementInput = input;
+        if (mainController.currentState.Value == PlayerState.Atk)
+        {
+            movementInput.MoveDir = Vector2.zero;
+            movementInput.Yaw = transform.eulerAngles.y;
+            movementInput.Buttons = (byte)(movementInput.Buttons & ~PlayerMoveMotor.SprintButtonMask);
+        }
+
+        PlayerStateSnapshot snapshot = PlayerMoveMotor.SimulateGroundMove(
+            characterController,
+            transform,
+            clientId,
+            movementInput,
+            ref predictionMotorState,
+            PlayerMoveMotor.MoveSpeed,
+            PlayerMoveMotor.SprintSpeed,
+            PlayerMoveMotor.JumpSpeed,
+            PlayerMoveMotor.Gravity,
+            PlayerMoveMotor.TickDeltaTime);
+
+        if (snapshot.State == PlayerState.Jump || snapshot.State == PlayerState.AirDown)
+        {
+            if (mainController.currentState.Value != snapshot.State)
+            {
+                ChangeState(snapshot.State);
+            }
+        }
+
+        Vector2Int oldChunkCoord = AOIUtility.GetChunkCoordByWorldPosition(previousPosition);
+        Vector2Int newChunkCoord = AOIUtility.GetChunkCoordByWorldPosition(transform.position);
+        if (oldChunkCoord != newChunkCoord)
+        {
+            UpdateClientVisualChunk(oldChunkCoord, newChunkCoord);
+        }
+
+        if (jumpPressed)
+        {
+            inputData.jump = false;
+        }
+
+        if (mainController.currentState.Value == PlayerState.Jump || mainController.currentState.Value == PlayerState.AirDown)
+        {
+            snapshot.State = mainController.currentState.Value;
+            return snapshot;
+        }
+
+        if (mainController.currentState.Value == PlayerState.Atk || mainController.currentState.Value == PlayerState.Damage || mainController.currentState.Value == PlayerState.Equip)
+        {
+            snapshot.State = mainController.currentState.Value;
+            return snapshot;
+        }
+
+        if (input.MoveDir == Vector2.zero)
+        {
+            if (mainController.currentState.Value != PlayerState.Idle)
+            {
+                ChangeState(PlayerState.Idle);
+            }
+        }
+        else if (mainController.currentState.Value != PlayerState.Move)
+        {
+            ChangeState(PlayerState.Move);
+        }
+
+        snapshot.State = mainController.currentState.Value;
+        return snapshot;
     }
 
     public void JumpOnServer()

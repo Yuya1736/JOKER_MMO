@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerStateBase
 {
+    private const float PredictionTickDeltaTime = 1f / 30f;
     private Vector2Int oldChunkCoord = Vector2Int.zero;
     private Vector2Int newChunkCoord = Vector2Int.zero;
 
@@ -10,7 +11,7 @@ public class PlayerMoveState : PlayerStateBase
         base.Enter();
 
         player.PlayAnimation(AnimationEvent.Move);
-        player.playerView.rootMotionAction += OnRootMotion;
+        //player.playerView.rootMotionAction += OnRootMotion;
     }
     public override void Update()
     {
@@ -38,21 +39,22 @@ public class PlayerMoveState : PlayerStateBase
         }
     }
 
-    private void OnRootMotion(Vector3 deltaVector, Quaternion deltaQuaternion)
-    {
-        player.animator.speed = player.speed;
-        //deltaVector.y -= player.verticalVelocity * Time.deltaTime;
+    //private void OnRootMotion(Vector3 deltaVector, Quaternion deltaQuaternion)
+    //{
+    //    player.animator.speed = player.speed;
+    //    //deltaVector.y -= player.verticalVelocity * Time.deltaTime;
 
-        oldChunkCoord = AOIUtility.GetChunkCoordByWorldPosition(player.transform.position);
-        player.characterController?.Move(deltaVector);
-        newChunkCoord = AOIUtility.GetChunkCoordByWorldPosition(player.transform.position);
-        if (oldChunkCoord != newChunkCoord) player.UpdateClientVisualChunk(oldChunkCoord, newChunkCoord);
-    }
+    //    oldChunkCoord = AOIUtility.GetChunkCoordByWorldPosition(player.transform.position);
+    //    player.characterController?.Move(deltaVector);
+    //    newChunkCoord = AOIUtility.GetChunkCoordByWorldPosition(player.transform.position);
+    //    if (oldChunkCoord != newChunkCoord) player.UpdateClientVisualChunk(oldChunkCoord, newChunkCoord);
+    //}
 
     public override void Exit()
     {
         base.Exit();
 
-        player.playerView.rootMotionAction -= OnRootMotion;
+        //player.playerView.rootMotionAction -= OnRootMotion;
     }
+
 }

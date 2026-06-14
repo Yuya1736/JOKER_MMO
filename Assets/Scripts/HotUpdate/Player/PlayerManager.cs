@@ -1,4 +1,4 @@
-using Cinemachine;
+ï»¿using Cinemachine;
 using JKFrame;
 using System;
 using Unity.Netcode;
@@ -17,10 +17,15 @@ public class PlayerManager : SingletonMono<PlayerManager>
     private bool requestBagWindow;
     private bool requestShopWindow;
     private bool requestCraftWindow;
+    private CharacterController predictionCharacterController;
+    private PlayerPredictionClient predictionClient;
+    private PlayerReconciliationClient reconciliationClient;
+    private PlayerState predictedLocalState = PlayerState.None;
     public CinemachineFreeLook FreeLook => cinemachineFreeLook;
     public bool RequestShopWindow => requestShopWindow;
     public bool RequestBagWindow => requestBagWindow;
     public bool RequestCraftWindow => requestCraftWindow;
+    public PlayerState PredictedLocalState => predictedLocalState;
     
     public void Init()
     {
@@ -34,6 +39,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_GetTaskData, OnReceiveTaskData);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_UpdateTaskData, OnReceiveUpdateTaskData);
         NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_GetMoneyReward, OnReceiveGetMoneyReward);
+        NetMessageManager.Instance.RegisterOnReceiveMessageCallback(NetMessageType.S2C_OwnerSnapshot, OnReceiveOwnerSnapshot);
         ShowShortCutBat();
         RequestTaskDatas();
     }
@@ -49,6 +55,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
         NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_GetTaskData, OnReceiveTaskData);
         NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_UpdateTaskData, OnReceiveUpdateTaskData);
         NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_GetMoneyReward, OnReceiveGetMoneyReward);
+        NetMessageManager.Instance.UnRegisterOnReceiveMessageCallback(NetMessageType.S2C_OwnerSnapshot, OnReceiveOwnerSnapshot);
         CloseShortCutBar();
     }
 
@@ -62,7 +69,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
         UpdateHandleShortCutInput();
     }
 
-    #region ÈÎÎñ
+    #region ä»»åŠ¡
     private void OnReceiveTaskData(ulong clientId, INetworkSerializable serializable)
     {
         S2C_GetTaskData message = (S2C_GetTaskData)serializable;
@@ -112,7 +119,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
             return;
         }
 
-        // PathComplete / PathPartial ¶¼»æÖÆ£¬ÖÁÉÙ¸øÍæ¼Ò·½ÏòÖ¸Òı
+        // PathComplete / PathPartial éƒ½ç»˜åˆ¶ï¼Œè‡³å°‘ç»™ç©å®¶æ–¹å‘æŒ‡å¼•
         PathLineGuide.Instance.DrawPath(path.corners);
     }
 
@@ -131,7 +138,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
     }
     #endregion
 
-    #region ·şÎñ¶Ë½»»¥
+    #region æœåŠ¡ç«¯äº¤äº’
 
     private void OnReceiveGetMoneyReward(ulong clientId, INetworkSerializable serializable)
     {
@@ -214,16 +221,16 @@ public class PlayerManager : SingletonMono<PlayerManager>
     private void OnReceiveUpdateBagData(ulong clientId, INetworkSerializable serializable)
     {
         S2C_BagUpdateItem message = (S2C_BagUpdateItem)serializable;
-        // Èç¹û°æ±¾ÏàÍ¬ ²»ĞèÒª²Ù×÷
+        // å¦‚æœç‰ˆæœ¬ç›¸åŒ ä¸éœ€è¦æ“ä½œ
         if (bagData == null || bagData.version == message.version) return;
         bagData.version = message.version;
         if (message.isUse && message.itemType == ItemType.Weapon) bagData.usedWeponIndex = message.index;
         bagData.itemDataList[message.index] = message.itemData;
-        // Èç¹û±³°ü´°¿Ú´æÔÚ ¸üĞÂ±³°ü¶ÔÓ¦ÎïÌåµÄ±íÏÖ
+        // å¦‚æœèƒŒåŒ…çª—å£å­˜åœ¨ æ›´æ–°èƒŒåŒ…å¯¹åº”ç‰©ä½“çš„è¡¨ç°
         if (UISystem.GetWindow<UI_BagWindow>() != null && UISystem.GetWindow<UI_BagWindow>().gameObject.activeInHierarchy)
         {
             UISystem.GetWindow<UI_BagWindow>().UpdataItem(message.index, message.itemData);
-            if (message.isUse && message.itemType == ItemType.Weapon) // Èç¹ûÊÇÎäÆ÷£¬ÇĞ»»UsedIcon 
+            if (message.isUse && message.itemType == ItemType.Weapon) // å¦‚æœæ˜¯æ­¦å™¨ï¼Œåˆ‡æ¢UsedIcon 
             {
                 UISystem.GetWindow<UI_BagWindow>().UpdateWeaponUsedIcon(message.oldIndex, message.index);
             }
@@ -236,7 +243,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
     }
     #endregion
 
-    #region ¶ÍÔì
+    #region é”»é€ 
     public void UpdateOpenCraft()
     {
         if (requestCraftWindow)
@@ -249,7 +256,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
                 {
                     requestBagWindow = true;
                     RequestBagData();
-                } // Í¬Ê±´ò¿ªCraftºÍBag
+                } // åŒæ—¶æ‰“å¼€Craftå’ŒBag
             }
             else
             {
@@ -295,7 +302,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
     }
     #endregion
 
-    #region ÉÌµê
+    #region å•†åº—
     public void RequestOpenShop(string merchantConfig)
     {
         currentMerchantConfig = merchantConfig;
@@ -344,7 +351,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
                 {
                     requestBagWindow = true;
                     RequestBagData();
-                } // Í¬Ê±´ò¿ªShopºÍBag
+                } // åŒæ—¶æ‰“å¼€Shopå’ŒBag
             }
             else
             {
@@ -356,7 +363,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
     }
     #endregion
 
-    #region ±³°ü
+    #region èƒŒåŒ…
     private void RequestBagData()
     {
         NetMessageManager.Instance.SendMessageToServer<C2S_GetBagData>(NetMessageType.C2S_GetBagData, new C2S_GetBagData
@@ -375,7 +382,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
     }
     private void UpdateOpenBag()
     {
-        //  ´ò¿ª±³°ü
+        //  æ‰“å¼€èƒŒåŒ…
         if (Input.GetKeyDown(KeyCode.B))
         {
             if (!ClientUtility.UIWindowExist<UI_BagWindow>())
@@ -399,7 +406,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
     }
     #endregion
 
-    #region ¿ì½İÀ¸
+    #region å¿«æ·æ 
     private void ShowShortCutBat()
     {
         RequestBagData();
@@ -446,6 +453,70 @@ public class PlayerManager : SingletonMono<PlayerManager>
 
         UISystem.Show<UI_PlayerInfoWindow>();
         playerClientController.MainController_UpdatePlayerHp(playerController.currentHp.Value, playerController.currentHp.Value);
+        InitPrediction();
+    }
+
+    private void InitPrediction()
+    {
+        if (playerController == null)
+        {
+            return;
+        }
+
+        predictionCharacterController = playerController.GetComponent<CharacterController>();
+        if (predictionCharacterController == null)
+        {
+            return;
+        }
+
+        predictionClient = new PlayerPredictionClient(playerController, predictionCharacterController);
+        reconciliationClient = new PlayerReconciliationClient(predictionClient);
+        predictedLocalState = playerController.currentState.Value;
+    }
+
+    private void OnReceiveOwnerSnapshot(ulong clientId, INetworkSerializable serializable)
+    {
+        if (playerController == null || !playerController.IsOwner || reconciliationClient == null)
+        {
+            return;
+        }
+
+        S2C_OwnerSnapshot message = (S2C_OwnerSnapshot)serializable;
+        if (message.snapshot.ClientId != playerController.OwnerClientId)
+        {
+            return;
+        }
+
+        predictedLocalState = message.snapshot.State;
+        reconciliationClient.Reconcile(message.snapshot);
+    }
+
+    public void PredictMove(PlayerInputCommand input)
+    {
+        if (playerController == null || !playerController.IsOwner || predictionClient == null)
+        {
+            return;
+        }
+
+        predictionClient.Tick(input);
+        predictionClient.SendInput();
+
+        if ((input.Buttons & PlayerMoveMotor.JumpButtonMask) != 0)
+        {
+            predictedLocalState = PlayerState.Jump;
+        }
+        else if ((input.Buttons & PlayerMoveMotor.AttackButtonMask) != 0)
+        {
+            predictedLocalState = PlayerState.Atk;
+        }
+        else if (input.MoveDir.sqrMagnitude > 0.0001f)
+        {
+            predictedLocalState = PlayerState.Move;
+        }
+        else
+        {
+            predictedLocalState = PlayerState.Idle;
+        }
     }
 
     private GameObject GetWeapon(string WeaponId)
@@ -466,4 +537,5 @@ public class PlayerManager : SingletonMono<PlayerManager>
         return playerController != null;
     }
 }
+
 

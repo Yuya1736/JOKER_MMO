@@ -142,11 +142,6 @@ public class NetMessageManager : SingletonMono<NetMessageManager>
                 reader.ReadNetworkSerializableInPlace(ref S2C_GetTaskDataInfo);
                 TriggerOnReceiveMessageCallback(NetMessageType.S2C_GetTaskData, clientId, S2C_GetTaskDataInfo);
                 break;
-            case NetMessageType.C2S_CompeleteTask:
-                C2S_CompeleteTask C2S_CompeleteTaskInfo = new C2S_CompeleteTask();
-                reader.ReadNetworkSerializableInPlace(ref C2S_CompeleteTaskInfo);
-                TriggerOnReceiveMessageCallback(NetMessageType.C2S_CompeleteTask, clientId, C2S_CompeleteTaskInfo);
-                break;
             case NetMessageType.S2C_UpdateTaskData:
                 S2C_UpdateTaskData S2C_UpdateTaskDataInfo = new S2C_UpdateTaskData();
                 reader.ReadNetworkSerializableInPlace(ref S2C_UpdateTaskDataInfo);
@@ -156,6 +151,16 @@ public class NetMessageManager : SingletonMono<NetMessageManager>
                 S2C_GetMoneyReward S2C_GetMoneyRewardInfo = new S2C_GetMoneyReward();
                 reader.ReadNetworkSerializableInPlace(ref S2C_GetMoneyRewardInfo);
                 TriggerOnReceiveMessageCallback(NetMessageType.S2C_GetMoneyReward, clientId, S2C_GetMoneyRewardInfo);
+                break;
+            case NetMessageType.C2S_InputBatch:
+                C2S_InputBatch C2S_InputBatchInfo = new C2S_InputBatch();
+                reader.ReadNetworkSerializableInPlace(ref C2S_InputBatchInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.C2S_InputBatch, clientId, C2S_InputBatchInfo);
+                break;
+            case NetMessageType.S2C_OwnerSnapshot:
+                S2C_OwnerSnapshot S2C_OwnerSnapshotInfo = new S2C_OwnerSnapshot();
+                reader.ReadNetworkSerializableInPlace(ref S2C_OwnerSnapshotInfo);
+                TriggerOnReceiveMessageCallback(NetMessageType.S2C_OwnerSnapshot, clientId, S2C_OwnerSnapshotInfo);
                 break;
         }
     }
@@ -233,3 +238,5 @@ public class NetMessageManager : SingletonMono<NetMessageManager>
         throw new NotImplementedException();
     }
 }
+
+

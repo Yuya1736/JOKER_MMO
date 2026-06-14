@@ -1,5 +1,3 @@
-using JKFrame;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +5,12 @@ public class PlayerAtkState : PlayerStateBase
 {
     List<PlayerAtkConfig> playerAtkConfigs => player.mainController.playerAtkConfigs;
     private bool canSwitch = false;
+    private bool pendingCombo = false;
     public PlayerAtkConfig currentPlayerAtkConfig;
     public override void Enter()
     {
         canSwitch = false;
+        pendingCombo = false;
         Atk();
         player.playerView.StartSkillHitAcion += OnStartSKillHit;
         player.playerView.StopSkillHitAcion += OnStopSkillHit;
@@ -26,6 +26,11 @@ public class PlayerAtkState : PlayerStateBase
 
     private void OnSkillEnd()
     {
+        if (pendingCombo)
+        {
+            return;
+        }
+
         if (player.inputData.dir == Vector2.zero) player.ChangeState(PlayerState.Idle);
         else player.ChangeState(PlayerState.Move);
     }
@@ -33,17 +38,24 @@ public class PlayerAtkState : PlayerStateBase
     private void OnSkillCanSwitch()
     {
         canSwitch = true;
-        TryCombo();
+        if (player.inputData.comboAtk)
+        {
+            pendingCombo = true;
+            player.inputData.comboAtk = false;
+            player.mainController.playerAtkIndex.Value++;
+            if (player.mainController.playerAtkIndex.Value >= playerAtkConfigs.Count)
+            {
+                player.mainController.playerAtkIndex.Value = 0;
+            }
+            Atk();
+            pendingCombo = false;
+            canSwitch = false;
+        }
     }
 
     private void OnStopSkillHit()
     {
         player.weaponController.CloseHit();
-        player.mainController.playerAtkIndex.Value++;
-        if (player.mainController.playerAtkIndex.Value >= playerAtkConfigs.Count)
-        {
-            player.mainController.playerAtkIndex.Value = 0;
-        }
     }
 
     private void Atk()
@@ -54,25 +66,14 @@ public class PlayerAtkState : PlayerStateBase
     public override void Update()
     {
         base.Update();
-        TryCombo();
         TryMove();
-    }
-
-    public void TryCombo()
-    {
-        if (canSwitch && player.inputData.atk)
-        {
-            canSwitch = false;
-            player.inputData.atk = false;
-            Atk();
-        }
     }
 
     public void TryMove()
     {
-        if (canSwitch && player.inputData.dir != Vector2.zero)
+        if (canSwitch && player.inputData.sprint && player.inputData.dir != Vector2.zero)
         {
-            player.inputData.atk = false;
+            player.inputData.comboAtk = false;
             player.ChangeState(PlayerState.Move);
         }
     }
@@ -84,6 +85,7 @@ public class PlayerAtkState : PlayerStateBase
         player.playerView.SkillCanSwitchAcion -= OnSkillCanSwitch;
         player.playerView.SkillEndAcion -= OnSkillEnd;
         canSwitch = true;
+        pendingCombo = false;
     }
 
     public void OnHitTarget(IHitTarget target, Vector3 point)

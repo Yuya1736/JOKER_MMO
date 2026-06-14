@@ -17,7 +17,7 @@ namespace JKFrame
             maxCapacity = capacity;
             if (maxCapacity == -1) PoolQueue = new Queue<object>();
             else PoolQueue = new Queue<object>(capacity);
-        }
+        } 
         #endregion
 
         #region ObjectPool数据相关操作

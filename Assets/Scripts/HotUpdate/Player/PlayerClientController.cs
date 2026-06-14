@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class PlayerClientController : CharacterClientControllerBase<PlayerController>, IPlayerClientController, INetworkSideController
 {
     private Camera mainCamera;
-    private Vector2 lastDir = Vector2.zero;
+    private uint predictionTick;
     public Transform cameraLookPos { get; private set; }
     public Transform camaraFollow { get; private set; }
     public PlayerView playerView { get; private set; }
@@ -14,6 +14,9 @@ public class PlayerClientController : CharacterClientControllerBase<PlayerContro
 
     public bool canControl;
     private Coroutine waitAgentReadyCoroutine;
+    private bool pendingJump;
+    private bool pendingAttack;
+    private float tickAccumulator;
 
     public override void Init(PlayerController mainController)
     {
@@ -84,9 +87,15 @@ public class PlayerClientController : CharacterClientControllerBase<PlayerContro
 
     private void Update()
     {
-        ClientMoveInput();
         ClientJumpInput();
         ClientAtkInput();
+        tickAccumulator += Time.deltaTime;
+
+        while (tickAccumulator >= PlayerMoveMotor.TickDeltaTime)
+        {
+            tickAccumulator -= PlayerMoveMotor.TickDeltaTime;
+            ClientMoveInput();
+        }
     }
 
     private void OnStartSkillHit()
@@ -97,26 +106,53 @@ public class PlayerClientController : CharacterClientControllerBase<PlayerContro
 
     private void ClientMoveInput()
     {
-        Vector2 dir = Vector2.zero;
-        if (canControl)
+        if (!canControl || mainController == null || !mainController.IsOwner)
         {
-            float x = Input.GetAxisRaw("Horizontal");
-            float y = Input.GetAxisRaw("Vertical");
-            dir = new Vector2(x, y);
-        }
-        else
-        {
-            dir = Vector2.zero;
+            return;
         }
 
+        predictionTick++;
+
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        Vector2 dir = new Vector2(x, y);
         Vector3 dir3 = new Vector3(dir.x, 0, dir.y);
         float yEuler = mainCamera.transform.eulerAngles.y;
         Vector3 newDir3 = Quaternion.Euler(new Vector3(0, yEuler, 0)) * dir3;
         Vector2 newDir2 = new Vector2(newDir3.x, newDir3.z);
-        if (Vector2.Distance(lastDir, newDir2) <= 0.05f) return;
-        lastDir = newDir2;
+        Vector2 worldDir = newDir2.sqrMagnitude > 1f ? newDir2.normalized : newDir2;
 
-        mainController.Send_InputInfo_ServerRpc(new Vector2(newDir3.x, newDir3.z));
+        float yaw = mainController.transform.eulerAngles.y;
+        if (worldDir.sqrMagnitude > 0.0001f)
+        {
+            yaw = Quaternion.LookRotation(new Vector3(worldDir.x, 0f, worldDir.y)).eulerAngles.y;
+        }
+
+        byte buttons = 0;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            buttons |= PlayerMoveMotor.SprintButtonMask;
+        }
+        if (pendingJump)
+        {
+            buttons |= PlayerMoveMotor.JumpButtonMask;
+            pendingJump = false;
+        }
+        if (pendingAttack)
+        {
+            buttons |= PlayerMoveMotor.AttackButtonMask;
+            pendingAttack = false;
+        }
+
+        PlayerInputCommand input = new PlayerInputCommand
+        {
+            Tick = predictionTick,
+            MoveDir = worldDir,
+            Yaw = yaw,
+            Buttons = buttons
+        };
+
+        PlayerManager.Instance.PredictMove(input);
     }
 
     private void ClientJumpInput()
@@ -124,7 +160,7 @@ public class PlayerClientController : CharacterClientControllerBase<PlayerContro
         if (!canControl) return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            mainController.Send_Jump_ServerRpc();
+            pendingJump = true;
         }
     }
 
@@ -133,7 +169,7 @@ public class PlayerClientController : CharacterClientControllerBase<PlayerContro
         if (!canControl) return;
         if (Input.GetMouseButtonDown(0))
         {
-            mainController.Send_Atk_ServerRpc();
+            pendingAttack = true;
         }
     }
 
